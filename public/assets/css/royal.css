@@ -1678,15 +1678,19 @@ select.form-control { cursor: pointer; }
 }
 
 /* Le retrait gauche du heros doit tomber exactement sur la colonne de
-   .container, que Tailwind plafonne par paliers (640 / 768 / 1024 / 1280)
-   avec une gouttiere Bootstrap de 12 px.
+   .container Bootstrap (le systeme de grille reellement utilise par les
+   sections suivantes : services, a-propos, temoignages...), pas sur les
+   breakpoints Tailwind qui ne s y alignent qu approximativement.
+   Paliers Bootstrap reels (bootstrap.min.css) : 576->540, 768->720,
+   992->960, 1200->1140, 1400->1320.
    Le pourcentage porte sur .hero-split__grid : il se calcule alors sur la
    largeur de .hero-split, soit la zone de contenu. Avec 100vw on comptait
    aussi la barre de defilement et le titre tombait 7 px trop a droite. */
-@media (min-width:  640px) { .hero-split__grid { padding-left: max(.75rem, calc((100% -  640px) / 2 + .75rem)); } }
-@media (min-width:  768px) { .hero-split__grid { padding-left: max(.75rem, calc((100% -  768px) / 2 + .75rem)); } }
-@media (min-width: 1024px) { .hero-split__grid { padding-left: max(.75rem, calc((100% - 1024px) / 2 + .75rem)); } }
-@media (min-width: 1280px) { .hero-split__grid { padding-left: max(.75rem, calc((100% - 1280px) / 2 + .75rem)); } }
+@media (min-width:  576px) { .hero-split__grid { padding-left: max(.75rem, calc((100% -  540px) / 2 + .75rem)); } }
+@media (min-width:  768px) { .hero-split__grid { padding-left: max(.75rem, calc((100% -  720px) / 2 + .75rem)); } }
+@media (min-width:  992px) { .hero-split__grid { padding-left: max(.75rem, calc((100% -  960px) / 2 + .75rem)); } }
+@media (min-width: 1200px) { .hero-split__grid { padding-left: max(.75rem, calc((100% - 1140px) / 2 + .75rem)); } }
+@media (min-width: 1400px) { .hero-split__grid { padding-left: max(.75rem, calc((100% - 1320px) / 2 + .75rem)); } }
 
 /* ================================================================
    REFONTE — COMPOSANTS DU MODELE
