@@ -65,9 +65,12 @@
     <!-- Vendor: noUiSlider (loan calculator) -->
     <link rel="stylesheet" href="{{ asset('assets/vendors/nouislider/nouislider.min.css') }}">
 
-    <!-- Design system -->
-    <link rel="stylesheet" href="{{ asset('assets/css/royal.css') }}">
-
     @stack('styles')
+
+    {{-- Design system — chargé en tout dernier pour garantir sa priorité sur
+         Tailwind (CDN) et Bootstrap, quel que soit l'ordre réel d'injection
+         réseau (le <style> généré par le script Tailwind CDN n'est pas garanti
+         d'arriver avant les <link> précédents selon la latence du CDN). --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/royal.css') }}">
 </head>
 <body class="font-sans antialiased bg-white text-gray-900 @yield('body_class')" x-data="{ mobileOpen: false }">
