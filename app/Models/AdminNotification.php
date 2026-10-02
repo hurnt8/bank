@@ -29,6 +29,7 @@ class AdminNotification extends Model
         $iconMap = [
             'support'  => 'comments',
             'transfer' => 'exchange-alt',
+            'account'  => 'user-plus',
             'system'   => 'bell',
         ];
 

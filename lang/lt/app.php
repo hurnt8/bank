@@ -329,4 +329,9 @@ return [
     'transfer_pending_note'           => 'Pastaba',
     'transfer_pending_info'           => 'Būsite informuoti el. paštu ir programėlėje, kai tik pavedimas bus apdorotas. Suma rezervuota jūsų sąskaitoje tvirtinimo metu.',
     'transfer_pending_view_movements' => 'Peržiūrėti mano operacijas',
+
+    // Banko duomenys (IBAN / kortelė, priskirti administratoriaus)
+    'banking_blocked_notice' => 'Jūsų banko duomenys šiuo metu yra užblokuoti. Susisiekite su savo konsultantu.',
+    'card_title'             => 'Kortelė',
+    'card_expires'           => 'Galioja iki',
 ];

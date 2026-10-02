@@ -329,4 +329,9 @@ return [
     'transfer_pending_note'           => 'Notă',
     'transfer_pending_info'           => 'Veți fi notificat prin e-mail și în aplicație imediat ce transferul va fi procesat. Suma rămâne rezervată în contul dumneavoastră pe durata validării.',
     'transfer_pending_view_movements' => 'Vezi tranzacțiile mele',
+
+    // Date bancare (IBAN / card atribuite de un admin)
+    'banking_blocked_notice' => 'Datele dumneavoastră bancare sunt momentan blocate. Contactați consilierul dumneavoastră.',
+    'card_title'             => 'Card',
+    'card_expires'           => 'Expiră',
 ];

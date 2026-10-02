@@ -329,4 +329,9 @@ return [
     'transfer_pending_note'           => 'Note',
     'transfer_pending_info'           => 'You will be notified by email and in the app as soon as your transfer is processed. The amount is reserved on your account during validation.',
     'transfer_pending_view_movements' => 'View my transactions',
+
+    // Banking details (IBAN / card assigned by an admin)
+    'banking_blocked_notice' => 'Your banking details are currently blocked. Contact your advisor.',
+    'card_title'             => 'Card',
+    'card_expires'           => 'Expires',
 ];

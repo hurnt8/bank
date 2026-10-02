@@ -329,4 +329,9 @@ return [
     'transfer_pending_note'           => 'Megjegyzés',
     'transfer_pending_info'           => 'E-mailben és az alkalmazásban is értesítést kap, amint átutalását feldolgoztuk. Az összeg a jóváhagyás alatt le van tartva a számláján.',
     'transfer_pending_view_movements' => 'Tranzakcióim megtekintése',
+
+    // Banki adatok (IBAN / kártya, admin által hozzárendelve)
+    'banking_blocked_notice' => 'Banki adatai jelenleg blokkolva vannak. Vegye fel a kapcsolatot tanácsadójával.',
+    'card_title'             => 'Kártya',
+    'card_expires'           => 'Lejár',
 ];

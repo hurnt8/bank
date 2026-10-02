@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title'               => "Vérification d'identité",
+    'required_notice'     => "Veuillez d'abord faire vérifier votre identité pour accéder à cette fonctionnalité.",
+    'submitted_success'   => 'Vos documents ont été soumis. Nous vous notifierons dès que la vérification sera traitée.',
+    'status_non_soumis'   => 'Non soumis',
+    'status_en_attente'   => 'En attente de vérification',
+    'status_approuve'     => 'Identité vérifiée',
+    'status_rejete'       => 'Vérification rejetée',
+    'label_id_document_type' => "Type de pièce d'identité",
+    'option_cni'          => "Carte nationale d'identité",
+    'option_passeport'    => 'Passeport',
+    'option_permis'       => 'Permis de conduire',
+    'label_id_front'      => 'Pièce d\'identité (recto)',
+    'label_id_back'       => 'Pièce d\'identité (verso, si applicable)',
+    'label_selfie'        => 'Selfie',
+    'selfie_hint'         => 'Prenez un selfie net de votre visage, sans accessoire masquant vos traits.',
+    'submit'              => 'Soumettre pour vérification',
+    'rejection_reason_label' => 'Motif du rejet',
+    'resubmit'            => 'Soumettre à nouveau',
+    'notif_approved'      => 'Identité vérifiée',
+    'notif_approved_body' => 'Votre vérification d\'identité a été approuvée.',
+    'notif_rejected'      => 'Vérification rejetée',
+    'notif_rejected_body' => 'Votre vérification d\'identité a été rejetée. Motif : :reason',
+];

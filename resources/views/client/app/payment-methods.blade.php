@@ -147,7 +147,20 @@
 @section('content')
 <div class="pm-body">
 
-@if($user->bank_account)
+@php
+    $bankAccount = $user->bankAccount;
+    $card        = $user->card;
+    $isBlocked   = ($bankAccount && $bankAccount->status === \App\Models\BankAccount::STATUS_BLOCKED)
+                || ($card && $card->status === \App\Models\Card::STATUS_BLOCKED);
+@endphp
+
+@if($bankAccount)
+
+@if($isBlocked)
+<div class="alert alert-danger" style="margin-bottom:1rem">
+    {{ __('app.banking_blocked_notice') }}
+</div>
+@endif
 
 {{-- Carte bancaire --}}
 <div class="pm-card" x-data="{ shown: true }">
@@ -166,7 +179,7 @@
 
   <div class="pm-card__label">IBAN</div>
   <div class="pm-card__iban" x-show="shown">
-    {{ chunk_split($user->bank_account, 4, ' ') }}
+    {{ chunk_split($bankAccount->iban, 4, ' ') }}
   </div>
   <div class="pm-card__iban" x-show="!shown" aria-hidden="true" style="color:rgba(255,255,255,.28);letter-spacing:.25em">
     &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;
@@ -175,8 +188,8 @@
   <div class="pm-card__bottom">
     <div>
       <div class="pm-card__holder">{{ Str::upper(Str::words($user->name, 2, '')) }}</div>
-      @if($user->bic)
-      <div class="pm-card__bic">BIC · {{ $user->bic }}</div>
+      @if($bankAccount->bic)
+      <div class="pm-card__bic">BIC · {{ $bankAccount->bic }}</div>
       @endif
     </div>
     <button @click="shown = !shown" class="pm-copy-btn" style="padding:.4rem .75rem;border-radius:8px;font-size:.72rem">
@@ -189,13 +202,13 @@
 {{-- Boutons copier --}}
 <div class="pm-actions" x-data="pmCopy()">
   <button class="pm-copy-btn" :class="{ 'pm-copy-btn--copied': copiedIban }"
-          @click="copy('{{ $user->bank_account }}', 'iban')">
+          @click="copy('{{ $bankAccount->iban }}', 'iban')">
     <i :class="copiedIban ? 'fas fa-check' : 'fas fa-copy'"></i>
     <span x-text="copiedIban ? '{{ __('app.copied') }}' : 'Copier IBAN'"></span>
   </button>
-  @if($user->bic)
+  @if($bankAccount->bic)
   <button class="pm-copy-btn" :class="{ 'pm-copy-btn--copied': copiedBic }"
-          @click="copy('{{ $user->bic }}', 'bic')">
+          @click="copy('{{ $bankAccount->bic }}', 'bic')">
     <i :class="copiedBic ? 'fas fa-check' : 'fas fa-copy'"></i>
     <span x-text="copiedBic ? '{{ __('app.copied') }}' : 'Copier BIC'"></span>
   </button>
@@ -213,12 +226,12 @@
   </div>
   <div class="pm-detail-row">
     <span class="pm-detail-key">IBAN</span>
-    <span class="pm-detail-val">{{ chunk_split($user->bank_account, 4, ' ') }}</span>
+    <span class="pm-detail-val">{{ chunk_split($bankAccount->iban, 4, ' ') }}</span>
   </div>
-  @if($user->bic)
+  @if($bankAccount->bic)
   <div class="pm-detail-row">
     <span class="pm-detail-key">BIC / SWIFT</span>
-    <span class="pm-detail-val">{{ $user->bic }}</span>
+    <span class="pm-detail-val">{{ $bankAccount->bic }}</span>
   </div>
   @endif
   <div class="pm-detail-row">
@@ -232,6 +245,24 @@
     </span>
   </div>
 </div>
+
+@if($card)
+<div class="pm-detail-title" style="margin-top:1.25rem">{{ __('app.card_title') ?? 'Carte' }}</div>
+<div class="pm-detail-list">
+  <div class="pm-detail-row">
+    <span class="pm-detail-key">{{ __('app.receive_name') }}</span>
+    <span class="pm-detail-val">{{ $card->holder_name }}</span>
+  </div>
+  <div class="pm-detail-row">
+    <span class="pm-detail-key">{{ ucfirst($card->network) }}</span>
+    <span class="pm-detail-val">{{ $card->maskedNumber() }}</span>
+  </div>
+  <div class="pm-detail-row">
+    <span class="pm-detail-key">{{ __('app.card_expires') ?? 'Expire' }}</span>
+    <span class="pm-detail-val">{{ $card->expires_at->format('m/Y') }}</span>
+  </div>
+</div>
+@endif
 
 {{-- Partager --}}
 <button class="pm-share-btn" onclick="shareCoords()">
@@ -286,9 +317,9 @@ function pmCopy() {
 }
 
 function shareCoords() {
-  const iban = '{{ $user->bank_account ?? "" }}';
+  const iban = '{{ $bankAccount->iban ?? "" }}';
   const name = '{{ addslashes($user->name) }}';
-  const bic  = '{{ $user->bic ?? "" }}';
+  const bic  = '{{ $bankAccount->bic ?? "" }}';
   const text = `Coordonnees bancaires {{ site_name() }}\nTitulaire : ${name}\nIBAN : ${iban}${bic ? '\nBIC : ' + bic : ''}`;
   if (navigator.share) {
     navigator.share({ title: 'Mes coordonnees bancaires', text });

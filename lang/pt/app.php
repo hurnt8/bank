@@ -349,4 +349,9 @@ return [
     'transfer_pending_note'           => 'Nota',
     'transfer_pending_info'           => 'Será notificado por email e na aplicação assim que a sua transferência for processada. O montante fica reservado na sua conta durante a validação.',
     'transfer_pending_view_movements' => 'Ver os meus movimentos',
+
+    // Dados bancários (IBAN / cartão atribuídos por um admin)
+    'banking_blocked_notice' => 'Os seus dados bancários estão atualmente bloqueados. Contacte o seu consultor.',
+    'card_title'             => 'Cartão',
+    'card_expires'           => 'Expira',
 ];

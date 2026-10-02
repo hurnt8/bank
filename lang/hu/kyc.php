@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title'               => 'Személyazonosság ellenőrzése',
+    'required_notice'     => 'Kérjük, először ellenőrizze személyazonosságát a funkció eléréséhez.',
+    'submitted_success'   => 'Dokumentumait elküldtük. Értesítjük, amint az ellenőrzés megtörtént.',
+    'status_non_soumis'   => 'Nincs benyújtva',
+    'status_en_attente'   => 'Ellenőrzésre vár',
+    'status_approuve'     => 'Személyazonosság ellenőrizve',
+    'status_rejete'       => 'Ellenőrzés elutasítva',
+    'label_id_document_type' => 'Igazolvány típusa',
+    'option_cni'          => 'Személyi igazolvány',
+    'option_passeport'    => 'Útlevél',
+    'option_permis'       => 'Jogosítvány',
+    'label_id_front'      => 'Igazolvány (előlap)',
+    'label_id_back'       => 'Igazolvány (hátlap, ha van)',
+    'label_selfie'        => 'Szelfi',
+    'selfie_hint'         => 'Készítsen tiszta szelfit az arcáról, semmi ne takarja a vonásait.',
+    'submit'              => 'Beküldés ellenőrzésre',
+    'rejection_reason_label' => 'Elutasítás oka',
+    'resubmit'            => 'Újra beküldés',
+    'notif_approved'      => 'Személyazonosság ellenőrizve',
+    'notif_approved_body' => 'Személyazonosság-ellenőrzését jóváhagytuk.',
+    'notif_rejected'      => 'Ellenőrzés elutasítva',
+    'notif_rejected_body' => 'Személyazonosság-ellenőrzését elutasítottuk. Indok: :reason',
+];

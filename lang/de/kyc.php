@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title'               => 'Identitätsprüfung',
+    'required_notice'     => 'Bitte verifizieren Sie zunächst Ihre Identität, um auf diese Funktion zuzugreifen.',
+    'submitted_success'   => 'Ihre Dokumente wurden eingereicht. Wir benachrichtigen Sie, sobald die Prüfung abgeschlossen ist.',
+    'status_non_soumis'   => 'Nicht eingereicht',
+    'status_en_attente'   => 'Prüfung ausstehend',
+    'status_approuve'     => 'Identität verifiziert',
+    'status_rejete'       => 'Prüfung abgelehnt',
+    'label_id_document_type' => 'Art des Ausweisdokuments',
+    'option_cni'          => 'Personalausweis',
+    'option_passeport'    => 'Reisepass',
+    'option_permis'       => 'Führerschein',
+    'label_id_front'      => 'Ausweisdokument (Vorderseite)',
+    'label_id_back'       => 'Ausweisdokument (Rückseite, falls zutreffend)',
+    'label_selfie'        => 'Selfie',
+    'selfie_hint'         => 'Machen Sie ein klares Selfie Ihres Gesichts, ohne etwas, das Ihre Züge verdeckt.',
+    'submit'              => 'Zur Prüfung einreichen',
+    'rejection_reason_label' => 'Ablehnungsgrund',
+    'resubmit'            => 'Erneut einreichen',
+    'notif_approved'      => 'Identität verifiziert',
+    'notif_approved_body' => 'Ihre Identitätsprüfung wurde genehmigt.',
+    'notif_rejected'      => 'Prüfung abgelehnt',
+    'notif_rejected_body' => 'Ihre Identitätsprüfung wurde abgelehnt. Grund: :reason',
+];

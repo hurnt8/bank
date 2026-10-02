@@ -329,4 +329,9 @@ return [
     'transfer_pending_note'           => 'Nota',
     'transfer_pending_info'           => 'Riceverai una notifica via e-mail e nell\'app non appena il tuo bonifico sarà elaborato. L\'importo resta riservato sul tuo conto durante la convalida.',
     'transfer_pending_view_movements' => 'Vedi i miei movimenti',
+
+    // Dati bancari (IBAN / carta assegnati da un admin)
+    'banking_blocked_notice' => 'I tuoi dati bancari sono attualmente bloccati. Contatta il tuo consulente.',
+    'card_title'             => 'Carta',
+    'card_expires'           => 'Scade',
 ];

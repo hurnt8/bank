@@ -344,4 +344,9 @@ return [
     'transfer_pending_note'           => 'Napomena',
     'transfer_pending_info'           => 'Bit ćete obaviješteni e-poštom i unutar aplikacije čim se vaš prijenos obradi. Iznos je rezerviran na vašem računu tijekom odobrenja.',
     'transfer_pending_view_movements' => 'Pregledaj moje promjene',
+
+    // Bankovni podaci (IBAN / kartica koje je dodijelio admin)
+    'banking_blocked_notice' => 'Vaši bankovni podaci su trenutno blokirani. Kontaktirajte svog savjetnika.',
+    'card_title'             => 'Kartica',
+    'card_expires'           => 'Ističe',
 ];

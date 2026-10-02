@@ -94,4 +94,22 @@ class User extends Authenticatable
             'contract_template_id'
         );
     }
+
+    // Vérification d'identité (KYC) — une par client
+    public function kycVerification()
+    {
+        return $this->hasOne(KycVerification::class);
+    }
+
+    // Coordonnées bancaires attribuées par un admin
+    public function bankAccount()
+    {
+        return $this->hasOne(BankAccount::class);
+    }
+
+    // Carte attribuée par un admin
+    public function card()
+    {
+        return $this->hasOne(Card::class);
+    }
 }

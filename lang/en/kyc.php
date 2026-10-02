@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title'               => 'Identity verification',
+    'required_notice'     => 'Please verify your identity first to access this feature.',
+    'submitted_success'   => 'Your documents have been submitted. We will notify you once the verification is processed.',
+    'status_non_soumis'   => 'Not submitted',
+    'status_en_attente'   => 'Pending verification',
+    'status_approuve'     => 'Identity verified',
+    'status_rejete'       => 'Verification rejected',
+    'label_id_document_type' => 'ID document type',
+    'option_cni'          => 'National ID card',
+    'option_passeport'    => 'Passport',
+    'option_permis'       => 'Driving license',
+    'label_id_front'      => 'ID document (front)',
+    'label_id_back'       => 'ID document (back, if applicable)',
+    'label_selfie'        => 'Selfie',
+    'selfie_hint'         => 'Take a clear selfie of your face, without anything covering your features.',
+    'submit'              => 'Submit for verification',
+    'rejection_reason_label' => 'Rejection reason',
+    'resubmit'            => 'Resubmit',
+    'notif_approved'      => 'Identity verified',
+    'notif_approved_body' => 'Your identity verification has been approved.',
+    'notif_rejected'      => 'Verification rejected',
+    'notif_rejected_body' => 'Your identity verification was rejected. Reason: :reason',
+];

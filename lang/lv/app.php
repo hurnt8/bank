@@ -329,4 +329,9 @@ return [
     'transfer_pending_note'           => 'Piezīme',
     'transfer_pending_info'           => 'Jūs saņemsiet paziņojumu pa e-pastu un lietotnē, tiklīdz pārskaitījums būs apstrādāts. Summa tiek rezervēta jūsu kontā apstiprināšanas laikā.',
     'transfer_pending_view_movements' => 'Skatīt manus darījumus',
+
+    // Bankas dati (IBAN / karte, ko piešķīris administrators)
+    'banking_blocked_notice' => 'Jūsu bankas dati pašlaik ir bloķēti. Sazinieties ar savu konsultantu.',
+    'card_title'             => 'Karte',
+    'card_expires'           => 'Derīga līdz',
 ];

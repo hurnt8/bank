@@ -31,6 +31,38 @@ $subs = [
     'pt' => site_name() . ' — Área de cliente',
     'hr' => site_name() . ' — Klijentski prostor',
 ];
+$pwaLabels = [
+    'fr' => 'Une fois votre compte activé, installez notre application sur votre téléphone pour un accès plus rapide :',
+    'en' => 'Once your account is activated, install our app on your phone for faster access:',
+    'es' => 'Una vez activada su cuenta, instale nuestra aplicación en su teléfono para un acceso más rápido:',
+    'pl' => 'Po aktywacji konta zainstaluj naszą aplikację na telefonie, aby uzyskać szybszy dostęp:',
+    'bg' => 'След активиране на профила инсталирайте нашето приложение на телефона си за по-бърз достъп:',
+    'hu' => 'A fiók aktiválása után telepítse alkalmazásunkat telefonjára a gyorsabb hozzáférés érdekében:',
+    'it' => 'Una volta attivato il tuo account, installa la nostra app sul tuo telefono per un accesso più rapido:',
+    'de' => 'Sobald Ihr Konto aktiviert ist, installieren Sie unsere App auf Ihrem Telefon für schnelleren Zugriff:',
+    'lt' => 'Aktyvavę paskyrą, įsidiekite mūsų programėlę telefone, kad galėtumėte greičiau pasiekti:',
+    'ro' => 'Odată ce contul este activat, instalați aplicația noastră pe telefon pentru acces mai rapid:',
+    'lv' => 'Kad jūsu konts ir aktivizēts, instalējiet mūsu lietotni savā tālrunī ātrākai piekļuvei:',
+    'nl' => 'Zodra uw account is geactiveerd, installeert u onze app op uw telefoon voor snellere toegang:',
+    'pt' => 'Depois de ativar a sua conta, instale a nossa aplicação no seu telefone para um acesso mais rápido:',
+    'hr' => 'Nakon što aktivirate svoj račun, instalirajte našu aplikaciju na telefon za brži pristup:',
+];
+$pwaBtns = [
+    'fr' => 'Installer l\'application',
+    'en' => 'Install the app',
+    'es' => 'Instalar la aplicación',
+    'pl' => 'Zainstaluj aplikację',
+    'bg' => 'Инсталирайте приложението',
+    'hu' => 'Alkalmazás telepítése',
+    'it' => 'Installa l\'app',
+    'de' => 'App installieren',
+    'lt' => 'Įdiegti programėlę',
+    'ro' => 'Instalează aplicația',
+    'lv' => 'Instalēt lietotni',
+    'nl' => 'App installeren',
+    'pt' => 'Instalar a aplicação',
+    'hr' => 'Instaliraj aplikaciju',
+];
 $notices = [
     'fr' => 'Si vous n\'êtes pas à l\'origine de cette création de compte, vous pouvez ignorer cet email.',
     'en' => 'If you did not request this account creation, you can ignore this email.',
@@ -47,9 +79,11 @@ $notices = [
     'pt' => 'Se não foi você que solicitou a criação desta conta, pode ignorar este email.',
     'hr' => 'Ako niste vi pokrenuli otvaranje ovog računa, možete zanemariti ovu e-poruku.',
 ];
-$title  = $titles[$locale]  ?? $titles['fr'];
-$sub    = $subs[$locale]    ?? $subs['fr'];
-$notice = $notices[$locale] ?? $notices['fr'];
+$title   = $titles[$locale]    ?? $titles['fr'];
+$sub     = $subs[$locale]      ?? $subs['fr'];
+$notice  = $notices[$locale]   ?? $notices['fr'];
+$pwaText = $pwaLabels[$locale] ?? $pwaLabels['fr'];
+$pwaBtn  = $pwaBtns[$locale]   ?? $pwaBtns['fr'];
 @endphp
 
 <x-email-layout
@@ -77,6 +111,12 @@ $notice = $notices[$locale] ?? $notices['fr'];
     {{ $fallbacks[$locale] ?? $fallbacks['fr'] }}<br>
     <a href="{{ $activationUrl }}">{{ $activationUrl }}</a>
   </p>
+
+  <p class="body-text">{{ $pwaText }}</p>
+
+  <div class="btn-wrap">
+    <a href="{{ route('client.app.home') }}" class="btn">{{ $pwaBtn }}</a>
+  </div>
 
   <div class="alert alert-warn">
     <p>{{ $resolved['{NOTICE_PERSONNEL}'] }}</p>

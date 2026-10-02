@@ -250,7 +250,7 @@ class AppController extends Controller
 
     public function paymentMethods()
     {
-        $user = Auth::user();
+        $user = Auth::user()->load(['bankAccount', 'card', 'kycVerification']);
         return view('client.app.payment-methods', compact('user'));
     }
 

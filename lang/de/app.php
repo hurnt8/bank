@@ -329,4 +329,9 @@ return [
     'transfer_pending_note'           => 'Notiz',
     'transfer_pending_info'           => 'Sie werden per E-Mail und in der App benachrichtigt, sobald Ihre Überweisung bearbeitet wurde. Der Betrag bleibt während der Prüfung auf Ihrem Konto reserviert.',
     'transfer_pending_view_movements' => 'Meine Transaktionen ansehen',
+
+    // Bankdaten (IBAN / Karte, von einem Admin zugewiesen)
+    'banking_blocked_notice' => 'Ihre Bankdaten sind derzeit gesperrt. Wenden Sie sich an Ihren Berater.',
+    'card_title'             => 'Karte',
+    'card_expires'           => 'Läuft ab',
 ];

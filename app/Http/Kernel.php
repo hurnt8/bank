@@ -71,5 +71,6 @@ class Kernel extends HttpKernel
         'role_or_permission'=> \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
         'client.locale'     => \App\Http\Middleware\SetClientLocale::class,
         'ajax.secure'       => \App\Http\Middleware\SecureAjaxApi::class,
+        'kyc.approved'      => \App\Http\Middleware\EnsureKycApproved::class,
     ];
 }

@@ -349,4 +349,9 @@ return [
     'transfer_pending_note'           => 'Notitie',
     'transfer_pending_info'           => 'U ontvangt een melding per e-mail en in de app zodra uw overschrijving is verwerkt. Het bedrag blijft gereserveerd op uw rekening tijdens de goedkeuring.',
     'transfer_pending_view_movements' => 'Mijn transacties bekijken',
+
+    // Bankgegevens (IBAN / kaart toegewezen door een admin)
+    'banking_blocked_notice' => 'Uw bankgegevens zijn momenteel geblokkeerd. Neem contact op met uw adviseur.',
+    'card_title'             => 'Kaart',
+    'card_expires'           => 'Vervalt',
 ];

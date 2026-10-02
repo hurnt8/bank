@@ -28,6 +28,7 @@ use App\Http\Controllers\Dashboard\ClientDashboardController;
 use App\Http\Controllers\Dashboard\SuperAdminDashboardController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\LoanOutcomeController;
+use App\Http\Controllers\SignupController;
 use App\Http\Controllers\SuperAdmin\LoanRequestController as SuperAdminLoanRequestController;
 use App\Models\Language;
 use Illuminate\Http\Request;
@@ -105,6 +106,8 @@ Route::group([
 
     Route::get('/loan/complete', [LoanController::class, 'showDocuments'])->name('loan.complete');
 
+    Route::get('/signup', [SignupController::class, 'create'])->name('signup');
+
     Route::get('/terms', function () {
         return view('terms');
     })->name('terms');
@@ -151,6 +154,7 @@ Route::post('/contact/send', [ContactController::class, 'sendMail'])->name('cont
 Route::post('/subscribe/send', [ContactController::class, 'subscribeMail'])->name('subscribe.send');
 Route::post('/loan/request', [LoanController::class, 'sendMail'])->name('loan.request');
 Route::post('/loan/documents', [LoanController::class, 'sendDocuments'])->name('loan.documents');
+Route::post('/signup', [SignupController::class, 'store'])->name('signup.store');
 
 // ── Page "prochaines étapes" (lien signé envoyé par email, sans connexion) ──
 Route::get('/loan-outcome/{loan}/approved', [LoanOutcomeController::class, 'approved'])
@@ -240,15 +244,21 @@ Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name
     Route::get('/invoices',            [ClientAppController::class, 'invoices'])->name('invoices');
     Route::get('/invoices/{invoice}',  [ClientAppController::class, 'invoiceShow'])->name('invoices.show');
 
-    // Transferts : hub central (bouton FAB nav) + sous-pages
-    Route::get('/transfers',           [\App\Http\Controllers\Client\TransferController::class, 'hub'])->name('transfers');
-    Route::get('/transfer/send',       [\App\Http\Controllers\Client\TransferController::class, 'sendForm'])->name('transfer.send');
-    Route::post('/transfer/send',      [\App\Http\Controllers\Client\TransferController::class, 'sendProcess'])->name('transfer.send.process');
-    Route::get('/transfer/receive',    [\App\Http\Controllers\Client\TransferController::class, 'receive'])->name('transfer.receive');
-    Route::get('/transfer/confirmation', [\App\Http\Controllers\Client\TransferController::class, 'confirmation'])->name('transfer.confirmation');
+    // Transferts : hub central (bouton FAB nav) + sous-pages — KYC approuvé requis
+    Route::middleware('kyc.approved')->group(function () {
+        Route::get('/transfers',           [\App\Http\Controllers\Client\TransferController::class, 'hub'])->name('transfers');
+        Route::get('/transfer/send',       [\App\Http\Controllers\Client\TransferController::class, 'sendForm'])->name('transfer.send');
+        Route::post('/transfer/send',      [\App\Http\Controllers\Client\TransferController::class, 'sendProcess'])->name('transfer.send.process');
+        Route::get('/transfer/receive',    [\App\Http\Controllers\Client\TransferController::class, 'receive'])->name('transfer.receive');
+        Route::get('/transfer/confirmation', [\App\Http\Controllers\Client\TransferController::class, 'confirmation'])->name('transfer.confirmation');
+    });
 
     // Support client (page principale)
     Route::get('/support', [ClientSupportController::class, 'index'])->name('support');
+
+    // Vérification d'identité (KYC)
+    Route::get('/kyc',  [\App\Http\Controllers\Client\KycController::class, 'show'])->name('kyc.show');
+    Route::post('/kyc', [\App\Http\Controllers\Client\KycController::class, 'store'])->name('kyc.store');
 
     // ── Push notifications ──────────────────────────────────────────────────
     Route::post('/push/subscribe',   [\App\Http\Controllers\Client\PushController::class, 'subscribe'])->name('push.subscribe');
@@ -380,6 +390,19 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('admin')->name('ad
     Route::post('/transfers/{transfer}/approve',      [TransferValidationController::class, 'approve'])->name('transfers.approve');
     Route::post('/transfers/{transfer}/reject',       [TransferValidationController::class, 'reject'])->name('transfers.reject');
     Route::post('/transfers/{transfer}/invoice',      [TransferValidationController::class, 'invoice'])->name('transfers.invoice');
+
+    // Vérification d'identité (KYC)
+    Route::get('/kyc',                         [\App\Http\Controllers\Admin\KycController::class, 'index'])->name('kyc.index');
+    Route::get('/kyc/{kyc}',                   [\App\Http\Controllers\Admin\KycController::class, 'show'])->name('kyc.show');
+    Route::get('/kyc/{kyc}/document/{type}',   [\App\Http\Controllers\Admin\KycController::class, 'document'])->name('kyc.document');
+    Route::post('/kyc/{kyc}/approve',          [\App\Http\Controllers\Admin\KycController::class, 'approve'])->name('kyc.approve');
+    Route::post('/kyc/{kyc}/reject',           [\App\Http\Controllers\Admin\KycController::class, 'reject'])->name('kyc.reject');
+
+    // Attribution IBAN / carte (réservé aux clients dont le KYC est approuvé)
+    Route::get('/users/{user}/banking',       [\App\Http\Controllers\Admin\BankingController::class, 'edit'])->name('users.banking.edit');
+    Route::post('/users/{user}/banking',      [\App\Http\Controllers\Admin\BankingController::class, 'store'])->name('users.banking.store');
+    Route::post('/users/{user}/banking/toggle-block', [\App\Http\Controllers\Admin\BankingController::class, 'toggleBlock'])->name('users.banking.toggle-block');
+    Route::delete('/users/{user}/banking',    [\App\Http\Controllers\Admin\BankingController::class, 'destroy'])->name('users.banking.destroy');
 
     // Support (pages HTML)
     Route::get('/support',          [AdminSupportController::class, 'index'])->name('support.index');

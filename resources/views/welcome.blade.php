@@ -28,9 +28,9 @@
                         <i class="fas fa-file-signature"></i>
                         @lang('menu.loan')
                     </a>
-                    <a href="#simulate" class="btn-outline btn-outline--lg">
-                        <i class="fas fa-calculator"></i>
-                        @lang('menu.simulate')
+                    <a href="{{ route('signup', ['locale' => $locale]) }}" class="btn-outline btn-outline--lg">
+                        <i class="fas fa-user-plus"></i>
+                        @lang('signup.title')
                     </a>
                 </div>
 

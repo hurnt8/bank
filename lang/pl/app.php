@@ -322,4 +322,9 @@ return [
     'transfer_pending_note'           => 'Notatka',
     'transfer_pending_info'           => 'Zostaniesz powiadomiony e-mailem i w aplikacji, gdy tylko przelew zostanie przetworzony. Kwota jest zarezerwowana na Twoim koncie w trakcie weryfikacji.',
     'transfer_pending_view_movements' => 'Zobacz moje transakcje',
+
+    // Dane bankowe (IBAN / karta przypisane przez admina)
+    'banking_blocked_notice' => 'Twoje dane bankowe są obecnie zablokowane. Skontaktuj się z doradcą.',
+    'card_title'             => 'Karta',
+    'card_expires'           => 'Wygasa',
 ];

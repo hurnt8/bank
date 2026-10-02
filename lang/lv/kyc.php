@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title'               => 'Identitātes pārbaude',
+    'required_notice'     => 'Lūdzu, vispirms pārbaudiet savu identitāti, lai piekļūtu šai funkcijai.',
+    'submitted_success'   => 'Jūsu dokumenti ir iesniegti. Mēs jūs informēsim, tiklīdz pārbaude tiks apstrādāta.',
+    'status_non_soumis'   => 'Nav iesniegts',
+    'status_en_attente'   => 'Gaida pārbaudi',
+    'status_approuve'     => 'Identitāte pārbaudīta',
+    'status_rejete'       => 'Pārbaude noraidīta',
+    'label_id_document_type' => 'Personu apliecinoša dokumenta veids',
+    'option_cni'          => 'ID karte',
+    'option_passeport'    => 'Pase',
+    'option_permis'       => 'Vadītāja apliecība',
+    'label_id_front'      => 'Personu apliecinošs dokuments (priekšpuse)',
+    'label_id_back'       => 'Personu apliecinošs dokuments (aizmugure, ja attiecas)',
+    'label_selfie'        => 'Selfijs',
+    'selfie_hint'         => 'Uzņemiet skaidru sava sejas selfiju, bez nekā, kas aizsedz jūsu vaibstus.',
+    'submit'              => 'Iesniegt pārbaudei',
+    'rejection_reason_label' => 'Noraidīšanas iemesls',
+    'resubmit'            => 'Iesniegt atkārtoti',
+    'notif_approved'      => 'Identitāte pārbaudīta',
+    'notif_approved_body' => 'Jūsu identitātes pārbaude ir apstiprināta.',
+    'notif_rejected'      => 'Pārbaude noraidīta',
+    'notif_rejected_body' => 'Jūsu identitātes pārbaude tika noraidīta. Iemesls: :reason',
+];

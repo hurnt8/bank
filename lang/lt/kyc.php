@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title'               => 'Tapatybės patvirtinimas',
+    'required_notice'     => 'Pirmiausia patvirtinkite savo tapatybę, kad galėtumėte naudotis šia funkcija.',
+    'submitted_success'   => 'Jūsų dokumentai pateikti. Pranešime jums, kai patvirtinimas bus apdorotas.',
+    'status_non_soumis'   => 'Nepateikta',
+    'status_en_attente'   => 'Laukiama patvirtinimo',
+    'status_approuve'     => 'Tapatybė patvirtinta',
+    'status_rejete'       => 'Patvirtinimas atmestas',
+    'label_id_document_type' => 'Asmens dokumento tipas',
+    'option_cni'          => 'Asmens tapatybės kortelė',
+    'option_passeport'    => 'Pasas',
+    'option_permis'       => 'Vairuotojo pažymėjimas',
+    'label_id_front'      => 'Asmens dokumentas (priekinė pusė)',
+    'label_id_back'       => 'Asmens dokumentas (galinė pusė, jei taikoma)',
+    'label_selfie'        => 'Asmenukė',
+    'selfie_hint'         => 'Padarykite aiškią savo veido asmenukę, kad nieko neslėptų jūsų bruožų.',
+    'submit'              => 'Pateikti patvirtinimui',
+    'rejection_reason_label' => 'Atmetimo priežastis',
+    'resubmit'            => 'Pateikti dar kartą',
+    'notif_approved'      => 'Tapatybė patvirtinta',
+    'notif_approved_body' => 'Jūsų tapatybės patvirtinimas buvo patvirtintas.',
+    'notif_rejected'      => 'Patvirtinimas atmestas',
+    'notif_rejected_body' => 'Jūsų tapatybės patvirtinimas buvo atmestas. Priežastis: :reason',
+];

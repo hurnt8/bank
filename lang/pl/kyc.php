@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title'               => 'Weryfikacja tożsamości',
+    'required_notice'     => 'Aby uzyskać dostęp do tej funkcji, najpierw zweryfikuj swoją tożsamość.',
+    'submitted_success'   => 'Twoje dokumenty zostały przesłane. Powiadomimy Cię, gdy weryfikacja zostanie przetworzona.',
+    'status_non_soumis'   => 'Nie przesłano',
+    'status_en_attente'   => 'Oczekuje na weryfikację',
+    'status_approuve'     => 'Tożsamość zweryfikowana',
+    'status_rejete'       => 'Weryfikacja odrzucona',
+    'label_id_document_type' => 'Typ dokumentu tożsamości',
+    'option_cni'          => 'Dowód osobisty',
+    'option_passeport'    => 'Paszport',
+    'option_permis'       => 'Prawo jazdy',
+    'label_id_front'      => 'Dokument tożsamości (przód)',
+    'label_id_back'       => 'Dokument tożsamości (tył, jeśli dotyczy)',
+    'label_selfie'        => 'Selfie',
+    'selfie_hint'         => 'Zrób wyraźne selfie swojej twarzy, bez niczego zasłaniającego Twoje rysy.',
+    'submit'              => 'Prześlij do weryfikacji',
+    'rejection_reason_label' => 'Powód odrzucenia',
+    'resubmit'            => 'Prześlij ponownie',
+    'notif_approved'      => 'Tożsamość zweryfikowana',
+    'notif_approved_body' => 'Twoja weryfikacja tożsamości została zatwierdzona.',
+    'notif_rejected'      => 'Weryfikacja odrzucona',
+    'notif_rejected_body' => 'Twoja weryfikacja tożsamości została odrzucona. Powód: :reason',
+];

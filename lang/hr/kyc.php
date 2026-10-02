@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title'               => 'Provjera identiteta',
+    'required_notice'     => 'Molimo prvo provjerite svoj identitet za pristup ovoj značajki.',
+    'submitted_success'   => 'Vaši dokumenti su poslani. Obavijestit ćemo vas čim provjera bude obrađena.',
+    'status_non_soumis'   => 'Nije poslano',
+    'status_en_attente'   => 'Čeka provjeru',
+    'status_approuve'     => 'Identitet potvrđen',
+    'status_rejete'       => 'Provjera odbijena',
+    'label_id_document_type' => 'Vrsta identifikacijskog dokumenta',
+    'option_cni'          => 'Osobna iskaznica',
+    'option_passeport'    => 'Putovnica',
+    'option_permis'       => 'Vozačka dozvola',
+    'label_id_front'      => 'Identifikacijski dokument (prednja strana)',
+    'label_id_back'       => 'Identifikacijski dokument (stražnja strana, ako je primjenjivo)',
+    'label_selfie'        => 'Selfie',
+    'selfie_hint'         => 'Snimite jasan selfie svog lica, bez ičega što prekriva vaše crte lica.',
+    'submit'              => 'Pošalji na provjeru',
+    'rejection_reason_label' => 'Razlog odbijanja',
+    'resubmit'            => 'Pošalji ponovno',
+    'notif_approved'      => 'Identitet potvrđen',
+    'notif_approved_body' => 'Vaša provjera identiteta je odobrena.',
+    'notif_rejected'      => 'Provjera odbijena',
+    'notif_rejected_body' => 'Vaša provjera identiteta je odbijena. Razlog: :reason',
+];

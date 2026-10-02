@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title'               => 'Verificación de identidad',
+    'required_notice'     => 'Por favor, verifique primero su identidad para acceder a esta función.',
+    'submitted_success'   => 'Sus documentos han sido enviados. Le notificaremos en cuanto se procese la verificación.',
+    'status_non_soumis'   => 'No enviado',
+    'status_en_attente'   => 'Pendiente de verificación',
+    'status_approuve'     => 'Identidad verificada',
+    'status_rejete'       => 'Verificación rechazada',
+    'label_id_document_type' => 'Tipo de documento de identidad',
+    'option_cni'          => 'Documento nacional de identidad',
+    'option_passeport'    => 'Pasaporte',
+    'option_permis'       => 'Permiso de conducir',
+    'label_id_front'      => 'Documento de identidad (anverso)',
+    'label_id_back'       => 'Documento de identidad (reverso, si procede)',
+    'label_selfie'        => 'Selfie',
+    'selfie_hint'         => 'Tome un selfie nítido de su rostro, sin nada que cubra sus rasgos.',
+    'submit'              => 'Enviar para verificación',
+    'rejection_reason_label' => 'Motivo del rechazo',
+    'resubmit'            => 'Enviar de nuevo',
+    'notif_approved'      => 'Identidad verificada',
+    'notif_approved_body' => 'Su verificación de identidad ha sido aprobada.',
+    'notif_rejected'      => 'Verificación rechazada',
+    'notif_rejected_body' => 'Su verificación de identidad fue rechazada. Motivo: :reason',
+];

@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title'               => "Verifica dell'identità",
+    'required_notice'     => 'Verifica prima la tua identità per accedere a questa funzionalità.',
+    'submitted_success'   => 'I tuoi documenti sono stati inviati. Ti avviseremo non appena la verifica sarà elaborata.',
+    'status_non_soumis'   => 'Non inviato',
+    'status_en_attente'   => 'In attesa di verifica',
+    'status_approuve'     => 'Identità verificata',
+    'status_rejete'       => 'Verifica rifiutata',
+    'label_id_document_type' => "Tipo di documento d'identità",
+    'option_cni'          => "Carta d'identità",
+    'option_passeport'    => 'Passaporto',
+    'option_permis'       => 'Patente di guida',
+    'label_id_front'      => "Documento d'identità (fronte)",
+    'label_id_back'       => "Documento d'identità (retro, se applicabile)",
+    'label_selfie'        => 'Selfie',
+    'selfie_hint'         => 'Scatta un selfie nitido del tuo viso, senza nulla che copra i tuoi lineamenti.',
+    'submit'              => 'Invia per la verifica',
+    'rejection_reason_label' => 'Motivo del rifiuto',
+    'resubmit'            => 'Invia di nuovo',
+    'notif_approved'      => 'Identità verificata',
+    'notif_approved_body' => 'La tua verifica dell\'identità è stata approvata.',
+    'notif_rejected'      => 'Verifica rifiutata',
+    'notif_rejected_body' => 'La tua verifica dell\'identità è stata rifiutata. Motivo: :reason',
+];

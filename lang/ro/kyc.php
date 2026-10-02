@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title'               => 'Verificarea identității',
+    'required_notice'     => 'Vă rugăm să vă verificați mai întâi identitatea pentru a accesa această funcție.',
+    'submitted_success'   => 'Documentele dumneavoastră au fost trimise. Vă vom notifica imediat ce verificarea este procesată.',
+    'status_non_soumis'   => 'Netrimis',
+    'status_en_attente'   => 'În așteptarea verificării',
+    'status_approuve'     => 'Identitate verificată',
+    'status_rejete'       => 'Verificare respinsă',
+    'label_id_document_type' => 'Tip document de identitate',
+    'option_cni'          => 'Carte de identitate',
+    'option_passeport'    => 'Pașaport',
+    'option_permis'       => 'Permis de conducere',
+    'label_id_front'      => 'Document de identitate (față)',
+    'label_id_back'       => 'Document de identitate (verso, dacă este cazul)',
+    'label_selfie'        => 'Selfie',
+    'selfie_hint'         => 'Faceți un selfie clar al feței dumneavoastră, fără nimic care să vă acopere trăsăturile.',
+    'submit'              => 'Trimite pentru verificare',
+    'rejection_reason_label' => 'Motivul respingerii',
+    'resubmit'            => 'Retrimite',
+    'notif_approved'      => 'Identitate verificată',
+    'notif_approved_body' => 'Verificarea identității dumneavoastră a fost aprobată.',
+    'notif_rejected'      => 'Verificare respinsă',
+    'notif_rejected_body' => 'Verificarea identității dumneavoastră a fost respinsă. Motiv: :reason',
+];

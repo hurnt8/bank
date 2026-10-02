@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title'               => 'Identiteitsverificatie',
+    'required_notice'     => 'Verifieer eerst uw identiteit om toegang te krijgen tot deze functie.',
+    'submitted_success'   => 'Uw documenten zijn ingediend. Wij informeren u zodra de verificatie is verwerkt.',
+    'status_non_soumis'   => 'Niet ingediend',
+    'status_en_attente'   => 'In afwachting van verificatie',
+    'status_approuve'     => 'Identiteit geverifieerd',
+    'status_rejete'       => 'Verificatie geweigerd',
+    'label_id_document_type' => 'Type identiteitsdocument',
+    'option_cni'          => 'Identiteitskaart',
+    'option_passeport'    => 'Paspoort',
+    'option_permis'       => 'Rijbewijs',
+    'label_id_front'      => 'Identiteitsdocument (voorzijde)',
+    'label_id_back'       => 'Identiteitsdocument (achterzijde, indien van toepassing)',
+    'label_selfie'        => 'Selfie',
+    'selfie_hint'         => 'Maak een duidelijke selfie van uw gezicht, zonder iets dat uw gelaatstrekken bedekt.',
+    'submit'              => 'Indienen voor verificatie',
+    'rejection_reason_label' => 'Reden van weigering',
+    'resubmit'            => 'Opnieuw indienen',
+    'notif_approved'      => 'Identiteit geverifieerd',
+    'notif_approved_body' => 'Uw identiteitsverificatie is goedgekeurd.',
+    'notif_rejected'      => 'Verificatie geweigerd',
+    'notif_rejected_body' => 'Uw identiteitsverificatie is geweigerd. Reden: :reason',
+];

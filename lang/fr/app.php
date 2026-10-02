@@ -349,4 +349,9 @@ return [
     'transfer_pending_note'           => 'Note',
     'transfer_pending_info'           => 'Vous serez notifié par e-mail et dans l\'application dès que votre virement sera traité. Le montant est réservé sur votre compte pendant la validation.',
     'transfer_pending_view_movements' => 'Voir mes mouvements',
+
+    // Coordonnées bancaires (IBAN / carte attribués par un admin)
+    'banking_blocked_notice' => 'Vos coordonnées bancaires sont actuellement bloquées. Contactez votre conseiller.',
+    'card_title'             => 'Carte',
+    'card_expires'           => 'Expire',
 ];
