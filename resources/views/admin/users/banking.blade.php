@@ -23,6 +23,22 @@
 </div>
 @endif
 
+@php $kyc = $user->kycVerification; @endphp
+@if(! $kyc || $kyc->status !== \App\Models\KycVerification::STATUS_APPROUVE)
+<div class="alert alert-warning" style="margin-bottom:1rem">
+  <i class="fas fa-triangle-exclamation"></i>
+  Ce client n'a pas de vérification d'identité (KYC) approuvée
+  @if($kyc && $kyc->status === \App\Models\KycVerification::STATUS_EN_ATTENTE)
+    — une demande est en attente de traitement.
+  @elseif($kyc && $kyc->status === \App\Models\KycVerification::STATUS_REJETE)
+    — sa dernière demande a été rejetée.
+  @else
+    — aucune demande n'a encore été soumise (compte créé directement par un admin, ou sans passer par une demande de prêt).
+  @endif
+  Vous pouvez tout de même attribuer ses coordonnées bancaires ci-dessous.
+</div>
+@endif
+
 <div class="card-pro" style="padding:1.5rem;max-width:640px">
   <form method="POST" action="{{ route('admin.users.banking.store', $user) }}">
     @csrf

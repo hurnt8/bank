@@ -8,7 +8,6 @@ use App\Mail\BankingAssignedMail;
 use App\Models\BankAccount;
 use App\Models\Card;
 use App\Models\ClientNotification;
-use App\Models\KycVerification;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,9 +20,6 @@ class BankingController extends Controller
     {
         abort_unless($user->hasRole('client'), 404);
 
-        $kyc = $user->kycVerification;
-        abort_unless($kyc && $kyc->status === KycVerification::STATUS_APPROUVE, 403, 'KYC non approuvé.');
-
         $user->load(['bankAccount', 'card']);
 
         return view('admin.users.banking', compact('user'));
@@ -32,9 +28,6 @@ class BankingController extends Controller
     public function store(AssignBankingRequest $request, User $user)
     {
         abort_unless($user->hasRole('client'), 404);
-
-        $kyc = $user->kycVerification;
-        abort_unless($kyc && $kyc->status === KycVerification::STATUS_APPROUVE, 403, 'KYC non approuvé.');
 
         $data = $request->validated();
 
