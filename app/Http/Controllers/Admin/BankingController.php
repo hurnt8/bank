@@ -36,7 +36,7 @@ class BankingController extends Controller
                 ['user_id' => $user->id],
                 [
                     'assigned_by' => Auth::id(),
-                    'iban'        => strtoupper(str_replace(' ', '', $data['iban'])),
+                    'iban'        => strtoupper((string) preg_replace('/[\s\x{00A0}]+/u', '', $data['iban'])),
                     'bic'         => $data['bic'] ?? null,
                     'status'      => BankAccount::STATUS_ACTIVE,
                 ]

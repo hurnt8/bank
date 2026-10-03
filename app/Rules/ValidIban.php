@@ -13,7 +13,10 @@ class ValidIban implements ValidationRule
 {
     public function validate(string $attribute, mixed $value, \Closure $fail): void
     {
-        $iban = strtoupper(str_replace(' ', '', (string) $value));
+        // \s couvre les espaces normaux/tabs/retours à la ligne ; \x{00A0} couvre
+        // l'espace insécable que de nombreux sites bancaires/PDF utilisent pour
+        // afficher un IBAN formaté, et qui survit à un simple str_replace(' ', '').
+        $iban = strtoupper((string) preg_replace('/[\s\x{00A0}]+/u', '', (string) $value));
 
         if (! preg_match('/^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$/', $iban)) {
             $fail('Le format de l\'IBAN est invalide.');
