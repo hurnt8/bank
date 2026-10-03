@@ -811,6 +811,14 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
          class="sidebar-link {{ request()->routeIs('admin.users') ? 'active':'' }}">
         <i class="fas fa-users icon"></i> Utilisateurs
       </a>
+      @php $saKycPendingCount = \App\Models\KycVerification::where('status', \App\Models\KycVerification::STATUS_EN_ATTENTE)->count(); @endphp
+      <a href="{{ route('admin.kyc.index') }}"
+         class="sidebar-link {{ request()->routeIs('admin.kyc*') ? 'active':'' }}">
+        <i class="fas fa-id-card icon"></i> Vérifications KYC
+        @if($saKycPendingCount > 0)
+        <span style="margin-left:auto;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--c-accent);color:var(--c-on-accent);font-size:.62rem;font-weight:800;display:inline-flex;align-items:center;justify-content:center">{{ $saKycPendingCount }}</span>
+        @endif
+      </a>
       @endhasanyrole
 
       <span class="sidebar-label">Gestion financière</span>
