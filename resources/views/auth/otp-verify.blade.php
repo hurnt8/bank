@@ -550,20 +550,46 @@ function otpApp() {
       }, 500);
     },
 
+    /* Jeton CSRF courant : rafraîchi automatiquement si une requête échoue en
+       419 (session expirée pendant que l'onglet restait ouvert), pour éviter
+       que l'utilisateur ne voie une erreur "CSRF token mismatch" opaque. */
+    csrfToken: '{{ csrf_token() }}',
+
+    async refreshCsrfToken() {
+      try {
+        var r = await fetch('{{ route("csrf.refresh") }}', { headers: { 'Accept': 'application/json' } });
+        var j = await r.json();
+        if (j && j.token) this.csrfToken = j.token;
+      } catch (e) { /* tant pis, on retentera avec l'ancien token */ }
+    },
+
+    /* Exécute un fetch POST JSON avec le token CSRF courant ; si la réponse
+       est 419, rafraîchit le token et réessaie une seule fois. */
+    async postJson(url, body) {
+      var doFetch = () => fetch(url, {
+        method:  'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept':       'application/json',
+          'X-CSRF-TOKEN': this.csrfToken,
+        },
+        body: body ? JSON.stringify(body) : undefined,
+      });
+
+      var resp = await doFetch();
+      if (resp.status === 419) {
+        await this.refreshCsrfToken();
+        resp = await doFetch();
+      }
+      return resp;
+    },
+
     async doSubmit() {
       if (this.digits.join('').length < 6 || this.submitting) return;
       this.submitting = true;
       this.errorMsg   = '';
       try {
-        var resp = await fetch('{{ route("otp.verify") }}', {
-          method:  'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept':       'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-          },
-          body: JSON.stringify({ code: this.digits.join('') }),
-        });
+        var resp = await this.postJson('{{ route("otp.verify") }}', { code: this.digits.join('') });
         var data = await resp.json();
 
         if (data.status === 'success') {
@@ -588,14 +614,7 @@ function otpApp() {
       this.resending  = true;
       this.resendMsg  = '';
       try {
-        var resp = await fetch('{{ route("otp.resend") }}', {
-          method:  'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-            'Accept':       'application/json',
-          },
-        });
+        var resp = await this.postJson('{{ route("otp.resend") }}');
         var data = await resp.json();
         if (resp.ok) {
           this.resendOk    = true;

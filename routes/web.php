@@ -188,6 +188,13 @@ Route::get('/otp-verify',  [OtpController::class, 'show'])->name('otp.show');
 Route::post('/otp-verify', [OtpController::class, 'verify'])->name('otp.verify')->middleware('throttle:5,1');
 Route::post('/otp-resend', [OtpController::class, 'resend'])->name('otp.resend')->middleware('throttle:3,1');
 
+// Jeton CSRF frais — appelé par le JS quand une requête échoue en 419 (session
+// expirée pendant que l'onglet OTP/activation restait ouvert), pour régénérer
+// un token sans recharger toute la page.
+Route::get('/csrf-refresh', function (\Illuminate\Http\Request $request) {
+    return response()->json(['token' => csrf_token()]);
+})->name('csrf.refresh');
+
 // Account unblock (via email link)
 Route::get('/account/unblock/{token}', [OtpController::class, 'unblock'])->name('account.unblock');
 

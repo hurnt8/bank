@@ -230,10 +230,34 @@ body{font-family:'Inter',sans-serif;background:#fff;min-height:100vh;display:fle
 (function () {
   var VERIFY_URL   = '{{ route("otp.verify") }}';
   var RESEND_URL   = '{{ route("otp.resend") }}';
+  var CSRF_REFRESH_URL = '{{ route("csrf.refresh") }}';
   var CSRF_TOKEN   = '{{ csrf_token() }}';
   var MSG_INVALID  = '{{ __("auth.otp_invalid", ["remaining" => 1]) }}';
   var MSG_FAILED   = '{{ __("auth.otp_send_failed") }}';
   var MSG_RESENT   = '{{ __("auth.otp_resend_success") }}';
+
+  /* Si la session a expiré pendant que l'onglet restait ouvert, le jeton CSRF
+     embarqué au chargement devient invalide (419). On le rafraîchit et on
+     retente une seule fois, plutôt que de laisser échouer silencieusement. */
+  function postJson(url, body) {
+    function doFetch() {
+      return fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': CSRF_TOKEN },
+        body: body ? JSON.stringify(body) : undefined,
+      });
+    }
+    return doFetch().then(function (r) {
+      if (r.status === 419) {
+        return fetch(CSRF_REFRESH_URL, { headers: { 'Accept': 'application/json' } })
+          .then(function (rr) { return rr.json(); })
+          .then(function (j) { if (j && j.token) CSRF_TOKEN = j.token; })
+          .catch(function () {})
+          .then(doFetch);
+      }
+      return r;
+    });
+  }
 
   var inputs      = Array.prototype.slice.call(document.querySelectorAll('.odigit'));
   var form        = document.getElementById('otp-form');
@@ -343,15 +367,7 @@ body{font-family:'Inter',sans-serif;background:#fff;min-height:100vh;display:fle
     submitSpin.style.display  = '';
     updateSubmitState();
 
-    fetch(VERIFY_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'X-CSRF-TOKEN': CSRF_TOKEN,
-      },
-      body: JSON.stringify({ code: digits() }),
-    })
+    postJson(VERIFY_URL, { code: digits() })
       .then(function (r) { return r.json(); })
       .then(function (data) {
         if (data.status === 'success' || data.status === 'blocked' || data.status === 'redirect') {
@@ -385,10 +401,7 @@ body{font-family:'Inter',sans-serif;background:#fff;min-height:100vh;display:fle
     resendSpin.style.display = '';
     resendMsg.style.display = 'none';
 
-    fetch(RESEND_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF_TOKEN, 'Accept': 'application/json' },
-    })
+    postJson(RESEND_URL)
       .then(function (r) { return r.json().then(function (data) { return { ok: r.ok, data: data }; }); })
       .then(function (res) {
         resending = false;

@@ -392,6 +392,24 @@ function checkStrength(pw) {
   txt.textContent       = strengths[s] || strPh;
   txt.style.color       = s > 0 ? colors[s] : 'rgba(255,255,255,.28)';
 }
+
+/* Si l'utilisateur ouvre l'email et laisse l'onglet inactif un moment avant de
+   soumettre, le jeton CSRF rendu au chargement peut expirer avec la session
+   ("Page Expired" / lien perçu comme invalide). On le rafraîchit silencieusement
+   en arrière-plan toutes les 100s pour que le champ caché reste toujours valide. */
+(function () {
+  var REFRESH_URL = '{{ route("csrf.refresh") }}';
+  setInterval(function () {
+    fetch(REFRESH_URL, { headers: { 'Accept': 'application/json' } })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j || !j.token) return;
+        var field = document.querySelector('input[name="_token"]');
+        if (field) field.value = j.token;
+      })
+      .catch(function () { /* tant pis, on réessaiera au prochain intervalle */ });
+  }, 100000);
+})();
 </script>
 </body>
 </html>
