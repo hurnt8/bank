@@ -179,7 +179,7 @@ Alpine.data('togglePref', () => ({
 Alpine.data('themeToggle', () => ({
     isDark: false,
     init() {
-        const saved = localStorage.getItem('solberg-theme-v2') || 'light';
+        const saved = localStorage.getItem('solberg-theme-v2') || 'dark';
         this.isDark = saved === 'dark';
         document.documentElement.dataset.theme = saved;
     },

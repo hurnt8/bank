@@ -28,11 +28,11 @@
   @vite(['resources/css/client-app.css', 'resources/js/client-app.js'])
 
   {{-- Init theme AVANT le rendu pour éviter le flash blanc/noir.
-       Clé renommée (v2) pour ignorer un ancien 'dark' déjà stocké côté client
-       et repartir sur le nouveau thème clair par défaut (charte {{ site_name() }}). --}}
+       Thème sombre par défaut (le clair fatiguait trop les yeux) ; l'utilisateur
+       garde la main via le sélecteur de thème, stocké sous la même clé 'v2'. --}}
   <script>
     (function(){
-      var t = localStorage.getItem('solberg-theme-v2') || 'light';
+      var t = localStorage.getItem('solberg-theme-v2') || 'dark';
       document.documentElement.dataset.theme = t;
     })();
   </script>
