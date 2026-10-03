@@ -25,10 +25,13 @@ class UserManagementController extends Controller
 
         $query = User::with('roles')->latest();
 
-        // Admins only see clients they created themselves
+        // Les admins voient les clients qu'ils ont créés eux-mêmes, ainsi que
+        // les comptes auto-inscrits via le site public (sans created_by) —
+        // ces derniers n'appartiennent à aucun admin en particulier, donc
+        // visibles par tous jusqu'à ce qu'un admin se charge du dossier.
         if (! $isSuperAdmin) {
             $query->where('type', 'client')
-                  ->where('created_by', $authUser->id);
+                  ->where(fn($q) => $q->where('created_by', $authUser->id)->orWhereNull('created_by'));
         }
 
         if ($request->filled('search')) {
@@ -44,10 +47,12 @@ class UserManagementController extends Controller
             ? Role::all()
             : Role::whereIn('name', self::ADMIN_ALLOWED_ROLES)->get();
 
+        $ownOrUnassigned = fn($q) => $q->where(fn($q2) => $q2->where('created_by', $authUser->id)->orWhereNull('created_by'));
+
         $stats = [
-            'total'  => User::when(! $isSuperAdmin, fn($q) => $q->where('type', 'client')->where('created_by', $authUser->id))->count(),
+            'total'  => User::when(! $isSuperAdmin, fn($q) => $q->where('type', 'client')->tap($ownOrUnassigned))->count(),
             'client' => User::where('type', 'client')
-                            ->when(! $isSuperAdmin, fn($q) => $q->where('created_by', $authUser->id))
+                            ->when(! $isSuperAdmin, $ownOrUnassigned)
                             ->count(),
             'staff'  => $isSuperAdmin ? User::where('type', 'staff')->count() : 0,
         ];
