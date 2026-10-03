@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'                      => 'Utwórz konto',
+    'title'                      => 'Otwórz konto',
     'form_label'                 => 'Rejestracja',
     'form_title'                 => 'Utwórz swój obszar klienta',
     'label_name'                 => 'Imię i nazwisko',
@@ -16,6 +16,6 @@ return [
     'label_tax_number'           => 'Numer podatkowy',
     'label_activity'             => 'Działalność zawodowa',
     'label_currency'             => 'Waluta',
-    'submit'                     => 'Utwórz moje konto',
+    'submit'                     => 'Otwórz moje konto',
     'success'                    => 'Twoje konto zostało utworzone. Sprawdź swoją skrzynkę e-mail, aby je aktywować.',
 ];

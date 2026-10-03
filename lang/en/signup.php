@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'                      => 'Create an account',
+    'title'                      => 'Open an account',
     'form_label'                 => 'Registration',
     'form_title'                 => 'Create your client space',
     'label_name'                 => 'Full name',
@@ -16,6 +16,6 @@ return [
     'label_tax_number'           => 'Tax number',
     'label_activity'             => 'Occupation',
     'label_currency'             => 'Currency',
-    'submit'                     => 'Create my account',
+    'submit'                     => 'Open my account',
     'success'                    => 'Your account has been created. Check your mailbox to activate it.',
 ];

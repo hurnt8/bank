@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'                      => 'Fiók létrehozása',
+    'title'                      => 'Fiók nyitása',
     'form_label'                 => 'Regisztráció',
     'form_title'                 => 'Hozza létre ügyfélfiókját',
     'label_name'                 => 'Teljes név',
@@ -16,6 +16,6 @@ return [
     'label_tax_number'           => 'Adószám',
     'label_activity'             => 'Foglalkozás',
     'label_currency'             => 'Pénznem',
-    'submit'                     => 'Fiók létrehozása',
+    'submit'                     => 'Fiók megnyitása',
     'success'                    => 'Fiókja elkészült. Ellenőrizze postafiókját az aktiváláshoz.',
 ];

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'                      => 'Account aanmaken',
+    'title'                      => 'Account openen',
     'form_label'                 => 'Registratie',
     'form_title'                 => 'Maak uw klantomgeving aan',
     'label_name'                 => 'Volledige naam',
@@ -16,6 +16,6 @@ return [
     'label_tax_number'           => 'Fiscaal nummer',
     'label_activity'             => 'Beroepsactiviteit',
     'label_currency'             => 'Valuta',
-    'submit'                     => 'Mijn account aanmaken',
+    'submit'                     => 'Mijn account openen',
     'success'                    => 'Uw account is aangemaakt. Controleer uw mailbox om het te activeren.',
 ];

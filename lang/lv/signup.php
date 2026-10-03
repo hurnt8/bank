@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'                      => 'Izveidot kontu',
+    'title'                      => 'Atvērt kontu',
     'form_label'                 => 'Reģistrācija',
     'form_title'                 => 'Izveidojiet savu klienta zonu',
     'label_name'                 => 'Pilns vārds',
@@ -16,6 +16,6 @@ return [
     'label_tax_number'           => 'Nodokļu maksātāja numurs',
     'label_activity'             => 'Profesionālā darbība',
     'label_currency'             => 'Valūta',
-    'submit'                     => 'Izveidot kontu',
+    'submit'                     => 'Atvērt kontu',
     'success'                    => 'Jūsu konts ir izveidots. Pārbaudiet savu e-pastu, lai to aktivizētu.',
 ];

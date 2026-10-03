@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'                      => 'Konto erstellen',
+    'title'                      => 'Konto eröffnen',
     'form_label'                 => 'Registrierung',
     'form_title'                 => 'Erstellen Sie Ihren Kundenbereich',
     'label_name'                 => 'Vollständiger Name',
@@ -16,6 +16,6 @@ return [
     'label_tax_number'           => 'Steuernummer',
     'label_activity'             => 'Berufliche Tätigkeit',
     'label_currency'             => 'Währung',
-    'submit'                     => 'Konto erstellen',
+    'submit'                     => 'Konto eröffnen',
     'success'                    => 'Ihr Konto wurde erstellt. Prüfen Sie Ihr Postfach, um es zu aktivieren.',
 ];

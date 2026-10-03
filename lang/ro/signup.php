@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'                      => 'Creați un cont',
+    'title'                      => 'Deschideți un cont',
     'form_label'                 => 'Înregistrare',
     'form_title'                 => 'Creați-vă spațiul de client',
     'label_name'                 => 'Nume complet',
@@ -16,6 +16,6 @@ return [
     'label_tax_number'           => 'Număr fiscal',
     'label_activity'             => 'Activitate profesională',
     'label_currency'             => 'Monedă',
-    'submit'                     => 'Creează-mi contul',
+    'submit'                     => 'Deschide-mi contul',
     'success'                    => 'Contul dumneavoastră a fost creat. Verificați căsuța de email pentru a-l activa.',
 ];

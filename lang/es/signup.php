@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'                      => 'Crear una cuenta',
+    'title'                      => 'Abrir una cuenta',
     'form_label'                 => 'Registro',
     'form_title'                 => 'Cree su espacio de cliente',
     'label_name'                 => 'Nombre completo',
@@ -16,6 +16,6 @@ return [
     'label_tax_number'           => 'Número fiscal',
     'label_activity'             => 'Actividad profesional',
     'label_currency'             => 'Moneda',
-    'submit'                     => 'Crear mi cuenta',
+    'submit'                     => 'Abrir mi cuenta',
     'success'                    => 'Su cuenta ha sido creada. Consulte su correo para activarla.',
 ];

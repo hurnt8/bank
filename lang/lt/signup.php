@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'                      => 'Sukurti paskyrą',
+    'title'                      => 'Atidaryti paskyrą',
     'form_label'                 => 'Registracija',
     'form_title'                 => 'Sukurkite savo kliento sritį',
     'label_name'                 => 'Vardas ir pavardė',
@@ -16,6 +16,6 @@ return [
     'label_tax_number'           => 'Mokesčių mokėtojo numeris',
     'label_activity'             => 'Profesinė veikla',
     'label_currency'             => 'Valiuta',
-    'submit'                     => 'Sukurti paskyrą',
+    'submit'                     => 'Atidaryti paskyrą',
     'success'                    => 'Jūsų paskyra sukurta. Patikrinkite savo pašto dėžutę, kad ją aktyvuotumėte.',
 ];
