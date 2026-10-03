@@ -159,6 +159,17 @@
       </button>
     </form>
     @endif
+    @if($user->hasRole('client'))
+      @if($user->kycVerification && $user->kycVerification->status === \App\Models\KycVerification::STATUS_APPROUVE)
+        <a href="{{ route('admin.users.banking.edit', $user) }}" class="btn-navy" style="background:rgba(6,87,164,.1);color:var(--c-accent, #0657A4);border:1px solid rgba(6,87,164,.25)">
+          <i class="fas fa-university"></i> {{ $user->bankAccount ? 'Coordonnées bancaires' : 'Attribuer IBAN / Carte' }}
+        </a>
+      @else
+        <span class="btn-navy" style="background:var(--c-bg);color:var(--c-muted);border:1px solid var(--c-border);cursor:not-allowed" title="KYC non approuvé — attribution impossible">
+          <i class="fas fa-university"></i> IBAN / Carte (KYC requis)
+        </span>
+      @endif
+    @endif
     <button class="btn-navy" data-bs-toggle="modal" data-bs-target="#editModal">
       <i class="fas fa-pen"></i> Modifier
     </button>

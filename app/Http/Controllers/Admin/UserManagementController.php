@@ -66,6 +66,8 @@ class UserManagementController extends Controller
         $authUser     = Auth::user();
         $isSuperAdmin = $authUser->hasRole('super-admin');
 
+        $user->load(['kycVerification', 'bankAccount', 'card']);
+
         $loans = $user->clientLoans()->with('admin')->latest()->get();
 
         $loanStats = [
