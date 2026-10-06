@@ -82,9 +82,6 @@
                 </div>
 
                 <div class="service-detail__cta">
-                    <a href="{{ route('loan', ['locale' => $locale]) }}" class="btn-primary btn-primary--lg">
-                        <i class="fas fa-file-signature"></i> @lang('menu.loan')
-                    </a>
                     <a href="{{ route('contact', ['locale' => $locale]) }}" class="btn-outline btn-outline--lg">
                         <i class="fas fa-envelope"></i> @lang('menu.contact')
                     </a>

@@ -98,8 +98,6 @@
             <ul class="page-hero__breadcrumb">
                 <li><a href="{{ route('home', ['locale' => $locale]) }}">@lang('menu.home')</a></li>
                 <li class="sep"><i class="fas fa-chevron-right"></i></li>
-                <li><a href="{{ route('loan', ['locale' => $locale]) }}">@lang('menu.loan')</a></li>
-                <li class="sep"><i class="fas fa-chevron-right"></i></li>
                 <li>{{ __('loan.complete_title') }}</li>
             </ul>
         </div>

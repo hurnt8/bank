@@ -100,10 +100,6 @@ Route::group([
         return view('contact');
     })->name('contact');
 
-    Route::get('/apply-loan', function () {
-        return view('apply-loan');
-    })->name('loan');
-
     Route::get('/loan/complete', [LoanController::class, 'showDocuments'])->name('loan.complete');
 
     Route::get('/signup', [SignupController::class, 'create'])->name('signup');

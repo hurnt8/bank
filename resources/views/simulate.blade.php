@@ -119,12 +119,6 @@
                     </tbody>
                 </table>
             </div>
-
-            <div class="text-center mt-12">
-                <a href="{{ route('loan', ['locale' => $locale]) }}" class="btn-primary btn-primary--lg">
-                    <i class="fas fa-file-signature"></i> @lang('menu.loan')
-                </a>
-            </div>
         </div>
         @endisset
 

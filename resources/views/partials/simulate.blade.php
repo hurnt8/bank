@@ -38,11 +38,5 @@
             <b><i class="loan-total"></i> €</b>
         </p>
 
-        <a href="{{ route('loan', ['locale' => app()->getLocale()]) }}"
-           class="btn-primary loan-calculator-form__btn">
-            <i class="fas fa-file-signature"></i>
-            @lang('menu.loan')
-        </a>
-
     </div>
 </form>
