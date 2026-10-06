@@ -5,19 +5,19 @@ return [
     'sections' => [
         [
             'title' => '1. Introduzione',
-            'content' => 'Benvenuto su ' . site_name() . '. Utilizzando il nostro sito e i nostri servizi, accetti di rispettare e di essere vincolato dai seguenti termini e condizioni. Ti invitiamo a leggere attentamente questi termini prima di utilizzare il nostro sito o richiedere un prestito con noi.'
+            'content' => 'Benvenuto su ' . site_name() . '. Utilizzando il nostro sito e i nostri servizi, accetti di rispettare e di essere vincolato dai seguenti termini e condizioni. Ti invitiamo a leggere attentamente questi termini prima di aprire un conto, utilizzare i nostri servizi bancari o richiedere un prestito con noi.'
         ],
         [
             'title' => '2. Utilizzo del sito',
             'content' => 'Accedendo al nostro sito, accetti di utilizzare i nostri servizi solo per scopi legali e in conformità con questi termini. Accetti di non utilizzare il nostro sito in modo tale da causare danni, interruzioni o interferenze con i nostri servizi o con l\'accesso degli altri utenti.'
         ],
         [
-            'title' => '3. Servizi di prestito',
-            'content' => site_name() . ' offre vari tipi di prestiti per soddisfare le tue esigenze finanziarie. Tutti i prestiti sono soggetti ad approvazione in base alla nostra valutazione della tua solvibilità e capacità di rimborso. I termini specifici di ciascun prestito, inclusi tassi di interesse, scadenze e condizioni di rimborso, saranno dettagliati nel contratto di prestito.'
+            'title' => '3. Conto, carta e servizi bancari',
+            'content' => site_name() . ' offre l\'apertura di un conto online, con un IBAN e una carta bancaria associati. L\'apertura del conto è soggetta a una preventiva verifica dell\'identità. I trasferimenti e le altre operazioni effettuate dal tuo conto sono soggetti alle condizioni ed eventuali limiti indicati al momento dell\'apertura del conto o nella tua area cliente.'
         ],
         [
-            'title' => '4. Costi di contratto e assicurazione',
-            'content' => 'Quando richiedi un prestito con ' . site_name() . ', potrebbero essere applicati costi di contratto e assicurazione. Questa tariffa copre i costi amministrativi associati all\'attivazione e alla gestione del tuo prestito. I dettagli specifici di queste tariffe saranno chiaramente indicati nel tuo contratto di prestito. Sei tenuto a pagare tali oneri in conformità con i termini specificati.'
+            'title' => '4. Servizi di prestito',
+            'content' => site_name() . ' offre inoltre vari tipi di prestiti per soddisfare le tue esigenze finanziarie. Tutti i prestiti sono soggetti ad approvazione in base alla nostra valutazione della tua solvibilità e capacità di rimborso. I termini specifici di ciascun prestito, inclusi tassi di interesse, scadenze e condizioni di rimborso, saranno dettagliati nel contratto di prestito. Al momento della richiesta di un prestito potrebbero essere applicati costi di contratto e assicurazione; tali costi saranno chiaramente indicati nel tuo contratto.'
         ],
         [
             'title' => '5. Riservatezza',

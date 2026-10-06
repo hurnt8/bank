@@ -21,7 +21,7 @@
     </div>
 </div>
 
-{{-- Services grid --}}
+{{-- Services bancaires --}}
 <section class="py-24 bg-white">
     <div class="container">
         <div class="text-center mb-14">
@@ -30,7 +30,48 @@
         </div>
 
         @php
-        $services = [
+        $bankingServices = [
+            ['img' => 'service-1-1.jpg', 'label' => 'menu.banking_account',  'icon' => 'fas fa-wallet',          'desc' => __('home.banking.account_desc')],
+            ['img' => 'service-1-2.jpg', 'label' => 'menu.banking_card',     'icon' => 'fas fa-credit-card',     'desc' => __('home.banking.card_desc')],
+            ['img' => 'service-1-3.jpg', 'label' => 'menu.banking_transfer', 'icon' => 'fas fa-money-bill-transfer', 'desc' => __('home.banking.transfer_desc')],
+        ];
+        @endphp
+
+        <div class="row g-4 gutter-y-30">
+            @foreach ($bankingServices as $i => $svc)
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="800ms" data-wow-delay="{{ $i * 80 }}ms">
+                <div class="service-card">
+                    <div class="service-card__image">
+                        <img src="{{ asset('assets/images/services/' . $svc['img']) }}" alt="@lang($svc['label'])">
+                        <div class="service-card__image__overlay"></div>
+                    </div>
+                    <div class="service-card__body">
+                        <div class="service-card__icon"><i class="{{ $svc['icon'] }}"></i></div>
+                        <h3 class="service-card__title">
+                            <a href="{{ route('signup', ['locale' => $locale]) }}">@lang($svc['label'])</a>
+                        </h3>
+                        <p class="service-card__desc">{{ $svc['desc'] }}</p>
+                        <a href="{{ route('signup', ['locale' => $locale]) }}" class="service-card__link">
+                            @lang('menu.open_account') <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+{{-- Prêts & financements (activité secondaire) --}}
+<section class="py-24" style="background:var(--cream);">
+    <div class="container">
+        <div class="text-center mb-14">
+            <div class="section-label justify-content-center">{{ __('menu.banking_loans') }}</div>
+            <h2 class="section-title">{{ __('home.discover_our_loan_services') }}</h2>
+        </div>
+
+        @php
+        $loanServices = [
             ['route' => 'services.personal', 'img' => 'service-3-1.jpg', 'label' => 'menu.personal',  'type' => 'personal_loan', 'icon' => 'fas fa-user-tie'],
             ['route' => 'services.home',     'img' => 'service-3-3.jpg', 'label' => 'menu.home_loan', 'type' => 'home_loan',     'icon' => 'fas fa-home'],
             ['route' => 'services.auto',     'img' => 'service-3-5.jpg', 'label' => 'menu.auto',      'type' => 'auto_loan',     'icon' => 'fas fa-car'],
@@ -41,7 +82,7 @@
         @endphp
 
         <div class="row g-4 gutter-y-30">
-            @foreach ($services as $i => $svc)
+            @foreach ($loanServices as $i => $svc)
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="800ms" data-wow-delay="{{ $i * 80 }}ms">
                 <div class="service-card">
                     <div class="service-card__image">

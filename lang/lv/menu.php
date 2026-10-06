@@ -9,6 +9,7 @@ return [
     'simulate' => 'Aizdevuma simulācija',
     'contact' => 'Sazināties ar mums',
     'loan' => 'Pieteikties aizdevumam',
+    'open_account' => 'Atvērt kontu',
 
     'personal' => 'Personīgais aizdevums',
     'auto' => 'Auto aizdevums',
@@ -17,7 +18,12 @@ return [
     'business' => 'Uzņēmējdarbības aizdevums',
     'bike' => 'Velosipēda aizdevums',
 
-    'arlert' => 'Saņemiet aizdevumu ar procentu likmi jau no 3%',
+    'banking_account' => 'Bankas konts',
+    'banking_card'    => 'Bankas karte',
+    'banking_transfer'=> 'Pārskaitījumi',
+    'banking_loans'   => 'Aizdevumi un finansējums',
+
+    'arlert' => '100% tiešsaistes banka, konts atvērts dažu minūšu laikā',
 
 
 
@@ -31,5 +37,5 @@ return [
     'newsletter_title' => 'Uzziniet pirmais par mūsu piedāvājumiem',
     'subscribe'        => 'Abonēt',
     'read_more'        => 'Uzzināt vairāk',
-    'footer_desc'      => site_name() . ' ir jūsu uzticamais partneris ātriem, elastīgiem un individuāli pielāgotiem finansējuma risinājumiem visā Eiropā.',
+    'footer_desc'      => site_name() . ' ir 100% tiešsaistes banka: atveriet kontu, saņemiet karti un IBAN dažu minūšu laikā un izmantojiet arī mūsu finansējuma risinājumus visā Eiropā.',
 ];

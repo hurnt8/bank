@@ -9,6 +9,7 @@ return [
     'simulate' => 'Paskolos simuliacija',
     'contact' => 'Susisiekite su mumis',
     'loan' => 'Prašyti paskolos',
+    'open_account' => 'Atidaryti sąskaitą',
 
     'personal' => 'Asmeninė paskola',
     'auto' => 'Auto paskola',
@@ -17,7 +18,12 @@ return [
     'business' => 'Verslo paskola',
     'bike' => 'Dviračio paskola',
 
-    'arlert' => 'Gaukite paskolą su iki 3% palūkanų norma',
+    'banking_account' => 'Banko sąskaita',
+    'banking_card'    => 'Banko kortelė',
+    'banking_transfer'=> 'Pavedimai',
+    'banking_loans'   => 'Paskolos ir finansavimas',
+
+    'arlert' => '100 % internetinis bankas, sąskaita atidaroma per kelias minutes',
 
     'faq'              => 'DUK',
     'terms'            => 'Naudojimo sąlygos',
@@ -29,5 +35,5 @@ return [
     'newsletter_title' => 'Gaukite informaciją apie mūsų pasiūlymus',
     'subscribe'        => 'Prenumeruoti',
     'read_more'        => 'Sužinoti daugiau',
-    'footer_desc'      => site_name() . ' yra patikimas jūsų partneris greito, lankstaus ir personalizuoto finansavimo sprendimams visoje Europoje.',
+    'footer_desc'      => site_name() . ' yra 100 % internetinis bankas: atidarykite sąskaitą, gaukite kortelę ir IBAN per kelias minutes bei pasinaudokite mūsų finansavimo sprendimais visoje Europoje.',
 ];

@@ -3,7 +3,7 @@
 return [
     'title' => 'Privacybeleid',
     'introduction_title' => '1. Inleiding',
-    'introduction_text' => 'Bij ' . site_name() . ' zetten wij ons in om uw privacy te beschermen en te respecteren. Dit privacybeleid legt uit hoe wij uw persoonlijke gegevens verzamelen, gebruiken, bekendmaken en beschermen wanneer u onze website en onze online leendiensten gebruikt. Door gebruik te maken van onze website, aanvaardt u de in dit beleid beschreven praktijken.',
+    'introduction_text' => 'Bij ' . site_name() . ' zetten wij ons in om uw privacy te beschermen en te respecteren. Dit privacybeleid legt uit hoe wij uw persoonlijke gegevens verzamelen, gebruiken, bekendmaken en beschermen wanneer u onze website, uw online bankrekening en onze leendiensten gebruikt. Door gebruik te maken van onze website, aanvaardt u de in dit beleid beschreven praktijken.',
     'information_collection_title' => '2. Informatie die wij verzamelen',
     'information_collection_text' => 'Wij kunnen de volgende informatie over u verzamelen en verwerken:',
     'information_collection_list' => [
@@ -14,17 +14,18 @@ return [
     'information_use_title' => '3. Gebruik van uw informatie',
     'information_use_text' => 'Wij gebruiken de informatie die wij verzamelen om:',
     'information_use_list' => [
-        'Onze leendiensten te leveren en te beheren, met inbegrip van de beoordeling van uw leningsgeschiktheid en het beheer van uw account.',
+        'Uw bankrekening, kaart en transacties (overschrijvingen, rekeningbewegingen) te openen en te beheren.',
+        'Onze leendiensten te leveren en te beheren, met inbegrip van de beoordeling van uw leningsgeschiktheid.',
         'Onze website en diensten te verbeteren, onder meer door te analyseren hoe u onze website gebruikt en door uw ervaring te personaliseren.',
-        'Met u te communiceren, onder meer om u op de hoogte te brengen van de status van uw leningaanvraag, updates van onze diensten en promotionele aanbiedingen.',
-        'Te voldoen aan onze wettelijke en reglementaire verplichtingen.',
+        'Met u te communiceren, onder meer om u op de hoogte te brengen van de status van uw rekening, uw leningaanvraag, updates van onze diensten en promotionele aanbiedingen.',
+        'Te voldoen aan onze wettelijke en reglementaire verplichtingen, met inbegrip van onze verplichtingen op het gebied van identiteitsverificatie (KYC).',
     ],
     'information_sharing_title' => '4. Delen van uw informatie',
     'information_sharing_text' => 'Wij kunnen uw persoonlijke gegevens delen met:',
     'information_sharing_list' => [
-        'Onze partners en dienstverleners die ons helpen bij het leveren en verbeteren van onze leendiensten.',
-        'Kredietbureaus en andere financiële instellingen om uw kredietwaardigheid te beoordelen en financiële risico\'s te beheren.',
-        'Toezichthoudende en overheidsinstanties wanneer dit wettelijk vereist is.',
+        'Onze partners en dienstverleners die ons helpen bij het leveren en verbeteren van onze bank- en leendiensten.',
+        'Kredietbureaus en andere financiële instellingen om uw kredietwaardigheid te beoordelen, uw banktransacties te verwerken en financiële risico\'s te beheren.',
+        'Toezichthoudende en overheidsinstanties wanneer dit wettelijk vereist is, onder meer in het kader van onze verplichtingen ter bestrijding van het witwassen van geld.',
         'Derden in het kader van een zakelijke transactie, zoals een fusie, overname of verkoop van activa.',
     ],
     'information_security_title' => '5. Beveiliging van uw informatie',

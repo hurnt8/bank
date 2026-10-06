@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'general_title' => site_name() . ' - Najbolji online zajmodavci u Njemačkoj, Španjolskoj, Mađarskoj itd.',
-    'banner_title' => 'Nabavite savršen zajam za sve svoje online potrebe.',
-    'banner_text' => 'Milijuni ljudi koriste ' . site_name() . ' za realizaciju svojih projekata.',
-    'get_loan_now' => 'Dobijte zajam sada',
+    'general_title' => site_name() . ' - Online banka: račun, kartica i financiranje u Europi.',
+    'banner_title' => 'Vaša 100% online banka, otvorena za nekoliko minuta.',
+    'banner_text' => 'Milijuni ljudi koriste ' . site_name() . ' za svakodnevno upravljanje svojim novcem.',
+    'get_loan_now' => 'Simulirajte svoj kredit',
     'popular_loans' => 'Popularne vrste kredita:',
     'personal_loan' => 'Osobni zajam',
     'mortgage_loan' => 'Hipotekarni zajam',
@@ -16,8 +16,8 @@ return [
     'microcredit' => 'Mikrokredit',
 
     // Novi prijevodi za odjeljak
-    'discover_our_loan_services' => 'Otkrijte naše usluge zajma',
-    'find_the_right_loan' => 'Pronađite zajam koji odgovara vašim potrebama među našim različitim opcijama',
+    'discover_our_loan_services' => 'Treba vam financiranje? Otkrijte naše kredite',
+    'find_the_right_loan' => 'Osim svog računa, pronađite zajam koji odgovara vašim potrebama među našim različitim opcijama',
     'personal_loan' => 'Osobni zajam',
     'personal_loan_description' => 'Za vaše osobne projekte',
     'personal_loan_details' => 'Brzo i fleksibilno financiranje za sve vaše osobne potrebe.',
@@ -72,7 +72,7 @@ return [
     'testimonials_title' => 'Svjedočanstva',
     'testimonials_description' => 'Saznajte što naši kupci kažu o nama.',
     'testimonial_1' => [
-        'quote' => '"Vrlo sam zadovoljan uslugom. Proces podnošenja zahtjeva za kredit bio je brz i jednostavan. Dobio sam odobrenje za samo nekoliko dana, a cijene su bile konkurentne. Hvala vam puno!"',
+        'quote' => '"Otvorio sam svoj račun u manje od 10 minuta s telefona, bez slanja ikakvih dokumenata poštom. Kartica je stigla nekoliko dana poslije. Prava ušteda vremena."',
         'name' => 'Julie B.',
     ],
     'testimonial_2' => [
@@ -80,16 +80,11 @@ return [
         'name' => 'Pierre L.',
     ],
     'testimonial_3' => [
-        'quote' => '"Proces prijave za kredit bio je transparentan
-          i učinkovito. Cijelo vrijeme sam dobivao stručne i personalizirane savjete
-          tijekom cijelog procesa. Hvala cijelom timu na izvrsnosti
-          raditi!"',
+        'quote' => '"100% online postupak, bez skrivenih troškova na kartici, a podrška zaista brzo odgovara u slučaju pitanja. Moderna i učinkovita usluga."',
         'name' => 'Sophie D.',
     ],
     'testimonial_4' => [
-        'quote' => '"Dobijanje zajma kod ove tvrtke bilo je
-          Iskustvo bez muke. Osoblje je bilo ljubazno i obrazovano, a
-          proces je bio brz i učinkovit. Toplo ga preporučujem!"',
+        'quote' => '"Mogu pratiti sve transakcije na svom računu i raditi prijenose putem aplikacije, gdje god se nalazim. Osjećam se stvarno podržano svaki dan."',
         'name' => 'Marc F.',
     ],
     'testimonial_5' => [
@@ -99,26 +94,20 @@ return [
         'name' => 'Nathalie P.',
     ],
     'testimonial_6' => [
-        'quote' => '"Vrlo dobra kamata i brz proces. I
-          preporučujemo ovu uslugu svima koji trebaju zajam
-          brz i pouzdan."',
+        'quote' => '"Transparentnost oko troškova računa i kartice uvjerila me od prvog kontakta. Nikakvih neugodnih iznenađenja na putu. To je rijetko i vrijedno u ovoj industriji."',
         'name' => 'Luc M.',
     ],
     'testimonial_7' => [
-        'quote' => '"Jednostavan i učinkovit postupak zajma. Bio sam
-          ugodno iznenađen brzinom odobravanja. Hvala svima
-          Tim!"',
+        'quote' => '"Jednostavno i brzo otvaranje računa. Bio sam ugodno iznenađen jednostavnošću provjere identiteta. Hvala cijelom timu!"',
         'name' => 'Marie C.',
     ],
     'testimonial_8' => [
-        'quote' => '"Imao sam izvrsno iskustvo s ovom uslugom
-          zajam. Osoblje je bilo pažljivo i profesionalno. preporučam
-          jedva čekam!"',
+        'quote' => '"Imao sam izvrsno iskustvo s ovom online bankom. Osoblje je bilo pažljivo i profesionalno. Toplo preporučam!"',
         'name' => 'Jean L.',
     ],
 
-    'about_title' => 'Pridružite se najboljoj svjetskoj tržnici za radnike',
-    'about_description' => site_name() . ' je vaša pouzdana platforma za dobivanje zajmova s iznimnim korisničkim iskustvom. Posvećeni smo pružanju jednostavnih, sigurnih i brzih financijskih rješenja.',
+    'about_title' => 'Vaš novac, pojednostavljen',
+    'about_description' => site_name() . ' je vaša pouzdana banka za svakodnevno upravljanje računom, karticom i prijenosima, s iznimnim korisničkim iskustvom. Nudimo i jednostavna, sigurna i brza rješenja za financiranje.',
     'rating' => '4,9/5',
     'rating_description' => 'Kupci ocjenjuju profesionalce',
     'projects_completed' => '+12M',
@@ -129,9 +118,9 @@ return [
         '3' => 'Pristupite fleksibilnim kreditima prilagođenim Vašim potrebama',
     ],
 
-    'cta_title' => 'Brzo uzmite zajam koji vam je potreban.',
-    'cta_text' => 'Podnesite zahtjev za zajam online već danas. Naša vas platforma povezuje s pouzdanim zajmodavcima za brza i sigurna financijska rješenja.',
-    'cta_button' => 'Započni sada',
+    'cta_title' => 'Otvorite svoj račun za nekoliko minuta.',
+    'cta_text' => 'Pridružite se ' . site_name() . ' već danas: račun, kartica, IBAN i prijenosi, te brza i sigurna rješenja za financiranje ako vam zatrebaju.',
+    'cta_button' => 'Otvorite račun',
 
     'terms' => 'Opći uvjeti',
     'privacy_policy' => 'Pravila privatnosti',
@@ -174,13 +163,13 @@ return [
     'sl' => 'slovenski',
 
     // Hero subtitle
-    'hero_subtitle' => 'Bez složenih postupaka, bez skrivenih naknada. Već 15 godina financiramo vaše osobne, stambene, auto i poslovne projekte transparentno i brzo.',
+    'hero_subtitle' => 'Otvorite račun za nekoliko minuta, primite svoj IBAN i karticu, i upravljajte svojim novcem svakodnevno. Treba vam financiranje? Naši krediti ostaju dostupni za nekoliko klikova.',
 
     // Slide
     'slide_1' => [
-        'title' => ' 15 godina iskustva · Licencirano · Odgovor za 48h',
-        'text1' => 'Financirajte sve svoje projekte,',
-        'text2' => 'do 500.000 € za 48h.',
+        'title' => ' Već 15 godina · Licencirano · 100% online',
+        'text1' => 'Banka koja pojednostavljuje',
+        'text2' => 'vaš novac svakodnevno.',
     ],
     'slide_2' => [
         'title' => 'Pametni krediti za svijetlu budućnost',
@@ -208,18 +197,33 @@ return [
     'about' => [
         'exptitle' => 'godina iskustva',
         'sectagline' => 'dobrodošli u ' . site_name(),
-        'sectitle' => 'Osobni krediti za ostvarenje vaših snova',
+        'sectitle' => 'Banka osmišljena za vašu svakodnevicu',
         'text1' => 'U ovom poslu smo već 15 godina i pružamo najbolje usluge.',
-        'text2' => site_name() . ' je vaša pouzdana platforma za kredite s iznimnim korisničkim iskustvom. Posvećeni smo pružanju jednostavnih, sigurnih i brzih financijskih rješenja.',
-        'check1' => 'kredit za mala poduzeća',
-        'check2' => 'kredit za studiranje u inozemstvu',
-        'check3' => 'brzi postupak odobrenja kredita',
-        'check4' => 'vrlo niski kamatni postoci',
+        'text2' => site_name() . ' je 100% online banka: račun, kartica, IBAN i prijenosi za nekoliko minuta, s iznimnim korisničkim iskustvom. Treba vam financiranje projekta? Naša kreditna rješenja ostaju dostupna, jednostavna i brza.',
+        'check1' => 'otvaranje računa online',
+        'check2' => 'bankovna kartica uključena',
+        'check3' => 'trenutni prijenosi',
+        'check4' => 'transparentne naknade',
+        'engage1_title' => 'Licencirano i regulirano',
+        'engage1_desc' => 'Certificirana institucija, u skladu s europskim standardima. Vaši podaci i sredstva su zaštićeni u svakoj fazi.',
+        'engage2_title' => 'Račun otvoren za nekoliko minuta',
+        'engage2_desc' => '100% online prijava, bez odlaska u poslovnicu ili papirologije. Brza i sigurna provjera identiteta.',
+        'engage3_title' => 'Više valuta i zemalja',
+        'engage3_desc' => 'Račun i usluge dostupni u valuti vaše zemlje, širom Europe.',
+    ],
+
+    // Bankovne usluge
+    'banking' => [
+        'account_desc'  => 'Otvorite svoj račun online za nekoliko minuta i odmah primite svoj IBAN.',
+        'card_desc'     => 'Bankovna kartica povezana s vašim računom, za plaćanje i podizanje novca bilo gdje.',
+        'transfer_desc' => 'Šaljite i primajte novac brzo i sigurno, gdje god se nalazite.',
     ],
 
     'services' => [
         'sectagline' => 'što nudimo',
-        'sectitle' => 'Pružamo najbolje usluge za vaš kredit',
+        'sectitle' => 'Usluge vaše banke, svakodnevno',
+        'cta_title' => 'Spremni otvoriti svoj račun?',
+        'cta_text' => 'Naš tim je na raspolaganju da vas podrži pri otvaranju računa ili zahtjevu za financiranje.',
     ],
 
     'simulate' => [
@@ -261,29 +265,43 @@ return [
 
     'works' => [
         'sectagline' => 'Kako to funkcionira',
-        'sectitle' => 'Naš radni proces',
+        'sectitle' => 'Vaš račun u 4 koraka',
         'step' => 'Korak',
         'step1' => [
-            'title' => 'Predaja zahtjeva',
-            'desc' => 'Ispunite i predajte svoju prijavu online u nekoliko minuta. Nema potrebe za posjetom podružnici.'
+            'title' => 'Prijava online',
+            'desc' => 'Ispunite i predajte svoj zahtjev za otvaranje računa online u nekoliko minuta. Nema potrebe za posjetom poslovnici.'
         ],
         'step2' => [
-            'title' => 'Pregled i verifikacija',
-            'desc' => 'Naš tim pregleda vaš dosje i provjerava informacije kako bi osigurao vašu kvalifikaciju.'
+            'title' => 'Provjera identiteta',
+            'desc' => 'Naš tim provjerava vaš identitet i podatke radi zaštite vašeg računa.'
         ],
         'step3' => [
-            'title' => 'Odobrenje kredita',
-            'desc' => 'Nakon odobrenja, primit ćete potvrdu o odobrenju kredita, kao i detalje o uvjetima.'
+            'title' => 'Račun aktiviran',
+            'desc' => 'Nakon provjere, primate svoj IBAN i bankovnu karticu povezanu s vašim računom.'
         ],
         'step4' => [
-            'title' => 'Isplata sredstava',
-            'desc' => 'Sredstva se izravno prebacuju na vaš bankovni račun u kratkom vremenu nakon odobrenja.'
+            'title' => 'Upravljajte svojim novcem',
+            'desc' => 'Prijenosi, kartica, i ako je potrebno zahtjev za kredit: sve se upravlja izravno iz vašeg korisničkog prostora.'
+        ],
+    ],
+
+    // Zašto odabrati nas (stranica O nama)
+    'why_us' => [
+        'sectagline' => 'naše prednosti',
+        'sectitle' => 'Zašto odabrati ' . site_name(),
+        'reasons' => [
+            'title1' => 'Sigurnost i usklađenost',
+            'desc1' => 'Licencirana institucija, vaša sredstva i podaci zaštićeni su napretnim sigurnosnim protokolima.',
+            'title2' => 'Brzina',
+            'desc2' => 'Račun otvoren za nekoliko minuta, prijenosi obrađeni brzo, bez papirologije ili odlaska u poslovnicu.',
+            'title3' => 'Ljudska podrška',
+            'desc3' => 'Naš tim je na raspolaganju da odgovori na vaša pitanja, bilo o vašem računu ili vašim projektima financiranja.',
         ],
     ],
 
     'loan_reasons' => [
-        'sectagline' => 'razlozi za kredit',
-        'sectitle' => 'Popularni razlozi za uzimanje kredita',
+        'sectagline' => 'naša kreditna djelatnost',
+        'sectitle' => 'Treba vam financiranje?',
         'reasons' => [
             'title1' => 'Trebate novi automobil?',
             'desc1' => 'Preuzmite kontrolu nad svojim financijama i odvezite se u automobilu svojih snova uz kredit prilagođen vašim potrebama.',
@@ -300,6 +318,7 @@ return [
     'customer_satisfaction_rate' => 'Sretni korisnici',
     'total_loan_amount_granted' => 'Dostupan iznos',
     'average_approval_time' => 'Zajamčeni odgovor',
+    'account_opening_time' => 'Otvaranje računa',
     'member' => 'Financirani klijenti',
     'day' => 'Dani',
 

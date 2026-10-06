@@ -9,6 +9,7 @@ return [
     'simulate' => 'Simulation de prêt',
     'contact' => 'Nous contacter',
     'loan' => 'Demander un prêt',
+    'open_account' => 'Ouvrir un compte',
 
     'personal' => 'Prêt personnel',
     'auto' => 'Prêt auto',
@@ -17,7 +18,12 @@ return [
     'business' => 'Prêt commercial',
     'bike' => 'Prêt vélo',
 
-    'arlert' => "Obtenez un prêt avec un taux d'intérêt allant jusqu'à 3 %",
+    'banking_account' => 'Compte bancaire',
+    'banking_card'    => 'Carte bancaire',
+    'banking_transfer'=> 'Virements',
+    'banking_loans'   => 'Prêts & financements',
+
+    'arlert' => "Une banque 100 % en ligne, un compte ouvert en quelques minutes",
 
 
 
@@ -31,5 +37,5 @@ return [
     'newsletter_title' => 'Restez informé de nos offres',
     'subscribe'        => "S'abonner",
     'read_more'        => 'En savoir plus',
-    'footer_desc'      => site_name() . " est votre partenaire de confiance pour des solutions de financement rapides, flexibles et personnalisées à travers l'Europe.",
+    'footer_desc'      => site_name() . " est une banque 100 % en ligne : ouvrez un compte, obtenez votre carte et votre IBAN en quelques minutes, et profitez aussi de nos solutions de financement partout en Europe.",
 ];

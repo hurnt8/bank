@@ -34,9 +34,9 @@
                         <li><a href="{{ route('home',     ['locale' => $locale]) }}">@lang('menu.home')</a></li>
                         <li><a href="{{ route('about',    ['locale' => $locale]) }}">@lang('menu.about')</a></li>
                         <li><a href="{{ route('services', ['locale' => $locale]) }}">@lang('menu.services')</a></li>
+                        <li><a href="{{ route('signup',   ['locale' => $locale]) }}">@lang('menu.open_account')</a></li>
                         <li><a href="{{ route('faq',      ['locale' => $locale]) }}">@lang('menu.faq')</a></li>
                         <li><a href="{{ route('contact',  ['locale' => $locale]) }}">@lang('menu.contact')</a></li>
-                        <li><a href="{{ route('loan',     ['locale' => $locale]) }}">@lang('menu.loan')</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,12 +49,12 @@
                 </h5>
                 <div class="footer-collapse" x-show="open">
                     <ul class="footer-links">
+                        <li><a href="{{ route('signup',             ['locale' => $locale]) }}">@lang('menu.banking_account')</a></li>
+                        <li><a href="{{ route('signup',             ['locale' => $locale]) }}">@lang('menu.banking_card')</a></li>
                         <li><a href="{{ route('services.personal', ['locale' => $locale]) }}">@lang('menu.personal')</a></li>
                         <li><a href="{{ route('services.home',     ['locale' => $locale]) }}">@lang('menu.home_loan')</a></li>
                         <li><a href="{{ route('services.auto',     ['locale' => $locale]) }}">@lang('menu.auto')</a></li>
-                        <li><a href="{{ route('services.study',    ['locale' => $locale]) }}">@lang('menu.study')</a></li>
                         <li><a href="{{ route('services.business', ['locale' => $locale]) }}">@lang('menu.business')</a></li>
-                        <li><a href="{{ route('services.bike',     ['locale' => $locale]) }}">@lang('menu.bike')</a></li>
                     </ul>
                 </div>
             </div>

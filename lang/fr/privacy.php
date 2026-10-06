@@ -3,7 +3,7 @@
 return [
     'title' => 'Politique de confidentialité',
     'introduction_title' => '1. Introduction',
-    'introduction_text' => 'Chez ' . site_name() . ', nous nous engageons à protéger et à respecter votre vie privée. Cette politique de confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations personnelles lorsque vous utilisez notre site web et nos services de prêt en ligne. En utilisant notre site, vous acceptez les pratiques décrites dans cette politique.',
+    'introduction_text' => 'Chez ' . site_name() . ', nous nous engageons à protéger et à respecter votre vie privée. Cette politique de confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations personnelles lorsque vous utilisez notre site web, votre compte bancaire en ligne et nos services de prêt. En utilisant notre site, vous acceptez les pratiques décrites dans cette politique.',
     'information_collection_title' => '2. Informations que nous collectons',
     'information_collection_text' => 'Nous pouvons collecter et traiter les informations suivantes vous concernant :',
     'information_collection_list' => [
@@ -14,17 +14,18 @@ return [
     'information_use_title' => '3. Utilisation de vos informations',
     'information_use_text' => 'Nous utilisons les informations que nous collectons pour :',
     'information_use_list' => [
-        'Fournir et gérer nos services de prêt, y compris l\'évaluation de votre éligibilité au prêt et la gestion de votre compte.',
+        'Ouvrir et gérer votre compte bancaire, votre carte et vos opérations (virements, mouvements de compte).',
+        'Fournir et gérer nos services de prêt, y compris l\'évaluation de votre éligibilité au prêt.',
         'Améliorer notre site web et nos services, notamment en analysant la façon dont vous utilisez notre site et en personnalisant votre expérience.',
-        'Communiquer avec vous, notamment pour vous informer de l\'état de votre demande de prêt, des mises à jour de nos services, et des offres promotionnelles.',
-        'Respecter nos obligations légales et réglementaires.',
+        'Communiquer avec vous, notamment pour vous informer de l\'état de votre compte, de votre demande de prêt, des mises à jour de nos services, et des offres promotionnelles.',
+        'Respecter nos obligations légales et réglementaires, y compris nos obligations de vérification d\'identité (KYC).',
     ],
     'information_sharing_title' => '4. Partage de vos informations',
     'information_sharing_text' => 'Nous pouvons partager vos informations personnelles avec :',
     'information_sharing_list' => [
-        'Nos partenaires et prestataires de services qui nous aident à fournir et à améliorer nos services de prêt.',
-        'Les agences de crédit et autres institutions financières pour évaluer votre solvabilité et gérer les risques financiers.',
-        'Les autorités réglementaires et gouvernementales lorsque cela est requis par la loi.',
+        'Nos partenaires et prestataires de services qui nous aident à fournir et à améliorer nos services bancaires et de prêt.',
+        'Les agences de crédit et autres institutions financières pour évaluer votre solvabilité, traiter vos opérations bancaires et gérer les risques financiers.',
+        'Les autorités réglementaires et gouvernementales lorsque cela est requis par la loi, notamment dans le cadre de nos obligations de lutte contre le blanchiment de capitaux.',
         'Les tiers dans le cadre d\'une transaction commerciale, telle qu\'une fusion, une acquisition ou une vente d\'actifs.',
     ],
     'information_security_title' => '5. Sécurité de vos informations',

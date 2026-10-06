@@ -8,6 +8,7 @@ return [
 'simulate' => 'Simulazione del prestito',
 'contact' => 'Contattaci',
 'loan' => 'Richiedi un prestito',
+'open_account' => 'Apri un conto',
 
 'personal' => 'Prestito personale',
 'auto' => 'Prestito auto',
@@ -16,7 +17,12 @@ return [
 'business' => 'Prestito aziendale',
 'bike' => 'Prestito per moto',
 
-'arlert' => 'Ottieni un prestito con un tasso di interesse fino al 3%',
+'banking_account' => 'Conto bancario',
+'banking_card'    => 'Carta bancaria',
+'banking_transfer'=> 'Bonifici',
+'banking_loans'   => 'Prestiti e finanziamenti',
+
+'arlert' => 'Una banca 100% online, un conto aperto in pochi minuti',
 
 
 
@@ -30,5 +36,5 @@ return [
     'newsletter_title' => 'Rimani informato sulle nostre offerte',
     'subscribe'        => 'Iscriviti',
     'read_more'        => 'Scopri di più',
-    'footer_desc'      => site_name() . ' è il vostro partner di fiducia per soluzioni di finanziamento rapide, flessibili e personalizzate in tutta Europa.',
+    'footer_desc'      => site_name() . ' è una banca 100% online: apri un conto, ottieni la tua carta e il tuo IBAN in pochi minuti, e approfitta anche delle nostre soluzioni di finanziamento in tutta Europa.',
 ];

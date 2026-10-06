@@ -3,42 +3,39 @@
 return [
     'banner_title' => 'Découvrez ' . site_name(),
     'banner_subtitle' => 'À propos de nous',
-    'banner_description' => 'Empruntez plus simplement avec des solutions de prêt flexibles et adaptées à vos besoins financiers.',
+    'banner_description' => 'Une banque 100 % en ligne : ouvrez votre compte en quelques minutes et gérez votre argent en toute simplicité.',
 
-    'section1_title' => 'Pourquoi opter pour ' . site_name(),
-    'section1_p1' => 'Chez ' . site_name() . ', nous croyons fermement que chacun mérite une chance de réaliser ses rêves financiers. Depuis notre création, nous nous sommes engagés à fournir des solutions de prêt flexibles et accessibles pour répondre aux besoins divers de nos clients. Que vous cherchiez à financer un projet personnel, acheter une voiture, ou développer votre entreprise, nous avons le prêt qu\'il vous faut.',
-    'section1_p2' => 'Nos services sont conçus pour offrir une expérience sans tracas, avec un processus de demande simple et rapide. Nous comprenons que chaque client est unique, c\'est pourquoi nous offrons des prêts personnalisés qui s\'adaptent à vos besoins spécifiques. De plus, nos conseillers dédiés sont toujours là pour vous guider à chaque étape, vous assurant ainsi un accompagnement complet du début à la fin.',
+    'section1_title' => 'Pourquoi choisir ' . site_name(),
+    'section1_p1' => 'Chez ' . site_name() . ', nous croyons fermement que chacun mérite un accès simple et transparent à des services bancaires modernes. Depuis notre création, nous nous sommes engagés à offrir un compte, une carte et des virements accessibles à tous, sans paperasse ni file d\'attente en agence. Et si vous avez besoin de financer un projet, nous proposons aussi des solutions de prêt flexibles.',
+    'section1_p2' => 'Nos services sont conçus pour offrir une expérience sans tracas : ouverture de compte en quelques minutes, vérification d\'identité sécurisée, et un accompagnement personnalisé à chaque étape. Nos conseillers dédiés sont toujours là pour vous guider, que ce soit pour la gestion de votre compte au quotidien ou pour une demande de financement.',
     'proposed' => 'Nous proposons :',
-    'check1' => 'Des prêts personnalisés selon vos besoins spécifiques.',
-    'check2' => 'Des conseillers dédiés pour vous aider à chaque étape du processus.',
-    'check3' => 'Des conditions de remboursement flexibles pour s\'adapter à votre situation financière',
-    'check4' => 'Des prêts sans que vous ne disposé de chèque de paie.',
-    'section1_p3' => 'Chez ' . site_name() . ', notre mission est de vous aider à atteindre vos objectifs financiers avec des solutions de prêt sur mesure. Rejoignez-nous dès aujourd\'hui et découvrez comment nous pouvons vous aider à concrétiser vos projets.',
-    'btn' => 'Trouvez Votre Prêt Idéal',
+    'check1' => 'Un compte bancaire ouvert en quelques minutes, 100 % en ligne.',
+    'check2' => 'Une carte bancaire et un IBAN associés à votre compte.',
+    'check3' => 'Des virements rapides et sécurisés, en toute transparence.',
+    'check4' => 'Des solutions de prêt flexibles pour financer vos projets.',
+    'section1_p3' => 'Chez ' . site_name() . ', notre mission est de simplifier votre quotidien bancaire tout en vous accompagnant dans vos projets financiers. Rejoignez-nous dès aujourd\'hui et découvrez comment nous pouvons vous aider.',
+    'btn' => 'Ouvrir mon compte',
 
     'faq_title' => 'Questions Fréquemment Posées',
-    'faq_description' => 'Trouvez des réponses aux questions les plus courantes concernant nos services de prêt.',
-    'acc_1' => ' Quels types de prêts proposez-vous ?',
-    'acc_1_desc' => 'Nous proposons une variété de prêts, y compris des prêts personnels, des prêts
-    hypothécaires, des prêts auto et des prêts pour les petites entreprises. Chaque
-    type de prêt est conçu pour répondre à des besoins spécifiques et offre des
-    conditions flexibles.',
-    'acc_2' => 'Comment puis-je faire une demande de prêt ?',
-    'acc_2_desc' => 'Vous pouvez faire une demande de prêt directement sur notre site web en
+    'faq_description' => 'Trouvez des réponses aux questions les plus courantes concernant votre compte et nos services de prêt.',
+    'acc_1' => 'Comment ouvrir un compte chez ' . site_name() . ' ?',
+    'acc_1_desc' => 'L\'ouverture de compte se fait entièrement en ligne en quelques minutes : renseignez
+    vos informations, vérifiez votre identité, puis activez votre compte depuis l\'email
+    reçu. Vous recevez ensuite votre IBAN et votre carte bancaire.',
+    'acc_2' => 'Quels sont les frais liés au compte et à la carte ?',
+    'acc_2_desc' => 'Nos conditions tarifaires sont transparentes et communiquées avant toute ouverture
+    de compte. Aucun frais caché : vous savez exactement ce que vous payez.',
+    'acc_3' => 'Quels types de prêts proposez-vous ?',
+    'acc_3_desc' => 'En complément de votre compte, nous proposons une variété de prêts, y compris des
+    prêts personnels, des prêts hypothécaires, des prêts auto et des prêts pour les
+    petites entreprises. Chaque type de prêt est conçu pour répondre à des besoins
+    spécifiques et offre des conditions flexibles.',
+    'acc_4' => 'Comment puis-je faire une demande de prêt ?',
+    'acc_4_desc' => 'Vous pouvez faire une demande de prêt directement sur notre site web en
     remplissant le formulaire de demande en ligne. Nous vous demanderons des
     informations de base telles que votre nom, vos coordonnées, et le montant du
     prêt souhaité. Nos conseillers vous contacteront pour finaliser la demande et
     vous guider à travers le processus.',
-    'acc_3' => 'Quels sont les critères d\'éligibilité pour un prêt ?',
-    'acc_3_desc' => 'Les critères d\'éligibilité varient selon le type de prêt, mais en général, vous
-    devez être majeur, avoir un revenu stable et une bonne cote de crédit. Nous
-    examinerons également votre capacité de remboursement et vos antécédents
-    financiers.',
-    'acc_4' => 'Quel est le délai de traitement d\'une demande de prêt ?',
-    'acc_4_desc' => '  Le délai de traitement varie selon le type de prêt et la complexité de votre
-    demande. En général, les demandes de prêts personnels sont traitées sous 24 à 48
-    heures, tandis que les prêts hypothécaires peuvent prendre plusieurs jours en
-    raison des vérifications plus approfondies nécessaires.',
     'acc_5' => 'Puis-je rembourser mon prêt par anticipation ?',
     'acc_5_desc' => ' Oui, vous pouvez rembourser votre prêt par anticipation sans pénalité. Nous vous
     encourageons à rembourser votre prêt plus tôt si possible, car cela réduira le

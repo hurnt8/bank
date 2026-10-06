@@ -24,13 +24,13 @@
                 <p class="hero-split__lede">@lang('home.hero_subtitle')</p>
 
                 <div class="hero-split__actions">
-                    <a href="{{ route('loan', ['locale' => $locale]) }}" class="btn-primary btn-primary--lg">
+                    <a href="{{ route('signup', ['locale' => $locale]) }}" class="btn-primary btn-primary--lg">
+                        <i class="fas fa-user-plus"></i>
+                        @lang('menu.open_account')
+                    </a>
+                    <a href="{{ route('loan', ['locale' => $locale]) }}" class="btn-outline btn-outline--lg">
                         <i class="fas fa-file-signature"></i>
                         @lang('menu.loan')
-                    </a>
-                    <a href="{{ route('signup', ['locale' => $locale]) }}" class="btn-outline btn-outline--lg">
-                        <i class="fas fa-user-plus"></i>
-                        @lang('signup.title')
                     </a>
                 </div>
 
@@ -166,32 +166,22 @@ $serviceNav = [
                     </div>
                 </div>
 
-                {{-- Types de prêts --}}
+                {{-- Services bancaires --}}
                 <div style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);margin-bottom:.6rem;">
-                    <i class="fas fa-tags" style="color:var(--accent);margin-right:.35rem;"></i>@lang('home.discover_our_loan_services')
+                    <i class="fas fa-tags" style="color:var(--accent);margin-right:.35rem;"></i>{{ __('home.services.sectitle') }}
                 </div>
                 <div class="about-loan-grid">
+                    <div class="about-loan-item"><i class="fas fa-wallet"></i> @lang('menu.banking_account')</div>
+                    <div class="about-loan-item"><i class="fas fa-credit-card"></i> @lang('menu.banking_card')</div>
+                    <div class="about-loan-item"><i class="fas fa-money-bill-transfer"></i> @lang('menu.banking_transfer')</div>
                     <div class="about-loan-item"><i class="fas fa-user-tie"></i> @lang('home.personal_loan')</div>
                     <div class="about-loan-item"><i class="fas fa-home"></i> @lang('home.mortgage_loan')</div>
                     <div class="about-loan-item"><i class="fas fa-car"></i> @lang('home.auto_loan')</div>
-                    <div class="about-loan-item"><i class="fas fa-graduation-cap"></i> @lang('home.student_loan')</div>
-                    <div class="about-loan-item"><i class="fas fa-briefcase"></i> @lang('home.business_loan')</div>
-                    <div class="about-loan-item"><i class="fas fa-credit-card"></i> @lang('home.microcredit')</div>
-                </div>
-
-                {{-- Partenaires bancaires --}}
-                <div class="about-partner-bar">
-                    <span class="about-partner-bar__lbl">@lang('home.partners_label') :</span>
-                    {{-- Le modele n en montre que cinq : la liste complete
-                         est reprise plus bas, dans la bande dediee. --}}
-                    @foreach (array_slice(__('home.partners_list'), 0, 5) as $bankName)
-                    <span class="about-partner-bar__name">{{ $bankName }}</span>
-                    @endforeach
                 </div>
 
                 <div class="d-flex flex-wrap gap-3">
-                    <a href="{{ route('loan', ['locale' => $locale]) }}" class="btn-primary btn-primary--lg">
-                        <i class="fas fa-file-signature"></i> @lang('menu.loan')
+                    <a href="{{ route('signup', ['locale' => $locale]) }}" class="btn-primary btn-primary--lg">
+                        <i class="fas fa-user-plus"></i> @lang('menu.open_account')
                     </a>
                     <a href="{{ route('about', ['locale' => $locale]) }}" class="btn-outline">
                         @lang('menu.about') <i class="fas fa-arrow-right"></i>
@@ -324,7 +314,7 @@ $serviceNav = [
         @php
         $chiffres = [
             ['8 500+',   __('home.customer_satisfaction_rate')],
-            ['€500k',    __('home.total_loan_amount_granted')],
+            ['5 min',    __('home.account_opening_time')],
             ['48h',      __('home.average_approval_time')],
             ['15+',      __('home.years_experience')],
         ];
@@ -335,26 +325,6 @@ $serviceNav = [
                 <span class="figure-cell__num">{{ $c[0] }}</span>
                 <span class="figure-cell__label">{{ $c[1] }}</span>
             </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-{{-- ============================================================
-     BANQUES PARTENAIRES — après les stats (signal de confiance)
-============================================================ --}}
-{{-- Bande statique : le modele ne fait plus defiler les partenaires. --}}
-<section class="py-10 bg-white" style="border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);">
-    <div class="container">
-        <p class="text-center" style="font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--gray-400);margin-bottom:1.5rem;">
-            @lang('home.partners_label')
-        </p>
-        <div class="partners-strip">
-            {{-- La liste compte une quarantaine d etablissements. Affichee en
-                 entier sans defilement elle occupait six lignes : le modele
-                 presente une bande discrete, on s y tient. --}}
-            @foreach (array_slice(__('home.partners_list'), 0, 10) as $bankName)
-            <div class="partner-logo partner-logo--text">{{ $bankName }}</div>
             @endforeach
         </div>
     </div>
@@ -392,13 +362,13 @@ $serviceNav = [
     <div class="container">
         <div class="row align-items-center gutter-y-30">
             <div class="col-lg-7 wow fadeInLeft" data-wow-duration="900ms">
-                <div class="rule-label" style="color:var(--accent);">@lang('menu.newsletter_title')</div>
-                <h2 class="section-title section-title--white mb-0">@lang('home.loan_reasons.sectitle')</h2>
+                <div class="rule-label" style="color:var(--accent);">@lang('menu.open_account')</div>
+                <h2 class="section-title section-title--white mb-0">@lang('home.cta_title')</h2>
             </div>
             <div class="col-lg-5 text-lg-end wow fadeInRight" data-wow-duration="900ms" data-wow-delay="150ms">
                 <div class="d-flex flex-wrap justify-content-lg-end gap-3">
-                    <a href="{{ route('loan',    ['locale' => $locale]) }}" class="btn-primary btn-primary--lg">
-                        <i class="fas fa-file-signature"></i> @lang('menu.loan')
+                    <a href="{{ route('signup',  ['locale' => $locale]) }}" class="btn-primary btn-primary--lg">
+                        <i class="fas fa-user-plus"></i> @lang('menu.open_account')
                     </a>
                     <a href="{{ route('contact', ['locale' => $locale]) }}" class="btn-outline-white">
                         <i class="fas fa-envelope"></i> @lang('menu.contact')

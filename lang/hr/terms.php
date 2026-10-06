@@ -5,19 +5,19 @@ return [
     'sections' => [
         [
             'title' => '1. Uvod',
-            'content' => 'Dobro došli u ' . site_name() . '. Korištenjem naše stranice i usluga suglasni ste da Äete se pridrÅ¾avati sljedeÄih uvjeta i odredbi te biti vezani njima. Molimo paÅ¾ljivo proÄitajte ove uvjete prije korištenja naše stranice ili podizanja kredita kod nas.'
+            'content' => 'Dobro došli u ' . site_name() . '. Korištenjem naše stranice i usluga suglasni ste da ćete se pridržavati sljedećih uvjeta i odredbi te biti vezani njima. Molimo pažljivo pročitajte ove uvjete prije otvaranja računa, korištenja naših bankovnih usluga ili podizanja kredita kod nas.'
         ],
         [
             'title' => '2. Korištenje stranice',
             'content' => 'Pristupom našoj stranici, pristajete koristiti naše usluge samo u zakonske svrhe iu skladu s ovim uvjetima. SlaÅ¾ete se da neÄete koristiti našu stranicu na bilo koji naÄin koji uzrokuje štetu, prekid ili smetnju našim uslugama ili pristupu drugih korisnika.'
         ],
         [
-            'title' => '3. Usluge zajmova',
-            'content' => site_name() . ' nudi razliÄite vrste zajmova kako bi zadovoljio vaše financijske potrebe. Svi krediti podlijeÅ¾u odobravanju na temelju naše procjene vaše kreditne sposobnosti i moguÄnosti otplate. Posebni uvjeti svakog zajma, ukljuÄujuÄi kamatne stope, rokove dospijeÄa i uvjete otplate, bit Äe detaljno navedeni u vašem ugovoru o zajmu.'
+            'title' => '3. Račun, kartica i bankovne usluge',
+            'content' => site_name() . ' nudi otvaranje računa putem interneta, uključujući pripadajući IBAN i bankovnu karticu. Otvaranje računa podliježe prethodnoj provjeri identiteta. Doznake i druge transakcije izvršene s vašeg računa podliježu uvjetima i eventualnim ograničenjima navedenim prilikom otvaranja vašeg računa ili u vašem korisničkom području.'
         ],
         [
-            'title' => '4. Troškovi ugovora i osiguranja',
-            'content' => 'Prilikom podizanja kredita kod ' . site_name() . 'a mogu se primijeniti naknade za ugovor i osiguranje. Ova naknada pokriva administrativne troškove povezane s postavljanjem i upravljanjem vašim kreditom. Konkretni detalji ovih naknada bit Äe jasno navedeni u vašem ugovoru o zajmu. DuÅ¾ni ste platiti ove naknade u skladu s navedenim uvjetima.'
+            'title' => '4. Usluge zajmova',
+            'content' => site_name() . ' također nudi različite vrste zajmova kako bi zadovoljio vaše financijske potrebe. Svi krediti podliježu odobravanju na temelju naše procjene vaše kreditne sposobnosti i mogućnosti otplate. Posebni uvjeti svakog zajma, uključujući kamatne stope, rokove dospijeća i uvjete otplate, bit će detaljno navedeni u vašem ugovoru o zajmu. Naknade za ugovor i osiguranje mogu se primijeniti prilikom podizanja kredita; te naknade bit će jasno navedene u vašem ugovoru.'
         ],
         [
             'title' => '5. Povjerljivost',

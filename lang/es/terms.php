@@ -5,19 +5,19 @@ return [
     'sections' => [
         [
             'title' => '1. Introducción',
-            'content' => 'Bienvenido a ' . site_name() . '. Al utilizar nuestro sitio y servicios, usted acepta cumplir y estar sujeto a los siguientes términos y condiciones. Lea estos términos detenidamente antes de utilizar nuestro sitio o solicitar un préstamo con nosotros.',
+            'content' => 'Bienvenido a ' . site_name() . '. Al utilizar nuestro sitio y servicios, usted acepta cumplir y estar sujeto a los siguientes términos y condiciones. Lea estos términos detenidamente antes de abrir una cuenta, utilizar nuestros servicios bancarios o solicitar un préstamo con nosotros.',
         ],
         [
             'title' => '2. Uso del sitio',
             'content' => 'Al acceder a nuestro sitio, usted acepta utilizar nuestros servicios sólo para fines legales y de acuerdo con estas condiciones. Usted acepta no utilizar nuestro sitio de ninguna manera que cause daño, interrupción o interferencia con nuestros servicios o el acceso de otros usuarios.',
         ],
         [
-            'title' => '3. Servicios de préstamo',
-            'content' => site_name() . ' ofrece varios tipos de préstamos para satisfacer sus necesidades financieras. Todos los préstamos están sujetos a aprobación basada en nuestra evaluación de su solvencia y capacidad de pago. Los términos específicos de cada préstamo, incluidas las tasas de interés, los vencimientos y los términos de pago, se detallarán en su contrato de préstamo.',
+            'title' => '3. Cuenta, tarjeta y servicios bancarios',
+            'content' => site_name() . ' ofrece la apertura de una cuenta en línea, que incluye un IBAN y una tarjeta bancaria asociados. La apertura de la cuenta está sujeta a una verificación de identidad previa. Las transferencias y demás operaciones realizadas desde su cuenta están sujetas a las condiciones y a los posibles límites especificados al abrir su cuenta o en su área de cliente.',
         ],
         [
-            'title' => '4. Costos de contrato y seguro',
-            'content' => 'Al solicitar un préstamo con ' . site_name() . ', se pueden aplicar tarifas de contrato y seguro. Esta tarifa cubre los costos administrativos asociados con la configuración y administración de su préstamo. Los detalles específicos de estas tarifas estarán claramente establecidos en su contrato de préstamo. Debe pagar estos cargos de acuerdo con los términos especificados.'
+            'title' => '4. Servicios de préstamo',
+            'content' => site_name() . ' también ofrece varios tipos de préstamos para satisfacer sus necesidades financieras. Todos los préstamos están sujetos a aprobación basada en nuestra evaluación de su solvencia y capacidad de pago. Los términos específicos de cada préstamo, incluidas las tasas de interés, los vencimientos y los términos de pago, se detallarán en su contrato de préstamo. Al solicitar un préstamo pueden aplicarse tarifas de contrato y seguro; estas tarifas se indicarán claramente en su contrato.'
         ],
         [
             'title' => '5. Confidencialidad',

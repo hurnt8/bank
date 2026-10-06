@@ -5,19 +5,19 @@ return [
     'sections' => [
         [
             'title' => '1. Introducere',
-            'content' => 'Bine ați venit pe ' . site_name() . '. Prin utilizarea site-ului și a serviciilor noastre, sunteți de acord să respectați și să fiți obligat de următorii termeni și condiții. Vă rugăm să citiți cu atenție acești termeni înainte de a utiliza site-ul nostru sau de a contracta un împrumut cu noi.'
+            'content' => 'Bine ați venit pe ' . site_name() . '. Prin utilizarea site-ului și a serviciilor noastre, sunteți de acord să respectați și să fiți obligat de următorii termeni și condiții. Vă rugăm să citiți cu atenție acești termeni înainte de a deschide un cont, de a utiliza serviciile noastre bancare sau de a contracta un împrumut cu noi.'
         ],
         [
             'title' => '2. Utilizarea site-ului',
             'content' => 'Prin accesarea site-ului nostru, vă angajați să utilizați serviciile noastre exclusiv în scopuri legale și conforme cu prezentele condiții. Vă angajați să nu utilizați site-ul nostru într-un mod care ar putea cauza daune, întreruperi sau interferențe cu serviciile noastre sau cu accesul altor utilizatori.'
         ],
         [
-            'title' => '3. Servicii de creditare',
-            'content' => site_name() . ' oferă diverse tipuri de împrumuturi pentru a răspunde nevoilor dumneavoastră financiare. Toate împrumuturile sunt supuse aprobării, pe baza evaluării de către noi a bonității și capacității dumneavoastră de rambursare. Termenii specifici ai fiecărui împrumut, inclusiv ratele dobânzii, scadențele și modalitățile de rambursare, vor fi detaliați în contractul dumneavoastră de împrumut.'
+            'title' => '3. Cont, card și servicii bancare',
+            'content' => site_name() . ' oferă posibilitatea deschiderii unui cont online, inclusiv un IBAN și un card bancar asociate. Deschiderea contului este condiționată de o verificare prealabilă a identității. Transferurile și celelalte operațiuni efectuate din contul dumneavoastră sunt supuse condițiilor și eventualelor plafoane precizate la deschiderea contului sau în contul dumneavoastră de client.'
         ],
         [
-            'title' => '4. Taxe de contract și asigurare',
-            'content' => 'La contractarea unui împrumut la ' . site_name() . ', pot fi aplicate taxe de contract și de asigurare. Aceste taxe acoperă costurile administrative asociate cu inițierea și gestionarea împrumutului dumneavoastră. Detaliile specifice ale acestor taxe vor fi indicate clar în contractul dumneavoastră de împrumut. Sunteți obligat să plătiți aceste taxe în conformitate cu modalitățile precizate.'
+            'title' => '4. Servicii de creditare',
+            'content' => site_name() . ' oferă, de asemenea, diverse tipuri de împrumuturi pentru a răspunde nevoilor dumneavoastră financiare. Toate împrumuturile sunt supuse aprobării, pe baza evaluării de către noi a bonității și capacității dumneavoastră de rambursare. Termenii specifici ai fiecărui împrumut, inclusiv ratele dobânzii, scadențele și modalitățile de rambursare, vor fi detaliați în contractul dumneavoastră de împrumut. Taxe de contract și de asigurare pot fi aplicate la contractarea unui împrumut; aceste taxe vor fi indicate clar în contractul dumneavoastră.'
         ],
         [
             'title' => '5. Confidențialitate',

@@ -5,19 +5,19 @@ return [
     'sections' => [
         [
             'title' => '1. Wprowadzenie',
-            'content' => 'Witamy w ' . site_name() . '. Korzystając z naszej strony i usług, zobowiązujesz się przestrzegać poniższych warunków użytkowania i być nimi związany. Prosimy o uważne zapoznanie się z niniejszymi warunkami przed skorzystaniem z naszej strony lub zaciągnięciem u nas kredytu.'
+            'content' => 'Witamy w ' . site_name() . '. Korzystając z naszej strony i usług, zobowiązujesz się przestrzegać poniższych warunków użytkowania i być nimi związany. Prosimy o uważne zapoznanie się z niniejszymi warunkami przed otwarciem konta, skorzystaniem z naszych usług bankowych lub zaciągnięciem u nas kredytu.'
         ],
         [
             'title' => '2. Korzystanie ze strony',
             'content' => 'Uzyskując dostęp do naszej strony, zobowiązujesz się korzystać z naszych usług wyłącznie w celach zgodnych z prawem i niniejszymi warunkami. Zobowiązujesz się nie korzystać z naszej strony w sposób powodujący szkody, zakłócenia lub ingerencję w nasze usługi bądź dostęp innych użytkowników.'
         ],
         [
-            'title' => '3. Usługi kredytowe',
-            'content' => site_name() . ' oferuje różne rodzaje kredytów odpowiadające Twoim potrzebom finansowym. Wszystkie kredyty podlegają zatwierdzeniu na podstawie naszej oceny Twojej zdolności kredytowej i możliwości spłaty. Szczegółowe warunki każdego kredytu, w tym oprocentowanie, terminy i zasady spłaty, zostaną określone w Twojej umowie kredytowej.'
+            'title' => '3. Konto, karta i usługi bankowe',
+            'content' => site_name() . ' umożliwia otwarcie konta online, wraz z powiązanym numerem IBAN i kartą bankową. Otwarcie konta podlega wcześniejszej weryfikacji tożsamości. Przelewy i inne operacje wykonywane z Twojego konta podlegają warunkom oraz ewentualnym limitom określonym podczas otwierania konta lub w panelu klienta.',
         ],
         [
-            'title' => '4. Opłaty za umowę i ubezpieczenie',
-            'content' => 'Przy zawieraniu kredytu w ' . site_name() . ' mogą zostać naliczone opłaty za umowę i ubezpieczenie. Opłaty te pokrywają koszty administracyjne związane z uruchomieniem i obsługą Twojego kredytu. Szczegóły dotyczące tych opłat zostaną jasno wskazane w Twojej umowie kredytowej. Jesteś zobowiązany do uiszczenia tych opłat zgodnie z określonymi warunkami.'
+            'title' => '4. Usługi kredytowe',
+            'content' => site_name() . ' oferuje również różne rodzaje kredytów odpowiadające Twoim potrzebom finansowym. Wszystkie kredyty podlegają zatwierdzeniu na podstawie naszej oceny Twojej zdolności kredytowej i możliwości spłaty. Szczegółowe warunki każdego kredytu, w tym oprocentowanie, terminy i zasady spłaty, zostaną określone w Twojej umowie kredytowej. Przy zawieraniu kredytu mogą zostać naliczone opłaty za umowę i ubezpieczenie; opłaty te zostaną jasno wskazane w Twojej umowie.'
         ],
         [
             'title' => '5. Poufność',

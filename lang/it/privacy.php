@@ -3,7 +3,7 @@
 return [
    'title' => 'Informativa sulla privacy',
 'introduction_title' => '1. Introduzione',
-'introduction_text' => 'In ' . site_name() . ', ci impegniamo a proteggere e rispettare la tua privacy. Questa informativa sulla privacy spiega come raccogliamo, utilizziamo, divulghiamo e proteggiamo le tue informazioni personali quando utilizzi il nostro sito web e i nostri servizi di prestito online. Utilizzando il nostro sito, accetti le pratiche descritte in questa informativa.',
+'introduction_text' => 'In ' . site_name() . ', ci impegniamo a proteggere e rispettare la tua privacy. Questa informativa sulla privacy spiega come raccogliamo, utilizziamo, divulghiamo e proteggiamo le tue informazioni personali quando utilizzi il nostro sito web, il tuo conto bancario online e i nostri servizi di prestito. Utilizzando il nostro sito, accetti le pratiche descritte in questa informativa.',
 'information_collection_title' => '2. Informazioni che raccogliamo',
 'information_collection_text' => 'Potremmo raccogliere ed elaborare le seguenti informazioni su di te:',
 'information_collection_list' => [
@@ -14,17 +14,18 @@ return [
 'information_use_title' => '3. Utilizzo delle tue informazioni',
 'information_use_text' => 'Utilizziamo le informazioni raccolte per:',
 'information_use_list' => [
-    'Fornire e gestire i nostri servizi di prestito, inclusa la valutazione della tua idoneità al prestito e la gestione del tuo account.',
+    'Aprire e gestire il tuo conto bancario, la tua carta e le tue operazioni (trasferimenti, movimenti di conto).',
+    'Fornire e gestire i nostri servizi di prestito, inclusa la valutazione della tua idoneità al prestito.',
     'Migliorare il nostro sito web e i nostri servizi, analizzando come utilizzi il nostro sito e personalizzando la tua esperienza.',
-    'Comunicare con te, in particolare per informarti sullo stato della tua richiesta di prestito, aggiornamenti sui nostri servizi e offerte promozionali.',
-    'Rispettare i nostri obblighi legali e normativi.',
+    'Comunicare con te, in particolare per informarti sullo stato del tuo conto, della tua richiesta di prestito, aggiornamenti sui nostri servizi e offerte promozionali.',
+    'Rispettare i nostri obblighi legali e normativi, inclusi i nostri obblighi di verifica dell\'identità (KYC).',
 ],
 'information_sharing_title' => '4. Condivisione delle tue informazioni',
 'information_sharing_text' => 'Potremmo condividere le tue informazioni personali con:',
 'information_sharing_list' => [
-    'I nostri partner e fornitori di servizi che ci aiutano a fornire e migliorare i nostri servizi di prestito.',
-    'Agenzie di credito e altre istituzioni finanziarie per valutare la tua solvibilità e gestire i rischi finanziari.',
-    'Autorità regolamentari e governative ove richiesto dalla legge.',
+    'I nostri partner e fornitori di servizi che ci aiutano a fornire e migliorare i nostri servizi bancari e di prestito.',
+    'Agenzie di credito e altre istituzioni finanziarie per valutare la tua solvibilità, elaborare le tue operazioni bancarie e gestire i rischi finanziari.',
+    'Autorità regolamentari e governative ove richiesto dalla legge, in particolare nell\'ambito dei nostri obblighi di lotta al riciclaggio di denaro.',
     'Terze parti nel contesto di una transazione commerciale, come una fusione, acquisizione o vendita di beni.',
 ],
 'information_security_title' => '5. Sicurezza delle tue informazioni',

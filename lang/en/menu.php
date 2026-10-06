@@ -8,6 +8,7 @@ return [
     'simulate' => 'Loan simulation',
     'contact' => 'Contact Us',
     'loan' => 'Apply for loan',
+    'open_account' => 'Open an account',
 
     'personal' => 'Personal loan',
     'auto' => 'Auto loan',
@@ -16,8 +17,12 @@ return [
     'business' => 'Business loan',
     'bike' => 'Bike loan',
 
+    'banking_account' => 'Bank account',
+    'banking_card'    => 'Bank card',
+    'banking_transfer'=> 'Transfers',
+    'banking_loans'   => 'Loans & financing',
 
-    'arlert' => 'Get a loan with up to 3% interest rate',
+    'arlert' => 'A 100% online bank, an account opened in minutes',
 
 
     'faq'              => 'FAQ',
@@ -30,5 +35,5 @@ return [
     'newsletter_title' => 'Stay informed about our offers',
     'subscribe'        => 'Subscribe',
     'read_more'        => 'Learn more',
-    'footer_desc'      => site_name() . ' is your trusted partner for fast, flexible and personalized financing solutions across Europe.',
+    'footer_desc'      => site_name() . ' is a 100% online bank: open an account, get your card and IBAN in minutes, and also enjoy our financing solutions across Europe.',
 ];

@@ -9,6 +9,7 @@ return [
     'simulate' => 'Simulare împrumut',
     'contact' => 'Contactați-ne',
     'loan' => 'Solicitați un împrumut',
+    'open_account' => 'Deschide un cont',
 
     'personal' => 'Împrumut personal',
     'auto' => 'Împrumut auto',
@@ -17,7 +18,12 @@ return [
     'business' => 'Credit comercial',
     'bike' => 'Credit pentru bicicletă',
 
-    'arlert' => "Obțineți un împrumut cu o rată a dobânzii de până la 3%",
+    'banking_account' => 'Cont bancar',
+    'banking_card'    => 'Card bancar',
+    'banking_transfer'=> 'Transferuri',
+    'banking_loans'   => 'Împrumuturi & finanțare',
+
+    'arlert' => "O bancă 100% online, un cont deschis în câteva minute",
 
 
 
@@ -31,5 +37,5 @@ return [
     'newsletter_title' => 'Rămâneți informat despre ofertele noastre',
     'subscribe'        => "Abonează-te",
     'read_more'        => 'Aflați mai multe',
-    'footer_desc'      => site_name() . " este partenerul dumneavoastră de încredere pentru soluții de finanțare rapide, flexibile și personalizate în întreaga Europă.",
+    'footer_desc'      => site_name() . " este o bancă 100% online: deschideți un cont, obțineți cardul și IBAN-ul în câteva minute și beneficiați și de soluțiile noastre de finanțare în întreaga Europă.",
 ];

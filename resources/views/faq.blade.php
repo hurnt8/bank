@@ -48,8 +48,41 @@
                 <h2 class="section-title mb-8">Questions fréquentes</h2>
 
                 @php
+                $bankingFaqs = __('banking.faqs');
                 $types = ['personal_loan','home_loan','auto_loan','business_loan','study_loan','bike_loan'];
                 @endphp
+
+                @if (is_array($bankingFaqs) && isset($bankingFaqs['question1']))
+                <div class="faq-category-title">{{ __('banking.section_title') }}</div>
+                <div x-data="{ open: 1 }" class="mb-6">
+                    @for ($q = 1; $q <= 3; $q++)
+                    @if (isset($bankingFaqs['question' . $q]))
+                    <div class="accordion-item mb-1" style="border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-card);">
+                        <button type="button"
+                                class="faq-btn"
+                                :class="open === {{ $q }} ? 'is-open' : ''"
+                                @click="open = (open === {{ $q }}) ? null : {{ $q }}">
+                            <span>{{ $bankingFaqs['question' . $q] }}</span>
+                            <span class="faq-btn__icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </button>
+                        <div class="faq-body"
+                             x-show="open === {{ $q }}"
+                             x-transition:enter="transition ease-out duration-250"
+                             x-transition:enter-start="opacity-0 -translate-y-2"
+                             x-transition:enter-end="opacity-100 translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 translate-y-0"
+                             x-transition:leave-end="opacity-0 -translate-y-2"
+                             style="{{ $q !== 1 ? 'display:none' : '' }}">
+                            {{ $bankingFaqs['answer' . $q] }}
+                        </div>
+                    </div>
+                    @endif
+                    @endfor
+                </div>
+                @endif
 
                 @foreach ($types as $type)
                 @php $faqs = __('loan.' . $type . '.details.faqs'); @endphp

@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'general_title' => site_name() . ' – Najlepsze kredyty online w Europie.',
-    'hero_subtitle' => 'Bez skomplikowanych procedur, bez ukrytych opłat. Od 15 lat finansujemy projekty osobiste, nieruchomości, samochodowe i biznesowe z pełną przejrzystością i szybkością.',
+    'general_title' => site_name() . ' – Bank online: konto, karta i finansowanie w Europie.',
+    'hero_subtitle' => 'Otwórz konto w kilka minut, otrzymaj swój IBAN i kartę, i zarządzaj swoimi pieniędzmi na co dzień. Potrzebujesz finansowania? Nasze kredyty są nadal dostępne w kilka kliknięć.',
 
     'slide_1' => [
-        'title' => ' 15 lat doświadczenia · Licencjonowany · Gwarantowana odpowiedź',
-        'text1' => 'Sfinansuj wszystkie swoje projekty,',
-        'text2' => 'do 5 000 000 € w 48h.',
+        'title' => ' 15 lat doświadczenia · Licencjonowany · 100% online',
+        'text1' => 'Bank, który upraszcza',
+        'text2' => 'Twoje pieniądze na co dzień.',
     ],
     'slide_2' => [
         'title' => 'Inteligentne kredyty na świetlaną przyszłość',
@@ -35,26 +35,33 @@ return [
     'about' => [
         'exptitle' => 'lat doświadczenia',
         'sectagline' => 'Witamy w ' . site_name(),
-        'sectitle' => 'Kredyty osobiste spełniające Twoje marzenia',
+        'sectitle' => 'Bank stworzony z myślą o Twoim codziennym życiu',
         'text1' => 'Działamy w tej branży od 15 lat i oferujemy najlepsze usługi.',
-        'text2' => site_name() . ' to Twoja zaufana platforma kredytowa z wyjątkową obsługą klienta. Jesteśmy zobowiązani do zapewniania prostych, bezpiecznych i szybkich rozwiązań finansowych.',
-        'check1' => 'kredyt dla małych firm',
-        'check2' => 'kredyt na studia za granicą',
-        'check3' => 'szybki proces kredytowy',
-        'check4' => 'bardzo niskie oprocentowanie',
+        'text2' => site_name() . ' to bank 100% online: konto, karta, IBAN i przelewy w kilka minut, z wyjątkową obsługą klienta. Potrzebujesz sfinansować projekt? Nasze rozwiązania kredytowe są nadal dostępne, proste i szybkie.',
+        'check1' => 'otwarcie konta online',
+        'check2' => 'karta bankowa w zestawie',
+        'check3' => 'natychmiastowe przelewy',
+        'check4' => 'przejrzyste opłaty',
         'engage1_title' => 'Licencjonowany i Regulowany',
-        'engage1_desc'  => 'Certyfikowana instytucja kredytowa działająca zgodnie z normami europejskimi. Twoje dane i akta są chronione na każdym etapie.',
-        'engage2_title' => 'Gwarantowana odpowiedź w 48h',
-        'engage2_desc'  => 'Proces 100% online, bez wizyty w oddziale. Decyzja w ciągu 48 godzin.',
+        'engage1_desc'  => 'Certyfikowana instytucja działająca zgodnie z normami europejskimi. Twoje dane i środki są chronione na każdym etapie.',
+        'engage2_title' => 'Konto otwarte w kilka minut',
+        'engage2_desc'  => 'Rejestracja 100% online, bez wizyty w oddziale. Szybka i bezpieczna weryfikacja tożsamości.',
         'engage3_title' => 'Wielowalutowy i Wielokrajowy',
-        'engage3_desc'  => 'Finansowanie dostępne w walucie Twojego kraju, dopasowane do Twojego projektu.',
+        'engage3_desc'  => 'Konto i usługi dostępne w walucie Twojego kraju, w całej Europie.',
+    ],
+
+    // Usługi bankowe
+    'banking' => [
+        'account_desc'  => 'Otwórz konto online w kilka minut i natychmiast otrzymaj swój IBAN.',
+        'card_desc'     => 'Karta bankowa powiązana z Twoim kontem, do płatności i wypłat wszędzie.',
+        'transfer_desc' => 'Wysyłaj i otrzymuj pieniądze szybko, bezpiecznie, gdziekolwiek jesteś.',
     ],
 
     'services' => [
         'sectagline' => 'co oferujemy',
-        'sectitle' => 'Oferujemy najlepsze usługi kredytowe',
-        'cta_title' => 'Gotowy, by rozpocząć swój projekt finansowy?',
-        'cta_text' => 'Nasz zespół jest do Twojej dyspozycji, aby pomóc Ci w złożeniu wniosku o finansowanie.',
+        'sectitle' => 'Usługi Twojego banku na co dzień',
+        'cta_title' => 'Gotowy, by otworzyć swoje konto?',
+        'cta_text' => 'Nasz zespół jest do Twojej dyspozycji, aby pomóc Ci w otwarciu konta lub złożeniu wniosku o finansowanie.',
     ],
 
     // CTA strony FAQ
@@ -70,23 +77,37 @@ return [
 
     'works' => [
         'sectagline' => 'Jak to działa',
-        'sectitle' => 'Nasz proces pracy',
+        'sectitle' => 'Twoje konto w 4 krokach',
         'step' => 'Krok',
         'step1' => [
-            'title' => 'Złożenie wniosku',
-            'desc' => 'Wypełnij i złóż wniosek online w kilka minut. Nie jest wymagana wizyta w oddziale.'
+            'title' => 'Rejestracja online',
+            'desc' => 'Wypełnij i złóż wniosek o otwarcie konta w kilka minut. Nie jest wymagana wizyta w oddziale.'
         ],
         'step2' => [
-            'title' => 'Weryfikacja i przegląd',
-            'desc' => 'Nasz zespół przegląda Twój plik i weryfikuje informacje, aby upewnić się o Twojej kwalifikowalności.'
+            'title' => 'Weryfikacja tożsamości',
+            'desc' => 'Nasz zespół weryfikuje Twoją tożsamość i dane, aby zabezpieczyć Twoje konto.'
         ],
         'step3' => [
-            'title' => 'Zatwierdzenie kredytu',
-            'desc' => 'Po zatwierdzeniu otrzymasz potwierdzenie decyzji kredytowej wraz ze szczegółami warunków.'
+            'title' => 'Konto aktywowane',
+            'desc' => 'Po weryfikacji otrzymasz swój IBAN i kartę bankową powiązane z Twoim kontem.'
         ],
         'step4' => [
-            'title' => 'Wypłata środków',
-            'desc' => 'Środki są przelewane bezpośrednio na Twoje konto bankowe w krótkim czasie po zatwierdzeniu.'
+            'title' => 'Zarządzaj swoimi pieniędzmi',
+            'desc' => 'Przelewy, karta, a w razie potrzeby wniosek o kredyt: wszystko zarządzane bezpośrednio z Twojego panelu klienta.'
+        ],
+    ],
+
+    // Dlaczego warto nas wybrać (strona O nas)
+    'why_us' => [
+        'sectagline' => 'nasze zalety',
+        'sectitle' => 'Dlaczego warto wybrać ' . site_name(),
+        'reasons' => [
+            'title1' => 'Bezpieczeństwo i zgodność',
+            'desc1'  => 'Licencjonowana instytucja, Twoje środki i dane są chronione przez zaawansowane protokoły bezpieczeństwa.',
+            'title2' => 'Szybkość',
+            'desc2'  => 'Konto otwarte w kilka minut, przelewy przetwarzane szybko, bez papierologii i wizyt.',
+            'title3' => 'Ludzkie wsparcie',
+            'desc3'  => 'Nasz zespół jest dostępny, aby odpowiedzieć na Twoje pytania, zarówno dotyczące konta, jak i projektów finansowania.',
         ],
     ],
 
@@ -105,16 +126,16 @@ return [
     'customer_satisfaction_rate' => 'Zadowoleni klienci',
     'total_loan_amount_granted' => 'Maks. kwota / wniosek',
     'average_approval_time'    => 'Gwarantowana odpowiedź',
+    'account_opening_time'     => 'Otwarcie konta',
     'member'                   => 'Sfinansowani klienci',
     'years_experience'         => 'Lat doświadczenia',
     'day'                      => 'Dni',
 
-    'cta_title' => 'Szybko uzyskaj potrzebny kredyt.',
-    'cta_text'  => 'Złóż wniosek o kredyt online już dziś. Nasza platforma łączy Cię z zaufanymi pożyczkodawcami, oferując szybkie i bezpieczne rozwiązania finansowe.',
-    'cta_button' => 'Zacznij teraz',
+    'cta_title' => 'Otwórz swoje konto w kilka minut.',
+    'cta_text'  => 'Dołącz do ' . site_name() . ' już dziś: konto, karta, IBAN i przelewy, a także szybkie i bezpieczne rozwiązania finansowania, jeśli ich potrzebujesz.',
+    'cta_button' => 'Otwórz konto',
 
-    'partners_label' => 'Nasi partnerzy',
-    'partners_title' => 'Banki partnerskie',
+    'partners_title' => 'Partnerzy bankowi i płatniczy',
     'partners_list' => ['BNP Paribas', 'Santander', 'PKO Bank Polski', 'Revolut', 'BBVA', 'UniCredit', 'Intesa Sanpaolo', 'Banco BPM', 'BPER Banca', 'Banca Monte dei Paschi di Siena', 'Mediobanca', 'Swedbank Lietuvoje', 'SEB bankas', 'Revolut Bank UAB', 'Luminor Bank', 'Šiaulių bankas', 'Deutsche Bank', 'Commerzbank', 'DZ Bank', 'HypoVereinsbank', 'KfW Bank', 'DSK Bank', 'UniCredit Bulbank', 'United Bulgarian Bank', 'First Investment Bank', 'Postbank Bulgaria', 'TBI Bank', 'Banca Transilvania', 'Banca Comercială Română (BCR)', 'CEC Bank', 'BRD – Groupe Société Générale', 'Raiffeisen Bank Romania', 'UniCredit Bank Romania', 'Swedbank Latvia', 'SEB banka', 'Citadele Banka', 'Luminor Bank Latvia', 'BlueOrange Bank'],
 
     'cta_title2'  => 'Szybko uzyskaj potrzebny kredyt.',
@@ -127,7 +148,7 @@ return [
     'testimonials_certified_by' => 'Certyfikowane przez: Trustindex',
     'testimonials_months_ago' => '{1} 1 miesiąc temu|[2,4] :count miesiące temu|[5,*] :count miesięcy temu',
     'testimonial_1' => [
-        'quote'    => '„Starałem się o kredyt hipoteczny po kilku odmowach w polskich bankach. ' . site_name() . ' przeanalizowała moją sytuację rzetelnie i przyznała finansowanie w ciągu tygodnia. Oprocentowanie przerosło moje oczekiwania. Polecam z całego serca."',
+        'quote'    => '„Otworzyłem konto w mniej niż 10 minut z telefonu, bez żadnych papierów do wysłania pocztą. Karta przyszła kilka dni później. Prawdziwa oszczędność czasu."',
         'name'     => 'Piotr Kowalski',
         'location' => 'Warszawa, Polska',
         'months_ago' => 1,
@@ -139,13 +160,13 @@ return [
         'months_ago' => 2,
     ],
     'testimonial_3' => [
-        'quote'    => '„Prowadziłem działalność gospodarczą i potrzebowałem kapitału na nowe urządzenia. ' . site_name() . ' oceniła moje realne przychody i przyznała kredyt firmowy w 48 godzin. Profesjonalizm na najwyższym poziomie."',
+        'quote'    => '„Procedura w 100% online, żadnych ukrytych opłat na mojej karcie, a wsparcie naprawdę szybko odpowiada na pytania. Nowoczesna i sprawna obsługa."',
         'name'     => 'Marek Nowak',
         'location' => 'Gdańsk, Polska',
         'months_ago' => 2,
     ],
     'testimonial_4' => [
-        'quote'    => '„Cały wniosek wypełniłam online w kwadrans. Decyzja przyszła jeszcze tego samego dnia, a środki trafiły na konto następnego ranka. Nie spodziewałam się tak sprawnej obsługi. Jestem pod wrażeniem."',
+        'quote'    => '„Mogę śledzić wszystkie operacje na koncie i wykonywać przelewy z aplikacji, gdziekolwiek jestem. Naprawdę czuję się zaopiekowana na co dzień."',
         'name'     => 'Katarzyna Wójcik',
         'location' => 'Wrocław, Polska',
         'months_ago' => 3,
@@ -157,23 +178,23 @@ return [
         'months_ago' => 4,
     ],
     'testimonial_6' => [
-        'quote'    => '„Najbardziej cenię sobie przejrzystość: żadnych ukrytych prowizji, żadnych niespodzianek w umowie. Od pierwszego kontaktu wiedziałam dokładnie, ile będę płacić i kiedy. To rzadkość na rynku finansowym."',
+        'quote'    => '„Przejrzystość opłat za konto i kartę przekonała mnie już od pierwszego kontaktu. Żadnych złych niespodzianek po drodze. To rzadkość i wartość w tej branży."',
         'name'     => 'Agnieszka Zielińska',
         'location' => 'Łódź, Polska',
         'months_ago' => 5,
     ],
     'testimonial_7' => [
-        'quote' => '„Prosty i skuteczny proces kredytowy. Byłam mile zaskoczona szybkością zatwierdzenia. Dziękuję całemu zespołowi!"',
+        'quote' => '„Proste i szybkie otwarcie konta. Byłam mile zaskoczona łatwością weryfikacji tożsamości. Dziękuję całemu zespołowi!"',
         'name' => 'Marie C.',
     ],
     'testimonial_8' => [
-        'quote' => '„Miałam doskonałe doświadczenie z tą usługą kredytową. Personel był uważny i profesjonalny. Polecam bez wahania!"',
+        'quote' => '„Miałam doskonałe doświadczenie z tym bankiem online. Personel był uważny i profesjonalny. Polecam bez wahania!"',
         'name' => 'Jean L.',
     ],
 
     'loan_reasons' => [
-        'sectagline' => 'powody kredytu',
-        'sectitle'   => 'Popularne powody zaciągnięcia kredytu',
+        'sectagline' => 'nasza działalność kredytowa',
+        'sectitle'   => 'Potrzebujesz finansowania?',
         'reasons'    => [
             'title1' => 'Potrzebujesz nowego samochodu?',
             'desc1'  => 'Przejmij kontrolę nad swoimi finansami i odjedź wymarzonym samochodem dzięki kredytowi dopasowanemu do Twoich potrzeb.',
@@ -264,8 +285,8 @@ return [
     'optimal_security_description' => 'Twoje dane osobowe są u nas bezpieczne. ' . site_name() . ' stosuje zaawansowane protokoły bezpieczeństwa, aby chronić Twoją prywatność. Nasze wsparcie jest dostępne 24/7.',
     'apply_loan' => 'Złóż wniosek o kredyt',
 
-    'about_title' => 'Dołącz do najlepszego rynku pracy na świecie',
-    'about_description' => site_name() . ' to Twoja zaufana platforma do uzyskiwania kredytów z wyjątkową obsługą klienta. Zobowiązujemy się zapewnić Ci proste, bezpieczne i szybkie rozwiązania finansowe.',
+    'about_title' => 'Twoje pieniądze, uproszczone',
+    'about_description' => site_name() . ' to Twój zaufany bank do zarządzania kontem, kartą i przelewami na co dzień, z wyjątkową obsługą klienta. Oferujemy też proste, bezpieczne i szybkie rozwiązania finansowania.',
     'rating' => '4.9/5',
     'rating_description' => 'Klienci oceniają specjalistów',
     'projects_completed' => '+12M',

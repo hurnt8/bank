@@ -5,19 +5,19 @@ return [
     'sections' => [
         [
             'title' => '1. Inleiding',
-            'content' => 'Welkom bij ' . site_name() . '. Door gebruik te maken van onze website en diensten, stemt u ermee in zich te houden aan en gebonden te zijn door de volgende algemene voorwaarden. Lees deze voorwaarden zorgvuldig door voordat u onze website gebruikt of een lening bij ons afsluit.'
+            'content' => 'Welkom bij ' . site_name() . '. Door gebruik te maken van onze website en diensten, stemt u ermee in zich te houden aan en gebonden te zijn door de volgende algemene voorwaarden. Lees deze voorwaarden zorgvuldig door voordat u een rekening opent, gebruikmaakt van onze bankdiensten of een lening bij ons afsluit.'
         ],
         [
             'title' => '2. Gebruik van de website',
             'content' => 'Door toegang te krijgen tot onze website, verbindt u zich ertoe onze diensten uitsluitend te gebruiken voor wettige doeleinden en in overeenstemming met deze voorwaarden. U verbindt zich ertoe onze website niet te gebruiken op een manier die schade, storingen of verstoringen van onze diensten of van de toegang van andere gebruikers veroorzaakt.'
         ],
         [
-            'title' => '3. Leendiensten',
-            'content' => site_name() . ' biedt verschillende soorten leningen aan om aan uw financiële behoeften te voldoen. Alle leningen zijn onderworpen aan goedkeuring op basis van onze beoordeling van uw kredietwaardigheid en terugbetalingscapaciteit. De specifieke voorwaarden van elke lening, met inbegrip van rentetarieven, looptijden en terugbetalingsmodaliteiten, worden nader toegelicht in uw leningsovereenkomst.'
+            'title' => '3. Rekening, kaart en bankdiensten',
+            'content' => site_name() . ' biedt de mogelijkheid om online een rekening te openen, inclusief een bijbehorend IBAN en een bankkaart. Het openen van een rekening is onderworpen aan voorafgaande identiteitsverificatie. Overschrijvingen en andere transacties die vanaf uw rekening worden uitgevoerd, zijn onderworpen aan de voorwaarden en eventuele limieten die zijn vastgesteld bij het openen van uw rekening of die vermeld staan in uw klantomgeving.'
         ],
         [
-            'title' => '4. Contract- en verzekeringskosten',
-            'content' => 'Bij het afsluiten van een lening bij ' . site_name() . ' kunnen contract- en verzekeringskosten in rekening worden gebracht. Deze kosten dekken de administratieve kosten die verbonden zijn aan het opzetten en beheren van uw lening. De specifieke details van deze kosten worden duidelijk vermeld in uw leningsovereenkomst. U bent verplicht deze kosten te betalen overeenkomstig de vastgestelde voorwaarden.'
+            'title' => '4. Leendiensten',
+            'content' => site_name() . ' biedt ook verschillende soorten leningen aan om aan uw financiële behoeften te voldoen. Alle leningen zijn onderworpen aan goedkeuring op basis van onze beoordeling van uw kredietwaardigheid en terugbetalingscapaciteit. De specifieke voorwaarden van elke lening, met inbegrip van rentetarieven, looptijden en terugbetalingsmodaliteiten, worden nader toegelicht in uw leningsovereenkomst. Bij het afsluiten van een lening kunnen contract- en verzekeringskosten in rekening worden gebracht; deze kosten worden duidelijk vermeld in uw leningsovereenkomst.'
         ],
         [
             'title' => '5. Vertrouwelijkheid',

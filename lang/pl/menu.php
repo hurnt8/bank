@@ -9,6 +9,7 @@ return [
     'simulate' => 'Symulacja kredytu',
     'contact' => 'Kontakt',
     'loan' => 'Wnioskuj o kredyt',
+    'open_account' => 'Otwórz konto',
 
     'personal' => 'Kredyt osobisty',
     'auto' => 'Kredyt samochodowy',
@@ -17,7 +18,12 @@ return [
     'business' => 'Kredyt biznesowy',
     'bike' => 'Kredyt na rower',
 
-    'arlert' => 'Uzyskaj kredyt z oprocentowaniem do 3%',
+    'banking_account' => 'Konto bankowe',
+    'banking_card'    => 'Karta bankowa',
+    'banking_transfer'=> 'Przelewy',
+    'banking_loans'   => 'Kredyty i finansowanie',
+
+    'arlert' => 'Bank 100% online, konto otwarte w kilka minut',
 
     'faq'              => 'FAQ',
     'terms'            => 'Warunki użytkowania',
@@ -29,5 +35,5 @@ return [
     'newsletter_title' => 'Bądź na bieżąco z naszymi ofertami',
     'subscribe'        => 'Subskrybuj',
     'read_more'        => 'Dowiedz się więcej',
-    'footer_desc'      => site_name() . ' to Twój zaufany partner w zakresie szybkich, elastycznych i spersonalizowanych rozwiązań finansowych w całej Europie.',
+    'footer_desc'      => site_name() . ' to bank 100% online: otwórz konto, otrzymaj kartę i IBAN w kilka minut oraz korzystaj z naszych rozwiązań finansowych w całej Europie.',
 ];

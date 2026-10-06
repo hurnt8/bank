@@ -3,45 +3,42 @@
 return [
     'banner_title' => 'Discover ' . site_name(),
     'banner_subtitle' => 'About us',
-    'banner_description' => 'Borrow more easily with flexible loan solutions adapted to your financial needs.',
+    'banner_description' => 'A 100% online bank: open your account in minutes and manage your money with ease.',
 
     'section1_title' => 'Why choose ' . site_name(),
-    'section1_p1' => 'At ' . site_name() . ', we firmly believe that everyone deserves a chance to realize their financial dreams. Since our inception, we have been committed to providing flexible and accessible lending solutions to meet the diverse needs of our customers. Whether you are looking to finance a personal project, buy a car, or expand your business, we have the loan you need.',
-    'section1_p2' => 'Our services are designed to provide a hassle-free experience, with a quick and easy application process. We understand that every client is unique, which is why we offer personalized loans that adapt to your specific needs. In addition, our dedicated advisors are always there to guide you every step of the way, ensuring you are fully supported from start to finish.',
-    'proposed' => 'We propose:',
-    'check1' => 'Personalized loans according to your specific needs.',
-    'check2' => 'Dedicated advisors to help you every step of the way.',
-    'check3' => 'Flexible repayment terms to suit your financial situation',
-    'check4' => 'Loans without you having a paycheck.',
-    'section1_p3' => 'At ' . site_name() . ', our mission is to help you achieve your financial goals with tailor-made loan solutions. Join us today and find out how we can help you make your projects a reality.',
-    'btn' => 'Find Your Ideal Loan',
+    'section1_p1' => 'At ' . site_name() . ', we firmly believe that everyone deserves simple and transparent access to modern banking services. Since our inception, we have been committed to offering an account, a card and transfers accessible to everyone, without paperwork or branch queues. And if you need to finance a project, we also offer flexible loan solutions.',
+    'section1_p2' => 'Our services are designed to provide a hassle-free experience: account opening in minutes, secure identity verification, and personalized support at every step. Our dedicated advisors are always there to guide you, whether for managing your account day to day or for a financing request.',
+    'proposed' => 'We offer:',
+    'check1' => 'A bank account opened in minutes, 100% online.',
+    'check2' => 'A bank card and an IBAN linked to your account.',
+    'check3' => 'Fast and secure transfers, in complete transparency.',
+    'check4' => 'Flexible loan solutions to finance your projects.',
+    'section1_p3' => 'At ' . site_name() . ', our mission is to simplify your everyday banking while supporting you in your financial projects. Join us today and discover how we can help you.',
+    'btn' => 'Open my account',
 
     'faq_title' => 'Frequently Asked Questions',
-    'faq_description' => 'Find answers to the most common questions about our loan services.',
-    'acc_1' => 'What types of loans do you offer?',
-    'acc_1_desc' => 'We offer a variety of loans, including personal loans, loans
-    mortgages, auto loans and small business loans. Each
+    'faq_description' => 'Find answers to the most common questions about your account and our loan services.',
+    'acc_1' => 'How do I open an account with ' . site_name() . '?',
+    'acc_1_desc' => 'Account opening is done entirely online in a few minutes: enter
+    your information, verify your identity, then activate your account from the
+    email received. You will then receive your IBAN and your bank card.',
+    'acc_2' => 'What fees apply to the account and the card?',
+    'acc_2_desc' => 'Our pricing terms are transparent and communicated before any
+    account opening. No hidden fees: you know exactly what you are paying.',
+    'acc_3' => 'What types of loans do you offer?',
+    'acc_3_desc' => 'In addition to your account, we offer a variety of loans, including
+    personal loans, mortgages, auto loans and small business loans. Each
     type of loan is designed to meet specific needs and offers
     flexible conditions.',
-    'acc_2' => 'How can I apply for a loan?',
-    'acc_2_desc' => 'You can apply for a loan directly on our website by
+    'acc_4' => 'How can I apply for a loan?',
+    'acc_4_desc' => 'You can apply for a loan directly on our website by
     completing the online application form. We will ask you for
     basic information such as your name, contact details, and the amount of the
     desired loan. Our advisors will contact you to finalize the request and
     guide you through the process.',
-    'acc_3' => 'What are the eligibility criteria for a loan?',
-    'acc_3_desc' => 'Eligibility criteria vary depending on the type of loan, but in general, you
-    must be of legal age, have a stable income and a good credit score. We
-    We will also examine your repayment capacity and your history
-    financial.',
-    'acc_4' => 'What is the processing time for a loan request?',
-    'acc_4_desc' => ' The processing time varies depending on the type of loan and the complexity of your
-    request. In general, personal loan applications are processed within 24 to 48
-    hours, while mortgages can take several days in
-    reason for the more in-depth checks required.',
     'acc_5' => 'Can I repay my loan early?',
-    'acc_5_desc' => 'Yes, you can repay your loan early without penalty. We you
-    We encourage you to repay your loan sooner if possible, as this will reduce the
+    'acc_5_desc' => ' Yes, you can repay your loan early without penalty. We
+    encourage you to repay your loan sooner if possible, as this will reduce the
     total amount of interest you will pay over the life of the loan.',
 
 ];

@@ -3,7 +3,7 @@
 return [
     'title' => 'Politica de confidențialitate',
     'introduction_title' => '1. Introducere',
-    'introduction_text' => 'La ' . site_name() . ', ne angajăm să protejăm și să respectăm viața dumneavoastră privată. Această politică de confidențialitate explică modul în care colectăm, utilizăm, divulgăm și protejăm informațiile dumneavoastră personale atunci când utilizați site-ul nostru și serviciile noastre de creditare online. Prin utilizarea site-ului nostru, sunteți de acord cu practicile descrise în această politică.',
+    'introduction_text' => 'La ' . site_name() . ', ne angajăm să protejăm și să respectăm viața dumneavoastră privată. Această politică de confidențialitate explică modul în care colectăm, utilizăm, divulgăm și protejăm informațiile dumneavoastră personale atunci când utilizați site-ul nostru, contul dumneavoastră bancar online și serviciile noastre de creditare. Prin utilizarea site-ului nostru, sunteți de acord cu practicile descrise în această politică.',
     'information_collection_title' => '2. Informațiile pe care le colectăm',
     'information_collection_text' => 'Putem colecta și prelucra următoarele informații despre dumneavoastră:',
     'information_collection_list' => [
@@ -14,17 +14,18 @@ return [
     'information_use_title' => '3. Utilizarea informațiilor dumneavoastră',
     'information_use_text' => 'Utilizăm informațiile pe care le colectăm pentru:',
     'information_use_list' => [
-        'A furniza și gestiona serviciile noastre de creditare, inclusiv evaluarea eligibilității dumneavoastră pentru un împrumut și administrarea contului dumneavoastră.',
+        'A deschide și gestiona contul dumneavoastră bancar, cardul și operațiunile dumneavoastră (transferuri, mișcări de cont).',
+        'A furniza și gestiona serviciile noastre de creditare, inclusiv evaluarea eligibilității dumneavoastră pentru un împrumut.',
         'A îmbunătăți site-ul și serviciile noastre, inclusiv prin analizarea modului în care utilizați site-ul nostru și personalizarea experienței dumneavoastră.',
-        'A comunica cu dumneavoastră, inclusiv pentru a vă informa despre stadiul cererii dumneavoastră de împrumut, actualizările serviciilor noastre și ofertele promoționale.',
-        'A respecta obligațiile noastre legale și de reglementare.',
+        'A comunica cu dumneavoastră, inclusiv pentru a vă informa despre stadiul contului dumneavoastră, al cererii dumneavoastră de împrumut, actualizările serviciilor noastre și ofertele promoționale.',
+        'A respecta obligațiile noastre legale și de reglementare, inclusiv obligațiile de verificare a identității (KYC).',
     ],
     'information_sharing_title' => '4. Distribuirea informațiilor dumneavoastră',
     'information_sharing_text' => 'Putem distribui informațiile dumneavoastră personale cu:',
     'information_sharing_list' => [
-        'Partenerii și furnizorii noștri de servicii care ne ajută să furnizăm și să îmbunătățim serviciile noastre de creditare.',
-        'Agențiile de credit și alte instituții financiare, pentru a evalua bonitatea dumneavoastră și a gestiona riscurile financiare.',
-        'Autoritățile de reglementare și guvernamentale, atunci când legea o impune.',
+        'Partenerii și furnizorii noștri de servicii care ne ajută să furnizăm și să îmbunătățim serviciile noastre bancare și de creditare.',
+        'Agențiile de credit și alte instituții financiare, pentru a evalua bonitatea dumneavoastră, a procesa operațiunile dumneavoastră bancare și a gestiona riscurile financiare.',
+        'Autoritățile de reglementare și guvernamentale, atunci când legea o impune, inclusiv în cadrul obligațiilor noastre privind combaterea spălării banilor.',
         'Terți, în cadrul unei tranzacții comerciale, precum o fuziune, achiziție sau vânzare de active.',
     ],
     'information_security_title' => '5. Securitatea informațiilor dumneavoastră',

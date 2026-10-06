@@ -5,19 +5,19 @@ return [
     'sections' => [
         [
             'title' => '1. Įvadas',
-            'content' => 'Sveiki atvykę į ' . site_name() . '. Naudodamiesi mūsų svetaine ir paslaugomis, sutinkate laikytis toliau nurodytų sąlygų ir būti jų saistomos. Prašome atidžiai perskaityti šias sąlygas prieš naudodamiesi mūsų svetaine arba imdami paskolą su mumis.',
+            'content' => 'Sveiki atvykę į ' . site_name() . '. Naudodamiesi mūsų svetaine ir paslaugomis, sutinkate laikytis toliau nurodytų sąlygų ir būti jų saistomos. Prašome atidžiai perskaityti šias sąlygas prieš atidarydami sąskaitą, naudodamiesi mūsų bankinėmis paslaugomis arba imdami paskolą su mumis.',
         ],
         [
             'title' => '2. Svetainės naudojimas',
             'content' => 'Apsilankydami mūsų svetainėje sutinkate naudotis mūsų paslaugomis tik teisėtais tikslais ir pagal šias sąlygas. Jūs sutinkate nesinaudoti mūsų svetaine jokiu būdu, kuris sukeltų žalą, pertraukimus ar trukdžius mūsų paslaugoms arba kitų vartotojų prieigai.',
         ],
         [
-            'title' => '3. Paskolų paslaugos',
-            'content' => site_name() . ' siūlo įvairių tipų paskolas, kad patenkintų jūsų finansinius poreikius. Visos paskolos turi būti patvirtintos, remiantis mūsų įvertinimu apie jūsų kreditingumą ir grąžinimo galimybes. Konkrečios kiekvienos paskolos sąlygos, įskaitant palūkanų normas, terminus ir grąžinimo sąlygas, bus išsamiai nurodytos jūsų paskolos sutartyje.',
+            'title' => '3. Sąskaita, kortelė ir bankinės paslaugos',
+            'content' => site_name() . ' suteikia galimybę atidaryti sąskaitą internetu, įskaitant susietą IBAN ir banko kortelę. Sąskaitos atidarymas vyksta tik po tapatybės patvirtinimo. Pervedimams ir kitoms operacijoms, atliekamoms iš jūsų sąskaitos, taikomos sąlygos ir galimi limitai, nurodyti sąskaitos atidarymo metu arba jūsų kliento zonoje.',
         ],
         [
-            'title' => '4. Sutarties ir draudimo išlaidos',
-            'content' => 'Išimant paskolą su ' . site_name() . ', gali būti taikomi sutarties ir draudimo mokesčiai. Šis mokestis padengia administracines išlaidas, susijusias su paskolos nustatymu ir valdymu. Konkreti informacija apie šiuos mokesčius bus aiškiai nurodyta jūsų paskolos sutartyje. Šiuos mokesčius privalote sumokėti pagal nurodytas sąlygas.',
+            'title' => '4. Paskolų paslaugos',
+            'content' => site_name() . ' taip pat siūlo įvairių tipų paskolas, kad patenkintų jūsų finansinius poreikius. Visos paskolos turi būti patvirtintos, remiantis mūsų įvertinimu apie jūsų kreditingumą ir grąžinimo galimybes. Konkrečios kiekvienos paskolos sąlygos, įskaitant palūkanų normas, terminus ir grąžinimo sąlygas, bus išsamiai nurodytos jūsų paskolos sutartyje. Imant paskolą gali būti taikomi sutarties ir draudimo mokesčiai; šie mokesčiai bus aiškiai nurodyti jūsų sutartyje.',
         ],
         [
             'title' => '5. Konfidencialumas',

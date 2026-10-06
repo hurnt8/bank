@@ -9,6 +9,7 @@ return [
     'simulate' => 'Kreditsimulation',
     'contact' => 'Kontakt',
     'loan' => 'Kredit beantragen',
+    'open_account' => 'Konto eröffnen',
 
     'personal' => 'Privatkredit',
     'auto' => 'Autokredit',
@@ -17,7 +18,12 @@ return [
     'business' => 'Geschäftskredit',
     'bike' => 'Fahrradkredit',
 
-    'arlert' => 'Holen Sie sich einen Kredit mit bis zu 3 % Zinsen',
+    'banking_account' => 'Bankkonto',
+    'banking_card'    => 'Bankkarte',
+    'banking_transfer'=> 'Überweisungen',
+    'banking_loans'   => 'Kredite & Finanzierung',
+
+    'arlert' => 'Eine 100 % Online-Bank, ein Konto in wenigen Minuten eröffnet',
 
 
     'faq'              => 'FAQ',
@@ -30,5 +36,5 @@ return [
     'newsletter_title' => 'Bleiben Sie über unsere Angebote informiert',
     'subscribe'        => 'Abonnieren',
     'read_more'        => 'Mehr erfahren',
-    'footer_desc'      => site_name() . ' ist Ihr vertrauenswürdiger Partner für schnelle, flexible und individuelle Finanzierungslösungen in ganz Europa.',
+    'footer_desc'      => site_name() . ' ist eine 100 % Online-Bank: Eröffnen Sie ein Konto, erhalten Sie Ihre Karte und IBAN in wenigen Minuten und profitieren Sie auch von unseren Finanzierungslösungen in ganz Europa.',
 ];

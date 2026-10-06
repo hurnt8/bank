@@ -5,19 +5,19 @@ return [
     'sections' => [
         [
             'title' => '1. Einführung',
-            'content' => 'Willkommen bei ' . site_name() . '. Durch die Nutzung unserer Website und Dienste erklären Sie sich mit den folgenden Geschäftsbedingungen einverstanden und an diese gebunden. Bitte lesen Sie diese Bedingungen sorgfältig durch, bevor Sie unsere Website nutzen oder einen Kredit bei uns aufnehmen.',
+            'content' => 'Willkommen bei ' . site_name() . '. Durch die Nutzung unserer Website und Dienste erklären Sie sich mit den folgenden Geschäftsbedingungen einverstanden und an diese gebunden. Bitte lesen Sie diese Bedingungen sorgfältig durch, bevor Sie ein Konto eröffnen, unsere Bankdienstleistungen nutzen oder einen Kredit bei uns aufnehmen.',
         ],
         [
             'title' => '2. Nutzung der Website',
             'content' => 'Durch den Zugriff auf unsere Website erklären Sie sich damit einverstanden, unsere Dienste nur für rechtmäßige Zwecke und in Übereinstimmung mit diesen Bedingungen zu nutzen. Sie erklären sich damit einverstanden, unsere Website nicht in einer Weise zu nutzen, die zu Schäden, Unterbrechungen oder Störungen unserer Dienste oder des Zugriffs anderer Benutzer führt.',
         ],
         [
-            'title' => '3. Kreditdienstleistungen',
-            'content' => site_name() . ' bietet verschiedene Arten von Krediten an, um Ihren finanziellen Bedürfnissen gerecht zu werden. Alle Kredite unterliegen der Genehmigung auf Grundlage unserer Einschätzung Ihrer Kreditwürdigkeit und Rückzahlungsfähigkeit. Die spezifischen Bedingungen jedes Darlehens, einschließlich Zinssätze, Laufzeiten und Rückzahlungsbedingungen, werden in Ihrem Darlehensvertrag detailliert beschrieben.',
+            'title' => '3. Konto-, Karten- und Bankdienstleistungen',
+            'content' => site_name() . ' bietet die Eröffnung eines Online-Kontos an, einschließlich einer zugehörigen IBAN und Bankkarte. Die Kontoeröffnung setzt eine vorherige Identitätsprüfung voraus. Überweisungen und andere von Ihrem Konto aus getätigte Transaktionen unterliegen den Bedingungen und etwaigen Obergrenzen, die bei der Kontoeröffnung oder in Ihrem Kundenbereich angegeben werden.',
         ],
         [
-            'title' => '4. Vertrags- und Versicherungskosten',
-            'content' => 'Bei der Aufnahme eines Kredits bei ' . site_name() . ' können Vertrags- und Versicherungsgebühren anfallen. Diese Gebühr deckt die Verwaltungskosten ab, die mit der Einrichtung und Verwaltung Ihres Kredits verbunden sind. Die genauen Einzelheiten dieser Gebühren werden in Ihrem Darlehensvertrag klar dargelegt. Sie sind verpflichtet, diese Gebühren gemäß den angegebenen Bedingungen zu zahlen.',
+            'title' => '4. Kreditdienstleistungen',
+            'content' => site_name() . ' bietet außerdem verschiedene Arten von Krediten an, um Ihren finanziellen Bedürfnissen gerecht zu werden. Alle Kredite unterliegen der Genehmigung auf Grundlage unserer Einschätzung Ihrer Kreditwürdigkeit und Rückzahlungsfähigkeit. Die spezifischen Bedingungen jedes Darlehens, einschließlich Zinssätze, Laufzeiten und Rückzahlungsbedingungen, werden in Ihrem Darlehensvertrag detailliert beschrieben. Bei der Aufnahme eines Kredits können Vertrags- und Versicherungsgebühren anfallen; diese Gebühren werden in Ihrem Darlehensvertrag klar angegeben.',
         ],
         [
             'title' => '5. Vertraulichkeit',

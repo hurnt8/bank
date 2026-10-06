@@ -3,7 +3,7 @@
 return [
     'title' => 'Política de privacidade',
     'introduction_title' => '1. Introdução',
-    'introduction_text' => 'Na ' . site_name() . ', estamos comprometidos em proteger e respeitar sua privacidade. Esta política de privacidade explica como coletamos, usamos, divulgamos e protegemos suas informações pessoais quando você utiliza nosso site e serviços de empréstimo online. Ao usar nosso site, você aceita as práticas descritas nesta política.',
+    'introduction_text' => 'Na ' . site_name() . ', estamos comprometidos em proteger e respeitar sua privacidade. Esta política de privacidade explica como coletamos, usamos, divulgamos e protegemos suas informações pessoais quando você utiliza nosso site, sua conta bancária online e nossos serviços de empréstimo. Ao usar nosso site, você aceita as práticas descritas nesta política.',
     'information_collection_title' => '2. Informações que coletamos',
     'information_collection_text' => 'Podemos coletar e processar as seguintes informações sobre você:',
     'information_collection_list' => [
@@ -14,17 +14,18 @@ return [
     'information_use_title' => '3. Uso das suas informações',
     'information_use_text' => 'Usamos as informações que coletamos para:',
     'information_use_list' => [
-        'Fornecer e gerenciar nossos serviços de empréstimo, incluindo avaliar sua elegibilidade para empréstimo e gerenciar sua conta.',
+        'Abrir e gerenciar sua conta bancária, seu cartão e suas operações (transferências, movimentos de conta).',
+        'Fornecer e gerenciar nossos serviços de empréstimo, incluindo a avaliação de sua elegibilidade para empréstimo.',
         'Melhorar nosso site e serviços, incluindo analisando como você usa nosso site e personalizando sua experiência.',
-        'Comunicar com você, especialmente para informá-lo sobre o status de sua solicitação de empréstimo, atualizações em nossos serviços e ofertas promocionais.',
-        'Cumprir nossas obrigações legais e regulatórias.',
+        'Comunicar com você, especialmente para informá-lo sobre o status de sua conta, de sua solicitação de empréstimo, atualizações em nossos serviços e ofertas promocionais.',
+        'Cumprir nossas obrigações legais e regulatórias, incluindo nossas obrigações de verificação de identidade (KYC).',
     ],
     'information_sharing_title' => '4. Compartilhamento das suas informações',
     'information_sharing_text' => 'Podemos compartilhar suas informações pessoais com:',
     'information_sharing_list' => [
-        'Nossos parceiros e prestadores de serviços que nos ajudam a fornecer e melhorar nossos serviços de empréstimo.',
-        'Agências de crédito e outras instituições financeiras para avaliar sua solvência e gerenciar riscos financeiros.',
-        'Autoridades regulatórias e governamentais, quando exigido por lei.',
+        'Nossos parceiros e prestadores de serviços que nos ajudam a fornecer e melhorar nossos serviços bancários e de empréstimo.',
+        'Agências de crédito e outras instituições financeiras para avaliar sua solvência, processar suas operações bancárias e gerenciar riscos financeiros.',
+        'Autoridades regulatórias e governamentais, quando exigido por lei, inclusive no âmbito de nossas obrigações de combate à lavagem de dinheiro.',
         'Terceiros no contexto de uma transação comercial, como fusão, aquisição ou venda de ativos.',
     ],
     'information_security_title' => '5. Segurança das suas informações',

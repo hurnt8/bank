@@ -5,19 +5,19 @@ return [
     'sections' => [
         [
             'title' => '1. Introduction',
-            'content' => 'Welcome to ' . site_name() . '. By using our site and services, you agree to comply with and be bound by the following terms and conditions. Please read these terms carefully before using our site or taking out a loan with us.'
+            'content' => 'Welcome to ' . site_name() . '. By using our site and services, you agree to comply with and be bound by the following terms and conditions. Please read these terms carefully before opening an account, using our banking services or taking out a loan with us.'
         ],
         [
             'title' => '2. Use of the site',
             'content' => 'By accessing our site, you agree to use our services only for legal purposes and in accordance with these conditions. You agree not to use our site in any way that causes damage, interruption or interference with our services or the access of other users.'
         ],
         [
-            'title' => '3. Loan services',
-            'content' => site_name() . ' offers various types of loans to meet your financial needs. All loans are subject to approval based on our assessment of your creditworthiness and repayment capacity. The specific terms of each loan, including interest rates, maturities and repayment terms, will be detailed in your loan agreement.'
+            'title' => '3. Account, card and banking services',
+            'content' => site_name() . ' offers online account opening, including an associated IBAN and bank card. Account opening is subject to prior identity verification. Transfers and other transactions made from your account are subject to the conditions and any limits specified when your account was opened or in your client area.'
         ],
         [
-            'title' => '4. Contract and insurance costs',
-            'content' => 'When taking out a loan with ' . site_name() . ', contract and insurance fees may be applied. This fee covers the administrative costs associated with setting up and managing your loan. The specific details of these fees will be clearly stated in your loan agreement. You are required to pay these charges in accordance with the terms specified.'
+            'title' => '4. Loan services',
+            'content' => site_name() . ' also offers various types of loans to meet your financial needs. All loans are subject to approval based on our assessment of your creditworthiness and repayment capacity. The specific terms of each loan, including interest rates, maturities and repayment terms, will be detailed in your loan agreement. Contract and insurance fees may apply when taking out a loan; these fees will be clearly stated in your loan agreement.'
         ],
         [
             'title' => '5. Confidentiality',

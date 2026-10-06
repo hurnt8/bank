@@ -1,46 +1,42 @@
 <?php
 
 return [
-    'banner_title' => 'Fedezze fel a Solberg Grupót',
+    'banner_title' => 'Fedezze fel a(z) ' . site_name() . 't',
     'banner_subtitle' => 'Rólunk',
-    'banner_description' => 'A pénzügyi igényeihez igazodó rugalmas hitelmegoldások segítségével könnyebben felvehet kölcsönt.',
+    'banner_description' => '100%-ban online bank: nyissa meg számláját néhány perc alatt, és kezelje pénzét egyszerűen.',
 
-    'section1_title' => 'Miért válassza a Solberg Grupót?',
-    'section1_p1' => 'A Solberg Grupónál szilárdan hiszünk abban, hogy mindenki megérdemel egy esélyt pénzügyi álmai megvalósítására. Megalakulásunk óta elkötelezettek vagyunk a rugalmas és elérhető hitelezési megoldások mellett, ügyfeleink sokrétű igényeinek kielégítésére. Akár személyes projektet szeretne finanszírozni, akár autót szeretne vásárolni, akár bővíteni szeretné vállalkozását, nálunk megtalálja a szükséges kölcsönt.',
-    'section1_p2' => 'Szolgáltatásainkat úgy alakítottuk ki, hogy problémamentes élményt nyújtsanak, gyors és egyszerű jelentkezési folyamattal. Tisztában vagyunk vele, hogy minden ügyfél egyedi, ezért kínálunk személyre szabott hiteleket, amelyek alkalmazkodnak az Ön egyedi igényeihez. Emellett elkötelezett tanácsadóink mindig készen állnak, hogy végigvezetik Önt az út minden lépésében, biztosítva, hogy az elejétől a végéig teljes körű támogatást kapjon.',
-    'proposed' => 'Javaslatunk:',
-    'check1' => 'Személyre szabott kölcsönök az Ön egyedi igényei szerint.',
-    'check2' => 'Elkötelezett tanácsadók segítenek minden lépésben.',
-    'check3' => 'Rugalmas visszafizetési feltételek az Ön pénzügyi helyzetének megfelelően',
-    'check4' => 'Kölcsönek fizetés nélkül.',
-    'section1_p3' => 'A Solberg Grupónál küldetésünk, hogy személyre szabott hitelmegoldásokkal segítsük pénzügyi céljai elérésében. Csatlakozzon hozzánk még ma, és megtudja, hogyan segíthetünk projektjei megvalósításában.',
-    'btn' => 'Találja meg ideális kölcsönét',
+    'section1_title' => 'Miért válassza a(z) ' . site_name() . 't?',
+    'section1_p1' => 'A ' . site_name() . 'nál szilárdan hisszük, hogy mindenki megérdemli az egyszerű és átlátható hozzáférést a modern banki szolgáltatásokhoz. Megalakulásunk óta elkötelezettek vagyunk amellett, hogy mindenki számára elérhető számlát, kártyát és átutalásokat kínáljunk, papírmunka és fiókban való sorban állás nélkül. És ha egy projekt finanszírozására van szüksége, rugalmas kölcsönmegoldásokat is kínálunk.',
+    'section1_p2' => 'Szolgáltatásainkat úgy alakítottuk ki, hogy problémamentes élményt nyújtsanak: számlanyitás néhány perc alatt, biztonságos személyazonosság-ellenőrzés és személyre szabott támogatás minden lépésben. Elkötelezett tanácsadóink mindig készen állnak, hogy végigvezessék Önt, akár a számlája napi kezeléséről, akár egy finanszírozási kérelemről van szó.',
+    'proposed' => 'Kínálatunk:',
+    'check1' => 'Néhány perc alatt megnyitott, 100%-ban online bankszámla.',
+    'check2' => 'A számlájához kapcsolódó bankkártya és IBAN.',
+    'check3' => 'Gyors és biztonságos átutalások, teljes átláthatósággal.',
+    'check4' => 'Rugalmas kölcsönmegoldások projektjei finanszírozásához.',
+    'section1_p3' => 'A ' . site_name() . 'nál küldetésünk, hogy egyszerűsítsük mindennapi banki ügyeit, miközben támogatjuk pénzügyi projektjeit. Csatlakozzon hozzánk még ma, és fedezze fel, hogyan segíthetünk Önnek.',
+    'btn' => 'Számlám megnyitása',
 
     'faq_title' => 'Gyakran Ismételt Kérdések',
-    'faq_description' => 'Válaszokat találhat a hitelszolgáltatásainkkal kapcsolatos leggyakoribb kérdésekre.',
-    'acc_1' => 'Milyen típusú kölcsönöket kínál?',
-    'acc_1_desc' => 'Számos kölcsönt kínálunk, beleértve a személyi kölcsönöket, kölcsönöket
-    jelzáloghitelek, autóhitelek és kisvállalkozási hitelek. Minden egyes
-    A kölcsön típusa egyedi igények és ajánlatok kielégítésére szolgál
-    rugalmas feltételek.',
-    'acc_2' => 'Hogyan igényelhetek kölcsönt?',
-    'acc_2_desc' => 'Kölcsönigénylését közvetlenül a weboldalunkon végezheti el
-    online jelentkezési lap kitöltésével. Kérni fogunk tőled
-    alapvető információkat, például az Ön nevét, elérhetőségeit és az összeg összegét
-    kívánt kölcsön. Tanácsadóink felveszik Önnel a kapcsolatot a kérés véglegesítése és
-    végigvezeti Önt a folyamaton.',
-    'acc_3' => 'Mik a kölcsön jogosultsági feltételei?',
-    'acc_3_desc' => 'A jogosultsági feltételek a kölcsön típusától függően változnak, de általában
-    nagykorúnak, stabil jövedelemmel és jó hitelképességgel kell rendelkeznie. Mi
-    Megvizsgáljuk törlesztőképességét és előzményeit is
-    pénzügyi.',
-    'acc_4' => 'Mi a kölcsönkérelem feldolgozási ideje?',
-    'acc_4_desc' => ' A feldolgozási idő a kölcsön típusától és a kölcsön összetettségétől függően változik.
-    kérés. A személyi kölcsönkérelmeket általában 24-48 között dolgozzák fel
-    óra, míg a jelzáloghitelek több napig is eltarthatnak
-    az alaposabb ellenőrzések szükségességének oka.',
+    'faq_description' => 'Válaszokat találhat a számlájával és hitelszolgáltatásainkkal kapcsolatos leggyakoribb kérdésekre.',
+    'acc_1' => 'Hogyan nyithatok számlát a(z) ' . site_name() . 'nál?',
+    'acc_1_desc' => 'A számlanyitás teljes egészében online, néhány perc alatt történik:
+    adja meg adatait, igazolja személyazonosságát, majd aktiválja számláját a kapott
+    e-mailből. Ezt követően megkapja IBAN-ját és bankkártyáját.',
+    'acc_2' => 'Milyen díjak vonatkoznak a számlára és a kártyára?',
+    'acc_2_desc' => 'Díjfeltételeink átláthatóak, és minden számlanyitás előtt közöljük őket.
+    Nincsenek rejtett díjak: pontosan tudja, miért fizet.',
+    'acc_3' => 'Milyen típusú kölcsönöket kínál?',
+    'acc_3_desc' => 'Számlája mellett számos kölcsönt kínálunk, beleértve a személyi kölcsönöket,
+    jelzáloghiteleket, autóhiteleket és kisvállalkozási hiteleket. Minden egyes
+    kölcsöntípus egyedi igények kielégítésére szolgál, és rugalmas feltételeket kínál.',
+    'acc_4' => 'Hogyan igényelhetek kölcsönt?',
+    'acc_4_desc' => 'Kölcsönigénylését közvetlenül a weboldalunkon végezheti el
+    online jelentkezési lap kitöltésével. Kérni fogunk Öntől
+    alapvető információkat, például nevét, elérhetőségeit és az igényelt
+    kölcsön összegét. Tanácsadóink felveszik Önnel a kapcsolatot a kérés véglegesítése és
+    a folyamaton való végigvezetés érdekében.',
     'acc_5' => 'Visszafizethetem előbb a hitelemet?',
-    'acc_5_desc' => 'Igen, büntetés nélkül visszafizetheti kölcsönét idő előtt. Mi te
-    Javasoljuk, hogy lehetőleg minél előbb fizesse vissza hitelét, mert ezzel csökkenti a
-    a kölcsön futamideje alatt fizetendő kamat teljes összege.',
+    'acc_5_desc' => 'Igen, büntetés nélkül visszafizetheti kölcsönét idő előtt.
+    Javasoljuk, hogy lehetőleg minél előbb fizesse vissza hitelét, mert ezzel csökkenti
+    a kölcsön futamideje alatt fizetendő kamat teljes összegét.',
 ];

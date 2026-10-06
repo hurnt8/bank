@@ -645,21 +645,4 @@ document.addEventListener('alpine:init', () => {
 }
 </style>
 @endpush
-<section class="py-10" style="background:#f7f8fa;border-top:1px solid #eaecf0;border-bottom:1px solid #eaecf0;">
-    <div class="container">
-        <p class="text-center" style="font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#9ca3af;margin-bottom:1.4rem;">
-            @lang('home.partners_label')
-        </p>
-        <div class="partners-marquee">
-            <div class="partners-track">
-                @foreach (__('home.partners_list') as $bankName)
-                <div class="partner-logo partner-logo--text">{{ $bankName }}</div>
-                @endforeach
-                @foreach (__('home.partners_list') as $bankName)
-                <div class="partner-logo partner-logo--text" aria-hidden="true">{{ $bankName }}</div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
 @endsection

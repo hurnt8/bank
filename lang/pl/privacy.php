@@ -3,7 +3,7 @@
 return [
     'title' => 'Polityka prywatności',
     'introduction_title' => '1. Wprowadzenie',
-    'introduction_text' => 'W ' . site_name() . ' zobowiązujemy się chronić i szanować Twoją prywatność. Niniejsza polityka prywatności wyjaśnia, w jaki sposób zbieramy, wykorzystujemy, ujawniamy i chronimy Twoje dane osobowe podczas korzystania z naszej strony internetowej i usług kredytowych online. Korzystając z naszej strony, akceptujesz praktyki opisane w niniejszej polityce.',
+    'introduction_text' => 'W ' . site_name() . ' zobowiązujemy się chronić i szanować Twoją prywatność. Niniejsza polityka prywatności wyjaśnia, w jaki sposób zbieramy, wykorzystujemy, ujawniamy i chronimy Twoje dane osobowe podczas korzystania z naszej strony internetowej, Twojego konta bankowego online oraz naszych usług kredytowych. Korzystając z naszej strony, akceptujesz praktyki opisane w niniejszej polityce.',
     'information_collection_title' => '2. Informacje, które zbieramy',
     'information_collection_text' => 'Możemy zbierać i przetwarzać następujące informacje na Twój temat:',
     'information_collection_list' => [
@@ -14,17 +14,18 @@ return [
     'information_use_title' => '3. Wykorzystanie Twoich informacji',
     'information_use_text' => 'Wykorzystujemy zbierane informacje w celu:',
     'information_use_list' => [
-        'Świadczenia i zarządzania naszymi usługami kredytowymi, w tym oceny Twojej zdolności kredytowej i zarządzania Twoim kontem.',
+        'Otwierania i zarządzania Twoim kontem bankowym, kartą oraz operacjami (przelewy, ruchy na koncie).',
+        'Świadczenia i zarządzania naszymi usługami kredytowymi, w tym oceny Twojej zdolności kredytowej.',
         'Ulepszania naszej strony internetowej i usług, w szczególności poprzez analizę sposobu korzystania ze strony i personalizację Twojego doświadczenia.',
-        'Komunikacji z Tobą, w szczególności w celu informowania o statusie Twojego wniosku kredytowego, aktualizacjach naszych usług oraz ofertach promocyjnych.',
-        'Wypełniania naszych zobowiązań prawnych i regulacyjnych.',
+        'Komunikacji z Tobą, w szczególności w celu informowania o statusie Twojego konta, wniosku kredytowego, aktualizacjach naszych usług oraz ofertach promocyjnych.',
+        'Wypełniania naszych zobowiązań prawnych i regulacyjnych, w tym obowiązków weryfikacji tożsamości (KYC).',
     ],
     'information_sharing_title' => '4. Udostępnianie Twoich informacji',
     'information_sharing_text' => 'Możemy udostępniać Twoje dane osobowe:',
     'information_sharing_list' => [
-        'Naszym partnerom i dostawcom usług, którzy pomagają nam świadczyć i ulepszać nasze usługi kredytowe.',
-        'Agencjom kredytowym i innym instytucjom finansowym w celu oceny Twojej zdolności kredytowej i zarządzania ryzykiem finansowym.',
-        'Organom regulacyjnym i rządowym, gdy jest to wymagane przez prawo.',
+        'Naszym partnerom i dostawcom usług, którzy pomagają nam świadczyć i ulepszać nasze usługi bankowe i kredytowe.',
+        'Agencjom kredytowym i innym instytucjom finansowym w celu oceny Twojej zdolności kredytowej, przetwarzania Twoich operacji bankowych i zarządzania ryzykiem finansowym.',
+        'Organom regulacyjnym i rządowym, gdy jest to wymagane przez prawo, w szczególności w ramach naszych obowiązków w zakresie przeciwdziałania praniu pieniędzy.',
         'Osobom trzecim w ramach transakcji handlowej, takiej jak fuzja, przejęcie lub sprzedaż aktywów.',
     ],
     'information_security_title' => '5. Bezpieczeństwo Twoich informacji',

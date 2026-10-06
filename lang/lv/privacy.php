@@ -3,7 +3,7 @@
 return [
     'title' => 'Konfidencialitātes politika',
     'introduction_title' => '1. Ievads',
-    'introduction_text' => site_name() . ' apņemas aizsargāt un cienīt jūsu privātumu. Šī konfidencialitātes politika izskaidro, kā mēs vācam, izmantojam, izpaužam un aizsargājam jūsu personas datus, kad izmantojat mūsu tīmekļa vietni un tiešsaistes aizdevumu pakalpojumus. Izmantojot mūsu vietni, jūs piekrītat šajā politikā aprakstītajai praksei.',
+    'introduction_text' => site_name() . ' apņemas aizsargāt un cienīt jūsu privātumu. Šī konfidencialitātes politika izskaidro, kā mēs vācam, izmantojam, izpaužam un aizsargājam jūsu personas datus, kad izmantojat mūsu tīmekļa vietni, savu tiešsaistes bankas kontu un mūsu aizdevumu pakalpojumus. Izmantojot mūsu vietni, jūs piekrītat šajā politikā aprakstītajai praksei.',
     'information_collection_title' => '2. Informācija, ko mēs vācam',
     'information_collection_text' => 'Mēs varam vākt un apstrādāt šādu informāciju par jums:',
     'information_collection_list' => [
@@ -14,17 +14,18 @@ return [
     'information_use_title' => '3. Jūsu informācijas izmantošana',
     'information_use_text' => 'Mēs izmantojam savākto informāciju, lai:',
     'information_use_list' => [
-        'Nodrošinātu un pārvaldītu mūsu aizdevumu pakalpojumus, tostarp izvērtētu jūsu tiesības saņemt aizdevumu un pārvaldītu jūsu kontu.',
+        'Atvērtu un pārvaldītu jūsu bankas kontu, karti un jūsu operācijas (pārvedumus, konta darbības).',
+        'Nodrošinātu un pārvaldītu mūsu aizdevumu pakalpojumus, tostarp izvērtētu jūsu tiesības saņemt aizdevumu.',
         'Uzlabotu mūsu tīmekļa vietni un pakalpojumus, tostarp analizējot, kā jūs izmantojat mūsu vietni, un personalizējot jūsu pieredzi.',
-        'Sazinātos ar jums, tostarp informētu par jūsu aizdevuma pieteikuma statusu, mūsu pakalpojumu atjauninājumiem un akciju piedāvājumiem.',
-        'Izpildītu mūsu juridiskos un normatīvos pienākumus.',
+        'Sazinātos ar jums, tostarp informētu par jūsu konta statusu, aizdevuma pieteikuma statusu, mūsu pakalpojumu atjauninājumiem un akciju piedāvājumiem.',
+        'Izpildītu mūsu juridiskos un normatīvos pienākumus, tostarp identitātes pārbaudes (KYC) pienākumus.',
     ],
     'information_sharing_title' => '4. Jūsu informācijas kopīgošana',
     'information_sharing_text' => 'Mēs varam kopīgot jūsu personas datus ar:',
     'information_sharing_list' => [
-        'Mūsu partneriem un pakalpojumu sniedzējiem, kas palīdz mums sniegt un uzlabot mūsu aizdevumu pakalpojumus.',
-        'Kredītiestādēm un citām finanšu institūcijām, lai izvērtētu jūsu maksātspēju un pārvaldītu finanšu riskus.',
-        'Regulatīvajām un valsts iestādēm, ja to pieprasa likums.',
+        'Mūsu partneriem un pakalpojumu sniedzējiem, kas palīdz mums sniegt un uzlabot mūsu bankas un aizdevumu pakalpojumus.',
+        'Kredītiestādēm un citām finanšu institūcijām, lai izvērtētu jūsu maksātspēju, apstrādātu jūsu bankas operācijas un pārvaldītu finanšu riskus.',
+        'Regulatīvajām un valsts iestādēm, ja to pieprasa likums, tostarp saistībā ar mūsu pienākumiem noziedzīgi iegūtu līdzekļu legalizācijas novēršanas jomā.',
         'Trešajām pusēm komercdarījuma ietvaros, piemēram, apvienošanās, iegādes vai aktīvu pārdošanas gadījumā.',
     ],
     'information_security_title' => '5. Jūsu informācijas drošība',

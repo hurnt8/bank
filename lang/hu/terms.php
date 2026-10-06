@@ -5,19 +5,19 @@ return [
     'sections' => [
         [
             'title' => '1. Bevezetés',
-            'content' => 'Üdvözöljük a Solberg Grupóban. Oldalunk és szolgáltatásaink használatával Ön elfogadja, hogy betartja és magára nézve kötelezőnek tartja az alábbi feltételeket. Kérjük, figyelmesen olvassa el ezeket a feltételeket, mielőtt használná oldalunkat vagy kölcsönt venne fel velünk.',
+            'content' => 'Üdvözöljük a Solberg Grupóban. Oldalunk és szolgáltatásaink használatával Ön elfogadja, hogy betartja és magára nézve kötelezőnek tartja az alábbi feltételeket. Kérjük, figyelmesen olvassa el ezeket a feltételeket, mielőtt számlát nyitna, bankszolgáltatásainkat használná, vagy kölcsönt venne fel velünk.',
         ],
         [
             'title' => '2. az oldal használata',
             'content' => 'Az oldalunkra való belépéssel beleegyezik abba, hogy szolgáltatásainkat kizárólag törvényes célokra és a jelen feltételekkel összhangban használja. Ön beleegyezik abba, hogy semmilyen módon nem használja webhelyünket, amely kárt, megszakítást vagy interferenciát okoz szolgáltatásainkban vagy más felhasználók hozzáférésében.',
         ],
         [
-            'title' => '3. kölcsönszolgáltatások',
-            'content' => 'A ' . site_name() . ' különféle típusú kölcsönöket kínál az Ön pénzügyi igényeinek kielégítésére. Valamennyi kölcsönt az Ön hitelképességére és törlesztőképességére vonatkozó értékelésünk alapján kell jóváhagyni. Az egyes kölcsönök konkrét feltételeit, beleértve a kamatlábakat, a lejáratokat és a törlesztési feltételeket, a kölcsönszerződés részletezi.',
+            'title' => '3. Számla, kártya és bankszolgáltatások',
+            'content' => 'A ' . site_name() . ' online számlanyitást kínál, amely egy hozzá tartozó IBAN-számot és bankkártyát is tartalmaz. A számlanyitás előzetes azonosság-ellenőrzéshez kötött. A számlájáról indított átutalásokra és egyéb műveletekre a számlanyitás során vagy ügyfélfelületén megadott feltételek és esetleges korlátok vonatkoznak.',
         ],
         [
-            'title' => '4. Szerződési és biztosítási költségek',
-            'content' => 'A ' . site_name() . ' hitelfelvételekor szerződési és biztosítási díjak vonatkozhatnak. Ez a díj fedezi a hitel felállításával és kezelésével kapcsolatos adminisztrációs költségeket. Ezeknek a díjaknak a konkrét részleteit egyértelműen fel kell tüntetni a hitelszerződésében. Ön köteles ezeket a díjakat a meghatározott feltételeknek megfelelően megfizetni.',
+            'title' => '4. Kölcsönszolgáltatások',
+            'content' => 'A ' . site_name() . ' különféle típusú kölcsönöket is kínál az Ön pénzügyi igényeinek kielégítésére. Valamennyi kölcsönt az Ön hitelképességére és törlesztőképességére vonatkozó értékelésünk alapján kell jóváhagyni. Az egyes kölcsönök konkrét feltételeit, beleértve a kamatlábakat, a lejáratokat és a törlesztési feltételeket, a kölcsönszerződés részletezi. Kölcsön felvételekor szerződési és biztosítási díjak vonatkozhatnak; ezeket a díjakat egyértelműen fel kell tüntetni a hitelszerződésében.',
         ],
         [
             'title' => '5. Titoktartás',

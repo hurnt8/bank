@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'general_title' => site_name() . ' - Labākie tiešsaistes aizdevēji Vācijā, Spānijā, Ungārijā u.c.',
-    'banner_title' => 'Saņemiet ideālo aizdevumu visām jūsu vajadzībām tiešsaistē.',
-    'banner_text' => 'Miljoniem cilvēku izmanto ' . site_name() . ', lai īstenotu savus projektus.',
-    'get_loan_now' => 'Saņemiet aizdevumu tagad',
+    'general_title' => site_name() . ' - Tiešsaistes banka: konts, karte un finansējums Eiropā.',
+    'banner_title' => 'Jūsu 100% tiešsaistes banka, atverama dažu minūšu laikā.',
+    'banner_text' => 'Miljoniem cilvēku izmanto ' . site_name() . ', lai ikdienā pārvaldītu savu naudu.',
+    'get_loan_now' => 'Simulējiet savu aizdevumu',
     'popular_loans' => 'Populārākie aizdevumu veidi:',
 
     // Loan types
-    'discover_our_loan_services' => 'Iepazīstiet mūsu aizdevumu pakalpojumus',
-    'find_the_right_loan' => 'Atrodiet jūsu vajadzībām piemērotāko aizdevumu no mūsu piedāvājumiem',
+    'discover_our_loan_services' => 'Nepieciešams finansējums? Iepazīstiet mūsu aizdevumus',
+    'find_the_right_loan' => 'Papildus savam kontam atrodiet jūsu vajadzībām piemērotāko aizdevumu no mūsu piedāvājumiem',
     'personal_loan' => 'Personīgais aizdevums',
     'personal_loan_description' => 'Jūsu personīgajiem projektiem',
     'personal_loan_details' => 'Ātrs un elastīgs finansējums visām jūsu personīgajām vajadzībām.',
@@ -68,7 +68,7 @@ return [
     'testimonials_certified_by' => 'Sertificējis: Trustindex',
     'testimonials_months_ago' => '{1} pirms 1 mēneša|[2,*] pirms :count mēnešiem',
     'testimonial_1' => [
-        'quote' => '"Saņēmu savu hipotekāro aizdevumu nepilnas nedēļas laikā. Konsultants bija ārkārtīgi pieejams, un piedāvātie nosacījumi bija krietni izdevīgāki nekā jebkur citur, ko atradu. Iesaku bez šaubām."',
+        'quote' => '"Atvēru savu kontu mazāk nekā 10 minūtēs no telefona, nekādi dokumenti nebija jāsūta pa pastu. Karte pienāca pēc dažām dienām. Patiess laika ietaupījums."',
         'name'  => 'Jānis Ozoliņš',
         'location' => 'Rīga, Latvija',
         'months_ago' => 1,
@@ -80,13 +80,13 @@ return [
         'months_ago' => 2,
     ],
     'testimonial_3' => [
-        'quote' => '"Process 100% tiešsaistē, ātra atbilde, konkurētspējīga likme. Es finansēju savu automašīnu, nemaz neapmeklējot filiāli. Moderns un efektīvs pakalpojums."',
+        'quote' => '"100% tiešsaistes process, bez slēptām maksām par karti, un atbalsts tiešām atbild ātri, ja ir jautājumi. Moderns un efektīvs pakalpojums."',
         'name'  => 'Toms Kalniņš',
         'location' => 'Liepāja, Latvija',
         'months_ago' => 2,
     ],
     'testimonial_4' => [
-        'quote' => '"Individuālā pieeja mani patiešām pārsteidza. Mans konsultants man zvanīja katrā posmā, lai izskaidrotu pieteikuma virzību. Jūties atbalstīts, nevis viens pats pretī veidlapām."',
+        'quote' => '"Varu sekot visām savas kontas darbībām un veikt pārskaitījumus no aplikācijas, kur arī atrastos. Patiešām jūties atbalstīts katru dienu."',
         'name'  => 'Signe Fogele',
         'location' => 'Jelgava, Latvija',
         'months_ago' => 3,
@@ -98,22 +98,22 @@ return [
         'months_ago' => 4,
     ],
     'testimonial_6' => [
-        'quote' => '"Pārskatāmība par likmēm un maksām mani pārliecināja jau no pirmā kontakta. Nekādu negaidītu pārsteigumu ceļā. Šajā nozarē tas ir reti un vērtīgi."',
+        'quote' => '"Pārskatāmība par konta un kartes maksām mani pārliecināja jau no pirmā kontakta. Nekādu negaidītu pārsteigumu ceļā. Šajā nozarē tas ir reti un vērtīgi."',
         'name'  => 'Sandra Krūmiņa',
         'location' => 'Jūrmala, Latvija',
         'months_ago' => 5,
     ],
     'testimonial_7' => [
-        'quote' => '"Vienkāršs un efektīvs aizdevuma process. Biju patīkami pārsteigta par apstiprinājuma ātrumu. Paldies visai komandai!"',
+        'quote' => '"Vienkārša un ātra konta atvēršana. Biju patīkami pārsteigta par identitātes pārbaudes vienkāršumu. Paldies visai komandai!"',
         'name' => 'Marie C.',
     ],
     'testimonial_8' => [
-        'quote' => '"Man bija lieliska pieredze ar šo aizdevumu pakalpojumu. Personāls bija uzmanīgs un profesionāls. Iesaku bez vilcināšanās!"',
+        'quote' => '"Man bija lieliska pieredze ar šo tiešsaistes banku. Personāls bija uzmanīgs un profesionāls. Iesaku bez vilcināšanās!"',
         'name' => 'Jean L.',
     ],
 
-    'about_title' => 'Pievienojieties labākajam pasaules tirgum darbiniekiem',
-    'about_description' => site_name() . ' ir jūsu uzticamā platforma aizdevumu saņemšanai ar izcilu klientu pieredzi. Mēs apņemamies nodrošināt jums vienkāršus, drošus un ātrus finanšu risinājumus.',
+    'about_title' => 'Jūsu nauda, vienkāršota',
+    'about_description' => site_name() . ' ir jūsu uzticamā banka konta, kartes un pārskaitījumu pārvaldīšanai ikdienā, ar izcilu klientu pieredzi. Mēs piedāvājam arī vienkāršus, drošus un ātrus finansējuma risinājumus.',
     'rating' => '4.9/5',
     'rating_description' => 'Klienti vērtē profesionāļus',
     'projects_completed' => '+12M',
@@ -124,9 +124,9 @@ return [
         '3' => 'Piekļūstiet elastīgiem aizdevumiem, kas pielāgoti jūsu vajadzībām',
     ],
 
-    'cta_title' => 'Ātri saņemiet nepieciešamo aizdevumu.',
-    'cta_text' => 'Piesakieties aizdevumam tiešsaistē jau šodien. Mūsu platforma savieno jūs ar uzticamiem aizdevējiem ātriem un drošiem finanšu risinājumiem.',
-    'cta_button' => 'Sākt tagad',
+    'cta_title' => 'Atveriet savu kontu dažu minūšu laikā.',
+    'cta_text' => 'Pievienojieties ' . site_name() . ' jau šodien: konts, karte, IBAN un pārskaitījumi, kā arī ātri un droši finansējuma risinājumi, ja tie jums nepieciešami.',
+    'cta_button' => 'Atvērt kontu',
 
     'terms' => 'Vispārīgie noteikumi',
     'privacy_policy' => 'Konfidencialitātes politika',
@@ -163,13 +163,13 @@ return [
     'sl' => 'Slovēņu',
 
     // Hero subtitle
-    'hero_subtitle' => 'Bez sarežģītām procedūrām, bez slēptām maksām. Jau 15 gadus mēs finansējam jūsu personīgos, nekustamā īpašuma, auto un uzņēmējdarbības projektus ar pārskatāmību un ātrumu.',
+    'hero_subtitle' => 'Atveriet kontu dažu minūšu laikā, saņemiet savu IBAN un karti, un pārvaldiet savu naudu ikdienā. Nepieciešams finansējums? Mūsu aizdevumi joprojām pieejami dažu klikšķu attālumā.',
 
     // Slide
     'slide_1' => [
-        'title' => 'Jau 15 gadus · Sertificēts · Garantēta atbilde',
-        'text1' => 'Finansējiet visus savus projektus,',
-        'text2' => 'līdz 5 000 000 € 24 stundu laikā.',
+        'title' => 'Jau 15 gadus · Sertificēts · 100% tiešsaistē',
+        'text1' => 'Banka, kas vienkāršo',
+        'text2' => 'jūsu naudu ikdienā.',
     ],
     'slide_2' => [
         'title' => 'Gudri aizdevumi spožai nākotnei',
@@ -199,27 +199,34 @@ return [
     'about' => [
         'exptitle' => 'gadu pieredze',
         'sectagline' => 'laipni lūdzam ' . site_name(),
-        'sectitle' => 'Personīgie aizdevumi jūsu sapņu piepildīšanai',
+        'sectitle' => 'Banka, kas domāta jūsu ikdienai',
         'text1' => 'Mēs darbojamies šajā jomā jau 15 gadus un piedāvājam labākos pakalpojumus.',
-        'text2' => site_name() . ' ir jūsu uzticamā platforma aizdevumiem ar izcilu klientu pieredzi. Mēs apņemamies nodrošināt jums vienkāršus, drošus un ātrus finanšu risinājumus.',
-        'check1' => 'aizdevums mazajam uzņēmumam',
-        'check2' => 'aizdevums studijām ārzemēs',
-        'check3' => 'ātrs aizdevuma process',
-        'check4' => 'ļoti zemas likmes',
+        'text2' => site_name() . ' ir 100% tiešsaistes banka: konts, karte, IBAN un pārskaitījumi dažu minūšu laikā, ar izcilu klientu pieredzi. Nepieciešams finansēt projektu? Mūsu aizdevumu risinājumi joprojām ir pieejami, vienkārši un ātri.',
+        'check1' => 'konta atvēršana tiešsaistē',
+        'check2' => 'bankas karte iekļauta',
+        'check3' => 'tūlītēji pārskaitījumi',
+        'check4' => 'pārskatāmas maksas',
         'engage1_title' => 'Sertificēts un licencēts',
-        'engage1_desc'  => 'Sertificēta kredītiestāde, kas ievēro Eiropas standartus. Jūsu dati un pieteikums ir aizsargāti katrā solī.',
-        'engage2_title' => 'Garantēta atbilde 24 stundu laikā',
-        'engage2_desc'  => 'Process 100% tiešsaistē, bez apmeklējuma vai papīra dokumentiem. Lēmums 24 stundu laikā.',
+        'engage1_desc'  => 'Sertificēta iestāde, kas ievēro Eiropas standartus. Jūsu dati un līdzekļi ir aizsargāti katrā solī.',
+        'engage2_title' => 'Konts atvērts dažu minūšu laikā',
+        'engage2_desc'  => 'Reģistrācija 100% tiešsaistē, bez apmeklējuma vai papīra dokumentiem. Ātra un droša identitātes pārbaude.',
         'engage3_title' => 'Vairākas valūtas un valstis',
-        'engage3_desc'  => 'Finansējums pieejams jūsu valsts valūtā, pielāgots jūsu projektam.',
+        'engage3_desc'  => 'Konts un pakalpojumi pieejami jūsu valsts valūtā, visā Eiropā.',
+    ],
+
+    // Banku pakalpojumi
+    'banking' => [
+        'account_desc'  => 'Atveriet savu kontu tiešsaistē dažu minūšu laikā un nekavējoties saņemiet savu IBAN.',
+        'card_desc'     => 'Bankas karte, kas saistīta ar jūsu kontu, lai maksātu un izņemtu naudu visur.',
+        'transfer_desc' => 'Sūtiet un saņemiet naudu ātri un droši, kur arī atrastos.',
     ],
 
     // Services
     'services' => [
         'sectagline' => 'ko mēs piedāvājam',
-        'sectitle' => 'Mēs nodrošinām labākos pakalpojumus jūsu aizdevumam',
-        'cta_title' => 'Gatavs sākt savu finanšu projektu?',
-        'cta_text' => 'Mūsu komanda ir pieejama, lai palīdzētu jums finansējuma pieteikumā.',
+        'sectitle' => 'Jūsu bankas pakalpojumi ikdienā',
+        'cta_title' => 'Gatavs atvērt savu kontu?',
+        'cta_text' => 'Mūsu komanda ir pieejama, lai palīdzētu jums atvērt kontu vai finansējuma pieteikumā.',
     ],
 
     // BUJ lapas CTA
@@ -249,30 +256,44 @@ return [
     // Works
     'works' => [
         'sectagline' => 'kā tas notiek',
-        'sectitle' => 'Mūsu darba process',
+        'sectitle' => 'Jūsu konts 4 soļos',
         'step' => 'Solis',
         'step1' => [
-            'title' => 'Pieteikuma iesniegšana',
-            'desc' => 'Aizpildiet un iesniedziet savu pieteikumu tiešsaistē dažu minūšu laikā. Filiāles apmeklējums nav nepieciešams.',
+            'title' => 'Reģistrācija tiešsaistē',
+            'desc' => 'Aizpildiet un iesniedziet savu konta atvēršanas pieteikumu dažu minūšu laikā. Filiāles apmeklējums nav nepieciešams.',
         ],
         'step2' => [
-            'title' => 'Izskatīšana un pārbaude',
-            'desc' => 'Mūsu komanda izskata jūsu pieteikumu un pārbauda informāciju, lai pārliecinātos par jūsu atbilstību.',
+            'title' => 'Identitātes pārbaude',
+            'desc' => 'Mūsu komanda pārbauda jūsu identitāti un informāciju, lai nodrošinātu jūsu konta drošību.',
         ],
         'step3' => [
-            'title' => 'Aizdevuma apstiprināšana',
-            'desc' => 'Pēc apstiprināšanas jūs saņemsiet apstiprinājumu, kā arī aizdevuma nosacījumu detaļas.',
+            'title' => 'Konts aktivizēts',
+            'desc' => 'Pēc pārbaudes jūs saņemat savu IBAN un bankas karti, kas saistīta ar jūsu kontu.',
         ],
         'step4' => [
-            'title' => 'Līdzekļu izmaksa',
-            'desc' => 'Līdzekļi tiek pārskaitīti tieši uz jūsu bankas kontu drīz pēc apstiprināšanas.',
+            'title' => 'Pārvaldiet savu naudu',
+            'desc' => 'Pārskaitījumi, karte, un, ja nepieciešams, aizdevuma pieteikums: visu var pārvaldīt tieši no jūsu klienta zonas.',
+        ],
+    ],
+
+    // Kāpēc izvēlēties mūs (lapa Par mums)
+    'why_us' => [
+        'sectagline' => 'mūsu priekšrocības',
+        'sectitle' => 'Kāpēc izvēlēties ' . site_name(),
+        'reasons' => [
+            'title1' => 'Drošība un atbilstība',
+            'desc1' => 'Licencēta iestāde, jūsu līdzekļi un dati ir aizsargāti ar modernām drošības sistēmām.',
+            'title2' => 'Ātrums',
+            'desc2' => 'Konts atvērts dažu minūšu laikā, pārskaitījumi apstrādāti ātri, bez papīra dokumentiem vai apmeklējumiem.',
+            'title3' => 'Cilvēcisks atbalsts',
+            'desc3' => 'Mūsu komanda ir pieejama, lai atbildētu uz jūsu jautājumiem gan par kontu, gan par jūsu finansējuma projektiem.',
         ],
     ],
 
     // Loan Reasons
     'loan_reasons' => [
-        'sectagline' => 'aizdevuma iemesli',
-        'sectitle' => 'Populāri aizdevuma iemesli',
+        'sectagline' => 'mūsu aizdevumu darbība',
+        'sectitle' => 'Nepieciešams finansējums?',
         'reasons' => [
             'title1' => 'Nepieciešama jauna automašīna?',
             'desc1' => 'Pārņemiet kontroli pār savām finansēm un dodieties prom ar sapņu automašīnu, izmantojot jūsu vajadzībām pielāgotu aizdevumu.',
@@ -300,12 +321,12 @@ return [
     'customer_satisfaction_rate' => 'Apmierināti klienti',
     'total_loan_amount_granted' => 'Maks. aizdevums / pieteikums',
     'average_approval_time'     => 'Garantēta atbilde',
+    'account_opening_time'      => 'Konta atvēršana',
     'member'                    => 'Finansēti klienti',
     'years_experience'          => 'Pieredzes gadi',
     'day' => 'Dienas',
 
-    'partners_label' => 'Mūsu partneri',
-    'partners_title' => 'Partnerbankas',
+    'partners_title' => 'Bankas un maksājumu partneri',
     'partners_list' => ['BNP Paribas', 'Santander', 'PKO Bank Polski', 'Revolut', 'BBVA', 'UniCredit', 'Intesa Sanpaolo', 'Banco BPM', 'BPER Banca', 'Banca Monte dei Paschi di Siena', 'Mediobanca', 'Swedbank Lietuvoje', 'SEB bankas', 'Revolut Bank UAB', 'Luminor Bank', 'Šiaulių bankas', 'Deutsche Bank', 'Commerzbank', 'DZ Bank', 'HypoVereinsbank', 'KfW Bank', 'DSK Bank', 'UniCredit Bulbank', 'United Bulgarian Bank', 'First Investment Bank', 'Postbank Bulgaria', 'TBI Bank', 'Banca Transilvania', 'Banca Comercială Română (BCR)', 'CEC Bank', 'BRD – Groupe Société Générale', 'Raiffeisen Bank Romania', 'UniCredit Bank Romania', 'Swedbank Latvia', 'SEB banka', 'Citadele Banka', 'Luminor Bank Latvia', 'BlueOrange Bank'],
 
     'cta_title2' => 'Ātri saņemiet nepieciešamo aizdevumu.',

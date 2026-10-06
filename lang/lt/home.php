@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'general_title' => site_name() . ' – geriausi internetiniai skolintojai Vokietijoje, Ispanijoje, Vengrijoje ir kt.',
-    'banner_title' => 'Gaukite tobulą paskolą visiems savo interneto poreikiams.',
-    'banner_text' => 'Milijonai žmonių naudoja ' . site_name() . ' savo projektams įgyvendinti.',
-    'get_loan_now' => 'Gaukite paskolą dabar',
+    'general_title' => site_name() . ' – internetinė bankininkystė: sąskaita, kortelė ir finansavimas Europoje.',
+    'banner_title' => 'Jūsų 100 % internetinis bankas, atidaromas per kelias minutes.',
+    'banner_text' => 'Milijonai žmonių naudoja ' . site_name() . ' savo pinigams tvarkyti kasdien.',
+    'get_loan_now' => 'Apskaičiuokite savo paskolą',
     'popular_loans' => 'Populiarūs paskolų tipai:',
     'personal_loan' => 'Asmeninė paskola',
     'mortgage_loan' => 'Hipotekos paskola',
@@ -16,8 +16,8 @@ return [
     'microcredit' => 'Mikrokreditas',
 
     // Nauji skyrelio vertimai
-    'discover_our_loan_services' => 'Atraskite mūsų paskolų paslaugas',
-    'find_the_right_loan' => 'Raskite savo poreikius atitinkančią paskolą tarp mūsų skirtingų variantų',
+    'discover_our_loan_services' => 'Reikia finansavimo? Atraskite mūsų paskolas',
+    'find_the_right_loan' => 'Be sąskaitos, raskite savo poreikius atitinkančią paskolą tarp mūsų skirtingų variantų',
     'personal_loan' => 'Asmeninė paskola',
     'personal_loan_description' => 'Jūsų asmeniniams projektams',
     'personal_loan_details' => 'Greitas ir lankstus finansavimas visiems jūsų asmeniniams poreikiams.',
@@ -76,7 +76,7 @@ return [
     'testimonials_certified_by' => 'Sertifikavo: Trustindex',
     'testimonials_months_ago' => '{1} prieš 1 mėnesį|[2,9] prieš :count mėnesius|[10,*] prieš :count mėnesių',
     'testimonial_1' => [
-        'quote' => '"Esu labai patenkinta paslauga. Paskolos paraiškos pateikimas buvo greitas ir paprastas. Patvirtinimą gavau vos per kelias dienas, o įkainiai buvo konkurencingi. Labai ačiū!"',
+        'quote' => '"Atidariau sąskaitą per mažiau nei 10 minučių iš telefono, nereikėjo siųsti jokių dokumentų paštu. Kortelė atėjo po kelių dienų. Tikrai sutaupė laiko."',
         'name' => 'Julija Kazlauskienė',
         'location' => 'Vilnius, Lietuva',
         'months_ago' => 1,
@@ -88,18 +88,13 @@ return [
         'months_ago' => 2,
     ],
     'testimonial_3' => [
-        'quote' => '"Paskolos paraiškos pateikimo procesas buvo skaidrus
-          ir efektyvus. Visą laiką gavau profesionalius ir asmeninius patarimus
-          viso proceso metu. Ačiū visai komandai už puikų darbą
-          dirbti!"',
+        'quote' => '"100 % internetinė procedūra, be paslėptų mokesčių už kortelę, o pagalba atsako tikrai greitai, kai turiu klausimų. Modernus ir efektyvus servisas."',
         'name' => 'Sofija Petrauskienė',
         'location' => 'Klaipėda, Lietuva',
         'months_ago' => 2,
     ],
     'testimonial_4' => [
-        'quote' => '"Paskolos gavimas iš šios įmonės buvo a
-          Patirtis be rūpesčių. Personalas buvo draugiškas ir išmanantis, o
-          procesas buvo greitas ir efektyvus. Labai rekomenduoju!"',
+        'quote' => '"Galiu matyti visas savo sąskaitos operacijas ir atlikti pervedimus per programėlę, kad ir kur būčiau. Jauti tikrą kasdienį palaikymą."',
         'name' => 'Mantas Butkus',
         'location' => 'Šiauliai, Lietuva',
         'months_ago' => 3,
@@ -113,28 +108,22 @@ return [
         'months_ago' => 4,
     ],
     'testimonial_6' => [
-        'quote' => '"Labai gera palūkanų norma ir greitas procesas. I
-          labai rekomenduoju šią paslaugą visiems, kuriems reikia paskolos
-          greitas ir patikimas."',
+        'quote' => '"Skaidrumas dėl sąskaitos ir kortelės mokesčių įtikino mane nuo pirmo kontakto. Jokių netikėtumų kelyje. Tai retas ir vertingas dalykas šiame sektoriuje."',
         'name' => 'Lukas Urbonas',
         'location' => 'Alytus, Lietuva',
         'months_ago' => 5,
     ],
     'testimonial_7' => [
-        'quote' => '"Paprastas ir efektyvus paskolos procesas. Buvau
-          maloniai nustebino patvirtinimo greitis. Ačiū visiems
-          komanda!"',
+        'quote' => '"Paprastas ir greitas sąskaitos atidarymas. Maloniai nustebino tapatybės patikrinimo paprastumas. Dėkoju visai komandai!"',
         'name' => 'Marie C.',
     ],
     'testimonial_8' => [
-        'quote' => '"Su šia paslauga turėjau puikią patirtį
-          paskola. Personalas buvo dėmesingas ir profesionalus. Rekomenduoju
-          negaliu laukti!"',
+        'quote' => '"Turėjau puikią patirtį su šiuo internetiniu banku. Personalas buvo dėmesingas ir profesionalus. Tikrai rekomenduoju!"',
         'name' => 'Jean L.',
     ],
 
-    'about_title' => 'Prisijunkite prie geriausios pasaulyje darbuotojų rinkos',
-    'about_description' => site_name() . ' yra jūsų patikima platforma paskoloms gauti su išskirtine klientų patirtimi. Esame įsipareigoję teikti jums paprastus, saugius ir greitus finansinius sprendimus.',
+    'about_title' => 'Jūsų pinigai, paprasčiau',
+    'about_description' => site_name() . ' yra jūsų patikimas bankas kasdieniam sąskaitos, kortelės ir pervedimų valdymui, su išskirtine kliento patirtimi. Taip pat siūlome paprastus, saugius ir greitus finansavimo sprendimus.',
     'rating' => '4,9/5',
     'rating_description' => 'Klientai vertina profesionalus',
     'projects_completed' => '+12 mln.',
@@ -145,9 +134,9 @@ return [
         '3' => 'Pasiekite lanksčias paskolas, pritaikytas jūsų poreikiams',
     ],
 
-    'cta_title' => 'Greitai gaukite jums reikalingą paskolą.',
-    'cta_text' => 'Pateikite paraišką dėl paskolos internetu šiandien. Mūsų platforma sujungia jus su patikimais skolintojais, kad gautumėte greitus ir saugius finansinius sprendimus.',
-    'cta_button' => 'Pradėti dabar',
+    'cta_title' => 'Atidarykite savo sąskaitą per kelias minutes.',
+    'cta_text' => 'Prisijunkite prie ' . site_name() . ' šiandien: sąskaita, kortelė, IBAN ir pervedimai, bei greiti ir saugūs finansavimo sprendimai, jei jų prireiktų.',
+    'cta_button' => 'Atidaryti sąskaitą',
 
     'terms' => 'Bendrosios sąlygos',
     'privacy_policy' => 'Privatumo politika',
@@ -190,13 +179,13 @@ return [
     'sl' => 'sloveno',
 
     // Hero subtitle
-    'hero_subtitle' => 'Jokių sudėtingų procedūrų, jokių paslėptų mokesčių. Jau 15 metų finansuojame asmeninius, nekilnojamojo turto, automobilių ir verslo projektus skaidriai ir greitai.',
+    'hero_subtitle' => 'Atidarykite sąskaitą per kelias minutes, gaukite savo IBAN ir kortelę, ir tvarkykite savo pinigus kasdien. Reikia finansavimo? Mūsų paskolos pasiekiamos per kelis paspaudimus.',
 
     // Slide
     'slide_1' => [
-        'title' => ' 15 metų patirtis · Licencijuota · Atsakymas per 48h',
-        'text1' => 'Finansuokite visus projektus,',
-        'text2' => 'iki 5 000 000 € per 48h.',
+        'title' => ' 15 metų patirtis · Licencijuota · 100 % internetu',
+        'text1' => 'Bankas, kuris supaprastina',
+        'text2' => 'jūsų pinigus kasdien.',
     ],
     'slide_2' => [
         'title' => 'Išmanios paskolos šviesiai ateičiai',
@@ -224,26 +213,33 @@ return [
     'about' => [
         'exptitle' => 'metų patirtis',
         'sectagline' => 'sveiki atvykę į ' . site_name(),
-        'sectitle' => 'Asmeninės paskolos jūsų svajonėms įgyvendinti',
+        'sectitle' => 'Bankas, pritaikytas jūsų kasdienybei',
         'text1' => 'Šioje srityje dirbame jau 15 metų ir siūlome geriausias paslaugas.',
-        'text2' => site_name() . ' yra jūsų patikima platforma paskoloms gauti su išskirtine klientų patirtimi. Esame įsipareigoję pasiūlyti jums paprastus, saugius ir greitus finansinius sprendimus.',
-        'check1' => 'paskola smulkiajam verslui',
-        'check2' => 'paskola studijoms užsienyje',
-        'check3' => 'greitas paskolos procesas',
-        'check4' => 'labai žemos palūkanos',
+        'text2' => site_name() . ' yra 100 % internetinis bankas: sąskaita, kortelė, IBAN ir pervedimai per kelias minutes, su išskirtine kliento patirtimi. Reikia finansuoti projektą? Mūsų paskolų sprendimai lieka prieinami, paprasti ir greiti.',
+        'check1' => 'sąskaitos atidarymas internetu',
+        'check2' => 'kortelė įskaičiuota',
+        'check3' => 'momentiniai pervedimai',
+        'check4' => 'skaidrūs mokesčiai',
         'engage1_title' => 'Licencijuoti & reguliuojami',
-        'engage1_desc' => 'Sertifikuota kredito įstaiga, atitinkanti Europos standartus. Jūsų duomenys ir byla saugomi kiekviename etape.',
-        'engage2_title' => 'Garantuotas atsakymas per 24 val.',
-        'engage2_desc' => '100 % apdorojimas internetu, be kelionių ir popierizmo. Sprendimas priimamas per 24 valandas.',
+        'engage1_desc' => 'Sertifikuota įstaiga, atitinkanti Europos standartus. Jūsų duomenys ir lėšos saugomi kiekviename etape.',
+        'engage2_title' => 'Sąskaita atidaroma per kelias minutes',
+        'engage2_desc' => '100 % registracija internetu, be kelionių ir popierizmo. Greitas ir saugus tapatybės patikrinimas.',
         'engage3_title' => 'Kelios valiutos & šalys',
-        'engage3_desc' => 'Finansavimas jūsų šalies valiuta, pritaikytas jūsų projektui.',
+        'engage3_desc' => 'Sąskaita ir paslaugos jūsų šalies valiuta, visoje Europoje.',
+    ],
+
+    // Bankinės paslaugos
+    'banking' => [
+        'account_desc'  => 'Atidarykite savo sąskaitą internetu per kelias minutes ir iškart gaukite savo IBAN.',
+        'card_desc'     => 'Su jūsų sąskaita susieta bankinė kortelė, mokėjimams ir išėmimams visur.',
+        'transfer_desc' => 'Siųskite ir gaukite pinigus greitai ir saugiai, kad ir kur būtumėte.',
     ],
 
     'services' => [
         'sectagline' => 'ką siūlome',
-        'sectitle' => 'Siūlome geriausias paslaugas jūsų paskolai',
-        'cta_title' => 'Pasiruošę pradėti savo finansinį projektą?',
-        'cta_text' => 'Mūsų komanda pasirengusi padėti jums pateikti finansavimo paraišką.',
+        'sectitle' => 'Jūsų banko paslaugos kasdien',
+        'cta_title' => 'Pasiruošę atidaryti savo sąskaitą?',
+        'cta_text' => 'Mūsų komanda pasirengusi padėti jums atidaryti sąskaitą arba pateikti finansavimo paraišką.',
     ],
 
     // DUK puslapio CTA
@@ -270,29 +266,43 @@ return [
 
     'works' => [
         'sectagline' => 'Kaip tai veikia',
-        'sectitle' => 'Mūsų darbo eiga',
+        'sectitle' => 'Jūsų sąskaita per 4 žingsnius',
         'step' => 'Žingsnis',
         'step1' => [
-            'title' => 'Paraiškos pateikimas',
-            'desc' => 'Užpildykite ir pateikite paraišką internetu per kelias minutes. Apsilankyti skyriuje nereikia.',
+            'title' => 'Registracija internetu',
+            'desc' => 'Užpildykite ir pateikite savo sąskaitos atidarymo paraišką per kelias minutes. Apsilankyti skyriuje nereikia.',
         ],
         'step2' => [
-            'title' => 'Peržiūra ir patikra',
-            'desc' => 'Mūsų komanda peržiūri jūsų dokumentus ir patikrina informaciją, kad įsitikintų jūsų tinkamumu.',
+            'title' => 'Tapatybės patikrinimas',
+            'desc' => 'Mūsų komanda patikrina jūsų tapatybę ir duomenis, kad apsaugotų jūsų sąskaitą.',
         ],
         'step3' => [
-            'title' => 'Paskolos patvirtinimas',
-            'desc' => 'Patvirtinus paskolą, gausite patvirtinimą bei sąlygų informaciją.',
+            'title' => 'Sąskaita aktyvuota',
+            'desc' => 'Po patikrinimo gausite savo IBAN ir su sąskaita susietą bankinę kortelę.',
         ],
         'step4' => [
-            'title' => 'Lėšų išmokėjimas',
-            'desc' => 'Lėšos pervedamos tiesiai į jūsų banko sąskaitą netrukus po patvirtinimo.',
+            'title' => 'Tvarkykite savo pinigus',
+            'desc' => 'Pervedimai, kortelė, ir, jei reikia, paskolos paraiška: visa tai tvarkoma tiesiai iš jūsų kliento erdvės.',
+        ],
+    ],
+
+    // Kodėl rinktis mus (Apie puslapis)
+    'why_us' => [
+        'sectagline' => 'mūsų privalumai',
+        'sectitle' => 'Kodėl rinktis ' . site_name(),
+        'reasons' => [
+            'title1' => 'Saugumas & atitiktis',
+            'desc1' => 'Licencijuota įstaiga, jūsų lėšos ir duomenys saugomi pažangiais saugumo protokolais.',
+            'title2' => 'Greitis',
+            'desc2' => 'Sąskaita atidaroma per kelias minutes, pervedimai apdorojami greitai, be popierizmo ar kelionių.',
+            'title3' => 'Žmogiškas palaikymas',
+            'desc3' => 'Mūsų komanda pasirengusi atsakyti į jūsų klausimus apie sąskaitą ir finansavimo projektus.',
         ],
     ],
 
     'loan_reasons' => [
-        'sectagline' => 'paskolos priežastys',
-        'sectitle' => 'Populiariausios paskolos priežastys',
+        'sectagline' => 'mūsų paskolų veikla',
+        'sectitle' => 'Reikia finansavimo?',
         'reasons' => [
             'title1' => 'Reikia naujo automobilio?',
             'desc1' => 'Perimkite savo finansų kontrolę ir važiuokite savo svajonių automobiliu su jūsų poreikius atitinkančia paskola.',
@@ -319,12 +329,12 @@ return [
     'customer_satisfaction_rate' => 'Patenkinti klientai',
     'total_loan_amount_granted' => 'Prieinama suma',
     'average_approval_time' => 'Garantuotas atsakymas',
+    'account_opening_time' => 'Sąskaitos atidarymas',
     'member' => 'Finansuoti klientai',
     'years_experience' => 'Metų patirtis',
     'day' => 'Dienos',
 
-    'partners_label' => 'Mūsų partneriai',
-    'partners_title' => 'Partnerių bankai',
+    'partners_title' => 'Banko & mokėjimų partneriai',
     'partners_list' => ['BNP Paribas', 'Santander', 'PKO Bank Polski', 'Revolut', 'BBVA', 'UniCredit', 'Intesa Sanpaolo', 'Banco BPM', 'BPER Banca', 'Banca Monte dei Paschi di Siena', 'Mediobanca', 'Swedbank Lietuvoje', 'SEB bankas', 'Revolut Bank UAB', 'Luminor Bank', 'Šiaulių bankas', 'Deutsche Bank', 'Commerzbank', 'DZ Bank', 'HypoVereinsbank', 'KfW Bank', 'DSK Bank', 'UniCredit Bulbank', 'United Bulgarian Bank', 'First Investment Bank', 'Postbank Bulgaria', 'TBI Bank', 'Banca Transilvania', 'Banca Comercială Română (BCR)', 'CEC Bank', 'BRD – Groupe Société Générale', 'Raiffeisen Bank Romania', 'UniCredit Bank Romania', 'Swedbank Latvia', 'SEB banka', 'Citadele Banka', 'Luminor Bank Latvia', 'BlueOrange Bank'],
 
     'cta_title2' => 'Gaukite reikiamą paskolą greitai.',

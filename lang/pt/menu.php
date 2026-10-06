@@ -8,6 +8,7 @@ return [
     'simulate' => 'Simulação de empréstimo',
     'contact' => 'Fale Connosco',
     'loan' => 'Solicitar empréstimo',
+    'open_account' => 'Abrir uma conta',
 
     'personal' => 'Empréstimo pessoal',
     'auto' => 'Empréstimo automático',
@@ -16,8 +17,12 @@ return [
     'business' => 'Empréstimo comercial',
     'bike' => 'Empréstimo de bicicleta',
 
+    'banking_account' => 'Conta bancária',
+    'banking_card'    => 'Cartão bancário',
+    'banking_transfer'=> 'Transferências',
+    'banking_loans'   => 'Empréstimos & financiamento',
 
-    'arlert' => 'Consiga um empréstimo com uma taxa de juro até 3%',
+    'arlert' => 'Um banco 100% online, uma conta aberta em minutos',
 
 
 
@@ -31,5 +36,5 @@ return [
     'newsletter_title' => 'Fique informado sobre as nossas ofertas',
     'subscribe'        => 'Subscrever',
     'read_more'        => 'Saber mais',
-    'footer_desc'      => site_name() . ' é o seu parceiro de confiança para soluções de financiamento rápidas, flexíveis e personalizadas em toda a Europa.',
+    'footer_desc'      => site_name() . ' é um banco 100% online: abra uma conta, receba o seu cartão e IBAN em minutos, e aproveite também as nossas soluções de financiamento em toda a Europa.',
 ];

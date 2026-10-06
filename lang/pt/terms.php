@@ -5,19 +5,19 @@ return [
     'sections' => [
         [
             'title' => '1. Introdução',
-            'content' => 'Bem-vindo à ' . site_name() . '. Ao usar nosso site e serviços, você concorda em cumprir e estar vinculado aos seguintes termos e condições. Por favor, leia estes termos cuidadosamente antes de usar nosso site ou solicitar um empréstimo conosco.'
+            'content' => 'Bem-vindo à ' . site_name() . '. Ao usar nosso site e serviços, você concorda em cumprir e estar vinculado aos seguintes termos e condições. Por favor, leia estes termos cuidadosamente antes de abrir uma conta, usar nossos serviços bancários ou solicitar um empréstimo conosco.'
         ],
         [
             'title' => '2. Uso do site',
             'content' => 'Ao acessar nosso site, você concorda em usar nossos serviços apenas para fins legais e de acordo com estas condições. Você concorda em não usar nosso site de maneira que cause danos, interrupções ou interferências em nossos serviços ou no acesso de outros usuários.'
         ],
         [
-            'title' => '3. Serviços de empréstimo',
-            'content' => 'A ' . site_name() . ' oferece vários tipos de empréstimos para atender às suas necessidades financeiras. Todos os empréstimos estão sujeitos à aprovação com base em nossa avaliação de sua solvência e capacidade de pagamento. Os termos específicos de cada empréstimo, incluindo taxas de juros, prazos e condições de pagamento, serão detalhados em seu contrato de empréstimo.'
+            'title' => '3. Conta, cartão e serviços bancários',
+            'content' => 'A ' . site_name() . ' oferece a abertura de uma conta on-line, incluindo um IBAN e um cartão bancário associados. A abertura de conta está sujeita a verificação de identidade prévia. As transferências e demais operações realizadas a partir de sua conta estão sujeitas às condições e eventuais limites especificados na abertura de sua conta ou em sua área de cliente.'
         ],
         [
-            'title' => '4. Custos de contrato e seguro',
-            'content' => 'Ao solicitar um empréstimo com a ' . site_name() . ', podem ser aplicadas taxas de contrato e seguro. Esta taxa cobre os custos administrativos associados à configuração e gestão do seu empréstimo. Os detalhes específicos dessas taxas serão claramente indicados em seu contrato de empréstimo. Você é obrigado a pagar essas taxas de acordo com os termos especificados.'
+            'title' => '4. Serviços de empréstimo',
+            'content' => 'A ' . site_name() . ' também oferece vários tipos de empréstimos para atender às suas necessidades financeiras. Todos os empréstimos estão sujeitos à aprovação com base em nossa avaliação de sua solvência e capacidade de pagamento. Os termos específicos de cada empréstimo, incluindo taxas de juros, prazos e condições de pagamento, serão detalhados em seu contrato de empréstimo. Taxas de contrato e seguro podem ser aplicadas na contratação de um empréstimo; essas taxas serão claramente indicadas em seu contrato.'
         ],
         [
             'title' => '5. Confidencialidade',

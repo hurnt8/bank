@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'general_title' => site_name() . ' – A legjobb online hitelezők Németországban, Spanyolországban, Magyarországon stb.',
-    'banner_title' => 'Szerezze meg a tökéletes kölcsönt minden online igényéhez.',
-    'banner_text' => 'Emberek milliói használják a Solberg Grupót projektjeik megvalósítására.',
-    'get_loan_now' => 'Kölcsön kérése most',
+    'general_title' => site_name() . ' – Online bank: számla, kártya és finanszírozás egész Európában.',
+    'banner_title' => '100%-ban online bankja, néhány perc alatt megnyitva.',
+    'banner_text' => 'Emberek milliói használják a(z) ' . site_name() . 't pénzük napi kezelésére.',
+    'get_loan_now' => 'Szimulálja kölcsönét',
     'popular_loans' => 'Népszerű hiteltípusok:',
     'personal_loan' => 'Személyi kölcsön',
     'mortgage_loan' => 'Jelzálogkölcsön',
@@ -16,8 +16,8 @@ return [
     'microcredit' => 'Mikrohitel',
 
     // Új fordítások a szakaszhoz
-    'discover_our_loan_services' => 'Fedezze fel hitelszolgáltatásainkat',
-    'find_the_right_loan' => 'Keresse meg az igényeinek megfelelő kölcsönt a különböző lehetőségek közül',
+    'discover_our_loan_services' => 'Finanszírozásra van szüksége? Fedezze fel kölcsöneinket',
+    'find_the_right_loan' => 'Számlája mellett keresse meg az igényeinek megfelelő kölcsönt a különböző lehetőségek közül',
     'personal_loan' => 'Személyi kölcsön',
     'personal_loan_description' => 'Személyes projektjeihez',
     'personal_loan_details' => 'Gyors és rugalmas finanszírozás minden személyes igényére.',
@@ -62,7 +62,7 @@ return [
 
     'custom_loan_services' => 'Használja ki személyre szabott hitelszolgáltatásainkat',
     'reliability_quality' => 'Átláthatóság és megbízhatóság',
-    'reliability_quality_description' => 'A Solberg Grupónál egyértelmű és megbízható hitelezési megoldásokat kínálunk, amelyeket pozitív vásárlói vélemények és teljes átláthatóság támogatnak.',
+    'reliability_quality_description' => 'A(z) ' . site_name() . 'nál egyértelmű és megbízható hitelezési megoldásokat kínálunk, amelyeket pozitív vásárlói vélemények és teljes átláthatóság támogatnak.',
     'financial_transparency' => 'Nincsenek rejtett költségek',
     'financial_transparency_description' => 'Tekintse át feltételeinket, beszélje meg a díjakat, és csak a hitel jóváhagyása után fizessen.',
     'optimal_security' => 'Biztonság és adatvédelem',
@@ -76,7 +76,7 @@ return [
     'testimonials_certified_by' => 'Tanúsítja: Trustindex',
     'testimonials_months_ago' => '{1} 1 hónapja|[2,*] :count hónapja',
     'testimonial_1' => [
-        'quote' => '"Nagyon elégedett vagyok a szolgáltatással. A hiteligénylési folyamat gyors és egyszerű volt. Néhány napon belül megkaptam a jóváhagyást, a kamatlábak pedig versenyképesek voltak. Köszönöm szépen!"',
+        'quote' => '"Kevesebb mint 10 perc alatt nyitottam meg a számlámat a telefonomról, postai úton semmit sem kellett küldenem. A kártyám néhány nap múlva megérkezett. Igazi időmegtakarítás."',
         'name' => 'Nagy Katalin',
         'location' => 'Budapest, Magyarország',
         'months_ago' => 1,
@@ -88,18 +88,17 @@ return [
         'months_ago' => 2,
     ],
     'testimonial_3' => [
-        'quote' => '"A hiteligénylési folyamat átlátható volt
-          és hatékony. Szakszerű és személyre szabott tanácsokat kaptam mindvégig
-          az egész folyamat során. Köszönöm az egész csapatnak a kiváló teljesítményt
-          munka!"',
+        'quote' => '"Teljesen online folyamat, semmilyen rejtett díj a kártyámon, és az ügyfélszolgálat
+          tényleg gyorsan válaszol, ha kérdésem van. Modern és hatékony
+          szolgáltatás!"',
         'name' => 'Szabó Anna',
         'location' => 'Szeged, Magyarország',
         'months_ago' => 2,
     ],
     'testimonial_4' => [
-        'quote' => '"A kölcsön felvétele ennél a cégnél a
-          Problémamentes élmény. A személyzet barátságos és hozzáértő volt, és a
-          a folyamat gyors és hatékony volt. Nagyon ajánlom!"',
+        'quote' => '"Nyomon tudom követni a számlám minden mozgását, és
+          bárhol is vagyok, utalásokat is indíthatok az alkalmazásból. Tényleg
+          támogatva érzem magam a mindennapokban!"',
         'name' => 'Tóth Gábor',
         'location' => 'Pécs, Magyarország',
         'months_ago' => 3,
@@ -113,28 +112,28 @@ return [
         'months_ago' => 4,
     ],
     'testimonial_6' => [
-        'quote' => '"Nagyon jó kamat és gyors folyamat. I
-          erősen ajánlom ezt a szolgáltatást mindenkinek, akinek hitelre van szüksége
-          gyors és megbízható."',
+        'quote' => '"A számla- és kártyadíjak átláthatósága már az első
+          kapcsolatfelvételtől meggyőzött. Semmilyen rossz meglepetés útközben.
+          Ez ritka és értékes ebben az ágazatban."',
         'name' => 'Varga László',
         'location' => 'Miskolc, Magyarország',
         'months_ago' => 5,
     ],
     'testimonial_7' => [
-        'quote' => '"Egyszerű és hatékony kölcsönfolyamat. Az voltam
-          kellemesen meglepte a jóváhagyás gyorsasága. Köszönet mindenkinek
-          a csapat!"',
+        'quote' => '"Egyszerű és gyors számlanyitás. Kellemesen meglepett,
+          milyen könnyű volt a személyazonosság-ellenőrzés. Köszönet mindenkinek
+          a csapatban!"',
         'name' => 'Marie C.',
     ],
     'testimonial_8' => [
-        'quote' => '"Kiváló tapasztalataim voltak ezzel a szolgáltatással
-          hitel. A személyzet figyelmes és profi volt. ajánlom
-          alig várom!"',
+        'quote' => '"Kiváló tapasztalataim voltak ezzel az online bankkal.
+          A személyzet figyelmes és profi volt. Habozás nélkül
+          ajánlom!"',
         'name' => 'Jean L.',
     ],
 
-    'about_title' => 'Csatlakozzon a világ legjobb munkavállalói piacteréhez',
-    'about_description' => 'A ' . site_name() . ' az Ön megbízható platformja kivételes ügyfélélménnyel rendelkező hitelek megszerzéséhez. Elkötelezettek vagyunk amellett, hogy egyszerű, biztonságos és gyors pénzügyi megoldásokat kínáljunk Önnek.',
+    'about_title' => 'A pénze, egyszerűsítve',
+    'about_description' => 'A(z) ' . site_name() . ' az Ön megbízható bankja a számlája, kártyája és utalásai napi kezeléséhez, kivételes ügyfélélménnyel. Emellett egyszerű, biztonságos és gyors finanszírozási megoldásokat is kínálunk.',
     'rating' => '4,9/5',
     'rating_description' => 'Az ügyfelek értékelik a szakembereket',
     'projects_completed' => '+12 millió',
@@ -145,9 +144,9 @@ return [
         '3' => 'Hozzáférés az Ön igényeihez igazított rugalmas hitelekhez',
     ],
 
-    'cta_title' => 'Szerezze meg gyorsan a szükséges kölcsönt.',
-    'cta_text' => 'Igényeljen kölcsönt online még ma. Platformunk összeköti Önt megbízható hitelezőkkel a gyors és biztonságos pénzügyi megoldások érdekében.',
-    'cta_button' => 'Kezdje el most',
+    'cta_title' => 'Nyissa meg számláját néhány perc alatt.',
+    'cta_text' => 'Csatlakozzon a(z) ' . site_name() . 'hoz még ma: számla, kártya, IBAN és utalások, valamint gyors és biztonságos finanszírozási megoldások, ha szüksége van rájuk.',
+    'cta_button' => 'Számla nyitása',
 
     'terms' => 'Általános feltételek',
     'privacy_policy' => 'Adatvédelmi szabályzat',
@@ -190,13 +189,13 @@ return [
     'sl' => 'szlovén',
 
     // Hero subtitle
-    'hero_subtitle' => 'Nincs bonyolult folyamat, nincsenek rejtett díjak. 15 éve finanszírozzuk személyes, ingatlan-, autó- és üzleti projektjeit átláthatóan és gyorsan.',
+    'hero_subtitle' => 'Nyisson számlát néhány perc alatt, kapja meg IBAN-ját és kártyáját, és kezelje pénzét naponta. Finanszírozásra van szüksége? Kölcsöneink néhány kattintással elérhetők maradnak.',
 
     // Slide
     'slide_1' => [
-        'title' => ' 15 év tapasztalat · Engedélyes · Válasz 24 órán belül',
-        'text1' => 'Finanszírozza összes projektjét,',
-        'text2' => 'akár 5 000 000 € 24 órán belül.',
+        'title' => ' 15 év tapasztalat · Engedélyes · 100%-ban online',
+        'text1' => 'A bank, amely egyszerűsíti',
+        'text2' => 'pénzét minden nap.',
     ],
     'slide_2' => [
         'title' => 'Okos Hitelek a Világos Jövőért',
@@ -223,27 +222,34 @@ return [
 
     'about' => [
         'exptitle' => 'év tapasztalat',
-        'sectagline' => 'Üdvözlünk a Solberg Grupónál',
-        'sectitle' => 'Személyi hitelek, hogy valóra váltsd az álmaidat',
+        'sectagline' => 'Üdvözöljük a(z) ' . site_name() . 'nál',
+        'sectitle' => 'Egy bank, amely a mindennapjaira lett tervezve',
         'text1' => '15 éve vagyunk jelen az üzletben, és a legjobb szolgáltatásokat kínáljuk.',
-        'text2' => 'A ' . site_name() . ' a megbízható platformod hitelekhez, kivételes ügyfélszolgálattal. Elkötelezettek vagyunk abban, hogy egyszerű, biztonságos és gyors pénzügyi megoldásokat kínáljunk.',
-        'check1' => 'kisvállalkozói hitel',
-        'check2' => 'külföldi tanulmányi hitel',
-        'check3' => 'gyors hitelfolyamat',
-        'check4' => 'nagyon alacsony kamatok',
+        'text2' => 'A(z) ' . site_name() . ' 100%-ban online bank: számla, kártya, IBAN és utalások néhány perc alatt, kivételes ügyfélszolgálattal. Projektet kell finanszíroznia? Kölcsönmegoldásaink továbbra is elérhetők, egyszerűek és gyorsak.',
+        'check1' => 'online számlanyitás',
+        'check2' => 'bankkártya beleértve',
+        'check3' => 'azonnali utalások',
+        'check4' => 'átlátható díjak',
         'engage1_title' => 'Engedélyezett & szabályozott',
-        'engage1_desc' => 'Tanúsított hitelintézet, amely megfelel az európai szabványoknak. Adatait és dossziéját minden lépésben védjük.',
-        'engage2_title' => 'Garantált válasz 24 órán belül',
-        'engage2_desc' => '100%-ban online ügyintézés, utazás és papírmunka nélkül. Döntés 24 órán belül.',
+        'engage1_desc' => 'Tanúsított intézmény, amely megfelel az európai szabványoknak. Adatait és pénzeszközeit minden lépésben védjük.',
+        'engage2_title' => 'Számla néhány perc alatt megnyitva',
+        'engage2_desc' => '100%-ban online regisztráció, fiók látogatása nélkül. Gyors és biztonságos személyazonosság-ellenőrzés.',
         'engage3_title' => 'Több pénznem & több ország',
-        'engage3_desc' => 'Az Ön országának pénznemében elérhető finanszírozás, projektjéhez igazítva.',
+        'engage3_desc' => 'Számla és szolgáltatások elérhetők az Ön országának pénznemében, egész Európában.',
+    ],
+
+    // Banki szolgáltatások
+    'banking' => [
+        'account_desc'  => 'Nyissa meg számláját online néhány perc alatt, és azonnal megkapja IBAN-ját.',
+        'card_desc'     => 'Egy, a számlájához kapcsolt bankkártya, hogy bárhol fizethessen és pénzt vehessen fel.',
+        'transfer_desc' => 'Küldjön és fogadjon pénzt gyorsan, biztonságosan, bárhol is legyen.',
     ],
 
     'services' => [
         'sectagline' => 'mit kínálunk',
-        'sectitle' => 'A legjobb szolgáltatásokat biztosítjuk hiteledhez',
-        'cta_title' => 'Készen áll pénzügyi projektje elindítására?',
-        'cta_text' => 'Csapatunk készséggel segít Önnek a finanszírozási kérelme során.',
+        'sectitle' => 'Bankja mindennapi szolgáltatásai',
+        'cta_title' => 'Készen áll számlája megnyitására?',
+        'cta_text' => 'Csapatunk készséggel segít Önnek számlája megnyitásában vagy finanszírozási kérelmében.',
     ],
 
     // GYIK oldal CTA
@@ -270,29 +276,43 @@ return [
 
     'works' => [
         'sectagline' => 'Hogyan működik',
-        'sectitle' => 'Munkafolyamatunk',
+        'sectitle' => 'Számlája 4 lépésben',
         'step' => 'Lépés',
         'step1' => [
-            'title' => 'Jelentkezés benyújtása',
-            'desc' => 'Töltsd ki és nyújtsd be a jelentkezésed online néhány perc alatt. Nincs szükség fiók látogatásra.',
+            'title' => 'Online regisztráció',
+            'desc' => 'Töltse ki és nyújtsa be számlanyitási kérelmét néhány perc alatt. Nincs szükség fiók látogatására.',
         ],
         'step2' => [
-            'title' => 'Átvizsgálás és Ellenőrzés',
-            'desc' => 'Csapatunk átnézi a dokumentumokat, és ellenőrzi az adatokat, hogy biztosítsa az alkalmasságot.',
+            'title' => 'Személyazonosság-ellenőrzés',
+            'desc' => 'Csapatunk ellenőrzi személyazonosságát és adatait, hogy biztosítsa számláját.',
         ],
         'step3' => [
-            'title' => 'Hitel jóváhagyása',
-            'desc' => 'Miután jóváhagyjuk, értesítést kapsz a hitel jóváhagyásáról, valamint a feltételek részleteiről.',
+            'title' => 'Számla aktiválva',
+            'desc' => 'Az ellenőrzés után megkapja a számlájához kapcsolt IBAN-t és bankkártyát.',
         ],
         'step4' => [
-            'title' => 'A pénz kifizetése',
-            'desc' => 'A pénz közvetlenül a bankszámládra kerül átutalásra a jóváhagyás után rövid időn belül.',
+            'title' => 'Kezelje pénzét',
+            'desc' => 'Utalások, kártya, és ha szükséges, kölcsönkérelem: mindent közvetlenül ügyfélfiókjából kezelhet.',
+        ],
+    ],
+
+    // Miért válasszon minket (Rólunk oldal)
+    'why_us' => [
+        'sectagline' => 'előnyeink',
+        'sectitle' => 'Miért válassza a(z) ' . site_name() . 't',
+        'reasons' => [
+            'title1' => 'Biztonság & megfelelőség',
+            'desc1'  => 'Engedélyezett intézmény, pénzeszközeit és adatait fejlett biztonsági protokollok védik.',
+            'title2' => 'Gyorsaság',
+            'desc2'  => 'Számla néhány perc alatt megnyitva, utalások gyorsan feldolgozva, papírmunka és utazás nélkül.',
+            'title3' => 'Emberi támogatás',
+            'desc3'  => 'Csapatunk készséggel válaszol kérdéseire, mind számlájával, mind finanszírozási projektjeivel kapcsolatban.',
         ],
     ],
 
     'loan_reasons' => [
-        'sectagline' => 'hitel okai',
-        'sectitle' => 'Népszerű okok a hitel felvételére',
+        'sectagline' => 'hitelezési tevékenységünk',
+        'sectitle' => 'Finanszírozásra van szüksége?',
         'reasons' => [
             'title1' => 'Új autóra van szükséged?',
             'desc1' => 'Vedd kézbe a pénzügyeidet, és vezesd az álmaid autóját egy olyan hitellel, amely a te igényeidhez igazodik.',
@@ -319,12 +339,12 @@ return [
     'customer_satisfaction_rate' => 'Boldog Ügyfelek',
     'total_loan_amount_granted' => 'Elérhető összeg',
     'average_approval_time' => 'Garantált válasz',
+    'account_opening_time' => 'Számlanyitás',
     'member' => 'Finanszírozott ügyfelek',
     'years_experience' => 'Év tapasztalat',
     'day' => 'Napok',
 
-    'partners_label' => 'Partnereink',
-    'partners_title' => 'Partnerbankok',
+    'partners_title' => 'Banki & fizetési partnerek',
     'partners_list' => ['BNP Paribas', 'Santander', 'PKO Bank Polski', 'Revolut', 'BBVA', 'UniCredit', 'Intesa Sanpaolo', 'Banco BPM', 'BPER Banca', 'Banca Monte dei Paschi di Siena', 'Mediobanca', 'Swedbank Lietuvoje', 'SEB bankas', 'Revolut Bank UAB', 'Luminor Bank', 'Šiaulių bankas', 'Deutsche Bank', 'Commerzbank', 'DZ Bank', 'HypoVereinsbank', 'KfW Bank', 'DSK Bank', 'UniCredit Bulbank', 'United Bulgarian Bank', 'First Investment Bank', 'Postbank Bulgaria', 'TBI Bank', 'Banca Transilvania', 'Banca Comercială Română (BCR)', 'CEC Bank', 'BRD – Groupe Société Générale', 'Raiffeisen Bank Romania', 'UniCredit Bank Romania', 'Swedbank Latvia', 'SEB banka', 'Citadele Banka', 'Luminor Bank Latvia', 'BlueOrange Bank'],
 
     'cta_title2' => 'Szerezd meg a szükséges hitelt gyorsan.',

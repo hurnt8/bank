@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'general_title' => site_name() . ' - Meilleurs prêteurs en ligne en Allemagne, Espagne, Houngrie etc.',
-    'banner_title' => 'Obtenez le prêt parfait pour tous vos besoins en ligne.',
-    'banner_text' => 'Des millions de personnes utilisent ' . site_name() . ' pour réaliser leurs projets.',
-    'get_loan_now' => 'Obtenez un prêt maintenant',
+    'general_title' => site_name() . ' - Banque en ligne : compte, carte et financement en Europe.',
+    'banner_title' => 'Votre banque 100 % en ligne, ouverte en quelques minutes.',
+    'banner_text' => 'Des millions de personnes utilisent ' . site_name() . ' pour gérer leur argent au quotidien.',
+    'get_loan_now' => 'Simulez votre prêt',
     'popular_loans' => 'Types de prêts populaires:',
 
     // Loan types
-    'discover_our_loan_services' => 'Découvrez nos services de prêt',
-    'find_the_right_loan' => 'Trouvez le prêt adapté à vos besoins parmi nos différentes options',
+    'discover_our_loan_services' => 'Besoin d\'un financement ? Découvrez nos prêts',
+    'find_the_right_loan' => 'En plus de votre compte, trouvez le prêt adapté à vos besoins parmi nos différentes options',
     'personal_loan' => 'Prêt personnel',
     'personal_loan_description' => 'Pour vos projets personnels',
     'personal_loan_details' => 'Financement rapide et flexible pour tous vos besoins personnels.',
@@ -68,7 +68,7 @@ return [
     'testimonials_certified_by' => 'Certifié par : Trustindex',
     'testimonials_months_ago' => '{1} il y a 1 mois|[2,*] il y a :count mois',
     'testimonial_1' => [
-        'quote' => '« J\'ai obtenu mon prêt immobilier en moins d\'une semaine. Le conseiller a été d\'une disponibilité remarquable et les conditions proposées étaient bien en dessous de ce que je trouvais ailleurs. Je recommande sans hésiter. »',
+        'quote' => '« J\'ai ouvert mon compte en moins de 10 minutes depuis mon téléphone, sans aucun papier à envoyer par courrier. Ma carte est arrivée quelques jours après. Un vrai gain de temps. »',
         'name'  => 'Jean-Pierre Moreau',
         'location' => 'Paris, France',
         'months_ago' => 1,
@@ -80,13 +80,13 @@ return [
         'months_ago' => 2,
     ],
     'testimonial_3' => [
-        'quote' => '« Démarche 100 % en ligne, réponse rapide, taux compétitif. J\'ai financé ma voiture sans me déplacer une seule fois en agence. Un service moderne et efficace. »',
+        'quote' => '« Démarche 100 % en ligne, pas de frais cachés sur ma carte, et le support répond vraiment vite en cas de question. Un service moderne et efficace. »',
         'name'  => 'Thomas Renard',
         'location' => 'Bordeaux, France',
         'months_ago' => 2,
     ],
     'testimonial_4' => [
-        'quote' => '« Le suivi personnalisé m\'a vraiment impressionnée. Mon conseiller m\'a appelée à chaque étape pour m\'expliquer l\'avancement de mon dossier. On se sent accompagné, pas seul face aux formulaires. »',
+        'quote' => '« Je peux suivre tous mes mouvements de compte et faire mes virements depuis l\'application, où que je sois. On se sent vraiment accompagné au quotidien. »',
         'name'  => 'Céline Fontaine',
         'location' => 'Marseille, France',
         'months_ago' => 3,
@@ -98,22 +98,22 @@ return [
         'months_ago' => 4,
     ],
     'testimonial_6' => [
-        'quote' => '« La transparence sur les taux et les frais m\'a convaincue dès le premier contact. Aucune mauvaise surprise en cours de route. C\'est rare et précieux dans ce secteur. »',
+        'quote' => '« La transparence sur les frais de compte et de carte m\'a convaincue dès le premier contact. Aucune mauvaise surprise en cours de route. C\'est rare et précieux dans ce secteur. »',
         'name'  => 'Sandrine Bouchard',
         'location' => 'Strasbourg, France',
         'months_ago' => 5,
     ],
     'testimonial_7' => [
-        'quote' => '« Processus de prêt simple et efficace. J\'ai été agréablement surprise par la rapidité de l\'approbation. Merci à toute l\'équipe ! »',
+        'quote' => '« Ouverture de compte simple et rapide. J\'ai été agréablement surprise par la facilité de la vérification d\'identité. Merci à toute l\'équipe ! »',
         'name' => 'Marie C.',
     ],
     'testimonial_8' => [
-        'quote' => '« J\'ai eu une excellente expérience avec ce service de prêt. Le personnel a été attentif et professionnel. Je le recommande sans hésiter ! »',
+        'quote' => '« J\'ai eu une excellente expérience avec cette banque en ligne. Le personnel a été attentif et professionnel. Je la recommande sans hésiter ! »',
         'name' => 'Jean L.',
     ],
 
-    'about_title' => 'Rejoignez le meilleur marché mondial pour les travailleurs',
-    'about_description' => site_name() . ' est votre plateforme de confiance pour obtenir des prêts avec une expérience client exceptionnelle. Nous nous engageons à vous fournir des solutions financières simples, sécurisées et rapides.',
+    'about_title' => 'Votre argent, simplifié',
+    'about_description' => site_name() . ' est votre banque de confiance pour gérer votre compte, votre carte et vos virements au quotidien, avec une expérience client exceptionnelle. Nous proposons aussi des solutions de financement simples, sécurisées et rapides.',
     'rating' => '4.9/5',
     'rating_description' => 'Les clients évaluent les professionnels',
     'projects_completed' => '+12M',
@@ -124,9 +124,9 @@ return [
         '3' => 'Accédez à des prêts flexibles adaptés à vos besoins',
     ],
 
-    'cta_title' => 'Obtenez rapidement le prêt dont vous avez besoin.',
-    'cta_text' => 'Faites une demande de prêt en ligne dès aujourd\'hui. Notre plateforme vous connecte avec des prêteurs fiables pour des solutions financières rapides et sûres.',
-    'cta_button' => 'Commencez maintenant',
+    'cta_title' => 'Ouvrez votre compte en quelques minutes.',
+    'cta_text' => 'Rejoignez ' . site_name() . ' dès aujourd\'hui : compte, carte, IBAN et virements, et des solutions de financement rapides et sûres si vous en avez besoin.',
+    'cta_button' => 'Ouvrir un compte',
 
     'terms' => 'Conditions générales',
     'privacy_policy' => 'Politique de confidentialité',
@@ -163,13 +163,13 @@ return [
     'sl' => 'Slovène',
 
     // Hero subtitle
-    'hero_subtitle' => 'Pas de démarche complexe, pas de frais cachés. Depuis 15 ans, nous finançons vos projets personnels, immobiliers, auto et professionnels avec transparence et rapidité.',
+    'hero_subtitle' => 'Ouvrez un compte en quelques minutes, recevez votre IBAN et votre carte, et gérez votre argent au quotidien. Besoin d\'un financement ? Nos prêts restent disponibles en quelques clics.',
 
     // Slide
     'slide_1' => [
-        'title' => ' Depuis 15 ans · Agréé · Réponse garantie',
-        'text1' => 'Financez tous vos projets,',
-        'text2' => 'jusqu\'à 5 000 000 € en 48h.',
+        'title' => ' Depuis 15 ans · Agréée · 100 % en ligne',
+        'text1' => 'La banque qui simplifie',
+        'text2' => 'votre argent au quotidien.',
     ],
     'slide_2' => [
         'title' => 'Prêts Intelligents pour un Avenir Brillant',
@@ -199,27 +199,34 @@ return [
     'about' => [
         'exptitle' => 'années d\'expérience',
         'sectagline' => 'bienvenue chez ' . site_name(),
-        'sectitle' => 'Prêts personnels pour réaliser vos rêves',
+        'sectitle' => 'Une banque pensée pour votre quotidien',
         'text1' => 'Nous sommes dans ce domaine depuis 15 ans et offrons les meilleurs services.',
-        'text2' => site_name() . ' est votre plateforme de confiance pour des prêts avec une expérience client exceptionnelle. Nous nous engageons à vous fournir des solutions financières simples, sécurisées et rapides.',
-        'check1' => 'prêt pour petite entreprise',
-        'check2' => 'prêt pour étudier à l\'étranger',
-        'check3' => 'processus de prêt rapide',
-        'check4' => 'taux très bas',
-        'engage1_title' => 'Agréé & réglementé',
-        'engage1_desc'  => 'Organisme de crédit certifié, soumis aux normes européennes. Vos données et votre dossier sont protégés à chaque étape.',
-        'engage2_title' => 'Réponse garantie sous 48h',
-        'engage2_desc'  => 'Traitement 100 % en ligne, sans déplacement ni paperasse. Décision rendue sous 48 heures.',
+        'text2' => site_name() . ' est une banque 100 % en ligne : compte, carte, IBAN et virements en quelques minutes, avec une expérience client exceptionnelle. Besoin de financer un projet ? Nos solutions de prêt restent disponibles, simples et rapides.',
+        'check1' => 'ouverture de compte en ligne',
+        'check2' => 'carte bancaire incluse',
+        'check3' => 'virements instantanés',
+        'check4' => 'frais transparents',
+        'engage1_title' => 'Agréée & réglementée',
+        'engage1_desc'  => 'Établissement certifié, soumis aux normes européennes. Vos données et vos fonds sont protégés à chaque étape.',
+        'engage2_title' => 'Compte ouvert en quelques minutes',
+        'engage2_desc'  => 'Inscription 100 % en ligne, sans déplacement ni paperasse. Vérification d\'identité rapide et sécurisée.',
         'engage3_title' => 'Multi-devises & multi-pays',
-        'engage3_desc'  => 'Un financement disponible dans la devise de votre pays, adapté à votre projet.',
+        'engage3_desc'  => 'Un compte et des services disponibles dans la devise de votre pays, partout en Europe.',
+    ],
+
+    // Services bancaires
+    'banking' => [
+        'account_desc'  => 'Ouvrez votre compte en ligne en quelques minutes et recevez votre IBAN immédiatement.',
+        'card_desc'     => 'Une carte bancaire associée à votre compte, pour payer et retirer partout.',
+        'transfer_desc' => 'Envoyez et recevez de l\'argent rapidement, en toute sécurité, où que vous soyez.',
     ],
 
     // Services
     'services' => [
         'sectagline' => 'ce que nous offrons',
-        'sectitle' => 'Nous fournissons les meilleurs services pour votre prêt',
-        'cta_title' => 'Prêt à démarrer votre projet financier ?',
-        'cta_text' => 'Notre équipe est disponible pour vous accompagner dans votre demande de financement.',
+        'sectitle' => 'Les services de votre banque au quotidien',
+        'cta_title' => 'Prêt à ouvrir votre compte ?',
+        'cta_text' => 'Notre équipe est disponible pour vous accompagner dans l\'ouverture de votre compte ou votre demande de financement.',
     ],
 
     // FAQ page CTA
@@ -249,30 +256,44 @@ return [
     // Works
     'works' => [
         'sectagline' => 'Comment ça marche',
-        'sectitle' => 'Notre processus de travail',
+        'sectitle' => 'Votre compte en 4 étapes',
         'step' => 'Étape',
         'step1' => [
-            'title' => 'Soumission de la demande',
-            'desc' => 'Complétez et soumettez votre demande en ligne en quelques minutes. Aucune visite en agence n\'est nécessaire.',
+            'title' => 'Inscription en ligne',
+            'desc' => 'Complétez et soumettez votre demande d\'ouverture de compte en quelques minutes. Aucune visite en agence n\'est nécessaire.',
         ],
         'step2' => [
-            'title' => 'Examen & Vérification',
-            'desc' => 'Notre équipe examine votre dossier et vérifie les informations pour s\'assurer de votre éligibilité.',
+            'title' => 'Vérification d\'identité',
+            'desc' => 'Notre équipe vérifie votre identité et vos informations pour sécuriser votre compte.',
         ],
         'step3' => [
-            'title' => 'Approbation du prêt',
-            'desc' => 'Une fois approuvé, vous recevrez la confirmation ainsi que les détails des conditions de prêt.',
+            'title' => 'Compte activé',
+            'desc' => 'Une fois vérifié, vous recevez votre IBAN et votre carte bancaire associés à votre compte.',
         ],
         'step4' => [
-            'title' => 'Versement des fonds',
-            'desc' => 'Les fonds sont transférés directement sur votre compte bancaire peu de temps après l\'approbation.',
+            'title' => 'Gérez votre argent',
+            'desc' => 'Virements, carte, et si besoin une demande de prêt : tout se gère directement depuis votre espace client.',
+        ],
+    ],
+
+    // Pourquoi nous choisir (page À propos)
+    'why_us' => [
+        'sectagline' => 'nos avantages',
+        'sectitle' => 'Pourquoi choisir ' . site_name(),
+        'reasons' => [
+            'title1' => 'Sécurité & conformité',
+            'desc1'  => 'Établissement agréé, vos fonds et vos données sont protégés par des protocoles de sécurité avancés.',
+            'title2' => 'Rapidité',
+            'desc2'  => 'Compte ouvert en quelques minutes, virements traités rapidement, sans paperasse ni déplacement.',
+            'title3' => 'Un accompagnement humain',
+            'desc3'  => 'Notre équipe est disponible pour répondre à vos questions, sur votre compte comme sur vos projets de financement.',
         ],
     ],
 
     // Loan Reasons
     'loan_reasons' => [
-        'sectagline' => 'raisons de prêt',
-        'sectitle' => 'Raisons Populaires de Prêt',
+        'sectagline' => 'notre activité de prêt',
+        'sectitle' => 'Besoin d\'un financement ?',
         'reasons' => [
             'title1' => 'Besoin d\'une nouvelle voiture ?',
             'desc1' => 'Prenez le contrôle de vos finances et repartez avec la voiture de vos rêves grâce à un prêt adapté à vos besoins.',
@@ -300,12 +321,12 @@ return [
     'customer_satisfaction_rate' => 'Clients satisfaits',
     'total_loan_amount_granted' => 'Prêt max. / dossier',
     'average_approval_time'     => 'Réponse garantie',
+    'account_opening_time'      => 'Ouverture de compte',
     'member'                    => 'Clients financés',
     'years_experience'          => 'Années d\'expérience',
     'day' => 'Jours',
 
-    'partners_label' => 'Nos partenaires',
-    'partners_title' => 'Banques partenaires',
+    'partners_title' => 'Partenaires bancaires & de paiement',
     'partners_list' => ['BNP Paribas', 'Santander', 'PKO Bank Polski', 'Revolut', 'BBVA', 'UniCredit', 'Intesa Sanpaolo', 'Banco BPM', 'BPER Banca', 'Banca Monte dei Paschi di Siena', 'Mediobanca', 'Swedbank Lietuvoje', 'SEB bankas', 'Revolut Bank UAB', 'Luminor Bank', 'Šiaulių bankas', 'Deutsche Bank', 'Commerzbank', 'DZ Bank', 'HypoVereinsbank', 'KfW Bank', 'DSK Bank', 'UniCredit Bulbank', 'United Bulgarian Bank', 'First Investment Bank', 'Postbank Bulgaria', 'TBI Bank', 'Banca Transilvania', 'Banca Comercială Română (BCR)', 'CEC Bank', 'BRD – Groupe Société Générale', 'Raiffeisen Bank Romania', 'UniCredit Bank Romania', 'Swedbank Latvia', 'SEB banka', 'Citadele Banka', 'Luminor Bank Latvia', 'BlueOrange Bank'],
 
     'cta_title2' => 'Obtenez le prêt dont vous avez besoin rapidement.',

@@ -3,7 +3,7 @@
 return [
     'title' => 'Datenschutzerklärung',
     'introduction_title' => '1. Einführung',
-    'introduction_text' => 'Bei ' . site_name() . ' verpflichten wir uns, Ihre Privatsphäre zu schützen und zu respektieren. In dieser Datenschutzrichtlinie wird erläutert, wie wir Ihre personenbezogenen Daten erfassen, verwenden, offenlegen und schützen, wenn Sie unsere Website und Online-Kreditdienste nutzen. Durch die Nutzung unserer Website akzeptieren Sie die in dieser Richtlinie beschriebenen Praktiken.',
+    'introduction_text' => 'Bei ' . site_name() . ' verpflichten wir uns, Ihre Privatsphäre zu schützen und zu respektieren. In dieser Datenschutzrichtlinie wird erläutert, wie wir Ihre personenbezogenen Daten erfassen, verwenden, offenlegen und schützen, wenn Sie unsere Website, Ihr Online-Bankkonto und unsere Kreditdienste nutzen. Durch die Nutzung unserer Website akzeptieren Sie die in dieser Richtlinie beschriebenen Praktiken.',
     'information_collection_title' => '2. Informationen, die wir sammeln',
     'information_collection_text' => 'Wir können die folgenden Informationen über Sie sammeln und verarbeiten:',
     'information_collection_list' => [
@@ -14,17 +14,18 @@ return [
     'information_use_title' => '3. Nutzung Ihrer Daten',
     'information_use_text' => 'Wir verwenden die von uns gesammelten Informationen, um:',
     'information_use_list' => [
-        'Bereitstellung und Verwaltung unserer Kreditdienstleistungen, einschließlich der Beurteilung Ihrer Kreditberechtigung und der Verwaltung Ihres Kontos.',
-        'Verbessern Sie unsere Website und unsere Dienste, unter anderem durch die Analyse, wie Sie unsere Website nutzen, und durch die Personalisierung Ihres Erlebnisses.',
-        'Mit Ihnen kommunizieren, insbesondere um Sie über den Status Ihres Kreditantrags, Aktualisierungen unserer Dienstleistungen und Werbeangebote zu informieren.',
-        'Respektieren Sie unsere gesetzlichen und behördlichen Verpflichtungen.',
+        'Eröffnung und Verwaltung Ihres Bankkontos, Ihrer Karte und Ihrer Transaktionen (Überweisungen, Kontobewegungen).',
+        'Bereitstellung und Verwaltung unserer Kreditdienstleistungen, einschließlich der Beurteilung Ihrer Kreditberechtigung.',
+        'Verbesserung unserer Website und unserer Dienste, unter anderem durch die Analyse, wie Sie unsere Website nutzen, und durch die Personalisierung Ihres Erlebnisses.',
+        'Kommunikation mit Ihnen, insbesondere um Sie über den Status Ihres Kontos, Ihres Kreditantrags, Aktualisierungen unserer Dienstleistungen und Werbeangebote zu informieren.',
+        'Einhaltung unserer gesetzlichen und behördlichen Verpflichtungen, einschließlich unserer Pflichten zur Identitätsprüfung (KYC).',
     ],
     'information_sharing_title' => '4. Weitergabe Ihrer Informationen',
     'information_sharing_text' => 'Wir können Ihre persönlichen Daten weitergeben mit:',
     'information_sharing_list' => [
-        'Unsere Partner und Dienstleister, die uns bei der Bereitstellung und Verbesserung unserer Kreditdienstleistungen unterstützen.',
-        'Auskunfteien und andere Finanzinstitute zur Beurteilung Ihrer Kreditwürdigkeit und zum Management finanzieller Risiken.',
-        'Regulierungs- und Regierungsbehörden, sofern gesetzlich vorgeschrieben.',
+        'Unsere Partner und Dienstleister, die uns bei der Bereitstellung und Verbesserung unserer Bank- und Kreditdienstleistungen unterstützen.',
+        'Auskunfteien und andere Finanzinstitute zur Beurteilung Ihrer Kreditwürdigkeit, zur Abwicklung Ihrer Bankgeschäfte und zum Management finanzieller Risiken.',
+        'Regulierungs- und Regierungsbehörden, sofern gesetzlich vorgeschrieben, insbesondere im Rahmen unserer Verpflichtungen zur Bekämpfung der Geldwäsche.',
         'Dritte im Rahmen einer kommerziellen Transaktion, etwa einer Fusion, einem Erwerb oder einem Verkauf von Vermögenswerten.'
     ],
     'information_security_title' => '5. Sicherheit Ihrer Informationen',

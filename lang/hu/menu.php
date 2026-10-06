@@ -8,6 +8,7 @@ return [
     'simulate' => 'Kölcsön szimuláció',
     'contact' => 'Kapcsolatfelvétel',
     'loan' => 'Kölcsönigénylés',
+    'open_account' => 'Számla nyitása',
 
     'personal' => 'Személyi kölcsön',
     'auto' => 'Auto kölcsön',
@@ -16,8 +17,12 @@ return [
     'business' => 'Üzleti kölcsön',
     'bike' => 'Kerékpárkölcsön',
 
+    'banking_account' => 'Bankszámla',
+    'banking_card'    => 'Bankkártya',
+    'banking_transfer'=> 'Átutalások',
+    'banking_loans'   => 'Kölcsönök és finanszírozás',
 
-    'arlert' => 'Kölcsön kérése akár 3%-os kamattal',
+    'arlert' => '100%-ban online bank, néhány perc alatt nyitott számla',
 
 
     'faq'              => 'FAQ',
@@ -30,5 +35,5 @@ return [
     'newsletter_title' => 'Legyen tájékozott ajánlatainkról',
     'subscribe'        => 'Feliratkozás',
     'read_more'        => 'Tudjon meg többet',
-    'footer_desc'      => 'A ' . site_name() . ' megbízható partnere a gyors, rugalmas és személyre szabott finanszírozási megoldásoknak szerte Európában.',
+    'footer_desc'      => 'A ' . site_name() . ' egy 100%-ban online bank: nyisson számlát, szerezze meg kártyáját és IBAN-ját percek alatt, és élvezze finanszírozási megoldásainkat is szerte Európában.',
 ];

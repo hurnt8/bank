@@ -3,42 +3,39 @@
 return [
     'banner_title' => 'Entdecken Sie ' . site_name(),
     'banner_subtitle' => 'Über uns',
-    'banner_description' => 'Leihen Sie sich leichter Geld mit flexiblen Kreditlösungen, die auf Ihre finanziellen Bedürfnisse zugeschnitten sind.',
+    'banner_description' => 'Eine 100 % Online-Bank: Eröffnen Sie Ihr Konto in wenigen Minuten und verwalten Sie Ihr Geld ganz einfach.',
 
     'section1_title' => 'Warum ' . site_name() . ' wählen',
-    'section1_p1' => 'Bei ' . site_name() . ' glauben wir fest daran, dass jeder eine Chance verdient, seine finanziellen Träume zu verwirklichen. Seit unserer Gründung setzen wir uns dafür ein, flexible und zugängliche Kreditlösungen anzubieten, um die vielfältigen Bedürfnisse unserer Kunden zu erfüllen. Ob Sie ein persönliches Projekt finanzieren, ein Auto kaufen oder Ihr Unternehmen erweitern möchten – wir haben den passenden Kredit für Sie.',
-    'section1_p2' => 'Unsere Dienstleistungen sind so gestaltet, dass sie einen reibungslosen, schnellen und einfachen Antragsprozess gewährleisten. Wir wissen, dass jeder Kunde einzigartig ist, deshalb bieten wir individuelle Kredite an, die sich an Ihre spezifischen Bedürfnisse anpassen. Darüber hinaus stehen Ihnen unsere engagierten Berater bei jedem Schritt zur Seite, damit Sie von Anfang bis Ende umfassend unterstützt werden.',
+    'section1_p1' => 'Bei ' . site_name() . ' glauben wir fest daran, dass jeder einen einfachen und transparenten Zugang zu modernen Bankdienstleistungen verdient. Seit unserer Gründung setzen wir uns dafür ein, ein Konto, eine Karte und Überweisungen anzubieten, die für alle zugänglich sind, ohne Papierkram oder Schlangestehen in der Filiale. Und wenn Sie ein Projekt finanzieren möchten, bieten wir auch flexible Kreditlösungen an.',
+    'section1_p2' => 'Unsere Dienstleistungen sind so gestaltet, dass sie ein reibungsloses Erlebnis bieten: Kontoeröffnung in wenigen Minuten, sichere Identitätsprüfung und persönliche Unterstützung bei jedem Schritt. Unsere engagierten Berater stehen Ihnen immer zur Seite, egal ob für die tägliche Verwaltung Ihres Kontos oder für eine Finanzierungsanfrage.',
     'proposed' => 'Wir bieten Ihnen:',
-    'check1' => 'Individuelle Kredite, abgestimmt auf Ihre spezifischen Bedürfnisse.',
-    'check2' => 'Persönliche Berater, die Ihnen bei jedem Schritt helfen.',
-    'check3' => 'Flexible Rückzahlungsbedingungen, passend zu Ihrer finanziellen Situation',
-    'check4' => 'Kredite ohne Gehaltsnachweis.',
-    'section1_p3' => 'Die Mission von ' . site_name() . ' ist es, Ihnen zu helfen, Ihre finanziellen Ziele mit maßgeschneiderten Kreditlösungen zu erreichen. Werden Sie noch heute Teil unserer Community und erfahren Sie, wie wir Ihnen helfen können, Ihre Projekte zu verwirklichen.',
-    'btn' => 'Finden Sie Ihren idealen Kredit',
+    'check1' => 'Ein in wenigen Minuten eröffnetes Bankkonto, zu 100 % online.',
+    'check2' => 'Eine Bankkarte und eine IBAN, die mit Ihrem Konto verknüpft sind.',
+    'check3' => 'Schnelle und sichere Überweisungen, mit voller Transparenz.',
+    'check4' => 'Flexible Kreditlösungen zur Finanzierung Ihrer Projekte.',
+    'section1_p3' => 'Die Mission von ' . site_name() . ' ist es, Ihren Bankalltag zu vereinfachen und Sie gleichzeitig bei Ihren finanziellen Projekten zu begleiten. Werden Sie noch heute Teil unserer Community und erfahren Sie, wie wir Ihnen helfen können.',
+    'btn' => 'Mein Konto eröffnen',
 
     'faq_title' => 'Häufig gestellte Fragen',
-    'faq_description' => 'Finden Sie Antworten auf die häufigsten Fragen zu unseren Kreditdienstleistungen.',
-    'acc_1' => 'Welche Arten von Krediten bieten Sie an?',
-    'acc_1_desc' => 'Wir bieten eine Vielzahl von Krediten an, darunter Privatkredite, Hypothekendarlehen,
+    'faq_description' => 'Finden Sie Antworten auf die häufigsten Fragen zu Ihrem Konto und unseren Kreditdienstleistungen.',
+    'acc_1' => 'Wie eröffne ich ein Konto bei ' . site_name() . '?',
+    'acc_1_desc' => 'Die Kontoeröffnung erfolgt vollständig online in wenigen Minuten: Geben Sie
+    Ihre Daten ein, verifizieren Sie Ihre Identität und aktivieren Sie dann Ihr Konto über die
+    erhaltene E-Mail. Anschließend erhalten Sie Ihre IBAN und Ihre Bankkarte.',
+    'acc_2' => 'Welche Gebühren gelten für Konto und Karte?',
+    'acc_2_desc' => 'Unsere Preisbedingungen sind transparent und werden vor jeder
+    Kontoeröffnung mitgeteilt. Keine versteckten Gebühren: Sie wissen genau, wofür Sie bezahlen.',
+    'acc_3' => 'Welche Arten von Krediten bieten Sie an?',
+    'acc_3_desc' => 'Zusätzlich zu Ihrem Konto bieten wir eine Vielzahl von Krediten an, darunter Privatkredite, Hypothekendarlehen,
     Autokredite und Kleinunternehmerkredite. Jede
     Kreditart ist darauf ausgelegt, spezifische Bedürfnisse zu erfüllen und
     flexible Konditionen zu bieten.',
-    'acc_2' => 'Wie kann ich einen Kredit beantragen?',
-    'acc_2_desc' => 'Sie können einen Kreditantrag direkt auf unserer Website stellen, indem Sie
+    'acc_4' => 'Wie kann ich einen Kredit beantragen?',
+    'acc_4_desc' => 'Sie können einen Kreditantrag direkt auf unserer Website stellen, indem Sie
     das Online-Antragsformular ausfüllen. Wir bitten Sie um
     grundlegende Informationen wie Ihren Namen, Kontaktdaten und den
     gewünschten Kreditbetrag. Unsere Berater setzen sich mit Ihnen in Verbindung, um den Antrag abzuschließen und
     Sie durch den Prozess zu begleiten.',
-    'acc_3' => 'Welche Zulassungskriterien gelten für einen Kredit?',
-    'acc_3_desc' => 'Die Zulassungskriterien variieren je nach Kreditart, aber im Allgemeinen müssen Sie
-    volljährig sein, ein stabiles Einkommen und eine gute Bonität haben. Wir
-    prüfen außerdem Ihre Rückzahlungsfähigkeit und Ihre
-    finanzielle Vorgeschichte.',
-    'acc_4' => 'Wie lange dauert die Bearbeitung eines Kreditantrags?',
-    'acc_4_desc' => ' Die Bearbeitungszeit variiert je nach Kreditart und Komplexität
-    des Antrags. In der Regel werden Privatkreditanträge innerhalb von 24 bis 48
-    Stunden bearbeitet, während Hypothekendarlehen mehrere Tage dauern können,
-    da umfassendere Prüfungen erforderlich sind.',
     'acc_5' => 'Kann ich meinen Kredit vorzeitig zurückzahlen?',
     'acc_5_desc' => 'Ja, Sie können Ihren Kredit vorzeitig ohne Vertragsstrafe zurückzahlen. Wir
     empfehlen Ihnen, den Kredit nach Möglichkeit schneller zurückzuzahlen, da dies

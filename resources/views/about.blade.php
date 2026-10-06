@@ -102,18 +102,18 @@
                     </div>
                 </div>
 
-                {{-- Types de prêts proposés --}}
+                {{-- Services proposés --}}
                 <div style="margin-bottom:.5rem;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);">
-                    <i class="fas fa-tags" style="color:var(--accent);margin-right:.35rem;"></i>@lang('home.discover_our_loan_services')
+                    <i class="fas fa-tags" style="color:var(--accent);margin-right:.35rem;"></i>{{ __('home.services.sectitle') }}
                 </div>
                 <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem;">
                     @foreach([
-                        ['fas fa-user-tie',       'home.personal_loan'],
-                        ['fas fa-home',           'home.mortgage_loan'],
-                        ['fas fa-car',            'home.auto_loan'],
-                        ['fas fa-graduation-cap', 'home.student_loan'],
-                        ['fas fa-briefcase',      'home.business_loan'],
-                        ['fas fa-credit-card',    'home.microcredit'],
+                        ['fas fa-wallet',              'menu.banking_account'],
+                        ['fas fa-credit-card',         'menu.banking_card'],
+                        ['fas fa-money-bill-transfer', 'menu.banking_transfer'],
+                        ['fas fa-user-tie',            'home.personal_loan'],
+                        ['fas fa-home',                'home.mortgage_loan'],
+                        ['fas fa-car',                 'home.auto_loan'],
                     ] as $t)
                     <span style="display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .75rem;border-radius:999px;background:var(--cream);border:1px solid #e2ddd0;font-size:.75rem;font-weight:700;color:var(--navy);">
                         <i class="{{ $t[0] }}" style="color:var(--accent-dark);font-size:.7rem;"></i> @lang($t[1])
@@ -136,8 +136,8 @@
                     </div>
                 </div>
 
-                <a href="{{ route('loan', ['locale' => $locale]) }}" class="btn-primary btn-primary--lg">
-                    <i class="fas fa-file-signature"></i> @lang('menu.loan')
+                <a href="{{ route('signup', ['locale' => $locale]) }}" class="btn-primary btn-primary--lg">
+                    <i class="fas fa-user-plus"></i> @lang('menu.open_account')
                 </a>
             </div>
         </div>
@@ -151,7 +151,7 @@
             @php
             $stats = [
                 ['stop'=>'8500','suffix'=>'+','prefix'=>'', 'label'=> __('home.customer_satisfaction_rate')],
-                ['stop'=>'500',  'suffix'=>'k','prefix'=>'€','label'=> __('home.total_loan_amount_granted')],
+                ['stop'=>'5',    'suffix'=>' min','prefix'=>'','label'=> __('home.account_opening_time')],
                 ['stop'=>'24',  'suffix'=>'h','prefix'=>'', 'label'=> __('home.average_approval_time')],
                 ['stop'=>'15',   'suffix'=>'+','prefix'=>'', 'label'=> __('home.years_experience')],
             ];
@@ -176,8 +176,8 @@
 <section class="py-24" style="background:var(--cream);">
     <div class="container">
         <div class="text-center mb-14">
-            <div class="section-label justify-content-center">{{ __('home.loan_reasons.sectagline') }}</div>
-            <h2 class="section-title">{{ __('home.loan_reasons.sectitle') }}</h2>
+            <div class="section-label justify-content-center">{{ __('home.why_us.sectagline') }}</div>
+            <h2 class="section-title">{{ __('home.why_us.sectitle') }}</h2>
         </div>
         <div class="row g-4 gutter-y-30">
             @foreach ([1,2,3] as $r)
@@ -187,10 +187,10 @@
                         <i class="fas fa-{{ $r===1 ? 'shield-alt' : ($r===2 ? 'bolt' : 'headset') }}"></i>
                     </div>
                     <h3 style="font-family:'Playfair Display',serif;font-size:1.125rem;font-weight:700;color:var(--navy);margin-bottom:.625rem;">
-                        {{ __('home.loan_reasons.reasons.title' . $r) }}
+                        {{ __('home.why_us.reasons.title' . $r) }}
                     </h3>
                     <p style="font-size:.875rem;color:var(--gray-500);line-height:1.75;margin:0;">
-                        {{ __('home.loan_reasons.reasons.desc' . $r) }}
+                        {{ __('home.why_us.reasons.desc' . $r) }}
                     </p>
                 </div>
             </div>

@@ -5,19 +5,19 @@ return [
     'sections' => [
         [
             'title' => '1. Introduction',
-            'content' => 'Bienvenue sur ' . site_name() . '. En utilisant notre site et nos services, vous acceptez de vous conformer et d\'être lié par les termes et conditions suivants. Veuillez lire attentivement ces termes avant d\'utiliser notre site ou de contracter un prêt avec nous.'
+            'content' => 'Bienvenue sur ' . site_name() . '. En utilisant notre site et nos services, vous acceptez de vous conformer et d\'être lié par les termes et conditions suivants. Veuillez lire attentivement ces termes avant d\'ouvrir un compte, d\'utiliser nos services bancaires ou de contracter un prêt avec nous.'
         ],
         [
             'title' => '2. Utilisation du site',
             'content' => 'En accédant à notre site, vous vous engagez à utiliser nos services uniquement à des fins légales et conformes aux présentes conditions. Vous vous engagez à ne pas utiliser notre site de manière à causer des dommages, des interruptions ou des interférences avec nos services ou à l\'accès d\'autres utilisateurs.'
         ],
         [
-            'title' => '3. Services de prêt',
-            'content' => site_name() . ' propose divers types de prêts pour répondre à vos besoins financiers. Tous les prêts sont soumis à une approbation basée sur notre évaluation de votre solvabilité et de votre capacité de remboursement. Les termes spécifiques de chaque prêt, y compris les taux d\'intérêt, les échéances et les modalités de remboursement, seront détaillés dans votre contrat de prêt.'
+            'title' => '3. Compte, carte et services bancaires',
+            'content' => site_name() . ' propose l\'ouverture d\'un compte en ligne, incluant un IBAN et une carte bancaire associés. L\'ouverture de compte est soumise à une vérification d\'identité préalable. Les virements et autres opérations réalisées depuis votre compte sont soumis aux conditions et éventuels plafonds précisés lors de l\'ouverture de votre compte ou dans votre espace client.'
         ],
         [
-            'title' => '4. Frais de contrat et d\'assurance',
-            'content' => 'Lors de la souscription d\'un prêt chez ' . site_name() . ', des frais de contrat et d\'assurance peuvent être appliqués. Ces frais couvrent les coûts administratifs associés à la mise en place et à la gestion de votre prêt. Les détails spécifiques de ces frais seront clairement indiqués dans votre contrat de prêt. Vous êtes tenu de payer ces frais conformément aux modalités précisées.'
+            'title' => '4. Services de prêt',
+            'content' => site_name() . ' propose également divers types de prêts pour répondre à vos besoins financiers. Tous les prêts sont soumis à une approbation basée sur notre évaluation de votre solvabilité et de votre capacité de remboursement. Les termes spécifiques de chaque prêt, y compris les taux d\'intérêt, les échéances et les modalités de remboursement, seront détaillés dans votre contrat de prêt. Des frais de contrat et d\'assurance peuvent être appliqués lors de la souscription d\'un prêt ; ces frais seront clairement indiqués dans votre contrat.'
         ],
         [
             'title' => '5. Confidentialité',

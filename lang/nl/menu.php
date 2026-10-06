@@ -9,6 +9,7 @@ return [
     'simulate' => 'Leensimulatie',
     'contact' => 'Contact opnemen',
     'loan' => 'Een lening aanvragen',
+    'open_account' => 'Een rekening openen',
 
     'personal' => 'Persoonlijke lening',
     'auto' => 'Autolening',
@@ -17,7 +18,12 @@ return [
     'business' => 'Zakelijke lening',
     'bike' => 'Fietslening',
 
-    'arlert' => "Ontvang een lening met een rentetarief tot 3%",
+    'banking_account' => 'Bankrekening',
+    'banking_card'    => 'Bankkaart',
+    'banking_transfer'=> 'Overschrijvingen',
+    'banking_loans'   => 'Leningen & financiering',
+
+    'arlert' => "Een 100% online bank, een rekening geopend in enkele minuten",
 
 
 
@@ -31,5 +37,5 @@ return [
     'newsletter_title' => 'Blijf op de hoogte van onze aanbiedingen',
     'subscribe'        => "Abonneren",
     'read_more'        => 'Meer weten',
-    'footer_desc'      => site_name() . " is uw betrouwbare partner voor snelle, flexibele en persoonlijke financieringsoplossingen in heel Europa.",
+    'footer_desc'      => site_name() . " is een 100% online bank: open een rekening, ontvang uw kaart en IBAN in enkele minuten en profiteer ook van onze financieringsoplossingen in heel Europa.",
 ];

@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'general_title' => site_name() . ' - Best online lenders in Germany, Spain, Hungary etc.',
-    'banner_title' => 'Get the perfect loan for all your online needs.',
-    'banner_text' => 'Millions of people use ' . site_name() . ' to realize their projects.',
-    'get_loan_now' => 'Get a loan now',
+    'general_title' => site_name() . ' - Online bank: account, card and financing across Europe.',
+    'banner_title' => 'Your 100% online bank, opened in minutes.',
+    'banner_text' => 'Millions of people use ' . site_name() . ' to manage their money every day.',
+    'get_loan_now' => 'Simulate your loan',
     'popular_loans' => 'Popular loan types:',
 
-    'discover_our_loan_services' => 'Discover our loan services',
-    'find_the_right_loan' => 'Find the loan suited to your needs among our different options',
+    'discover_our_loan_services' => 'Need financing? Discover our loans',
+    'find_the_right_loan' => 'In addition to your account, find the loan suited to your needs among our different options',
     'personal_loan' => 'Personal loan',
     'personal_loan_description' => 'For your personal projects',
     'personal_loan_details' => 'Fast and flexible financing for all your personal needs.',
@@ -67,7 +67,7 @@ return [
     'testimonials_certified_by' => 'Certified by: Trustindex',
     'testimonials_months_ago' => '{1} 1 month ago|[2,*] :count months ago',
     'testimonial_1' => [
-        'quote'    => '"I was sceptical at first, but the whole process was smoother than I imagined. My mortgage application was approved within days and the rate was better than any high-street bank I tried. Absolutely delighted."',
+        'quote'    => '"I opened my account in under 10 minutes from my phone, with no paperwork to mail. My card arrived a few days later. A real time-saver."',
         'name'     => 'James Harrison',
         'location' => 'London, United Kingdom',
         'months_ago' => 1,
@@ -79,13 +79,13 @@ return [
         'months_ago' => 2,
     ],
     'testimonial_3' => [
-        'quote'    => '"As a self-employed contractor, most lenders turned me down flat. ' . site_name() . ' looked at my actual income, not just payslips, and got me a business loan within the week. Exceptional service."',
+        'quote'    => '"Fully online process, no hidden fees on my card, and support actually replies fast whenever I have a question. A modern and efficient service."',
         'name'     => 'Oliver Bennett',
         'location' => 'Edinburgh, Scotland',
         'months_ago' => 2,
     ],
     'testimonial_4' => [
-        'quote'    => '"The online application took under twenty minutes and I had a decision the same afternoon. I used the funds to cover my daughter\'s university fees and the repayment terms are very fair."',
+        'quote'    => '"I can track all my account activity and make transfers from the app, wherever I am. It really feels like I\'m supported day to day."',
         'name'     => 'Charlotte Hughes',
         'location' => 'Birmingham, United Kingdom',
         'months_ago' => 3,
@@ -97,22 +97,22 @@ return [
         'months_ago' => 4,
     ],
     'testimonial_6' => [
-        'quote'    => '"Transparent fees, competitive rates, and a team that actually answers the phone. In an industry full of hidden charges, ' . site_name() . ' stands out as genuinely trustworthy. Highly recommended."',
+        'quote'    => '"Transparent account and card fees convinced me from the very first contact. No bad surprises along the way. That\'s rare and valuable in this sector."',
         'name'     => 'Grace Williams',
         'location' => 'Leeds, United Kingdom',
         'months_ago' => 5,
     ],
     'testimonial_7' => [
-        'quote' => '"Simple and efficient loan process. I was pleasantly surprised by how fast the approval was. Thanks to the whole team!"',
+        'quote' => '"Simple and fast account opening. I was pleasantly surprised by how easy the identity verification was. Thanks to the whole team!"',
         'name' => 'Marie C.',
     ],
     'testimonial_8' => [
-        'quote' => '"I had an excellent experience with this loan service. The staff were attentive and professional. I recommend it without hesitation!"',
+        'quote' => '"I had an excellent experience with this online bank. The staff were attentive and professional. I recommend it without hesitation!"',
         'name' => 'Jean L.',
     ],
 
-    'about_title' => 'Join the world\'s best marketplace for workers',
-    'about_description' => site_name() . ' is your trusted platform for obtaining loans with an exceptional customer experience. We are committed to providing you with simple, secure and fast financial solutions.',
+    'about_title' => 'Your money, simplified',
+    'about_description' => site_name() . ' is your trusted bank for managing your account, card and transfers every day, with an exceptional customer experience. We also offer simple, secure and fast financing solutions.',
     'rating' => '4.9/5',
     'rating_description' => 'Customers rate professionals',
     'projects_completed' => '+12M',
@@ -123,9 +123,9 @@ return [
         '3' => 'Access flexible loans adapted to your needs',
     ],
 
-    'cta_title' => 'Get the loan you need quickly.',
-    'cta_text' => 'Apply for a loan online today. Our platform connects you with trusted lenders for fast and secure financial solutions.',
-    'cta_button' => 'Start now',
+    'cta_title' => 'Open your account in minutes.',
+    'cta_text' => 'Join ' . site_name() . ' today: account, card, IBAN and transfers, plus fast and secure financing solutions if you need them.',
+    'cta_button' => 'Open an account',
 
     'terms' => 'General conditions',
     'privacy_policy' => 'Privacy policy',
@@ -162,13 +162,13 @@ return [
     'sl' => 'Slovenian',
 
     // Hero subtitle
-    'hero_subtitle' => 'No complex process, no hidden fees. For 15 years, we have been financing personal, real estate, auto and business projects with transparency and speed.',
+    'hero_subtitle' => 'Open an account in minutes, get your IBAN and your card, and manage your money every day. Need financing? Our loans remain available in just a few clicks.',
 
     // Slide
     'slide_1' => [
-        'title' => ' 15 Years of Expertise · Licensed · Guaranteed Response',
-        'text1' => 'Finance all your projects,',
-        'text2' => 'up to €95,000 in 48h.',
+        'title' => ' 15 Years of Expertise · Licensed · 100% Online',
+        'text1' => 'The bank that simplifies',
+        'text2' => 'your money every day.',
     ],
     'slide_2' => [
         'title' => 'Smart Loans for Bright Futures',
@@ -194,28 +194,35 @@ return [
     ],
 
     'about' => [
-        'exptitle' => 'year of experience',
+        'exptitle' => 'years of experience',
         'sectagline' => 'welcome to ' . site_name(),
-        'sectitle' => 'Personal loans to fulfill your dreams',
+        'sectitle' => 'A bank built for your everyday life',
         'text1' => 'We’ve been in this business for 15 years and we provide the best services.',
-        'text2' => site_name() . ' is your trusted platform for loans with an exceptional customer experience. We are committed to providing you with simple, secure and fast financial solutions.',
-        'check1' => 'small business loan',
-        'check2' => 'studying abroad loan',
-        'check3' => 'quick loan process',
-        'check4' => 'very low rates',
+        'text2' => site_name() . ' is a 100% online bank: account, card, IBAN and transfers in minutes, with an exceptional customer experience. Need to finance a project? Our loan solutions remain available, simple and fast.',
+        'check1' => 'online account opening',
+        'check2' => 'bank card included',
+        'check3' => 'instant transfers',
+        'check4' => 'transparent fees',
         'engage1_title' => 'Licensed & Regulated',
-        'engage1_desc'  => 'Certified credit institution operating under European standards. Your data and file are protected at every step.',
-        'engage2_title' => 'Guaranteed Response in 48h',
-        'engage2_desc'  => '100% online process, no branch visit required. Decision delivered within 48 hours.',
+        'engage1_desc'  => 'Certified institution operating under European standards. Your data and funds are protected at every step.',
+        'engage2_title' => 'Account opened in minutes',
+        'engage2_desc'  => '100% online sign-up, no branch visit required. Fast and secure identity verification.',
         'engage3_title' => 'Multi-currency & Multi-country',
-        'engage3_desc'  => 'Financing available in your country\'s currency, tailored to your project.',
+        'engage3_desc'  => 'An account and services available in your country\'s currency, across Europe.',
+    ],
+
+    // Banking services
+    'banking' => [
+        'account_desc'  => 'Open your account online in minutes and get your IBAN right away.',
+        'card_desc'     => 'A bank card linked to your account, to pay and withdraw anywhere.',
+        'transfer_desc' => 'Send and receive money quickly, securely, wherever you are.',
     ],
 
     'services' => [
         'sectagline' => 'what we”re offering',
-        'sectitle' => 'We provide best services for your loan',
-        'cta_title' => 'Ready to start your financial project?',
-        'cta_text' => 'Our team is available to support you with your financing application.',
+        'sectitle' => 'Your everyday banking services',
+        'cta_title' => 'Ready to open your account?',
+        'cta_text' => 'Our team is available to support you with opening your account or your financing application.',
     ],
 
     // FAQ page CTA
@@ -265,29 +272,43 @@ return [
 
     'works' => [
         'sectagline' => 'How it works',
-        'sectitle' => 'Our workflow',
+        'sectitle' => 'Your account in 4 steps',
         'step' => 'Step',
         'step1' => [
-            'title' => 'Application Submission',
-            'desc' => 'Complete and submit your application online in minutes. No branch visit is necessary.'
+            'title' => 'Sign up online',
+            'desc' => 'Complete and submit your account opening request in minutes. No branch visit is necessary.'
         ],
         'step2' => [
-            'title' => 'Review & Verification',
-            'desc' => 'Our team reviews your file and verifies the information to ensure your eligibility.'
+            'title' => 'Identity verification',
+            'desc' => 'Our team verifies your identity and your information to secure your account.'
         ],
         'step3' => [
-            'title' => 'Loan Approval',
-            'desc' => 'Once approved, you will receive confirmation of the loan approval as well as the details of the terms.'
+            'title' => 'Account activated',
+            'desc' => 'Once verified, you receive your IBAN and your bank card linked to your account.'
         ],
         'step4' => [
-            'title' => 'Payment of funds',
-            'desc' => 'Funds are transferred directly to your bank account within a short time after approval.'
+            'title' => 'Manage your money',
+            'desc' => 'Transfers, card, and if needed a loan request: everything is managed directly from your client space.'
+        ],
+    ],
+
+    // Why choose us (About page)
+    'why_us' => [
+        'sectagline' => 'our advantages',
+        'sectitle' => 'Why choose ' . site_name(),
+        'reasons' => [
+            'title1' => 'Security & compliance',
+            'desc1'  => 'Licensed institution, your funds and data are protected by advanced security protocols.',
+            'title2' => 'Speed',
+            'desc2'  => 'Account opened in minutes, transfers processed quickly, with no paperwork or travel.',
+            'title3' => 'Human support',
+            'desc3'  => 'Our team is available to answer your questions, on your account as well as your financing projects.',
         ],
     ],
 
     'loan_reasons' => [
-        'sectagline' => 'loan reasons',
-        'sectitle' => 'Popular Reasons to Loan',
+        'sectagline' => 'our lending business',
+        'sectitle' => 'Need financing?',
         'reasons' => [
             'title1' => 'Need a new car?',
             'desc1' => 'Take control of your finances and drive away in the car of your dreams with a loan tailored to fit your needs.',
@@ -315,12 +336,12 @@ return [
     'customer_satisfaction_rate' => 'Happy Customers',
     'total_loan_amount_granted' => 'Max. loan / file',
     'average_approval_time'     => 'Guaranteed response',
+    'account_opening_time'      => 'Account opening',
     'member'                    => 'Financed clients',
     'years_experience'          => 'Years of experience',
     'day' => 'Days',
 
-    'partners_label' => 'Our partners',
-    'partners_title' => 'Banking partners',
+    'partners_title' => 'Banking & payment partners',
     'partners_list' => ['BNP Paribas', 'Santander', 'PKO Bank Polski', 'Revolut', 'BBVA', 'UniCredit', 'Intesa Sanpaolo', 'Banco BPM', 'BPER Banca', 'Banca Monte dei Paschi di Siena', 'Mediobanca', 'Swedbank Lietuvoje', 'SEB bankas', 'Revolut Bank UAB', 'Luminor Bank', 'Šiaulių bankas', 'Deutsche Bank', 'Commerzbank', 'DZ Bank', 'HypoVereinsbank', 'KfW Bank', 'DSK Bank', 'UniCredit Bulbank', 'United Bulgarian Bank', 'First Investment Bank', 'Postbank Bulgaria', 'TBI Bank', 'Banca Transilvania', 'Banca Comercială Română (BCR)', 'CEC Bank', 'BRD – Groupe Société Générale', 'Raiffeisen Bank Romania', 'UniCredit Bank Romania', 'Swedbank Latvia', 'SEB banka', 'Citadele Banka', 'Luminor Bank Latvia', 'BlueOrange Bank'],
 
     'cta_title2' => 'Get the loan you need quickly.',

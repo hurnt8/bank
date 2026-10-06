@@ -3,7 +3,7 @@
 return [
     'title' => 'Privacy policy',
     'introduction_title' => '1. Introduction',
-    'introduction_text' => 'At ' . site_name() . ', we are committed to protecting and respecting your privacy. This privacy policy explains how we collect, use, disclose and protect your personal information when you use our website and online lending services. By using our site, you accept the practices described in this policy.',
+    'introduction_text' => 'At ' . site_name() . ', we are committed to protecting and respecting your privacy. This privacy policy explains how we collect, use, disclose and protect your personal information when you use our website, your online bank account and our loan services. By using our site, you accept the practices described in this policy.',
     'information_collection_title' => '2. Information we collect',
     'information_collection_text' => 'We may collect and process the following information about you:',
     'information_collection_list' => [
@@ -14,17 +14,18 @@ return [
     'information_use_title' => '3. Use of your information',
     'information_use_text' => 'We use the information we collect to:',
     'information_use_list' => [
-        'Provide and manage our loan services, including assessing your loan eligibility and managing your account.',
+        'Open and manage your bank account, your card and your transactions (transfers, account activity).',
+        'Provide and manage our loan services, including assessing your loan eligibility.',
         'Improve our website and services, including by analyzing how you use our site and personalizing your experience.',
-        'Communicate with you, in particular to inform you of the status of your loan application, updates to our services, and promotional offers.',
-        'Respect our legal and regulatory obligations.',
+        'Communicate with you, in particular to inform you of the status of your account, your loan application, updates to our services, and promotional offers.',
+        'Respect our legal and regulatory obligations, including our identity verification (KYC) obligations.',
     ],
     'information_sharing_title' => '4. Sharing your information',
     'information_sharing_text' => 'We may share your personal information with:',
     'information_sharing_list' => [
-        'Our partners and service providers who help us provide and improve our lending services.',
-        'Credit agencies and other financial institutions to assess your creditworthiness and manage financial risks.',
-        'Regulatory and governmental authorities where required by law.',
+        'Our partners and service providers who help us provide and improve our banking and lending services.',
+        'Credit agencies and other financial institutions to assess your creditworthiness, process your banking transactions and manage financial risks.',
+        'Regulatory and governmental authorities where required by law, including under our anti-money laundering obligations.',
         'Third parties in the context of a commercial transaction, such as a merger, acquisition or sale of assets.',
     ],
     'information_security_title' => '5. Security of your information',

@@ -8,6 +8,7 @@ return [
     'simulate' => 'Simulacija kredita',
     'contact' => 'Kontaktirajte nas',
     'loan' => 'Zahtjev za kredit',
+    'open_account' => 'Otvorite račun',
 
     'personal' => 'Osobni zajam',
     'auto' => 'Kredit za automobil',
@@ -16,8 +17,12 @@ return [
     'business' => 'Poslovni kredit',
     'bike' => 'Pozajmica bicikla',
 
+    'banking_account' => 'Bankovni račun',
+    'banking_card'    => 'Bankovna kartica',
+    'banking_transfer'=> 'Prijenosi',
+    'banking_loans'   => 'Krediti i financiranje',
 
-    'arlert' => 'Dobijte zajam s kamatom do 3%',
+    'arlert' => '100% online banka, račun otvoren u nekoliko minuta',
 
 
     'faq'              => 'FAQ',
@@ -29,5 +34,5 @@ return [
     'newsletter_title' => 'Budite informirani o našim ponudama',
     'subscribe'        => 'Pretplatite se',
     'read_more'        => 'Saznajte više',
-    'footer_desc'      => site_name() . ' je vaš pouzdani partner za brza, fleksibilna i personalizirana financijska rješenja diljem Europe.',
+    'footer_desc'      => site_name() . ' je 100% online banka: otvorite račun, dobijte svoju karticu i IBAN u nekoliko minuta, te iskoristite i naša rješenja financiranja diljem Europe.',
 ];

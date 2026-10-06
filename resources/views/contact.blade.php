@@ -68,6 +68,9 @@
                                     <label>{{ __('contact.subject') }} *</label>
                                     <select name="subject" class="form-control" required>
                                         <option value="">— {{ __('contact.subject') }} —</option>
+                                        <option value="Ouverture de compte" {{ old('subject')=='Ouverture de compte' ?'selected':'' }}>@lang('menu.banking_account')</option>
+                                        <option value="Carte bancaire"      {{ old('subject')=='Carte bancaire'      ?'selected':'' }}>@lang('menu.banking_card')</option>
+                                        <option value="Virements"           {{ old('subject')=='Virements'           ?'selected':'' }}>@lang('menu.banking_transfer')</option>
                                         <option value="Prêt personnel"  {{ old('subject')=='Prêt personnel'  ?'selected':'' }}>@lang('menu.personal')</option>
                                         <option value="Prêt immobilier" {{ old('subject')=='Prêt immobilier' ?'selected':'' }}>@lang('menu.home_loan')</option>
                                         <option value="Prêt commercial" {{ old('subject')=='Prêt commercial' ?'selected':'' }}>@lang('menu.business')</option>
