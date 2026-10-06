@@ -1695,7 +1695,15 @@ select.form-control { cursor: pointer; }
 @media (min-width:  992px) { .hero-split__grid { padding-left: max(.75rem, calc((100% -  960px) / 2 + .75rem)); } }
 @media (min-width: 1200px) { .hero-split__grid { padding-left: max(.75rem, calc((100% - 1140px) / 2 + .75rem)); } }
 @media (min-width: 1400px) { .hero-split__grid { padding-left: max(.75rem, calc((100% - 1320px) / 2 + .75rem)); } }
-/* Mobile et tablette : le texte reprend la gouttiere du conteneur (marge   gauche incluse) et la photo reste pleine largeur, sans decalage. */@media (max-width: 991.98px) {    .hero-split__grid { padding-left: 0; }    .hero-split__text { padding: 2.75rem max(1rem, calc((100% - 720px) / 2)) 2.5rem; }    .hero-fact:nth-child(odd) { padding-left: 0; }    .hero-fact:nth-child(even) { padding-left: 1rem; }    .hero-split__media img { min-height: 260px; max-height: 420px; }}
+/* Mobile et tablette : le texte reprend la marge de l en-tete (logo) et
+   la photo reste pleine largeur, sans decalage. */
+@media (max-width: 991.98px) {
+    .hero-split__grid { padding-left: 0; }
+    .hero-split__text { padding: 2.75rem .9375rem 2.5rem; }
+    .hero-fact:nth-child(odd) { padding-left: 0; }
+    .hero-fact:nth-child(even) { padding-left: 1rem; }
+    .hero-split__media img { min-height: 260px; max-height: 420px; }
+}
 
 /* ================================================================
    REFONTE — COMPOSANTS DU MODELE
