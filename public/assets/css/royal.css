@@ -1992,3 +1992,15 @@ select.form-control { cursor: pointer; }
    le bouton tombent a l interieur de la colonne de contenu. La classe px-3 de
    l en-tete ne produit pas cette valeur dans ce build : on la pose ici. */
 .site-header .max-w-screen-xl { padding-left: .75rem; padding-right: .75rem; }
+
+/* Petits ecrans : le logo (64 px, taille posee en ligne par le composant) poussait
+   le selecteur de langue et le burger hors de l ecran. On le reduit et on resserre
+   la gouttiere et l espacement des actions. */
+@media (max-width: 575.98px) {
+    .site-header .logo-img { zoom: .82; }
+    .site-header .max-w-screen-xl { padding-left: .5rem; padding-right: .5rem; }
+    .site-header .max-w-screen-xl > .flex { gap: .25rem; }
+}
+@media (max-width: 380px) {
+    .site-header .logo-img { zoom: .7; }
+}

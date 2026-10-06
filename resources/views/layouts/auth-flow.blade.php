@@ -165,6 +165,7 @@ input[type=date].finput{color-scheme:dark}
 }
 /* Petits mobiles */
 @media (max-width:420px){
+  .pg-foot{padding-bottom:calc(4.5rem + env(safe-area-inset-bottom,0px))}
   body{font-size:14px}
   .main{padding:.5rem .75rem 1.5rem}
   .card{padding:1.6rem 1.15rem;border-radius:16px}
