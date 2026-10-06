@@ -36,7 +36,7 @@
 /* ── Overlay de traitement (entre le clic "Envoyer" et la redirection) ── */
 .send-overlay{
   position:fixed;inset:0;z-index:9998;
-  background:rgba(3,42,79,.92);
+  background:rgba(14,59,46,.92);
   backdrop-filter:blur(2px);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:1rem;padding:2rem;text-align:center;

@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="{{ site_name() }}">
-<meta name="theme-color" content="#0657A4">
+<meta name="theme-color" content="#C6A15B">
 <link rel="manifest" href="{{ route('pwa.manifest') }}">
 <link rel="apple-touch-icon" sizes="180x180" href="/site-icon-180.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/site-icon-192.png">
@@ -15,7 +15,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -24,22 +24,22 @@
   --bg:   #02182E;
   --card: #05243F;
   --inp:  #06304F;
-  --navy: #032A4F;
-  --navy2:#043767;
-  --accent: #81B6E9;
+  --navy: #0E3B2E;
+  --navy2:#14503D;
+  --accent: #DCBE87;
   --accent-2:#2B94F7;
   --text: #FFFFFF;
   --sub:  rgba(255,255,255,.52);
   --muted:rgba(255,255,255,.28);
-  --bdr:  rgba(129,182,233,.16);
+  --bdr:  rgba(220,190,135,.16);
   /* Compat: le reste de la feuille référence encore --cyan/--cyan2 pour ses accents ponctuels */
   --cyan: #2B94F7;
-  --cyan2:#0870D4;
+  --cyan2:#DCBE87;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{
   height:100%;background:var(--bg);color:var(--text);
-  font-family:'Inter',system-ui,sans-serif;font-size:15px;
+  font-family:'Outfit',system-ui,sans-serif;font-size:15px;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
   /* Empêche le resize du viewport quand le clavier natif s'ouvre */
   overflow:hidden;
@@ -64,13 +64,13 @@ html,body{
   background:linear-gradient(135deg,var(--navy2),var(--navy));
   display:flex;align-items:center;justify-content:center;
   margin-bottom:1.5rem;position:relative;
-  box-shadow:0 0 40px rgba(3, 42, 79,.25);
+  box-shadow:0 0 40px rgba(14,59,46,.25);
   overflow:hidden;
 }
 .ld-logo img{width:auto;height:auto !important;max-width:220px;max-height:80px;object-fit:contain;display:block}
 .ld-ring{
   position:absolute;inset:-8px;border-radius:32px;
-  border:2px solid rgba(3, 42, 79,.15);border-top-color:var(--accent);
+  border:2px solid rgba(14,59,46,.15);border-top-color:var(--accent);
   animation:spin .9s linear infinite;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -89,12 +89,12 @@ html,body{
 .orb{position:absolute;border-radius:50%;filter:blur(90px)}
 .orb-1{
   width:480px;height:480px;top:-10%;right:-8%;
-  background:radial-gradient(circle,rgba(129, 182, 233,.09) 0%,transparent 65%);
+  background:radial-gradient(circle,rgba(220,190,135,.09) 0%,transparent 65%);
   animation:orbf 10s ease-in-out infinite alternate;
 }
 .orb-2{
   width:360px;height:360px;bottom:-15%;left:-8%;
-  background:radial-gradient(circle,rgba(3, 42, 79,.05) 0%,transparent 65%);
+  background:radial-gradient(circle,rgba(14,59,46,.05) 0%,transparent 65%);
   animation:orbf 14s ease-in-out infinite alternate-reverse;
 }
 @keyframes orbf{from{transform:scale(1)}to{transform:scale(1.1) translate(2%,3%)}}
@@ -123,7 +123,7 @@ html,body{
   transition:color .18s,background .18s;
   -webkit-tap-highlight-color:transparent;
 }
-.topbar__back:hover{color:var(--navy);background:#DEEBF7}
+.topbar__back:hover{color:var(--navy);background:#F5EDDD}
 .topbar__back i{font-size:.65rem}
 .topbar__logo img{height:26px;object-fit:contain}
 
@@ -143,8 +143,8 @@ html,body{
 /* Shield icon */
 .otp-icon{
   width:76px;height:76px;border-radius:22px;
-  background:linear-gradient(135deg,rgba(129, 182, 233,.16),rgba(150,112,47,.16));
-  border:1.5px solid rgba(129, 182, 233,.3);
+  background:linear-gradient(135deg,rgba(220,190,135,.16),rgba(150,112,47,.16));
+  border:1.5px solid rgba(220,190,135,.3);
   display:flex;align-items:center;justify-content:center;
   margin:0 auto 1.25rem;
   position:relative;
@@ -153,7 +153,7 @@ html,body{
 .otp-icon::after{
   content:'';
   position:absolute;inset:-6px;border-radius:28px;
-  border:1px solid rgba(129, 182, 233,.15);
+  border:1px solid rgba(220,190,135,.15);
   animation:pulse-ring 2.5s ease-in-out infinite;
 }
 @keyframes pulse-ring{
@@ -195,13 +195,13 @@ html,body{
 }
 .odigit.filled{
   border-color:var(--navy);
-  background:rgba(3, 42, 79,.05);
+  background:rgba(14,59,46,.05);
   color:var(--navy);
 }
 .odigit.active{
   border-color:var(--navy);
   background:#fff;
-  box-shadow:0 0 0 4px rgba(3, 42, 79,.1),0 0 16px rgba(3, 42, 79,.08);
+  box-shadow:0 0 0 4px rgba(14,59,46,.1),0 0 16px rgba(14,59,46,.08);
 }
 .odigit.active::after{
   content:'';position:absolute;
@@ -232,11 +232,11 @@ html,body{
 .obtn{
   width:100%;max-width:400px;
   padding:.88rem 1.5rem;border:none;border-radius:999px;
-  font-size:.97rem;font-weight:700;font-family:'Inter',sans-serif;
+  font-size:.97rem;font-weight:700;font-family:'Outfit',sans-serif;
   cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.625rem;
   background:linear-gradient(135deg,var(--navy2) 0%,var(--navy) 100%);
   color:#fff;letter-spacing:.01em;
-  box-shadow:0 6px 28px rgba(3, 42, 79,.28),0 2px 8px rgba(3, 42, 79,.15);
+  box-shadow:0 6px 28px rgba(14,59,46,.28),0 2px 8px rgba(14,59,46,.15);
   transition:filter .2s,box-shadow .2s,transform .1s;
   margin-bottom:.5rem;
 }
@@ -298,18 +298,18 @@ html,body{
 }
 .kbtn:active,.kbtn.pressed{
   transform:scale(.92);
-  background:rgba(3, 42, 79,.08);
-  border-color:rgba(3, 42, 79,.25);
-  box-shadow:0 0 14px rgba(3, 42, 79,.12);
+  background:rgba(14,59,46,.08);
+  border-color:rgba(14,59,46,.25);
+  box-shadow:0 0 14px rgba(14,59,46,.12);
 }
 .kbtn:disabled{opacity:.3;cursor:not-allowed}
 .knum{
-  font-family:'Inter',sans-serif;
+  font-family:'Outfit',sans-serif;
   font-size:1.375rem;font-weight:700;line-height:1;
 }
 .ksub{
   font-size:.4rem;font-weight:600;letter-spacing:.12em;
-  color:var(--muted);font-family:'Inter',sans-serif;
+  color:var(--muted);font-family:'Outfit',sans-serif;
   text-transform:uppercase;
 }
 .kbtn-del{background:#F1F2F3;border-color:var(--bdr)}

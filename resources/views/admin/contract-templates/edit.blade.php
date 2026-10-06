@@ -307,7 +307,7 @@
 </div>
 
 <div id="copyToast"
-     style="position:fixed;bottom:1.5rem;right:1.5rem;background:#032A4F;color:#fff;
+     style="position:fixed;bottom:1.5rem;right:1.5rem;background:#0E3B2E;color:#fff;
             padding:.5rem 1rem;border-radius:8px;font-size:.8rem;
             opacity:0;transition:opacity .3s;pointer-events:none;z-index:9999">
   Copié !

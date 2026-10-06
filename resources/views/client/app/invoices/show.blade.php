@@ -142,11 +142,11 @@
 
 /* ── Note ── */
 .invd-note {
-  background: rgba(129, 182, 233,.07);
-  border: 1px solid rgba(129, 182, 233,.2);
+  background: rgba(220,190,135,.07);
+  border: 1px solid rgba(220,190,135,.2);
   border-radius: 12px;
   padding: .875rem 1rem;
-  font-size: .8rem; color: rgba(129, 182, 233,.85);
+  font-size: .8rem; color: rgba(220,190,135,.85);
   line-height: 1.55;
 }
 .invd-note i { margin-right: .45rem; opacity: .7 }

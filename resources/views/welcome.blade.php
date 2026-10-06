@@ -111,7 +111,7 @@ $serviceNav = [
     padding:.3rem .8rem; white-space:nowrap; flex-shrink:0;
     transition:border-color .25s ease, box-shadow .25s ease;
 }
-.about-partner-bar__name:hover { border-color:var(--accent); box-shadow:0 2px 10px rgba(6, 87, 164,.18); }
+.about-partner-bar__name:hover { border-color:var(--accent); box-shadow:0 2px 10px rgba(198,161,91,.18); }
 @media (prefers-reduced-motion: reduce) {
     }
 </style>
@@ -275,11 +275,11 @@ $serviceNav = [
 
                 @foreach ([1,2,3] as $r)
                 <div class="d-flex align-items-start gap-3 mb-4">
-                    <div style="width:36px;height:36px;background:rgba(6, 87, 164,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;">
+                    <div style="width:36px;height:36px;background:rgba(198,161,91,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;">
                         <i class="fas fa-check"></i>
                     </div>
                     <div>
-                        <h4 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;margin:0 0 .25rem;">
+                        <h4 style="font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:#fff;margin:0 0 .25rem;">
                             {{ __('home.loan_reasons.reasons.title' . $r) }}
                         </h4>
                         <p style="font-size:.875rem;color:rgba(255,255,255,.55);margin:0;line-height:1.65;">

@@ -8,13 +8,13 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/site-icon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('assets/vendors/fontawesome/css/all.min.css') }}">
 <style>
 :root {
-  --navy:    #032A4F;
-  --navy2:   #043767;
-  --accent:    #81B6E9;
+  --navy:    #0E3B2E;
+  --navy2:   #14503D;
+  --accent:    #DCBE87;
   --accent-d:   #2B94F7;
   --green:   #059669;
   --greend:  #047857;
@@ -27,7 +27,7 @@
   --r:       7px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; font-family: 'Inter', sans-serif; overflow: hidden; background: #525659; }
+html, body { height: 100%; font-family: 'Outfit', sans-serif; overflow: hidden; background: #525659; }
 
 /* ════════════════ LAYOUT ════════════════ */
 .pv { display: flex; height: 100vh; }
@@ -134,7 +134,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; overflow: hidden; b
   border-radius: var(--r);
   font-size: .77rem; font-weight: 600;
   cursor: pointer; text-decoration: none;
-  border: 1px solid; font-family: 'Inter', sans-serif;
+  border: 1px solid; font-family: 'Outfit', sans-serif;
   transition: background .14s, border-color .14s, color .14s;
   white-space: nowrap; line-height: 1;
   background: none;
@@ -246,7 +246,7 @@ kbd {
   border: none; border-radius: var(--r);
   font-size: .78rem; font-weight: 600;
   text-decoration: none; cursor: pointer;
-  font-family: 'Inter', sans-serif; margin-top: .25rem;
+  font-family: 'Outfit', sans-serif; margin-top: .25rem;
 }
 .pv-empty-cta:hover { background: var(--navy2); }
 
@@ -287,7 +287,7 @@ kbd {
 .cf-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;padding:1rem}
 .cf-modal-overlay.open{display:flex}
 .cf-modal{background:var(--navy2);border:1px solid var(--line);border-radius:14px;max-width:400px;width:100%;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.cf-modal-icon{width:40px;height:40px;border-radius:10px;background:rgba(129, 182, 233,.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.05rem;margin-bottom:.75rem}
+.cf-modal-icon{width:40px;height:40px;border-radius:10px;background:rgba(220,190,135,.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.05rem;margin-bottom:.75rem}
 .cf-modal-title{font-size:.95rem;font-weight:800;color:var(--text);margin-bottom:.5rem}
 .cf-modal-msg{font-size:.8rem;color:var(--sub);line-height:1.6;margin-bottom:1.25rem;white-space:pre-line}
 .cf-modal-actions{display:flex;gap:.5rem;justify-content:flex-end}

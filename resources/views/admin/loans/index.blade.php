@@ -60,7 +60,7 @@
 /* ── Search bar ── */
 .li-search-bar{background:#fff;border:1px solid var(--c-border);border-radius:12px;padding:.625rem 1rem;display:flex;gap:.5rem;align-items:center;margin-bottom:1.125rem;flex-wrap:wrap}
 .li-search-input{flex:1;min-width:180px;padding:.45rem .75rem;border:1.5px solid var(--c-border);border-radius:8px;font-size:.82rem;color:var(--c-navy);background:#f8f9fa;outline:none;transition:.15s;font-family:inherit}
-.li-search-input:focus{border-color:var(--c-accent);background:#fff;box-shadow:0 0 0 3px rgba(6, 87, 164,.1)}
+.li-search-input:focus{border-color:var(--c-accent);background:#fff;box-shadow:0 0 0 3px rgba(198,161,91,.1)}
 .li-search-input::placeholder{color:#c4cadc}
 
 /* ── Table card ── */

@@ -94,7 +94,7 @@
   font-size:1rem;position:relative;
 }
 .nx-ico--transfer{background:linear-gradient(145deg,rgba(27,138,122,.25),rgba(27,138,122,.1));color:var(--ca-teal-l)}
-.nx-ico--loan    {background:linear-gradient(145deg,rgba(129, 182, 233,.25),rgba(129, 182, 233,.1));color:var(--ca-accent-l)}
+.nx-ico--loan    {background:linear-gradient(145deg,rgba(220,190,135,.25),rgba(220,190,135,.1));color:var(--ca-accent-l)}
 .nx-ico--credit  {background:linear-gradient(145deg,rgba(74,222,128,.2),rgba(74,222,128,.07));color:#4ade80}
 .nx-ico--debit   {background:linear-gradient(145deg,rgba(248,113,113,.2),rgba(248,113,113,.07));color:#f87171}
 .nx-ico--system  {background:linear-gradient(145deg,rgba(96,165,250,.2),rgba(96,165,250,.07));color:#60a5fa}
@@ -119,7 +119,7 @@
   padding:.1rem .45rem;border-radius:999px;
 }
 .nx-type--transfer{background:rgba(27,138,122,.12);color:var(--ca-teal-l)}
-.nx-type--loan    {background:rgba(129, 182, 233,.12);color:var(--ca-accent-l)}
+.nx-type--loan    {background:rgba(220,190,135,.12);color:var(--ca-accent-l)}
 .nx-type--credit  {background:rgba(74,222,128,.12);color:#4ade80}
 .nx-type--debit   {background:rgba(248,113,113,.12);color:#f87171}
 .nx-type--system  {background:rgba(96,165,250,.12);color:#60a5fa}

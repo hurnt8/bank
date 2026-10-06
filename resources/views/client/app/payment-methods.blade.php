@@ -25,7 +25,7 @@
 .pm-card::after {
   content:'';position:absolute;bottom:-70px;left:-40px;
   width:180px;height:180px;border-radius:50%;
-  background:radial-gradient(circle,rgba(129, 182, 233,.08) 0%,transparent 65%);
+  background:radial-gradient(circle,rgba(220,190,135,.08) 0%,transparent 65%);
   pointer-events:none;
 }
 .pm-card__top {
@@ -33,13 +33,13 @@
   margin-bottom:1.25rem;
 }
 .pm-card__brand {
-  font-family:'Inter',sans-serif;font-size:.62rem;
+  font-family:'Outfit',sans-serif;font-size:.62rem;
   font-weight:800;letter-spacing:.14em;text-transform:uppercase;
   color:rgba(255,255,255,.45);
 }
 .pm-card__chip {
   width:32px;height:24px;border-radius:4px;
-  background:linear-gradient(135deg,#B5D4F2,#81B6E9,#2B94F7);
+  background:linear-gradient(135deg,#F5EDDD,#DCBE87,#2B94F7);
   box-shadow:0 2px 6px rgba(0,0,0,.35);position:relative;overflow:hidden;
 }
 .pm-card__chip::before {
@@ -64,7 +64,7 @@
   position:relative;z-index:1;
 }
 .pm-card__holder {
-  font-family:'Inter',sans-serif;
+  font-family:'Outfit',sans-serif;
   font-size:.75rem;font-weight:700;color:rgba(255,255,255,.7);
   text-transform:uppercase;letter-spacing:.06em;
 }

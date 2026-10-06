@@ -38,10 +38,10 @@
                     serif: ['Fraunces','Georgia','serif'],
                 },
                 boxShadow: {
-                    'card':  '0 1px 3px rgba(11,26,46,.06), 0 4px 16px rgba(11,26,46,.08)',
-                    'card-hover': '0 4px 8px rgba(11,26,46,.08), 0 16px 40px rgba(11,26,46,.12)',
+                    'card':  '0 1px 3px rgba(14,59,46,.06), 0 4px 16px rgba(14,59,46,.08)',
+                    'card-hover': '0 4px 8px rgba(14,59,46,.08), 0 16px 40px rgba(14,59,46,.12)',
                     'accent':  '0 4px 24px rgba(200,169,81,.30)',
-                    'nav':   '0 1px 0 rgba(11,26,46,.08)',
+                    'nav':   '0 1px 0 rgba(14,59,46,.08)',
                 },
                 animation: {
                     'fade-in-up': 'fadeInUp .6s ease forwards',

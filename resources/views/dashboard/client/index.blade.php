@@ -26,7 +26,7 @@
 
     <div class="d-flex flex-column gap-2 text-end">
       <div style="font-size:.68rem;color:var(--cl-muted);text-transform:uppercase;letter-spacing:.07em">{{ __('app.active_files') }}</div>
-      <div style="font-family:'Inter',sans-serif;font-size:2rem;font-weight:700;color:var(--cl-accent);line-height:1">
+      <div style="font-family:'Outfit',sans-serif;font-size:2rem;font-weight:700;color:var(--cl-accent);line-height:1">
         {{ $stats['active'] + $stats['finalized'] }}
       </div>
       <div>

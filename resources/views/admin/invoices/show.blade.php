@@ -60,7 +60,7 @@
 .bs-red   {background:rgba(220,38,38,.1);color:#dc2626;border:1px solid rgba(220,38,38,.2)}
 
 /* Note & description */
-.inv-note{margin-top:1.25rem;padding:1rem 1.125rem;background:#fffbeb;border-left:3px solid #0657A4;border-radius:0 6px 6px 0;font-size:.8125rem;color:#555;line-height:1.6}
+.inv-note{margin-top:1.25rem;padding:1rem 1.125rem;background:#fffbeb;border-left:3px solid #C6A15B;border-radius:0 6px 6px 0;font-size:.8125rem;color:#555;line-height:1.6}
 
 /* Print */
 @media print {

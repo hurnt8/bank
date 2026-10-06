@@ -33,7 +33,7 @@
 .ld-step.is-done:not(:last-child)::after{background:var(--c-navy)}
 .ld-step-dot{width:30px;height:30px;border-radius:50%;border:2px solid var(--c-border);background:#f8f9fa;color:var(--c-muted);font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:.2s}
 .ld-step.is-done .ld-step-dot{background:var(--c-navy);border-color:var(--c-navy);color:#fff}
-.ld-step.is-current .ld-step-dot{background:var(--c-accent);border-color:var(--c-accent);color:var(--c-navy);box-shadow:0 0 0 5px rgba(6, 87, 164,.15)}
+.ld-step.is-current .ld-step-dot{background:var(--c-accent);border-color:var(--c-accent);color:var(--c-navy);box-shadow:0 0 0 5px rgba(198,161,91,.15)}
 .ld-step-lbl{font-size:.65rem;color:var(--c-muted);margin-top:.4rem;text-align:center;line-height:1.3;max-width:78px}
 .ld-step.is-done .ld-step-lbl,.ld-step.is-current .ld-step-lbl{color:var(--c-navy);font-weight:700}
 
@@ -84,7 +84,7 @@
 .ld-tab-btn:hover{color:var(--c-navy);background:rgba(0,0,0,.025)}
 .ld-tab-btn.active{color:var(--c-navy);border-bottom-color:var(--c-accent)}
 .ld-tab-btn .ld-tab-badge{font-size:.6rem;padding:.1rem .4rem;border-radius:10px;background:#e5e7eb;color:#6b7280;font-weight:700}
-.ld-tab-btn.active .ld-tab-badge{background:rgba(6, 87, 164,.15);color:var(--c-accent-d,#054685)}
+.ld-tab-btn.active .ld-tab-badge{background:rgba(198,161,91,.15);color:var(--c-accent-d,#9A7736)}
 .ld-tab-pane{display:none}.ld-tab-pane.active{display:block}
 
 /* ── Detail grid ── */
@@ -225,7 +225,7 @@ $tpl = $loan->contractTemplate;
 {{-- ── KPI STRIP ── --}}
 <div class="ld-kpi-strip">
   <div class="ld-kpi">
-    <div class="ld-kpi-ico" style="background:#FEF9EC;color:var(--c-accent-d,#054685)">
+    <div class="ld-kpi-ico" style="background:#FEF9EC;color:var(--c-accent-d,#9A7736)">
       <i class="fas fa-coins"></i>
     </div>
     <div>

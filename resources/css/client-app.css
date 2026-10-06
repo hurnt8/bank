@@ -3,7 +3,7 @@
    Inspire de l'UI Banking App (FortDice Reference)
    ================================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
 
 /* ── Variables ─────────────────────────────────────────────────── */
 :root {
@@ -12,10 +12,10 @@
   --ca-bg3:         #05294B;
   --ca-bg4:         #06345E;
   --ca-card:        #07406F;
-  --ca-navy:        #032A4F;
-  --ca-navy-light:  #054685;
-  --ca-accent:        #81B6E9;
-  --ca-accent-l:      #B5D4F2;
+  --ca-navy:        #0E3B2E;
+  --ca-navy-light:  #9A7736;
+  --ca-accent:        #DCBE87;
+  --ca-accent-l:      #F5EDDD;
   /* Compat: le teal a ete retire de l'identite de marque (voir --ca-navy/--ca-accent
      ci-dessus) ; ces deux alias evitent de casser les nombreuses vues qui
      referencaient encore var(--ca-teal[-l]) avant l'unification des couleurs. */
@@ -45,19 +45,19 @@
 [data-theme="light"] {
   /* Surfaces claires : on repasse a laccent fonce. Le bleu clair du theme sombre
      ne donne que 2.14:1 sur blanc, donc illisible. */
-  --ca-accent:   #0657A4;
-  --ca-accent-l: #0870D4;
-  --ca-navy:     #032A4F;
+  --ca-accent:   #C6A15B;
+  --ca-accent-l: #DCBE87;
+  --ca-navy:     #0E3B2E;
   --ca-bg:       #F2F5FB;
   --ca-bg2:      #E8EDF7;
   --ca-bg3:      #FFFFFF;
   --ca-bg4:      #DCE4F2;
   --ca-card:     #EAEFF8;
-  --ca-text:     #032A4F;
+  --ca-text:     #0E3B2E;
   --ca-text-2:   #1C3A5C;
   --ca-text-3:   #546580;
-  --ca-border:   rgba(3, 42, 79,.13);
-  --ca-border-2: rgba(3, 42, 79,.07);
+  --ca-border:   rgba(14,59,46,.13);
+  --ca-border-2: rgba(14,59,46,.07);
   --ca-outer-bg: #C0CDE0;
   color-scheme: light;
 }
@@ -65,15 +65,15 @@
 /* Topbar: frosted light glass */
 [data-theme="light"] .ca-topbar {
   background: rgba(242,245,251,.92);
-  border-bottom-color: rgba(3, 42, 79,.1);
+  border-bottom-color: rgba(14,59,46,.1);
 }
 [data-theme="light"] .ca-topbar--home {
   background: rgba(242,245,251,.75);
 }
 [data-theme="light"] .ca-topbar__back,
 [data-theme="light"] .ca-topbar__action {
-  background: rgba(3, 42, 79,.07);
-  border-color: rgba(3, 42, 79,.1);
+  background: rgba(14,59,46,.07);
+  border-color: rgba(14,59,46,.1);
   color: var(--ca-text);
 }
 
@@ -95,11 +95,11 @@
 [data-theme="light"] .ca-badge--fee-required { background: rgba(30,120,230,.1); }
 
 /* Period tabs */
-[data-theme="light"] .ca-period-tab.active { background: #FFFFFF; box-shadow: 0 2px 8px rgba(3, 42, 79,.12); }
+[data-theme="light"] .ca-period-tab.active { background: #FFFFFF; box-shadow: 0 2px 8px rgba(14,59,46,.12); }
 
 /* Table */
 [data-theme="light"] .ca-table thead th { background: var(--ca-bg4); }
-[data-theme="light"] .ca-table tbody tr:hover td { background: rgba(3, 42, 79,.03); }
+[data-theme="light"] .ca-table tbody tr:hover td { background: rgba(14,59,46,.03); }
 
 /* Alerts on light */
 [data-theme="light"] .ca-alert--warn    { background: rgba(215,138,0,.1);  border-color: rgba(215,138,0,.25); color: #A16800; }
@@ -109,8 +109,8 @@
 /* Install banner */
 [data-theme="light"] .ca-install-banner {
   background: #FFFFFF;
-  border-color: rgba(3, 42, 79,.12);
-  box-shadow: 0 8px 32px rgba(3, 42, 79,.15);
+  border-color: rgba(14,59,46,.12);
+  box-shadow: 0 8px 32px rgba(14,59,46,.15);
 }
 
 /* Stat chip numbers more visible on light */
@@ -132,7 +132,7 @@ html, body {
   height: 100%;
   background: var(--ca-bg);
   color: var(--ca-text);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Outfit', system-ui, sans-serif;
   font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -169,7 +169,7 @@ button { font-family: inherit; }
   position: sticky;
   top: 0;
   z-index: 200;
-  background: rgba(3, 42, 79,.88);
+  background: rgba(14,59,46,.88);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--ca-border);
@@ -282,7 +282,7 @@ button { font-family: inherit; }
   top: -60px; right: -60px;
   width: 220px; height: 220px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(129, 182, 233,.18) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(220,190,135,.18) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -359,8 +359,8 @@ button { font-family: inherit; }
   display: inline-flex;
   align-items: center;
   gap: .35rem;
-  background: rgba(129, 182, 233,.2);
-  border: 1px solid rgba(129, 182, 233,.35);
+  background: rgba(220,190,135,.2);
+  border: 1px solid rgba(220,190,135,.35);
   border-radius: 99px;
   padding: .25rem .7rem;
   font-size: .72rem;
@@ -425,8 +425,8 @@ button { font-family: inherit; }
   position: relative;
 }
 
-.ca-qa-icon--navy  { background: rgba(3, 42, 79,.18); border-color: rgba(3, 42, 79,.3); color: var(--ca-navy-light); }
-.ca-qa-icon--accent  { background: rgba(129, 182, 233,.15); border-color: rgba(129, 182, 233,.3); color: var(--ca-accent-l); }
+.ca-qa-icon--navy  { background: rgba(14,59,46,.18); border-color: rgba(14,59,46,.3); color: var(--ca-navy-light); }
+.ca-qa-icon--accent  { background: rgba(220,190,135,.15); border-color: rgba(220,190,135,.3); color: var(--ca-accent-l); }
 .ca-qa-icon--blue  { background: rgba(74,158,255,.15); border-color: rgba(74,158,255,.3); color: var(--ca-blue); }
 .ca-qa-icon--purple{ background: rgba(139,92,246,.15); border-color: rgba(139,92,246,.3); color: var(--ca-purple); }
 
@@ -560,7 +560,7 @@ button { font-family: inherit; }
   display: block;
 }
 
-.ca-loan-card:hover { border-color: rgba(129, 182, 233,.3); transform: translateY(-1px); }
+.ca-loan-card:hover { border-color: rgba(220,190,135,.3); transform: translateY(-1px); }
 
 .ca-loan-card__accent {
   height: 3px;
@@ -705,7 +705,7 @@ button { font-family: inherit; }
   text-decoration: none;
 }
 
-.ca-control-btn:hover { background: var(--ca-bg4); border-color: rgba(129, 182, 233,.3); }
+.ca-control-btn:hover { background: var(--ca-bg4); border-color: rgba(220,190,135,.3); }
 
 .ca-control-btn__icon {
   width: 40px; height: 40px;
@@ -784,7 +784,7 @@ button { font-family: inherit; }
   background: linear-gradient(135deg, var(--ca-accent), #a8722a);
   border-color: var(--ca-accent-l);
   color: var(--ca-bg);
-  box-shadow: 0 0 0 4px rgba(129, 182, 233,.2);
+  box-shadow: 0 0 0 4px rgba(220,190,135,.2);
 }
 
 .ca-step__label {
@@ -904,7 +904,7 @@ button { font-family: inherit; }
   width: calc(100% - 2.5rem);
   font-size: .85rem;
   color: var(--ca-text-2);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
   outline: none;
   transition: var(--ca-transition);
 }
@@ -964,7 +964,7 @@ button { font-family: inherit; }
   padding: .8rem 1rem;
   font-size: .9rem;
   color: var(--ca-text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
   outline: none;
   transition: var(--ca-transition);
 }
@@ -995,8 +995,8 @@ button { font-family: inherit; }
   display: flex;
   align-items: center;
   gap: .5rem;
-  background: rgba(129, 182, 233,.15);
-  border: 1px solid rgba(129, 182, 233,.3);
+  background: rgba(220,190,135,.15);
+  border: 1px solid rgba(220,190,135,.3);
   border-radius: 99px;
   padding: .45rem .9rem;
   font-size: .78rem;
@@ -1218,8 +1218,8 @@ button { font-family: inherit; }
   font-size: 1.75rem;
   color: #fff;
   margin: 0 auto .875rem;
-  border: 3px solid rgba(129, 182, 233,.35);
-  box-shadow: 0 0 0 6px rgba(129, 182, 233,.08);
+  border: 3px solid rgba(220,190,135,.35);
+  box-shadow: 0 0 0 6px rgba(220,190,135,.08);
 }
 
 .ca-profile-name {
@@ -1234,8 +1234,8 @@ button { font-family: inherit; }
   display: inline-flex;
   align-items: center;
   gap: .35rem;
-  background: rgba(129, 182, 233,.15);
-  border: 1px solid rgba(129, 182, 233,.3);
+  background: rgba(220,190,135,.15);
+  border: 1px solid rgba(220,190,135,.3);
   border-radius: 99px;
   padding: .2rem .65rem;
   font-size: .7rem;
@@ -1351,7 +1351,7 @@ button { font-family: inherit; }
   transition: var(--ca-transition);
   border: none;
   text-decoration: none;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
   letter-spacing: .01em;
 }
 
@@ -1400,7 +1400,7 @@ button { font-family: inherit; }
 .ca-badge--valid    { background: rgba(74,158,255,.12);  color: var(--ca-blue); }
 .ca-badge--sent     { background: rgba(139,92,246,.12);  color: var(--ca-purple); }
 .ca-badge--signed   { background: rgba(0,200,150,.12);   color: var(--ca-positive); }
-.ca-badge--final    { background: rgba(129, 182, 233,.15);  color: var(--ca-accent-l); }
+.ca-badge--final    { background: rgba(220,190,135,.15);  color: var(--ca-accent-l); }
 .ca-badge--rejected { background: rgba(255,90,90,.12);   color: var(--ca-negative); }
 .ca-badge--paid      { background: rgba(0,200,150,.12);   color: var(--ca-positive); }
 .ca-badge--cancelled { background: rgba(122,144,170,.12); color: var(--ca-text-3); }
@@ -1544,7 +1544,7 @@ button { font-family: inherit; }
   height: 2.5px;
   border-radius: 0 0 6px 6px;
   background: linear-gradient(90deg, var(--ca-accent-l), var(--ca-accent));
-  box-shadow: 0 0 10px rgba(129, 182, 233,.5);
+  box-shadow: 0 0 10px rgba(220,190,135,.5);
 }
 
 /* ── Onglet central — FAB ───────────────────────────────────────── */
@@ -1695,9 +1695,9 @@ button { font-family: inherit; }
   }
   .ca-shell {
     min-height: 100vh;
-    box-shadow: 0 0 100px rgba(0,0,0,.7), 0 0 0 1px rgba(129, 182, 233,.07);
-    border-left:  1px solid rgba(129, 182, 233,.06);
-    border-right: 1px solid rgba(129, 182, 233,.06);
+    box-shadow: 0 0 100px rgba(0,0,0,.7), 0 0 0 1px rgba(220,190,135,.07);
+    border-left:  1px solid rgba(220,190,135,.06);
+    border-right: 1px solid rgba(220,190,135,.06);
     position: relative;
   }
   /* Topbar epingle reste dans la coque */

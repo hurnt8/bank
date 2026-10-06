@@ -49,7 +49,7 @@
       <div class="ca-settings-item__right"><i class="fas fa-chevron-right"></i></div>
     </div>
     <a href="{{ route('client.app.payment-methods') }}" class="ca-settings-item" style="text-decoration:none">
-      <div class="ca-settings-item__icon" style="background:rgba(129, 182, 233,.18);color:var(--ca-accent-l)">
+      <div class="ca-settings-item__icon" style="background:rgba(220,190,135,.18);color:var(--ca-accent-l)">
         <i class="fas fa-credit-card"></i>
       </div>
       <div class="ca-settings-item__text">
@@ -76,7 +76,7 @@
       <div class="ca-settings-item__right"><i class="fas fa-chevron-right"></i></div>
     </a>
     <a href="{{ route('client.app.profile.password') }}" class="ca-settings-item" style="text-decoration:none">
-      <div class="ca-settings-item__icon" style="background:rgba(129, 182, 233,.18);color:var(--ca-accent-l)">
+      <div class="ca-settings-item__icon" style="background:rgba(220,190,135,.18);color:var(--ca-accent-l)">
         <i class="fas fa-lock"></i>
       </div>
       <div class="ca-settings-item__text">

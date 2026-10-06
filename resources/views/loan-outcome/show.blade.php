@@ -47,7 +47,7 @@ $isApproved = $decision === 'approved';
 <style>
 body{margin:0;padding:0;background:#F1F3F6;font-family:'Segoe UI',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;color:#1F2937}
 .wrap{max-width:600px;margin:0 auto;min-height:100vh;background:#FFFFFF}
-.hdr{background:#032A4F;padding:36px 40px;text-align:center}
+.hdr{background:#0E3B2E;padding:36px 40px;text-align:center}
 .status-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.02em;margin-bottom:16px}
 .status-badge--ok{background:rgba(21,128,61,.18);color:#4ADE80}
 .status-badge--no{background:rgba(185,28,28,.18);color:#F87171}
@@ -62,11 +62,11 @@ body{margin:0;padding:0;background:#F1F3F6;font-family:'Segoe UI',Helvetica,Aria
 .steps{list-style:none;padding:0;margin:0 0 32px}
 .steps li{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #F1F3F6}
 .steps li:last-child{border-bottom:none}
-.step-num{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:#032A4F;color:#DEC066;font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.step-num{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:#0E3B2E;color:#DEC066;font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center}
 .step-text{font-size:.9rem;color:#374151;line-height:1.6;padding-top:3px}
 .contact-box{background:#F8F9FB;border:1px solid #E5E7EB;border-radius:12px;padding:20px 24px;text-align:center}
 .contact-box p{margin:0 0 10px;font-size:.85rem;color:#6B7280}
-.contact-btn{display:inline-block;padding:10px 26px;border-radius:8px;font-size:.88rem;font-weight:700;text-decoration:none;color:#ffffff;background:#032A4F}
+.contact-btn{display:inline-block;padding:10px 26px;border-radius:8px;font-size:.88rem;font-weight:700;text-decoration:none;color:#ffffff;background:#0E3B2E}
 .footer{padding:24px 40px;text-align:center;font-size:.7rem;color:#9CA3AF}
 @media only screen and (max-width:600px){
   .hdr,.body{padding-left:24px!important;padding-right:24px!important}

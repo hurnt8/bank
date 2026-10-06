@@ -20,7 +20,7 @@
 .rcv-hero::before{
   content:'';position:absolute;bottom:-50px;right:-50px;
   width:180px;height:180px;border-radius:50%;
-  background:radial-gradient(circle,rgba(129, 182, 233,.18) 0%,transparent 70%);
+  background:radial-gradient(circle,rgba(220,190,135,.18) 0%,transparent 70%);
   pointer-events:none;
 }
 .rcv-hero__avatar{
@@ -35,8 +35,8 @@
 .rcv-hero__badge{
   display:inline-flex;align-items:center;gap:.35rem;
   font-size:.68rem;font-weight:600;
-  color:rgba(129, 182, 233,.9);
-  background:rgba(129, 182, 233,.12);border:1px solid rgba(129, 182, 233,.25);
+  color:rgba(220,190,135,.9);
+  background:rgba(220,190,135,.12);border:1px solid rgba(220,190,135,.25);
   border-radius:999px;padding:.2rem .65rem;margin-bottom:.25rem;
 }
 

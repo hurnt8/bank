@@ -85,7 +85,7 @@
 @section('content')
 
 @php
-  $palette = ['#2563EB','#059669','#D97706','#7C3AED','#DC2626','#0D9488','#0657A4'];
+  $palette = ['#2563EB','#059669','#D97706','#7C3AED','#DC2626','#0D9488','#C6A15B'];
   $avatarBg = $palette[crc32($user->email) % count($palette)];
   $stMap = [
     'draft'           => ['lbl' => 'Brouillon',      'cls' => 'bs-gray'],
@@ -160,7 +160,7 @@
     </form>
     @endif
     @if($user->hasRole('client'))
-      <a href="{{ route('admin.users.banking.edit', $user) }}" class="btn-navy" style="background:rgba(6,87,164,.1);color:var(--c-accent, #0657A4);border:1px solid rgba(6,87,164,.25)">
+      <a href="{{ route('admin.users.banking.edit', $user) }}" class="btn-navy" style="background:rgba(198,161,91,.1);color:var(--c-accent, #C6A15B);border:1px solid rgba(198,161,91,.25)">
         <i class="fas fa-university"></i> {{ $user->bankAccount ? 'Coordonnées bancaires' : 'Attribuer IBAN / Carte' }}
       </a>
     @endif

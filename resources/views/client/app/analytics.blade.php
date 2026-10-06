@@ -15,7 +15,7 @@
   $hasData       = $totalSchedule > 0;
 
   $donutData   = [$totalCapital, $totalInterest, (float) $totalPaid, (float) $totalReceived];
-  $donutColors = ['rgba(27,138,122,.75)', 'rgba(129, 182, 233,.75)', 'rgba(255,90,90,.75)', 'rgba(74,222,128,.65)'];
+  $donutColors = ['rgba(27,138,122,.75)', 'rgba(220,190,135,.75)', 'rgba(255,90,90,.75)', 'rgba(74,222,128,.65)'];
   $donutLabels = [__('app.chart_capital'), __('app.chart_interest'), __('app.chart_transfers'), 'Crédits reçus'];
 
   $lineLabels = array_keys(array_slice($monthlyData, 0, 10));
@@ -124,7 +124,7 @@
     </div>
 
     <div class="ca-category-item">
-      <div class="ca-category-icon" style="background:rgba(129, 182, 233,.15);color:var(--ca-accent-l)">
+      <div class="ca-category-icon" style="background:rgba(220,190,135,.15);color:var(--ca-accent-l)">
         <i class="fas fa-percent"></i>
       </div>
       <div class="ca-category-info">

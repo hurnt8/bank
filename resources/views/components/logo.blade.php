@@ -41,10 +41,10 @@
     $box   = ['sm' => 32, 'md' => 44, 'lg' => 64][$size] ?? 44;
     $isDark = $theme === 'dark';
     // Palette derivee du logo Mellenthin Financial : pastille bleue, marque blanche.
-    $badgeBg   = $isDark ? '#FFFFFF' : '#0657A4';
-    $badgeFg   = $isDark ? '#0657A4' : '#FFFFFF';
-    $wordColor = $isDark ? '#FFFFFF' : '#032A4F';
-    $restColor = $isDark ? '#B5D4F2' : '#0657A4';
+    $badgeBg   = $isDark ? '#FFFFFF' : '#C6A15B';
+    $badgeFg   = $isDark ? '#C6A15B' : '#FFFFFF';
+    $wordColor = $isDark ? '#FFFFFF' : '#0E3B2E';
+    $restColor = $isDark ? '#F5EDDD' : '#C6A15B';
     $gap   = round($box * 0.28);
     $wsize = round($box * 0.42);
     $tag   = $href ? 'a' : 'span';
@@ -62,10 +62,10 @@
         style="display:inline-flex;align-items:center;gap:{{ $gap }}px;line-height:1;text-decoration:none">
         <svg width="{{ $box }}" height="{{ $box }}" viewBox="0 0 44 44" role="img" aria-label="{{ $alt }}" style="flex-shrink:0;display:block">
             <rect width="44" height="44" rx="10" fill="{{ $badgeBg }}"/>
-            <text x="22" y="29" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="19" fill="{{ $badgeFg }}">{{ $initials }}</text>
+            <text x="22" y="29" text-anchor="middle" font-family="'Fraunces',Georgia,serif" font-weight="700" font-size="19" fill="{{ $badgeFg }}">{{ $initials }}</text>
         </svg>
         @if($variant === 'full')
-        <span style="font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:{{ $wsize }}px;color:{{ $wordColor }};white-space:nowrap">
+        <span style="font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:{{ $wsize }}px;color:{{ $wordColor }};white-space:nowrap">
             {{ $firstWord }}@if($restWords) <span style="color:{{ $restColor }}">{{ $restWords }}</span>@endif
         </span>
         @endif

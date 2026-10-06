@@ -161,7 +161,7 @@
               <div style="font-size:.65rem;color:var(--cl-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">
                 {{ __('app.loan_amount') }}
               </div>
-              <div style="font-family:'Inter',sans-serif;font-size:1.5rem;font-weight:700;color:var(--cl-text);line-height:1">
+              <div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:700;color:var(--cl-text);line-height:1">
                 {{ number_format($loan->amount, 2, ',', ' ') }}
                 <span style="font-size:.8rem;color:var(--cl-accent);font-weight:600">{{ $loan->currency }}</span>
               </div>
@@ -172,7 +172,7 @@
               <div style="font-size:.65rem;color:var(--cl-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">
                 {{ __('app.monthly') }}
               </div>
-              <div style="font-family:'Inter',sans-serif;font-size:1.5rem;font-weight:700;color:var(--cl-accent-2);line-height:1">
+              <div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:700;color:var(--cl-accent-2);line-height:1">
                 {{ number_format($loan->monthly_payment, 2, ',', ' ') }}
                 <span style="font-size:.8rem;font-weight:600">{{ $loan->currency }}</span>
               </div>

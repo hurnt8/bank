@@ -26,7 +26,7 @@
   content: '';
   position: absolute; top: -60px; right: -60px;
   width: 260px; height: 260px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(6, 87, 164,.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(198,161,91,.12) 0%, transparent 70%);
   pointer-events: none;
 }
 .sadb-hero::after {
@@ -42,7 +42,7 @@
   display: inline-flex; align-items: center; gap: .4rem;
   font-size: .6rem; font-weight: 800; letter-spacing: .12em;
   text-transform: uppercase; color: var(--c-accent);
-  background: rgba(6, 87, 164,.12); border: 1px solid rgba(6, 87, 164,.2);
+  background: rgba(198,161,91,.12); border: 1px solid rgba(198,161,91,.2);
   border-radius: 999px; padding: .2rem .6rem;
   margin-bottom: .5rem;
 }
@@ -110,8 +110,8 @@
 .sadb-kpi-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; border-radius: 0 0 14px 14px; }
 
 /* icon colors */
-.sadb-ico-navy { background: rgba(3, 42, 79,.08); color: var(--c-navy); }
-.sadb-ico-accent { background: rgba(6, 87, 164,.12); color: #a07d20; }
+.sadb-ico-navy { background: rgba(14,59,46,.08); color: var(--c-navy); }
+.sadb-ico-accent { background: rgba(198,161,91,.12); color: #a07d20; }
 .sadb-ico-amber{ background: rgba(217,119,6,.1);  color: #D97706; }
 .sadb-ico-green{ background: rgba(5,150,105,.1);  color: #059669; }
 .sadb-ico-blue { background: rgba(37,99,235,.1);  color: #2563EB; }
@@ -239,15 +239,15 @@
   align-items: center; gap: .4rem;
   margin-top: .625rem;
   padding: .375rem .875rem;
-  border: 1px solid rgba(6, 87, 164,.35);
+  border: 1px solid rgba(198,161,91,.35);
   border-radius: 8px;
-  background: rgba(6, 87, 164,.1);
+  background: rgba(198,161,91,.1);
   color: var(--c-accent);
   font-size: .7rem; font-weight: 600;
   cursor: pointer; font-family: inherit;
   transition: background .2s, border-color .2s;
 }
-.sadb-pwa-btn:hover { background: rgba(6, 87, 164,.22); border-color: rgba(6, 87, 164,.6); }
+.sadb-pwa-btn:hover { background: rgba(198,161,91,.22); border-color: rgba(198,161,91,.6); }
 .sadb-pwa-btn i { font-size: .65rem; }
 </style>
 @endpush
@@ -278,7 +278,7 @@
     $offset += $len;
   }
 
-  $avatarPalette = ['#2563EB','#059669','#D97706','#7C3AED','#DC2626','#0D9488','#0657A4'];
+  $avatarPalette = ['#2563EB','#059669','#D97706','#7C3AED','#DC2626','#0D9488','#C6A15B'];
 
   $stMap = [
     'draft'           => ['lbl' => 'Brouillon',      'cls' => 'bs-gray'],
@@ -312,7 +312,7 @@
         <span class="sadb-user-chip-dot" style="background:#7C3AED"></span>
         {{ $stats['total_staff'] }} staff
       </span>
-      <span class="sadb-user-chip" style="background:rgba(6, 87, 164,.15);color:var(--c-accent)">
+      <span class="sadb-user-chip" style="background:rgba(198,161,91,.15);color:var(--c-accent)">
         <span class="sadb-user-chip-dot" style="background:var(--c-accent)"></span>
         {{ $stats['total_users'] }} total
       </span>
@@ -356,7 +356,7 @@
   <div class="sadb-kpi">
     <div class="sadb-kpi-top">
       <div class="sadb-kpi-ico sadb-ico-accent"><i class="fas fa-file-invoice-dollar"></i></div>
-      <span style="font-size:.65rem;font-weight:700;background:rgba(6, 87, 164,.1);color:#a07d20;padding:.18rem .45rem;border-radius:999px">
+      <span style="font-size:.65rem;font-weight:700;background:rgba(198,161,91,.1);color:#a07d20;padding:.18rem .45rem;border-radius:999px">
         {{ $stats['month_loans'] }} ce mois
       </span>
     </div>
@@ -425,7 +425,7 @@
             transform="rotate(-90 {{ $cx }} {{ $cy }})"/>
           @endif
           @endforeach
-          <text x="{{ $cx }}" y="{{ $cy - 3 }}" text-anchor="middle" font-size="15" font-weight="800" fill="#032A4F">{{ $stats['total_loans'] }}</text>
+          <text x="{{ $cx }}" y="{{ $cy - 3 }}" text-anchor="middle" font-size="15" font-weight="800" fill="#0E3B2E">{{ $stats['total_loans'] }}</text>
           <text x="{{ $cx }}" y="{{ $cy + 12 }}" text-anchor="middle" font-size="7.5" fill="#9CA3AF">dossiers</text>
         </svg>
         <div class="sadb-ring-legend">

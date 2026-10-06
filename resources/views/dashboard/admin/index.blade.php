@@ -10,7 +10,7 @@
 
 /* ── Hero ── */
 .adb-hero {
-  background: linear-gradient(135deg, #032A4F 0%, #043767 60%, #043767 100%);
+  background: linear-gradient(135deg, #0E3B2E 0%, #14503D 60%, #14503D 100%);
   border-radius: 16px;
   padding: 1.875rem 2rem;
   margin-bottom: 1.5rem;
@@ -26,13 +26,13 @@
   content: '';
   position: absolute; top: -50px; right: -50px;
   width: 240px; height: 240px; border-radius: 50%;
-  background: rgba(6, 87, 164,.06); pointer-events: none;
+  background: rgba(198,161,91,.06); pointer-events: none;
 }
 .adb-hero::after {
   content: '';
   position: absolute; bottom: -70px; right: 100px;
   width: 180px; height: 180px; border-radius: 50%;
-  background: rgba(6, 87, 164,.04); pointer-events: none;
+  background: rgba(198,161,91,.04); pointer-events: none;
 }
 .adb-hero-left { position: relative; z-index: 1; }
 .adb-hero-tag {
@@ -122,8 +122,8 @@
 .adb-kpi-bar  { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; border-radius: 0 0 14px 14px; }
 
 /* Colors */
-.adb-ico-navy { background: rgba(3, 42, 79,.08); color: var(--c-navy); }
-.adb-ico-accent { background: rgba(6, 87, 164,.12); color: #a07d20; }
+.adb-ico-navy { background: rgba(14,59,46,.08); color: var(--c-navy); }
+.adb-ico-accent { background: rgba(198,161,91,.12); color: #a07d20; }
 .adb-ico-amber{ background: rgba(217,119,6,.1);  color: #D97706; }
 .adb-ico-green{ background: rgba(5,150,105,.1);  color: #059669; }
 .adb-ico-red  { background: rgba(220,38,38,.1);  color: #DC2626; }
@@ -259,15 +259,15 @@
   align-items: center; gap: .4rem;
   margin-top: .625rem;
   padding: .375rem .875rem;
-  border: 1px solid rgba(6, 87, 164,.35);
+  border: 1px solid rgba(198,161,91,.35);
   border-radius: 8px;
-  background: rgba(6, 87, 164,.1);
+  background: rgba(198,161,91,.1);
   color: var(--c-accent);
   font-size: .7rem; font-weight: 600;
   cursor: pointer; font-family: inherit;
   transition: background .2s, border-color .2s;
 }
-.adb-pwa-btn:hover { background: rgba(6, 87, 164,.22); border-color: rgba(6, 87, 164,.6); }
+.adb-pwa-btn:hover { background: rgba(198,161,91,.22); border-color: rgba(198,161,91,.6); }
 .adb-pwa-btn i { font-size: .65rem; }
 </style>
 @endpush
@@ -295,7 +295,7 @@
     $offset += $len;
   }
 
-  $avatarPalette = ['#2563EB','#059669','#D97706','#7C3AED','#DC2626','#0D9488','#0657A4'];
+  $avatarPalette = ['#2563EB','#059669','#D97706','#7C3AED','#DC2626','#0D9488','#C6A15B'];
 @endphp
 
 {{-- ── HERO ── --}}
@@ -360,7 +360,7 @@
   <div class="adb-kpi">
     <div class="adb-kpi-top">
       <div class="adb-kpi-ico adb-ico-accent"><i class="fas fa-file-invoice-dollar"></i></div>
-      <span class="adb-kpi-change" style="background:rgba(6, 87, 164,.12);color:#a07d20">
+      <span class="adb-kpi-change" style="background:rgba(198,161,91,.12);color:#a07d20">
         {{ $stats['month_loans'] }} ce mois
       </span>
     </div>
@@ -433,7 +433,7 @@
             transform="rotate(-90 {{ $cx }} {{ $cy }})"/>
           @endif
           @endforeach
-          <text x="{{ $cx }}" y="{{ $cy - 3 }}" text-anchor="middle" font-size="15" font-weight="800" fill="#032A4F">{{ $stats['total_loans'] }}</text>
+          <text x="{{ $cx }}" y="{{ $cy - 3 }}" text-anchor="middle" font-size="15" font-weight="800" fill="#0E3B2E">{{ $stats['total_loans'] }}</text>
           <text x="{{ $cx }}" y="{{ $cy + 12 }}" text-anchor="middle" font-size="7.5" fill="#9CA3AF">dossiers</text>
         </svg>
         <div class="adb-ring-legend">

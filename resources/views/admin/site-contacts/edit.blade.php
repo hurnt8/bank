@@ -44,7 +44,7 @@
             <label class="form-label-pro">Logo — fond sombre</label>
             @if($contact->logo_dark_path)
             <div class="mb-2">
-              <img src="{{ Storage::url($contact->logo_dark_path) }}" alt="Logo fond sombre" style="max-height:48px;background:#032A4F;padding:.5rem;border-radius:8px">
+              <img src="{{ Storage::url($contact->logo_dark_path) }}" alt="Logo fond sombre" style="max-height:48px;background:#0E3B2E;padding:.5rem;border-radius:8px">
               <label class="ms-2" style="font-size:.8rem"><input type="checkbox" name="remove_logo_dark" value="1"> Supprimer</label>
             </div>
             @endif

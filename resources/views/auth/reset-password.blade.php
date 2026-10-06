@@ -6,13 +6,13 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#0657A4">
+<meta name="theme-color" content="#C6A15B">
 <link rel="icon" type="image/png" sizes="192x192" href="/site-icon-192.png">
 <title>Réinitialiser le mot de passe — {{ site_name() }}</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -20,16 +20,16 @@
   --bg:   #02182E;
   --inp:  #06304F;
   --cyan: #2B94F7;
-  --cyan2:#0870D4;
+  --cyan2:#DCBE87;
   --text: #FFFFFF;
   --sub:  rgba(255,255,255,.52);
   --muted:rgba(255,255,255,.28);
-  --bdr:  rgba(129,182,233,.16);
+  --bdr:  rgba(220,190,135,.16);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{
   height:100%;background:var(--bg);color:var(--text);
-  font-family:'Inter', system-ui, sans-serif;font-size:15px;
+  font-family:'Outfit', system-ui, sans-serif;font-size:15px;
   -webkit-font-smoothing:antialiased;
 }
 body{min-height:100vh;overflow-x:hidden}
@@ -71,7 +71,7 @@ a{text-decoration:none;color:inherit}
 }
 .icon-badge i{font-size:1.75rem;color:var(--cyan)}
 
-.card-title{font-family:'Inter',sans-serif;font-size:1.625rem;font-weight:800;color:var(--text);margin-bottom:.45rem}
+.card-title{font-family:'Outfit',sans-serif;font-size:1.625rem;font-weight:800;color:var(--text);margin-bottom:.45rem}
 .card-sub{font-size:.82rem;color:var(--sub);line-height:1.65;margin-bottom:1.875rem;max-width:320px;margin-left:auto;margin-right:auto}
 
 .ferr{
@@ -89,7 +89,7 @@ a{text-decoration:none;color:inherit}
 .finput{
   width:100%;padding:.85rem 1rem .85rem 2.6rem;
   background:var(--inp);border:1.5px solid rgba(255,255,255,.08);border-radius:12px;
-  font-size:.88rem;font-family:'Inter',sans-serif;color:var(--text);
+  font-size:.88rem;font-family:'Outfit',sans-serif;color:var(--text);
   outline:none;transition:border-color .2s,box-shadow .2s,background .2s;
 }
 .finput::placeholder{color:rgba(255,255,255,.2)}
@@ -112,9 +112,9 @@ a{text-decoration:none;color:inherit}
 
 .fbtn{
   width:100%;padding:.92rem 1.5rem;border:none;border-radius:999px;
-  font-size:.97rem;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;
+  font-size:.97rem;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;
   display:flex;align-items:center;justify-content:center;gap:.625rem;
-  background:linear-gradient(135deg,#0870D4 0%,#0657A4 100%);
+  background:linear-gradient(135deg,#DCBE87 0%,#C6A15B 100%);
   color:#080C18;letter-spacing:.01em;
   box-shadow:0 6px 28px rgba(13,207,220,.35),0 2px 8px rgba(0,0,0,.3);
   transition:filter .2s,box-shadow .2s,transform .1s;margin-top:.5rem;

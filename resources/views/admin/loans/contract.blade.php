@@ -11,7 +11,7 @@
 /* ── Header ── */
 .lc-header{background:#fff;border:1px solid var(--c-border);border-radius:14px;padding:1.125rem 1.5rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
 .lc-header-left{display:flex;align-items:center;gap:.875rem;flex:1;min-width:0}
-.lc-header-icon{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,#FEF3C7,#FDE68A);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--c-accent-d,#054685);flex-shrink:0}
+.lc-header-icon{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,#FEF3C7,#FDE68A);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--c-accent-d,#9A7736);flex-shrink:0}
 .lc-header-ref{font-family:monospace;font-size:1rem;font-weight:900;color:var(--c-navy)}
 .lc-header-sub{font-size:.76rem;color:var(--c-muted);margin-top:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .lc-header-actions{display:flex;gap:.5rem;flex-wrap:wrap;flex-shrink:0}

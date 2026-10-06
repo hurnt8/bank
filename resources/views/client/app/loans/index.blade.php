@@ -21,7 +21,7 @@
   background:var(--ca-bg2);border:1px solid var(--ca-border);
   border-radius:14px;padding:.625rem .5rem;text-align:center;
 }
-.dos-chip__val{font-family:'Inter',sans-serif;font-size:1.125rem;font-weight:900;color:var(--ca-text);line-height:1}
+.dos-chip__val{font-family:'Outfit',sans-serif;font-size:1.125rem;font-weight:900;color:var(--ca-text);line-height:1}
 .dos-chip__lbl{font-size:.6rem;color:var(--ca-text-3);margin-top:.25rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
 
 /* ── Filter pills ── */
@@ -38,7 +38,7 @@
   color:var(--ca-text-3);background:var(--ca-bg2);cursor:pointer;
   transition:.15s;
 }
-.dos-pill.active{background:rgba(129, 182, 233,.12);border-color:rgba(129, 182, 233,.3);color:var(--ca-accent-l)}
+.dos-pill.active{background:rgba(220,190,135,.12);border-color:rgba(220,190,135,.3);color:var(--ca-accent-l)}
 
 /* ── Loan cards ── */
 .dos-list{display:flex;flex-direction:column;gap:.625rem;padding:0 1.25rem}
@@ -62,7 +62,7 @@
 
 /* Amount */
 .dos-card__amount{
-  font-family:'Inter',sans-serif;
+  font-family:'Outfit',sans-serif;
   font-size:1.5rem;font-weight:900;color:var(--ca-text);
   line-height:1;margin-bottom:.5rem;
 }

@@ -91,7 +91,7 @@
                 </div>
             </div>
 
-            <h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;">
+            <h3 style="font-family:'Fraunces',serif;color:var(--navy);font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;">
                 @lang('simulate.table')
             </h3>
 
