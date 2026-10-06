@@ -72,5 +72,8 @@
          réseau (le <style> généré par le script Tailwind CDN n'est pas garanti
          d'arriver avant les <link> précédents selon la latence du CDN). --}}
     <link rel="stylesheet" href="{{ asset('assets/css/royal.css') }}">
+<link rel="manifest" href="{{ route('pwa.manifest') }}">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body class="font-sans antialiased bg-white text-gray-900 @yield('body_class')" x-data="{ mobileOpen: false }">

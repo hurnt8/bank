@@ -388,5 +388,6 @@ window.SolbergSound = (function () {
   });
 })();
 </script>
+@include('partials.pwa-install', ['bottom' => 'calc(62px + 1.25rem)', 'z' => 8000])
 </body>
 </html>

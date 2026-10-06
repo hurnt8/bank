@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#02182E">
+<link rel="manifest" href="{{ request()->is('staff/*') ? route('pwa.admin-manifest') : route('pwa.manifest') }}">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="{{ site_name() }}">
 <link rel="icon" type="image/png" sizes="192x192" href="/site-icon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/site-icon-180.png">
 <title>@yield('title') — {{ site_name() }}</title>

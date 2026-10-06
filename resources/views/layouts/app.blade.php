@@ -65,6 +65,7 @@
 </button>
 
 @include('partials.whatsapp-bubble')
+@include('partials.pwa-install', ['bottom' => '6.5rem'])
 
 @stack('scripts')
 </body>
