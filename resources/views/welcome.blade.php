@@ -265,7 +265,7 @@ $serviceNav = [
 <section class="calc-section py-24" id="simulate">
     <div class="container">
         <div class="row gutter-y-50 align-items-center">
-            <div class="col-lg-7 wow fadeInLeft" data-wow-duration="900ms">
+            <div class="col-lg-6 wow fadeInLeft" data-wow-duration="900ms">
                 <div class="rule-label" style="color:var(--accent);">{{ __('home.why_us.sectagline') }}</div>
                 <h2 class="section-title section-title--white">{{ __('home.why_us.sectitle') }}</h2>
                 <p class="section-sub section-sub--white mb-8">{{ __('home.about.text2') }}</p>
@@ -289,6 +289,11 @@ $serviceNav = [
                 <div class="mt-6">
                     <a href="{{ route('login') }}" class="btn-primary btn-primary--lg"><i class="fas fa-right-to-bracket"></i> @lang('menu.login')</a>
                 </div>
+            </div>
+
+            <div class="col-lg-5 offset-lg-1 wow fadeInRight" data-wow-duration="900ms" data-wow-delay="150ms">
+                <img src="{{ asset('assets/images/about/about-3-1.jpg') }}" alt="{{ __('home.why_us.sectitle') }}"
+                     style="width:100%;height:100%;max-height:520px;object-fit:cover;border-radius:var(--radius-xl);" loading="lazy">
             </div>
         </div>
     </div>
