@@ -28,6 +28,7 @@
                         <i class="fas fa-user-plus"></i>
                         @lang('menu.open_account')
                     </a>
+                    <a href="{{ route('login') }}" class="btn-outline btn-outline--lg"><i class="fas fa-right-to-bracket"></i> @lang('menu.login')</a>
                 </div>
 
                 <div class="hero-facts">
@@ -284,6 +285,10 @@ $serviceNav = [
                     </div>
                 </div>
                 @endforeach
+
+                <div class="mt-6">
+                    <a href="{{ route('login') }}" class="btn-primary btn-primary--lg"><i class="fas fa-right-to-bracket"></i> @lang('menu.login')</a>
+                </div>
             </div>
 
             <div class="col-lg-6 offset-lg-1 wow fadeInRight" data-wow-duration="900ms" data-wow-delay="150ms">

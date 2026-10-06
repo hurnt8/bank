@@ -38,5 +38,8 @@
             <b><i class="loan-total"></i> €</b>
         </p>
 
+        <a href="{{ route('login') }}" class="btn-primary loan-calculator-form__btn"><i class="fas fa-right-to-bracket"></i> @lang('menu.login')</a>
+
+
     </div>
 </form>

@@ -9,6 +9,7 @@ return [
     'simulate' => 'Paskolos simuliacija',
     'contact' => 'Susisiekite su mumis',
     'loan' => 'Prašyti paskolos',
+    'login' => 'Prisijungti',
     'open_account' => 'Atidaryti sąskaitą',
 
     'personal' => 'Asmeninė paskola',

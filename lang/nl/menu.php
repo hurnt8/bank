@@ -9,6 +9,7 @@ return [
     'simulate' => 'Leensimulatie',
     'contact' => 'Contact opnemen',
     'loan' => 'Een lening aanvragen',
+    'login' => 'Inloggen',
     'open_account' => 'Een rekening openen',
 
     'personal' => 'Persoonlijke lening',

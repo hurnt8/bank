@@ -8,6 +8,7 @@ return [
     'simulate' => "Simulazzjoni ta' self",
     'contact' => 'Ikkuntattjana',
     'loan' => 'Applika għal self',
+    'login' => 'Idħol',
 
     'personal' => 'Self personali',
     'auto' => 'Self awtomatiku',

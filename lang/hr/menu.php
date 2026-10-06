@@ -8,6 +8,7 @@ return [
     'simulate' => 'Simulacija kredita',
     'contact' => 'Kontaktirajte nas',
     'loan' => 'Zahtjev za kredit',
+    'login' => 'Prijava',
     'open_account' => 'Otvorite račun',
 
     'personal' => 'Osobni zajam',

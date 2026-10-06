@@ -8,6 +8,7 @@ return [
     'simulate' => 'Loan simulation',
     'contact' => 'Contact Us',
     'loan' => 'Apply for loan',
+    'login' => 'Log in',
     'open_account' => 'Open an account',
 
     'personal' => 'Personal loan',

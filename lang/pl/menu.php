@@ -9,6 +9,7 @@ return [
     'simulate' => 'Symulacja kredytu',
     'contact' => 'Kontakt',
     'loan' => 'Wnioskuj o kredyt',
+    'login' => 'Zaloguj się',
     'open_account' => 'Otwórz konto',
 
     'personal' => 'Kredyt osobisty',

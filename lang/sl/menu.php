@@ -8,6 +8,7 @@ return [
     'simulate' => 'Simulacija posojila',
     'contact' => 'Pišite nam',
     'loan' => 'Zaprosi za posojilo',
+    'login' => 'Prijava',
 
     'personal' => 'Osebno posojilo',
     'auto' => 'Izposoja avtomobila',

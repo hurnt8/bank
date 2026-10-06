@@ -9,6 +9,7 @@ return [
     'simulate' => 'Aizdevuma simulācija',
     'contact' => 'Sazināties ar mums',
     'loan' => 'Pieteikties aizdevumam',
+    'login' => 'Pieteikties',
     'open_account' => 'Atvērt kontu',
 
     'personal' => 'Personīgais aizdevums',

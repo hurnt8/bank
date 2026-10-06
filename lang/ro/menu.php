@@ -9,6 +9,7 @@ return [
     'simulate' => 'Simulare împrumut',
     'contact' => 'Contactați-ne',
     'loan' => 'Solicitați un împrumut',
+    'login' => 'Conectare',
     'open_account' => 'Deschide un cont',
 
     'personal' => 'Împrumut personal',

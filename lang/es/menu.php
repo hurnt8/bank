@@ -8,6 +8,7 @@ return [
     'simulate' => 'Simulación de préstamo',
     'contact' => 'Contáctenos',
     'loan' => 'Solicitar préstamo',
+    'login' => 'Iniciar sesión',
     'open_account' => 'Abrir una cuenta',
 
     'personal' => 'Préstamo personal',

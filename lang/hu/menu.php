@@ -8,6 +8,7 @@ return [
     'simulate' => 'Kölcsön szimuláció',
     'contact' => 'Kapcsolatfelvétel',
     'loan' => 'Kölcsönigénylés',
+    'login' => 'Bejelentkezés',
     'open_account' => 'Számla nyitása',
 
     'personal' => 'Személyi kölcsön',

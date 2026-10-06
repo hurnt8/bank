@@ -119,6 +119,7 @@
             </div>
             <div class="col-lg-5 text-lg-end wow fadeInRight" data-wow-duration="900ms" data-wow-delay="150ms">
                 <div class="d-flex flex-wrap justify-content-lg-end gap-3">
+                    <a href="{{ route('login') }}" class="btn-primary btn-primary--lg"><i class="fas fa-right-to-bracket"></i> @lang('menu.login')</a>
                     <a href="{{ route('contact', ['locale' => $locale]) }}" class="btn-outline-white">
                         <i class="fas fa-envelope"></i> @lang('menu.contact')
                     </a>

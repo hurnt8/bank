@@ -119,6 +119,10 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="text-center mt-12">
+                <a href="{{ route('login') }}" class="btn-primary btn-primary--lg"><i class="fas fa-right-to-bracket"></i> @lang('menu.login')</a>
+            </div>
         </div>
         @endisset
 
