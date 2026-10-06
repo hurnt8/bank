@@ -17,10 +17,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/site-icon-180.png">
     <link rel="shortcut icon" type="image/png" href="/site-icon-32.png">
 
-    <!-- Fonts: Inter + Playfair Display -->
+    <!-- Fonts: Outfit + Fraunces -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -29,13 +29,13 @@
         theme: {
             extend: {
                 colors: {
-                    navy:      { DEFAULT:'#032A4F', mid:'#043767', light:'#054685', deep:'#021D36' },
-                    accent:      { DEFAULT:'#0657A4', light:'#0870D4', pale:'#DEEBF7', dark:'#054685' },
-                    cream:     { DEFAULT:'#F3F7FC', light:'#F9FBFE' },
+                    navy: { DEFAULT:'#0E3B2E', mid:'#14503D', light:'#1C6B51', deep:'#082A20' },
+                    accent: { DEFAULT:'#C6A15B', light:'#DCBE87', pale:'#F5EDDD', dark:'#9A7736' },
+                    cream: { DEFAULT:'#FBF9F4', light:'#FEFDFB' },
                 },
                 fontFamily: {
-                    sans:  ['Inter','ui-sans-serif','system-ui','sans-serif'],
-                    serif: ['Playfair Display','Georgia','serif'],
+                    sans:  ['Outfit','ui-sans-serif','system-ui','sans-serif'],
+                    serif: ['Fraunces','Georgia','serif'],
                 },
                 boxShadow: {
                     'card':  '0 1px 3px rgba(11,26,46,.06), 0 4px 16px rgba(11,26,46,.08)',
