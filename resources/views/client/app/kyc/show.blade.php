@@ -6,44 +6,102 @@
 
 @push('styles')
 <style>
-.kyc-body { padding:1.25rem 1.25rem 2.5rem }
+.kyc-body { padding:1.25rem 1.25rem 2.5rem; max-width:720px; margin:0 auto; width:100% }
+
+/* Indicateur de progression */
+.kyc-steps { display:flex; align-items:flex-start; margin-bottom:.6rem }
+.kyc-step { flex:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:.45rem; position:relative; min-width:0 }
+.kyc-step + .kyc-step::before {
+  content:''; position:absolute; top:17px; right:50%; width:100%; height:2px;
+  background:var(--ca-border); z-index:0;
+}
+.kyc-step.is-done + .kyc-step::before,
+.kyc-step.is-current + .kyc-step.is-done::before { background:var(--ca-accent) }
+.kyc-step.is-done + .kyc-step.is-current::before { background:var(--ca-accent) }
+.kyc-step__dot {
+  width:36px; height:36px; border-radius:50%; z-index:1;
+  display:flex; align-items:center; justify-content:center; font-size:.85rem; font-weight:700;
+  background:var(--ca-bg2); border:2px solid var(--ca-border); color:var(--ca-text-3);
+}
+.kyc-step.is-current .kyc-step__dot { border-color:var(--ca-accent); color:var(--ca-accent); box-shadow:0 0 0 4px rgba(198,161,91,.15) }
+.kyc-step.is-done .kyc-step__dot { background:var(--ca-accent); border-color:var(--ca-accent); color:#fff }
+.kyc-step__label { font-size:.74rem; font-weight:600; color:var(--ca-text-3); line-height:1.3; padding:0 .25rem; overflow-wrap:anywhere }
+.kyc-step.is-current .kyc-step__label, .kyc-step.is-done .kyc-step__label { color:var(--ca-text) }
+.kyc-progress-txt { text-align:center; font-size:.76rem; color:var(--ca-text-3); margin-bottom:1.4rem }
+
+.kyc-head { margin-bottom:1.1rem }
+.kyc-head h2 { font-size:1.1rem; font-weight:700; color:var(--ca-text); margin-bottom:.3rem }
+.kyc-head p  { font-size:.82rem; color:var(--ca-text-3); line-height:1.55 }
 
 .kyc-status {
   display:flex; align-items:center; gap:.75rem;
   padding:1rem 1.125rem; border-radius:var(--ca-radius-md);
-  margin-bottom:1.5rem; border:1px solid var(--ca-border);
+  margin-bottom:1.25rem; border:1px solid var(--ca-border);
 }
 .kyc-status--non_soumis { background:var(--ca-bg2) }
 .kyc-status--en_attente { background:rgba(245,158,11,.1); border-color:rgba(245,158,11,.3) }
 .kyc-status--approuve   { background:rgba(0,200,150,.1); border-color:rgba(0,200,150,.3) }
 .kyc-status--rejete     { background:rgba(239,68,68,.1); border-color:rgba(239,68,68,.3) }
-
 .kyc-status__ico { font-size:1.3rem }
 .kyc-status--non_soumis .kyc-status__ico { color:var(--ca-text-3) }
 .kyc-status--en_attente .kyc-status__ico { color:#f59e0b }
 .kyc-status--approuve   .kyc-status__ico { color:var(--ca-positive) }
 .kyc-status--rejete     .kyc-status__ico { color:#ef4444 }
-
 .kyc-status__title { font-size:.9rem; font-weight:700; color:var(--ca-text) }
-.kyc-status__sub   { font-size:.78rem; color:var(--ca-text-3); margin-top:.1rem }
+.kyc-status__sub   { font-size:.78rem; color:var(--ca-text-3); margin-top:.1rem; overflow-wrap:anywhere }
 
-.kyc-form-group { margin-bottom:1.1rem }
+/* Formulaires */
+.kyc-grid { display:grid; grid-template-columns:1fr; gap:0 1rem }
+.kyc-form-group { margin-bottom:1.1rem; min-width:0 }
 .kyc-form-group label { display:block; font-size:.8rem; font-weight:600; color:var(--ca-text-2); margin-bottom:.4rem }
+.kyc-form-group label em { font-style:normal; font-weight:400; color:var(--ca-text-3) }
 .kyc-form-group select,
-.kyc-form-group input[type=file] {
-  width:100%; padding:.7rem .9rem; border-radius:var(--ca-radius-sm);
+.kyc-form-group input[type=text],
+.kyc-form-group input[type=date],
+.kyc-form-group textarea {
+  width:100%; min-height:46px; padding:.7rem .9rem; border-radius:var(--ca-radius-sm);
   border:1px solid var(--ca-border); background:var(--ca-bg2); color:var(--ca-text);
-  font-size:.85rem;
+  font-size:16px; font-family:inherit;
 }
+.kyc-form-group textarea { min-height:84px; resize:vertical }
+.kyc-form-group select:focus, .kyc-form-group input:focus, .kyc-form-group textarea:focus { outline:2px solid var(--ca-accent); outline-offset:0 }
 .kyc-hint { font-size:.74rem; color:var(--ca-text-3); margin-top:.3rem }
-.kyc-submit-btn {
-  width:100%; padding:.9rem; margin-top:.5rem;
-  background:var(--ca-accent); color:#fff; border:none; border-radius:var(--ca-radius-sm);
-  font-size:.92rem; font-weight:700; cursor:pointer;
+
+/* Dépôt de fichiers */
+.kyc-file {
+  display:flex; align-items:center; gap:.75rem; flex-wrap:wrap;
+  padding:.8rem .9rem; border:1.5px dashed var(--ca-border); border-radius:var(--ca-radius-md);
+  background:var(--ca-bg2); cursor:pointer;
 }
-.kyc-selfie-preview {
-  width:100%; max-height:220px; object-fit:cover; border-radius:var(--ca-radius-md);
-  margin-top:.5rem; display:none;
+.kyc-file:hover { border-color:var(--ca-accent) }
+.kyc-file i { color:var(--ca-accent); font-size:1.1rem }
+.kyc-file__txt { flex:1; min-width:0; font-size:.82rem; color:var(--ca-text-2); overflow-wrap:anywhere }
+.kyc-file input[type=file] { position:absolute; width:1px; height:1px; opacity:0; pointer-events:none }
+
+.kyc-docs { display:grid; gap:.6rem; margin-bottom:1.4rem }
+.kyc-doc { display:flex; align-items:center; justify-content:space-between; gap:.75rem; padding:.75rem .9rem;
+  border:1px solid var(--ca-border); border-radius:var(--ca-radius-sm); background:var(--ca-bg2); font-size:.82rem; color:var(--ca-text) }
+.kyc-doc__name { min-width:0; overflow-wrap:anywhere }
+.kyc-badge { flex-shrink:0; font-size:.7rem; font-weight:700; padding:.2rem .6rem; border-radius:999px }
+.kyc-badge--ok { background:rgba(0,200,150,.14); color:var(--ca-positive) }
+.kyc-badge--no { background:rgba(239,68,68,.12); color:#ef4444 }
+.kyc-badge--opt { background:var(--ca-border); color:var(--ca-text-3) }
+
+.kyc-actions { display:flex; flex-direction:column; gap:.6rem; margin-top:.5rem }
+.kyc-submit-btn, .kyc-ghost-btn {
+  width:100%; min-height:48px; padding:.85rem; border-radius:var(--ca-radius-sm);
+  font-size:.92rem; font-weight:700; cursor:pointer; text-align:center; display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+}
+.kyc-submit-btn { background:var(--ca-accent); color:#fff; border:none }
+.kyc-ghost-btn { background:transparent; color:var(--ca-text-2); border:1px solid var(--ca-border) }
+.kyc-selfie-preview { width:100%; max-height:220px; object-fit:cover; border-radius:var(--ca-radius-md); margin-top:.5rem; display:none }
+
+@media (min-width:600px) {
+  .kyc-body { padding:1.75rem 1.75rem 3rem }
+  .kyc-grid--2 { grid-template-columns:1fr 1fr }
+  .kyc-grid--2 .span-2 { grid-column:1 / -1 }
+  .kyc-actions { flex-direction:row-reverse }
+  .kyc-actions > * { width:auto; flex:1 }
 }
 </style>
 @endpush
@@ -51,24 +109,25 @@
 @section('content')
 <div class="kyc-body">
 
-@php $status = $kyc->status ?? \App\Models\KycVerification::STATUS_NON_SOUMIS; @endphp
+@php
+  $K = \App\Models\KycVerification::class;
+  $status = $kyc->status ?? $K::STATUS_NON_SOUMIS;
+  $docsDone = in_array($status, [$K::STATUS_EN_ATTENTE, $K::STATUS_APPROUVE]);
+  $step1Done = $infoComplete;
+@endphp
 
-<div class="kyc-status kyc-status--{{ $status }}">
-  <div class="kyc-status__ico">
-    @switch($status)
-      @case(\App\Models\KycVerification::STATUS_EN_ATTENTE) <i class="fas fa-hourglass-half"></i> @break
-      @case(\App\Models\KycVerification::STATUS_APPROUVE)   <i class="fas fa-check-circle"></i> @break
-      @case(\App\Models\KycVerification::STATUS_REJETE)     <i class="fas fa-times-circle"></i> @break
-      @default <i class="fas fa-id-card"></i>
-    @endswitch
+{{-- Indicateur de progression --}}
+<div class="kyc-steps" role="list">
+  <div class="kyc-step {{ $step === 1 ? 'is-current' : ($step1Done ? 'is-done' : '') }}" role="listitem">
+    <div class="kyc-step__dot">@if($step1Done && $step !== 1)<i class="fas fa-check"></i>@else 1 @endif</div>
+    <div class="kyc-step__label">{{ __('onboarding.step1_label') }}</div>
   </div>
-  <div>
-    <div class="kyc-status__title">{{ __('kyc.status_' . $status) }}</div>
-    @if($status === \App\Models\KycVerification::STATUS_REJETE && $kyc->rejection_reason)
-      <div class="kyc-status__sub">{{ __('kyc.rejection_reason_label') }} : {{ $kyc->rejection_reason }}</div>
-    @endif
+  <div class="kyc-step {{ $docsDone ? 'is-done' : ($step === 2 ? 'is-current' : '') }}" role="listitem">
+    <div class="kyc-step__dot">@if($docsDone)<i class="fas fa-check"></i>@else 2 @endif</div>
+    <div class="kyc-step__label">{{ __('onboarding.step2_label') }}</div>
   </div>
 </div>
+<div class="kyc-progress-txt">{{ __('onboarding.kyc_progress', ['current' => $step, 'total' => 2]) }}</div>
 
 @if(session('error'))
 <div class="alert alert-danger" style="margin-bottom:1rem">{{ session('error') }}</div>
@@ -77,46 +136,170 @@
 <div class="alert alert-success" style="margin-bottom:1rem">{{ session('success') }}</div>
 @endif
 
-@if(in_array($status, [\App\Models\KycVerification::STATUS_NON_SOUMIS, \App\Models\KycVerification::STATUS_REJETE]))
+@if($step === 1)
+{{-- ───────────── Étape 1 : informations personnelles ───────────── --}}
+<div class="kyc-head">
+  <h2>{{ __('onboarding.step1_title') }}</h2>
+  <p>{{ __('onboarding.step1_sub') }}</p>
+</div>
+
+@if($errors->any())
+<div class="alert alert-danger" style="margin-bottom:1rem">{{ $errors->first() }}</div>
+@endif
+
+<form method="POST" action="{{ route('client.app.kyc.info') }}" novalidate>
+  @csrf
+  <div class="kyc-grid kyc-grid--2">
+    <div class="kyc-form-group">
+      <label for="birth_date">{{ __('onboarding.f_birth_date') }} *</label>
+      <input type="date" id="birth_date" name="birth_date" max="{{ now()->subDay()->toDateString() }}"
+             value="{{ old('birth_date', optional($user->birth_date)->toDateString()) }}" required>
+      @error('birth_date')<span class="form-error">{{ $message }}</span>@enderror
+    </div>
+    <div class="kyc-form-group">
+      <label for="country">{{ __('onboarding.f_country') }} *</label>
+      <input type="text" id="country" name="country" value="{{ old('country', $user->country) }}" autocomplete="country-name" required>
+      @error('country')<span class="form-error">{{ $message }}</span>@enderror
+    </div>
+    <div class="kyc-form-group span-2">
+      <label for="address">{{ __('onboarding.f_address') }} *</label>
+      <input type="text" id="address" name="address" value="{{ old('address', $user->address) }}" autocomplete="street-address" required>
+      @error('address')<span class="form-error">{{ $message }}</span>@enderror
+    </div>
+    <div class="kyc-form-group">
+      <label for="id_type">{{ __('onboarding.f_id_type') }} *</label>
+      <select id="id_type" name="id_type" required>
+        @foreach(['cni' => 'option_cni', 'passeport' => 'option_passeport', 'permis' => 'option_permis'] as $val => $key)
+          <option value="{{ $val }}" @selected(old('id_type', $user->id_type) === $val)>{{ __('kyc.'.$key) }}</option>
+        @endforeach
+      </select>
+      @error('id_type')<span class="form-error">{{ $message }}</span>@enderror
+    </div>
+    <div class="kyc-form-group">
+      <label for="id_number">{{ __('onboarding.f_id_number') }} *</label>
+      <input type="text" id="id_number" name="id_number" value="{{ old('id_number', $user->id_number) }}" autocomplete="off" required>
+      @error('id_number')<span class="form-error">{{ $message }}</span>@enderror
+    </div>
+    <div class="kyc-form-group">
+      <label for="date_delivre">{{ __('onboarding.f_date_delivre') }} <em>({{ __('onboarding.optional') }})</em></label>
+      <input type="date" id="date_delivre" name="date_delivre" max="{{ now()->toDateString() }}"
+             value="{{ old('date_delivre', optional($user->date_delivre)->toDateString()) }}">
+      @error('date_delivre')<span class="form-error">{{ $message }}</span>@enderror
+    </div>
+    <div class="kyc-form-group">
+      <label for="tax_number">{{ __('onboarding.f_tax_number') }} <em>({{ __('onboarding.optional') }})</em></label>
+      <input type="text" id="tax_number" name="tax_number" value="{{ old('tax_number', $user->tax_number) }}" autocomplete="off">
+      @error('tax_number')<span class="form-error">{{ $message }}</span>@enderror
+    </div>
+    <div class="kyc-form-group span-2">
+      <label for="activity">{{ __('onboarding.f_activity') }} <em>({{ __('onboarding.optional') }})</em></label>
+      <input type="text" id="activity" name="activity" value="{{ old('activity', $user->activity) }}">
+      @error('activity')<span class="form-error">{{ $message }}</span>@enderror
+    </div>
+  </div>
+
+  <div class="kyc-actions">
+    <button type="submit" class="kyc-submit-btn">{{ __('onboarding.continue') }} <i class="fas fa-arrow-right"></i></button>
+    @if($step1Done)
+    <a href="{{ route('client.app.kyc.show') }}" class="kyc-ghost-btn"><i class="fas fa-arrow-left"></i> {{ __('onboarding.back') }}</a>
+    @endif
+  </div>
+</form>
+
+@else
+{{-- ───────────── Étape 2 : documents ───────────── --}}
+<div class="kyc-head">
+  <h2>{{ __('onboarding.step2_title') }}</h2>
+  <p>{{ __('onboarding.step2_sub') }}</p>
+</div>
+
+<div class="kyc-status kyc-status--{{ $status }}">
+  <div class="kyc-status__ico">
+    @switch($status)
+      @case($K::STATUS_EN_ATTENTE) <i class="fas fa-hourglass-half"></i> @break
+      @case($K::STATUS_APPROUVE)   <i class="fas fa-check-circle"></i> @break
+      @case($K::STATUS_REJETE)     <i class="fas fa-times-circle"></i> @break
+      @default <i class="fas fa-id-card"></i>
+    @endswitch
+  </div>
+  <div>
+    <div class="kyc-status__title">{{ __('kyc.status_' . $status) }}</div>
+    @if($status === $K::STATUS_REJETE && $kyc->rejection_reason)
+      <div class="kyc-status__sub">{{ __('kyc.rejection_reason_label') }} : {{ $kyc->rejection_reason }}</div>
+    @endif
+  </div>
+</div>
+
+@if($errors->any())
+<div class="alert alert-danger" style="margin-bottom:1rem">{{ $errors->first() }}</div>
+@endif
+
+@if($kyc && $kyc->submitted_at)
+<div class="kyc-head"><h2 style="font-size:.95rem">{{ __('onboarding.doc_status') }}</h2></div>
+<div class="kyc-docs">
+  @foreach([
+    ['onboarding.doc_id_front', $kyc->id_document_front_path, false],
+    ['onboarding.doc_id_back',  $kyc->id_document_back_path,  true],
+    ['onboarding.doc_selfie',   $kyc->selfie_path,            false],
+  ] as [$label, $path, $optional])
+  <div class="kyc-doc">
+    <span class="kyc-doc__name">{{ __($label) }}</span>
+    @if($path)
+      <span class="kyc-badge kyc-badge--ok"><i class="fas fa-check"></i> {{ __('onboarding.doc_sent') }}</span>
+    @elseif($optional)
+      <span class="kyc-badge kyc-badge--opt">{{ __('onboarding.doc_optional') }}</span>
+    @else
+      <span class="kyc-badge kyc-badge--no">{{ __('onboarding.doc_missing') }}</span>
+    @endif
+  </div>
+  @endforeach
+</div>
+@endif
+
+@if(in_array($status, [$K::STATUS_NON_SOUMIS, $K::STATUS_REJETE]))
 
 <form method="POST" action="{{ route('client.app.kyc.store') }}" enctype="multipart/form-data">
   @csrf
+  <input type="hidden" name="id_document_type" value="{{ $user->id_type }}">
 
   <div class="kyc-form-group">
-    <label>{{ __('kyc.label_id_document_type') }}</label>
-    <select name="id_document_type" required>
-      <option value="cni">{{ __('kyc.option_cni') }}</option>
-      <option value="passeport">{{ __('kyc.option_passeport') }}</option>
-      <option value="permis">{{ __('kyc.option_permis') }}</option>
-    </select>
-    @error('id_document_type')<span class="form-error">{{ $message }}</span>@enderror
-  </div>
-
-  <div class="kyc-form-group">
-    <label>{{ __('kyc.label_id_front') }}</label>
-    <input type="file" name="id_document_front" accept="image/jpeg,image/png,application/pdf" required>
+    <label>{{ __('kyc.label_id_front') }} *</label>
+    <label class="kyc-file"><i class="fas fa-cloud-arrow-up"></i>
+      <span class="kyc-file__txt" data-default="{{ __('onboarding.doc_choose') }}">{{ __('onboarding.doc_choose') }}</span>
+      <input type="file" name="id_document_front" accept="image/jpeg,image/png,application/pdf" required>
+    </label>
     @error('id_document_front')<span class="form-error">{{ $message }}</span>@enderror
   </div>
 
   <div class="kyc-form-group">
     <label>{{ __('kyc.label_id_back') }}</label>
-    <input type="file" name="id_document_back" accept="image/jpeg,image/png,application/pdf">
+    <label class="kyc-file"><i class="fas fa-cloud-arrow-up"></i>
+      <span class="kyc-file__txt" data-default="{{ __('onboarding.doc_choose') }}">{{ __('onboarding.doc_choose') }}</span>
+      <input type="file" name="id_document_back" accept="image/jpeg,image/png,application/pdf">
+    </label>
     @error('id_document_back')<span class="form-error">{{ $message }}</span>@enderror
   </div>
 
   <div class="kyc-form-group">
-    <label>{{ __('kyc.label_selfie') }}</label>
-    <input type="file" name="selfie" accept="image/jpeg,image/png" capture="user" id="kyc-selfie-input" required>
+    <label>{{ __('kyc.label_selfie') }} *</label>
+    <label class="kyc-file"><i class="fas fa-camera"></i>
+      <span class="kyc-file__txt" data-default="{{ __('onboarding.doc_choose') }}">{{ __('onboarding.doc_choose') }}</span>
+      <input type="file" name="selfie" accept="image/jpeg,image/png" capture="user" id="kyc-selfie-input" required>
+    </label>
     <div class="kyc-hint">{{ __('kyc.selfie_hint') }}</div>
     <img id="kyc-selfie-preview" class="kyc-selfie-preview" alt="">
     @error('selfie')<span class="form-error">{{ $message }}</span>@enderror
   </div>
 
-  <button type="submit" class="kyc-submit-btn">
-    {{ $status === \App\Models\KycVerification::STATUS_REJETE ? __('kyc.resubmit') : __('kyc.submit') }}
-  </button>
+  <div class="kyc-actions">
+    <button type="submit" class="kyc-submit-btn">
+      {{ $status === $K::STATUS_REJETE ? __('kyc.resubmit') : __('kyc.submit') }}
+    </button>
+    <a href="{{ route('client.app.kyc.show', ['step' => 1]) }}" class="kyc-ghost-btn"><i class="fas fa-pen"></i> {{ __('onboarding.edit_info') }}</a>
+  </div>
 </form>
 
+@endif
 @endif
 
 </div>
@@ -124,13 +307,15 @@
 
 @push('scripts')
 <script>
+document.querySelectorAll('.kyc-file input[type=file]').forEach(function (input) {
+  input.addEventListener('change', function () {
+    var txt = input.closest('.kyc-file').querySelector('.kyc-file__txt');
+    txt.textContent = input.files[0] ? input.files[0].name : txt.dataset.default;
+  });
+});
 document.getElementById('kyc-selfie-input')?.addEventListener('change', function (e) {
-  const file = e.target.files[0];
-  const preview = document.getElementById('kyc-selfie-preview');
-  if (file) {
-    preview.src = URL.createObjectURL(file);
-    preview.style.display = 'block';
-  }
+  var file = e.target.files[0], preview = document.getElementById('kyc-selfie-preview');
+  if (file && file.type.indexOf('image/') === 0) { preview.src = URL.createObjectURL(file); preview.style.display = 'block'; }
 });
 </script>
 @endpush

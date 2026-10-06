@@ -179,6 +179,11 @@ Route::post('/login',       [ClientLoginController::class, 'login'])->name('logi
 Route::post('/logout',      [ClientLoginController::class, 'logout'])->name('logout');
 Route::get('/login/forget', [ClientLoginController::class, 'forgetAccount'])->name('login.forget');
 
+// Activation du compte par e-mail (lien signé, idempotent)
+Route::get('/email/verify',                    [\App\Http\Controllers\Auth\EmailVerificationController::class, 'notice'])->name('verification.notice');
+Route::get('/email/verify/{uuid}/{hash}',      [\App\Http\Controllers\Auth\EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('throttle:20,1');
+Route::post('/email/resend',                   [\App\Http\Controllers\Auth\EmailVerificationController::class, 'resend'])->name('verification.resend')->middleware('throttle:3,1');
+
 // OTP verification
 Route::get('/otp-verify',  [OtpController::class, 'show'])->name('otp.show');
 Route::post('/otp-verify', [OtpController::class, 'verify'])->name('otp.verify')->middleware('throttle:5,1');
@@ -262,6 +267,7 @@ Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name
     // Vérification d'identité (KYC)
     Route::get('/kyc',  [\App\Http\Controllers\Client\KycController::class, 'show'])->name('kyc.show');
     Route::post('/kyc', [\App\Http\Controllers\Client\KycController::class, 'store'])->name('kyc.store');
+    Route::post('/kyc/info', [\App\Http\Controllers\Client\KycController::class, 'saveInfo'])->name('kyc.info');
 
     // ── Push notifications ──────────────────────────────────────────────────
     Route::post('/push/subscribe',   [\App\Http\Controllers\Client\PushController::class, 'subscribe'])->name('push.subscribe');

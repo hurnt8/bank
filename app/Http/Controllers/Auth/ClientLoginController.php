@@ -58,6 +58,14 @@ class ClientLoginController extends Controller
             return back()->withErrors(['identifier' => __('auth.portal_clients_only')]);
         }
 
+        // Compte non activé : l'adresse e-mail doit d'abord être confirmée.
+        if (! $user->email_verified_at) {
+            return back()
+                ->withErrors(['identifier' => __('onboarding.email_not_verified')])
+                ->with('unverified_email', $user->email)
+                ->onlyInput('identifier');
+        }
+
         if ($user->is_blocked) {
             return back()
                 ->withErrors(['identifier' => __('auth.account_blocked')])
