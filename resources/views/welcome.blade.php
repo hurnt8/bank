@@ -260,14 +260,14 @@ $serviceNav = [
 </section>
 
 {{-- ============================================================
-     LOAN CALCULATOR
+     COMMENT FONCTIONNE LA BANQUE
 ============================================================ --}}
 <section class="calc-section py-24" id="simulate">
     <div class="container">
         <div class="row gutter-y-50 align-items-center">
-            <div class="col-lg-5 wow fadeInLeft" data-wow-duration="900ms">
-                <div class="rule-label" style="color:var(--accent);">{{ __('home.works.sectagline') }}</div>
-                <h2 class="section-title section-title--white">{{ __('home.loan_reasons.sectitle') }}</h2>
+            <div class="col-lg-7 wow fadeInLeft" data-wow-duration="900ms">
+                <div class="rule-label" style="color:var(--accent);">{{ __('home.why_us.sectagline') }}</div>
+                <h2 class="section-title section-title--white">{{ __('home.why_us.sectitle') }}</h2>
                 <p class="section-sub section-sub--white mb-8">{{ __('home.about.text2') }}</p>
 
                 @foreach ([1,2,3] as $r)
@@ -277,10 +277,10 @@ $serviceNav = [
                     </div>
                     <div>
                         <h4 style="font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:#fff;margin:0 0 .25rem;">
-                            {{ __('home.loan_reasons.reasons.title' . $r) }}
+                            {{ __('home.why_us.reasons.title' . $r) }}
                         </h4>
                         <p style="font-size:.875rem;color:rgba(255,255,255,.55);margin:0;line-height:1.65;">
-                            {{ __('home.loan_reasons.reasons.desc' . $r) }}
+                            {{ __('home.why_us.reasons.desc' . $r) }}
                         </p>
                     </div>
                 </div>
@@ -289,10 +289,6 @@ $serviceNav = [
                 <div class="mt-6">
                     <a href="{{ route('login') }}" class="btn-primary btn-primary--lg"><i class="fas fa-right-to-bracket"></i> @lang('menu.login')</a>
                 </div>
-            </div>
-
-            <div class="col-lg-6 offset-lg-1 wow fadeInRight" data-wow-duration="900ms" data-wow-delay="150ms">
-                @include('partials.simulate')
             </div>
         </div>
     </div>
