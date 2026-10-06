@@ -98,6 +98,8 @@ return [
     'forgot_title'        => 'Mot de passe oublié ?',
     'forgot_sub'          => 'Entrez votre adresse e-mail. Nous vous enverrons un lien pour réinitialiser votre mot de passe.',
     'forgot_sent'         => 'Lien envoyé ! Vérifiez votre boîte mail et suivez les instructions.',
+    'forgot_sub_staff'    => 'Entrez l’adresse e-mail de votre compte administrateur. Nous vous enverrons un lien pour réinitialiser votre mot de passe.',
+    'reset_sub_staff'     => 'Choisissez un nouveau mot de passe sécurisé pour votre compte administrateur.',
     'send_link'           => 'Envoyer le lien',
     'remembered'          => 'Vous vous souvenez ?',
     'reset_title'         => 'Nouveau mot de passe',

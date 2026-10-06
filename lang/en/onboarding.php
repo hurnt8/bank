@@ -92,6 +92,8 @@ return [
     'forgot_title'        => 'Forgot your password?',
     'forgot_sub'          => 'Enter your email address. We will send you a link to reset your password.',
     'forgot_sent'         => 'Link sent! Check your inbox and follow the instructions.',
+    'forgot_sub_staff'    => 'Enter the email address of your administrator account. We will send you a link to reset your password.',
+    'reset_sub_staff'     => 'Choose a new secure password for your administrator account.',
     'send_link'           => 'Send the link',
     'remembered'          => 'Remembered it?',
     'reset_title'         => 'New password',
