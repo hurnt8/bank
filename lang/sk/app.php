@@ -195,4 +195,9 @@ return [
     'banking_blocked_notice' => 'Vaše bankové údaje sú momentálne zablokované. Kontaktujte svojho poradcu.',
     'card_title' => 'Karta',
     'card_expires' => 'Platnosť do',
+    'push_hint' => 'Dostávajte prevody, faktúry a novinky v reálnom čase.',
+    'push_allow' => 'Zapnúť',
+    'push_later' => 'Neskôr',
+    'push_loading' => 'Zapína sa…',
+    'push_failed' => 'Teraz sa nepodarilo zapnúť.',
 ];

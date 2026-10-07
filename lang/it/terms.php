@@ -5,7 +5,7 @@ return [
     'sections' => [
         [
             'title' => '1. Introduzione',
-            'content' => 'Benvenuto su ' . site_name() . '. Utilizzando il nostro sito e i nostri servizi, accetti di rispettare e di essere vincolato dai seguenti termini e condizioni. Ti invitiamo a leggere attentamente questi termini prima di aprire un conto, utilizzare i nostri servizi bancari o richiedere un prestito con noi.'
+            'content' => 'Benvenuto in ' . site_name() . '. Utilizzando il nostro sito e i nostri servizi, accetti di rispettare e di essere vincolato dai seguenti termini e condizioni. Leggi attentamente questi termini prima di aprire un conto o utilizzare i nostri servizi bancari.'
         ],
         [
             'title' => '2. Utilizzo del sito',
@@ -16,8 +16,8 @@ return [
             'content' => site_name() . ' offre l\'apertura di un conto online, con un IBAN e una carta bancaria associati. L\'apertura del conto è soggetta a una preventiva verifica dell\'identità. I trasferimenti e le altre operazioni effettuate dal tuo conto sono soggetti alle condizioni ed eventuali limiti indicati al momento dell\'apertura del conto o nella tua area cliente.'
         ],
         [
-            'title' => '4. Servizi di prestito',
-            'content' => site_name() . ' offre inoltre vari tipi di prestiti per soddisfare le tue esigenze finanziarie. Tutti i prestiti sono soggetti ad approvazione in base alla nostra valutazione della tua solvibilità e capacità di rimborso. I termini specifici di ciascun prestito, inclusi tassi di interesse, scadenze e condizioni di rimborso, saranno dettagliati nel contratto di prestito. Al momento della richiesta di un prestito potrebbero essere applicati costi di contratto e assicurazione; tali costi saranno chiaramente indicati nel tuo contratto.'
+            'title' => '4. Bonifici',
+            'content' => 'I bonifici inviati dal tuo conto sono soggetti alla convalida del nostro team. Durante la convalida, l’importo viene riservato sul tuo conto. Se necessario, può essere richiesto un codice di verifica o il pagamento di commissioni affinché il bonifico prosegua; ti informiamo dei suoi progressi nel tuo spazio cliente.'
         ],
         [
             'title' => '5. Riservatezza',

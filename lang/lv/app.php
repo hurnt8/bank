@@ -334,4 +334,9 @@ return [
     'banking_blocked_notice' => 'Jūsu bankas dati pašlaik ir bloķēti. Sazinieties ar savu konsultantu.',
     'card_title'             => 'Karte',
     'card_expires'           => 'Derīga līdz',
+    'push_hint' => 'Saņemiet pārskaitījumus, rēķinus un jaunumus reāllaikā.',
+    'push_allow' => 'Ieslēgt',
+    'push_later' => 'Vēlāk',
+    'push_loading' => 'Ieslēdz…',
+    'push_failed' => 'Pašlaik neizdevās ieslēgt.',
 ];

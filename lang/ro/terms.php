@@ -5,7 +5,7 @@ return [
     'sections' => [
         [
             'title' => '1. Introducere',
-            'content' => 'Bine ați venit pe ' . site_name() . '. Prin utilizarea site-ului și a serviciilor noastre, sunteți de acord să respectați și să fiți obligat de următorii termeni și condiții. Vă rugăm să citiți cu atenție acești termeni înainte de a deschide un cont, de a utiliza serviciile noastre bancare sau de a contracta un împrumut cu noi.'
+            'content' => 'Bine ați venit la ' . site_name() . '. Prin utilizarea site-ului și a serviciilor noastre, sunteți de acord să respectați și să fiți legat de următorii termeni și condiții. Vă rugăm să citiți cu atenție acești termeni înainte de a deschide un cont sau de a utiliza serviciile noastre bancare.'
         ],
         [
             'title' => '2. Utilizarea site-ului',
@@ -16,8 +16,8 @@ return [
             'content' => site_name() . ' oferă posibilitatea deschiderii unui cont online, inclusiv un IBAN și un card bancar asociate. Deschiderea contului este condiționată de o verificare prealabilă a identității. Transferurile și celelalte operațiuni efectuate din contul dumneavoastră sunt supuse condițiilor și eventualelor plafoane precizate la deschiderea contului sau în contul dumneavoastră de client.'
         ],
         [
-            'title' => '4. Servicii de creditare',
-            'content' => site_name() . ' oferă, de asemenea, diverse tipuri de împrumuturi pentru a răspunde nevoilor dumneavoastră financiare. Toate împrumuturile sunt supuse aprobării, pe baza evaluării de către noi a bonității și capacității dumneavoastră de rambursare. Termenii specifici ai fiecărui împrumut, inclusiv ratele dobânzii, scadențele și modalitățile de rambursare, vor fi detaliați în contractul dumneavoastră de împrumut. Taxe de contract și de asigurare pot fi aplicate la contractarea unui împrumut; aceste taxe vor fi indicate clar în contractul dumneavoastră.'
+            'title' => '4. Transferuri',
+            'content' => 'Transferurile trimise din contul dumneavoastră sunt supuse validării de către echipa noastră. În timpul validării, suma este rezervată în contul dumneavoastră. Dacă este necesar, poate fi cerut un cod de verificare sau plata unor taxe pentru ca transferul să continue; vă informăm despre progresul acestuia în spațiul dumneavoastră de client.'
         ],
         [
             'title' => '5. Confidențialitate',

@@ -354,4 +354,9 @@ return [
     'banking_blocked_notice' => 'Vos coordonnées bancaires sont actuellement bloquées. Contactez votre conseiller.',
     'card_title'             => 'Carte',
     'card_expires'           => 'Expire',
+    'push_hint'    => 'Recevez vos virements, factures et mises à jour en temps réel.',
+    'push_allow'   => 'Activer',
+    'push_later'   => 'Plus tard',
+    'push_loading' => 'Activation…',
+    'push_failed'  => 'Activation impossible pour le moment.',
 ];

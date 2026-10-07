@@ -129,10 +129,6 @@
 </div>
 <div class="kyc-progress-txt">{{ __('onboarding.kyc_progress', ['current' => $step, 'total' => 2]) }}</div>
 
-@if(session('error'))
-<div class="alert alert-danger" style="margin-bottom:1rem">{{ session('error') }}</div>
-@endif
-
 @if($step === 1)
 {{-- ───────────── Étape 1 : informations personnelles ───────────── --}}
 <div class="kyc-head">

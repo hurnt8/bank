@@ -327,4 +327,9 @@ return [
     'banking_blocked_notice' => 'Twoje dane bankowe są obecnie zablokowane. Skontaktuj się z doradcą.',
     'card_title'             => 'Karta',
     'card_expires'           => 'Wygasa',
+    'push_hint' => 'Otrzymuj przelewy, faktury i aktualizacje w czasie rzeczywistym.',
+    'push_allow' => 'Włącz',
+    'push_later' => 'Później',
+    'push_loading' => 'Włączanie…',
+    'push_failed' => 'Nie można teraz włączyć powiadomień.',
 ];

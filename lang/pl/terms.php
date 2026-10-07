@@ -5,7 +5,7 @@ return [
     'sections' => [
         [
             'title' => '1. Wprowadzenie',
-            'content' => 'Witamy w ' . site_name() . '. Korzystając z naszej strony i usług, zobowiązujesz się przestrzegać poniższych warunków użytkowania i być nimi związany. Prosimy o uważne zapoznanie się z niniejszymi warunkami przed otwarciem konta, skorzystaniem z naszych usług bankowych lub zaciągnięciem u nas kredytu.'
+            'content' => 'Witamy w ' . site_name() . '. Korzystając z naszej strony i usług, zgadzasz się przestrzegać poniższych warunków i być nimi związany. Prosimy o uważne zapoznanie się z nimi przed otwarciem konta lub skorzystaniem z naszych usług bankowych.'
         ],
         [
             'title' => '2. Korzystanie ze strony',
@@ -16,8 +16,8 @@ return [
             'content' => site_name() . ' umożliwia otwarcie konta online, wraz z powiązanym numerem IBAN i kartą bankową. Otwarcie konta podlega wcześniejszej weryfikacji tożsamości. Przelewy i inne operacje wykonywane z Twojego konta podlegają warunkom oraz ewentualnym limitom określonym podczas otwierania konta lub w panelu klienta.',
         ],
         [
-            'title' => '4. Usługi kredytowe',
-            'content' => site_name() . ' oferuje również różne rodzaje kredytów odpowiadające Twoim potrzebom finansowym. Wszystkie kredyty podlegają zatwierdzeniu na podstawie naszej oceny Twojej zdolności kredytowej i możliwości spłaty. Szczegółowe warunki każdego kredytu, w tym oprocentowanie, terminy i zasady spłaty, zostaną określone w Twojej umowie kredytowej. Przy zawieraniu kredytu mogą zostać naliczone opłaty za umowę i ubezpieczenie; opłaty te zostaną jasno wskazane w Twojej umowie.'
+            'title' => '4. Przelewy',
+            'content' => 'Przelewy wysyłane z Twojego konta podlegają zatwierdzeniu przez nasz zespół. W trakcie zatwierdzania kwota jest zarezerwowana na Twoim koncie. W razie potrzeby do kontynuowania przelewu może być wymagany kod weryfikacyjny lub uiszczenie opłat; informujemy o jego postępie w Twojej strefie klienta.'
         ],
         [
             'title' => '5. Poufność',

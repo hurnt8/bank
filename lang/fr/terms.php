@@ -5,7 +5,7 @@ return [
     'sections' => [
         [
             'title' => '1. Introduction',
-            'content' => 'Bienvenue sur ' . site_name() . '. En utilisant notre site et nos services, vous acceptez de vous conformer et d\'être lié par les termes et conditions suivants. Veuillez lire attentivement ces termes avant d\'ouvrir un compte, d\'utiliser nos services bancaires ou de contracter un prêt avec nous.'
+            'content' => 'Bienvenue chez ' . site_name() . '. En utilisant notre site et nos services, vous acceptez de respecter les conditions générales suivantes et d\'y être lié. Veuillez les lire attentivement avant d\'ouvrir un compte ou d\'utiliser nos services bancaires.'
         ],
         [
             'title' => '2. Utilisation du site',
@@ -16,8 +16,8 @@ return [
             'content' => site_name() . ' propose l\'ouverture d\'un compte en ligne, incluant un IBAN et une carte bancaire associés. L\'ouverture de compte est soumise à une vérification d\'identité préalable. Les virements et autres opérations réalisées depuis votre compte sont soumis aux conditions et éventuels plafonds précisés lors de l\'ouverture de votre compte ou dans votre espace client.'
         ],
         [
-            'title' => '4. Services de prêt',
-            'content' => site_name() . ' propose également divers types de prêts pour répondre à vos besoins financiers. Tous les prêts sont soumis à une approbation basée sur notre évaluation de votre solvabilité et de votre capacité de remboursement. Les termes spécifiques de chaque prêt, y compris les taux d\'intérêt, les échéances et les modalités de remboursement, seront détaillés dans votre contrat de prêt. Des frais de contrat et d\'assurance peuvent être appliqués lors de la souscription d\'un prêt ; ces frais seront clairement indiqués dans votre contrat.'
+            'title' => '4. Virements',
+            'content' => 'Les virements émis depuis votre compte sont soumis à la validation de notre équipe. Pendant la validation, le montant est réservé sur votre compte. Si nécessaire, un code de vérification ou le paiement de frais peut être demandé pour poursuivre le virement ; nous vous informons de son avancement dans votre espace client.'
         ],
         [
             'title' => '5. Confidentialité',

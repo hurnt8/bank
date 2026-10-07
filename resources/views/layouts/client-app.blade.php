@@ -205,15 +205,16 @@
     <i class="fas fa-bell" style="color:#F5EDDD;font-size:1.1rem"></i>
   </div>
   <div style="flex:1;min-width:0">
-    <div style="font-size:.84rem;font-weight:700;color:#fff;margin-bottom:.15rem">Activer les notifications</div>
-    <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.4">Recevez vos virements, factures et mises à jour en temps réel.</div>
+    <div id="cxa-push-title" style="font-size:.84rem;font-weight:700;color:#fff;margin-bottom:.15rem">{{ __('app.push_enable') }}</div>
+    <div id="cxa-push-text" style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.4">{{ __('app.push_hint') }}</div>
   </div>
   <div style="display:flex;flex-direction:column;gap:.4rem;flex-shrink:0">
-    <button id="cxa-push-allow" style="background:linear-gradient(90deg,#F5EDDD,#DCBE87);color:#0E3B2E;border:none;padding:.42rem .875rem;border-radius:8px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap">Activer</button>
-    <button id="cxa-push-later" style="background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.45);padding:.38rem .875rem;border-radius:8px;font-size:.72rem;cursor:pointer;white-space:nowrap">Plus tard</button>
+    <button id="cxa-push-allow" style="background:linear-gradient(90deg,#F5EDDD,#DCBE87);color:#0E3B2E;border:none;padding:.42rem .875rem;border-radius:8px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;min-width:92px;display:inline-flex;align-items:center;justify-content:center;gap:.4rem"><span class="cxa-push-spin" style="display:none;width:12px;height:12px;border:2px solid rgba(14,59,46,.25);border-top-color:#0E3B2E;border-radius:50%;animation:cxaPushSpin .7s linear infinite"></span><span class="cxa-push-lbl">{{ __('app.push_allow') }}</span></button>
+    <button id="cxa-push-later" style="background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.45);padding:.38rem .875rem;border-radius:8px;font-size:.72rem;cursor:pointer;white-space:nowrap">{{ __('app.push_later') }}</button>
   </div>
 </div>
 
+<style>@keyframes cxaPushSpin{to{transform:rotate(360deg)}} #cxa-push-allow:disabled,#cxa-push-later:disabled{opacity:.6;cursor:wait}</style>
 <script>window.SOLBERG_VAPID_KEY = '{{ config("services.vapid.public_key") }}';</script>
 <script>
 (function () {
@@ -242,54 +243,98 @@
       localStorage.setItem(STORAGE_KEY, 'reset'); // Forcer ré-affichage bannière
     }
 
-    // Déjà abonné dans le navigateur avec les bonnes clés → re-sync DB
+    // Déjà abonné dans le navigateur avec les bonnes clés → re-sync DB, et on ne redemande plus jamais
     const existing = await reg.pushManager.getSubscription();
     if (existing && (!storedVapid || storedVapid === currentVapid)) {
       if (typeof pushSubscribe === 'function') {
         await pushSubscribe(reg, CSRF).catch(() => {});
       }
+      localStorage.setItem(STORAGE_KEY, 'granted');
       return;
     }
 
-    if (Notification.permission === 'denied') return;
+    if (Notification.permission === 'denied') {
+      localStorage.setItem(STORAGE_KEY, 'denied');
+      return;
+    }
 
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === 'denied') return;
 
-    if (stored === 'granted') {
+    // Autorisation déjà donnée au navigateur mais pas encore d'abonnement : on s'abonne en silence, sans bannière
+    if (Notification.permission === 'granted') {
       if (typeof pushSubscribe === 'function') {
         await pushSubscribe(reg, CSRF).catch(() => {});
       }
+      localStorage.setItem(STORAGE_KEY, 'granted');
       return;
     }
 
-    // "Plus tard" → vérifier si les 7 jours sont écoulés
+    // Réponse déjà donnée (ou activation impossible sur cet appareil) : la bannière ne revient pas
+    if (stored === 'denied' || stored === 'granted' || stored === 'done') return;
+
+    // "Plus tard" → vérifier si le délai est écoulé
     if (stored && stored.startsWith('later:')) {
       const retryAt = parseInt(stored.split(':')[1], 10);
       if (Date.now() < retryAt) return;
       localStorage.removeItem(STORAGE_KEY);
     }
 
-    // Montrer la bannière après 3 secondes
-    setTimeout(function () {
-      const banner = document.getElementById('cxa-push-banner');
-      if (banner) banner.style.display = 'flex';
-    }, 3000);
+    const banner  = document.getElementById('cxa-push-banner');
+    const allow   = document.getElementById('cxa-push-allow');
+    const later   = document.getElementById('cxa-push-later');
+    const spin    = allow?.querySelector('.cxa-push-spin');
+    const lbl     = allow?.querySelector('.cxa-push-lbl');
+    const titleEl = document.getElementById('cxa-push-title');
+    const textEl  = document.getElementById('cxa-push-text');
+    const T = {
+      loading: @json(__('app.push_loading')),
+      done:    @json(__('app.push_enabled')),
+      failed:  @json(__('app.push_failed')),
+      denied:  @json(__('app.push_denied')),
+    };
 
-    document.getElementById('cxa-push-allow')?.addEventListener('click', async function () {
-      document.getElementById('cxa-push-banner').style.display = 'none';
-      const perm = await Notification.requestPermission();
-      if (perm === 'granted') {
-        if (typeof pushSubscribe === 'function') {
-          await pushSubscribe(reg, CSRF).catch(() => {});
+    function setLoading(on) {
+      if (!allow) return;
+      allow.disabled = on; if (later) later.disabled = on;
+      if (spin) spin.style.display = on ? 'inline-block' : 'none';
+      if (lbl && on) lbl.textContent = T.loading;
+    }
+    function closeBanner(delay) { setTimeout(function () { if (banner) banner.style.display = 'none'; }, delay || 0); }
+
+    // Montrer la bannière après 3 secondes
+    setTimeout(function () { if (banner) banner.style.display = 'flex'; }, 3000);
+
+    allow?.addEventListener('click', async function () {
+      if (allow.disabled) return;
+      setLoading(true);                      // chargement affiché dès le clic, jusqu'à la réponse
+      let outcome = 'done', message = T.failed;
+      try {
+        const perm = await Notification.requestPermission();
+        if (perm === 'granted') {
+          const sub = typeof pushSubscribe === 'function' ? await pushSubscribe(reg, CSRF) : null;
+          if (sub) { outcome = 'granted'; message = T.done; }
+        } else if (perm === 'denied') {
+          outcome = 'denied'; message = T.denied;
+        } else {                              // fenêtre du navigateur fermée sans réponse : on redemandera dans 1 jour
+          outcome = 'later:' + (Date.now() + 24 * 3600 * 1000); message = '';
         }
+      } catch (e) { console.error('[push]', e); }
+
+      localStorage.setItem(STORAGE_KEY, outcome);   // quelle que soit l'issue, la bannière ne revient pas à chaque page
+      setLoading(false);
+      if (message) {
+        if (titleEl) titleEl.textContent = message;
+        if (textEl)  textEl.style.display = 'none';
+        if (allow)   allow.style.display = 'none';
+        if (later)   later.style.display = 'none';
+        closeBanner(2200);
       } else {
-        localStorage.setItem(STORAGE_KEY, 'denied');
+        closeBanner(0);
       }
     });
 
-    document.getElementById('cxa-push-later')?.addEventListener('click', function () {
-      document.getElementById('cxa-push-banner').style.display = 'none';
+    later?.addEventListener('click', function () {
+      closeBanner(0);
       const retry = Date.now() + 7 * 24 * 3600 * 1000;
       localStorage.setItem(STORAGE_KEY, 'later:' + retry);
     });

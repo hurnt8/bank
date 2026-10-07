@@ -5,7 +5,7 @@ return [
     'sections' => [
         [
             'title' => '1. Įvadas',
-            'content' => 'Sveiki atvykę į ' . site_name() . '. Naudodamiesi mūsų svetaine ir paslaugomis, sutinkate laikytis toliau nurodytų sąlygų ir būti jų saistomos. Prašome atidžiai perskaityti šias sąlygas prieš atidarydami sąskaitą, naudodamiesi mūsų bankinėmis paslaugomis arba imdami paskolą su mumis.',
+            'content' => 'Sveiki atvykę į „' . site_name() . '“. Naudodamiesi mūsų svetaine ir paslaugomis, sutinkate laikytis šių sąlygų ir jomis būti saistomi. Prašome atidžiai jas perskaityti prieš atidarant sąskaitą ar naudojantis mūsų bankinėmis paslaugomis.'
         ],
         [
             'title' => '2. Svetainės naudojimas',
@@ -16,8 +16,8 @@ return [
             'content' => site_name() . ' suteikia galimybę atidaryti sąskaitą internetu, įskaitant susietą IBAN ir banko kortelę. Sąskaitos atidarymas vyksta tik po tapatybės patvirtinimo. Pervedimams ir kitoms operacijoms, atliekamoms iš jūsų sąskaitos, taikomos sąlygos ir galimi limitai, nurodyti sąskaitos atidarymo metu arba jūsų kliento zonoje.',
         ],
         [
-            'title' => '4. Paskolų paslaugos',
-            'content' => site_name() . ' taip pat siūlo įvairių tipų paskolas, kad patenkintų jūsų finansinius poreikius. Visos paskolos turi būti patvirtintos, remiantis mūsų įvertinimu apie jūsų kreditingumą ir grąžinimo galimybes. Konkrečios kiekvienos paskolos sąlygos, įskaitant palūkanų normas, terminus ir grąžinimo sąlygas, bus išsamiai nurodytos jūsų paskolos sutartyje. Imant paskolą gali būti taikomi sutarties ir draudimo mokesčiai; šie mokesčiai bus aiškiai nurodyti jūsų sutartyje.',
+            'title' => '4. Pavedimai',
+            'content' => 'Iš jūsų sąskaitos siunčiami pavedimai tvirtinami mūsų komandos. Tvirtinimo metu suma rezervuojama jūsų sąskaitoje. Prireikus, norint tęsti pavedimą, gali būti paprašyta patvirtinimo kodo arba sumokėti mokesčius; apie pavedimo eigą informuosime jūsų kliento erdvėje.'
         ],
         [
             'title' => '5. Konfidencialumas',

@@ -327,4 +327,9 @@ return [
     'banking_blocked_notice' => 'Sus datos bancarios están actualmente bloqueados. Contacte a su asesor.',
     'card_title'             => 'Tarjeta',
     'card_expires'           => 'Caduca',
+    'push_hint' => 'Reciba sus transferencias, facturas y novedades en tiempo real.',
+    'push_allow' => 'Activar',
+    'push_later' => 'Más tarde',
+    'push_loading' => 'Activando…',
+    'push_failed' => 'No se pudo activar por ahora.',
 ];

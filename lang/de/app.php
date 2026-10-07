@@ -334,4 +334,9 @@ return [
     'banking_blocked_notice' => 'Ihre Bankdaten sind derzeit gesperrt. Wenden Sie sich an Ihren Berater.',
     'card_title'             => 'Karte',
     'card_expires'           => 'Läuft ab',
+    'push_hint' => 'Erhalten Sie Ihre Überweisungen, Rechnungen und Neuigkeiten in Echtzeit.',
+    'push_allow' => 'Aktivieren',
+    'push_later' => 'Später',
+    'push_loading' => 'Wird aktiviert…',
+    'push_failed' => 'Aktivierung derzeit nicht möglich.',
 ];

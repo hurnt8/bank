@@ -5,7 +5,7 @@ return [
     'sections' => [
         [
             'title' => '1. Inleiding',
-            'content' => 'Welkom bij ' . site_name() . '. Door gebruik te maken van onze website en diensten, stemt u ermee in zich te houden aan en gebonden te zijn door de volgende algemene voorwaarden. Lees deze voorwaarden zorgvuldig door voordat u een rekening opent, gebruikmaakt van onze bankdiensten of een lening bij ons afsluit.'
+            'content' => 'Welkom bij ' . site_name() . '. Door onze site en diensten te gebruiken, stemt u ermee in de volgende algemene voorwaarden na te leven en eraan gebonden te zijn. Lees deze voorwaarden zorgvuldig door voordat u een rekening opent of onze bankdiensten gebruikt.'
         ],
         [
             'title' => '2. Gebruik van de website',
@@ -16,8 +16,8 @@ return [
             'content' => site_name() . ' biedt de mogelijkheid om online een rekening te openen, inclusief een bijbehorend IBAN en een bankkaart. Het openen van een rekening is onderworpen aan voorafgaande identiteitsverificatie. Overschrijvingen en andere transacties die vanaf uw rekening worden uitgevoerd, zijn onderworpen aan de voorwaarden en eventuele limieten die zijn vastgesteld bij het openen van uw rekening of die vermeld staan in uw klantomgeving.'
         ],
         [
-            'title' => '4. Leendiensten',
-            'content' => site_name() . ' biedt ook verschillende soorten leningen aan om aan uw financiële behoeften te voldoen. Alle leningen zijn onderworpen aan goedkeuring op basis van onze beoordeling van uw kredietwaardigheid en terugbetalingscapaciteit. De specifieke voorwaarden van elke lening, met inbegrip van rentetarieven, looptijden en terugbetalingsmodaliteiten, worden nader toegelicht in uw leningsovereenkomst. Bij het afsluiten van een lening kunnen contract- en verzekeringskosten in rekening worden gebracht; deze kosten worden duidelijk vermeld in uw leningsovereenkomst.'
+            'title' => '4. Overschrijvingen',
+            'content' => 'Overschrijvingen vanaf uw rekening zijn onderworpen aan validatie door ons team. Tijdens de validatie wordt het bedrag op uw rekening gereserveerd. Indien nodig kan een verificatiecode of de betaling van kosten worden gevraagd om de overschrijving voort te zetten; wij houden u op de hoogte van de voortgang in uw klantomgeving.'
         ],
         [
             'title' => '5. Vertrouwelijkheid',

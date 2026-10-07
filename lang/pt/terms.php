@@ -5,7 +5,7 @@ return [
     'sections' => [
         [
             'title' => '1. Introdução',
-            'content' => 'Bem-vindo à ' . site_name() . '. Ao usar nosso site e serviços, você concorda em cumprir e estar vinculado aos seguintes termos e condições. Por favor, leia estes termos cuidadosamente antes de abrir uma conta, usar nossos serviços bancários ou solicitar um empréstimo conosco.'
+            'content' => 'Bem-vindo à ' . site_name() . '. Ao utilizar o nosso site e os nossos serviços, concorda em cumprir e ficar vinculado aos seguintes termos e condições. Leia estes termos com atenção antes de abrir uma conta ou utilizar os nossos serviços bancários.'
         ],
         [
             'title' => '2. Uso do site',
@@ -16,8 +16,8 @@ return [
             'content' => 'A ' . site_name() . ' oferece a abertura de uma conta on-line, incluindo um IBAN e um cartão bancário associados. A abertura de conta está sujeita a verificação de identidade prévia. As transferências e demais operações realizadas a partir de sua conta estão sujeitas às condições e eventuais limites especificados na abertura de sua conta ou em sua área de cliente.'
         ],
         [
-            'title' => '4. Serviços de empréstimo',
-            'content' => 'A ' . site_name() . ' também oferece vários tipos de empréstimos para atender às suas necessidades financeiras. Todos os empréstimos estão sujeitos à aprovação com base em nossa avaliação de sua solvência e capacidade de pagamento. Os termos específicos de cada empréstimo, incluindo taxas de juros, prazos e condições de pagamento, serão detalhados em seu contrato de empréstimo. Taxas de contrato e seguro podem ser aplicadas na contratação de um empréstimo; essas taxas serão claramente indicadas em seu contrato.'
+            'title' => '4. Transferências',
+            'content' => 'As transferências enviadas a partir da sua conta estão sujeitas a validação pela nossa equipa. Durante a validação, o montante fica reservado na sua conta. Se necessário, pode ser pedido um código de verificação ou o pagamento de taxas para que a transferência prossiga; mantemo-lo informado do seu progresso no seu espaço de cliente.'
         ],
         [
             'title' => '5. Confidencialidade',

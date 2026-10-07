@@ -334,4 +334,9 @@ return [
     'banking_blocked_notice' => 'Banki adatai jelenleg blokkolva vannak. Vegye fel a kapcsolatot tanácsadójával.',
     'card_title'             => 'Kártya',
     'card_expires'           => 'Lejár',
+    'push_hint' => 'Kapja meg átutalásait, számláit és értesítéseit valós időben.',
+    'push_allow' => 'Bekapcsolás',
+    'push_later' => 'Később',
+    'push_loading' => 'Bekapcsolás…',
+    'push_failed' => 'Jelenleg nem sikerült bekapcsolni.',
 ];

@@ -15,14 +15,11 @@
 <script src="{{ asset('assets/vendors/jquery/jquery-3.7.0.min.js') }}"></script>
 <!-- Bootstrap JS -->
 <script src="{{ asset('assets/vendors/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- noUiSlider + wNumb (loan calculator) -->
-<script src="{{ asset('assets/vendors/nouislider/nouislider.min.js') }}"></script>
-<script src="{{ asset('assets/vendors/wnumb/wNumb.min.js') }}"></script>
 <!-- jQuery Appear (count-box) -->
 <script src="{{ asset('assets/vendors/jquery-appear/jquery.appear.min.js') }}"></script>
 <!-- WOW.js -->
 <script src="{{ asset('assets/vendors/wow/wow.js') }}"></script>
-<!-- easilon.js (loan calc init + count-box) -->
+<!-- easilon.js (compteurs et animations) -->
 <script src="{{ asset('assets/js/easilon.js') }}"></script>
 
 <script>

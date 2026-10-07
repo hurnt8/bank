@@ -354,4 +354,9 @@ return [
     'banking_blocked_notice' => 'Uw bankgegevens zijn momenteel geblokkeerd. Neem contact op met uw adviseur.',
     'card_title'             => 'Kaart',
     'card_expires'           => 'Vervalt',
+    'push_hint' => 'Ontvang uw overschrijvingen, facturen en updates in real time.',
+    'push_allow' => 'Activeren',
+    'push_later' => 'Later',
+    'push_loading' => 'Bezig met activeren…',
+    'push_failed' => 'Activeren is nu niet mogelijk.',
 ];

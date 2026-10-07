@@ -334,4 +334,9 @@ return [
     'banking_blocked_notice' => 'Your banking details are currently blocked. Contact your advisor.',
     'card_title'             => 'Card',
     'card_expires'           => 'Expires',
+    'push_hint'    => 'Get your transfers, invoices and updates in real time.',
+    'push_allow'   => 'Enable',
+    'push_later'   => 'Later',
+    'push_loading' => 'Enabling…',
+    'push_failed'  => 'Could not enable notifications right now.',
 ];

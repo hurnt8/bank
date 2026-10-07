@@ -349,4 +349,9 @@ return [
     'banking_blocked_notice' => 'Vaši bankovni podaci su trenutno blokirani. Kontaktirajte svog savjetnika.',
     'card_title'             => 'Kartica',
     'card_expires'           => 'Ističe',
+    'push_hint' => 'Primajte prijenose, račune i novosti u stvarnom vremenu.',
+    'push_allow' => 'Uključi',
+    'push_later' => 'Kasnije',
+    'push_loading' => 'Uključivanje…',
+    'push_failed' => 'Trenutno nije moguće uključiti.',
 ];

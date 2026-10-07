@@ -5,7 +5,7 @@ return [
     'sections' => [
         [
             'title' => '1. Ievads',
-            'content' => 'Laipni lūdzam ' . site_name() . '. Izmantojot mūsu vietni un pakalpojumus, jūs piekrītat ievērot un būt saistīts ar šādiem noteikumiem un nosacījumiem. Lūdzu, uzmanīgi izlasiet šos noteikumus, pirms atverat kontu, izmantojat mūsu bankas pakalpojumus vai slēdzat aizdevuma līgumu ar mums.'
+            'content' => 'Laipni lūdzam "' . site_name() . '". Izmantojot mūsu vietni un pakalpojumus, jūs piekrītat ievērot un būt saistīti ar šādiem noteikumiem. Lūdzu, uzmanīgi izlasiet tos pirms konta atvēršanas vai mūsu bankas pakalpojumu izmantošanas.'
         ],
         [
             'title' => '2. Vietnes izmantošana',
@@ -16,8 +16,8 @@ return [
             'content' => site_name() . ' piedāvā konta atvēršanu tiešsaistē, iekļaujot ar to saistītu IBAN un bankas karti. Konta atvēršana ir pakļauta iepriekšējai identitātes pārbaudei. Pārvedumiem un citām operācijām, kas tiek veiktas no jūsu konta, piemēro nosacījumus un iespējamos limitus, kas norādīti konta atvēršanas brīdī vai jūsu klienta zonā.'
         ],
         [
-            'title' => '4. Aizdevumu pakalpojumi',
-            'content' => site_name() . ' papildus piedāvā dažādus aizdevumu veidus jūsu finansiālo vajadzību apmierināšanai. Visi aizdevumi ir pakļauti apstiprināšanai, pamatojoties uz mūsu veikto jūsu maksātspējas un atmaksas kapacitātes novērtējumu. Katra aizdevuma konkrētie noteikumi, tostarp procentu likmes, termiņi un atmaksas kārtība, tiks detalizēti norādīti jūsu aizdevuma līgumā. Noformējot aizdevumu, var tikt piemērotas līguma un apdrošināšanas maksas; šīs maksas būs skaidri norādītas jūsu līgumā.'
+            'title' => '4. Pārskaitījumi',
+            'content' => 'No jūsu konta nosūtītie pārskaitījumi tiek apstiprināti mūsu komandas. Apstiprināšanas laikā summa tiek rezervēta jūsu kontā. Ja nepieciešams, pārskaitījuma turpināšanai var tikt prasīts verifikācijas kods vai komisijas maksas samaksa; par tā virzību mēs informējam jūsu klienta zonā.'
         ],
         [
             'title' => '5. Konfidencialitāte',

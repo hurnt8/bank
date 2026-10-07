@@ -334,4 +334,9 @@ return [
     'banking_blocked_notice' => 'I tuoi dati bancari sono attualmente bloccati. Contatta il tuo consulente.',
     'card_title'             => 'Carta',
     'card_expires'           => 'Scade',
+    'push_hint' => 'Ricevi bonifici, fatture e aggiornamenti in tempo reale.',
+    'push_allow' => 'Attiva',
+    'push_later' => 'Più tardi',
+    'push_loading' => 'Attivazione…',
+    'push_failed' => 'Impossibile attivare al momento.',
 ];

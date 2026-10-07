@@ -334,4 +334,9 @@ return [
     'banking_blocked_notice' => 'Datele dumneavoastră bancare sunt momentan blocate. Contactați consilierul dumneavoastră.',
     'card_title'             => 'Card',
     'card_expires'           => 'Expiră',
+    'push_hint' => 'Primiți transferurile, facturile și actualizările în timp real.',
+    'push_allow' => 'Activează',
+    'push_later' => 'Mai târziu',
+    'push_loading' => 'Se activează…',
+    'push_failed' => 'Momentan nu s-a putut activa.',
 ];

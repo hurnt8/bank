@@ -5,7 +5,7 @@ return [
     'sections' => [
         [
             'title' => '1. Bevezetés',
-            'content' => 'Üdvözöljük a Solberg Grupóban. Oldalunk és szolgáltatásaink használatával Ön elfogadja, hogy betartja és magára nézve kötelezőnek tartja az alábbi feltételeket. Kérjük, figyelmesen olvassa el ezeket a feltételeket, mielőtt számlát nyitna, bankszolgáltatásainkat használná, vagy kölcsönt venne fel velünk.',
+            'content' => 'Üdvözöljük a(z) ' . site_name() . ' oldalán. Weboldalunk és szolgáltatásaink használatával elfogadja az alábbi általános szerződési feltételeket, és kötelezőnek ismeri el azokat. Kérjük, számlanyitás vagy bankszolgáltatásaink igénybevétele előtt figyelmesen olvassa el őket.'
         ],
         [
             'title' => '2. az oldal használata',
@@ -16,8 +16,8 @@ return [
             'content' => 'A ' . site_name() . ' online számlanyitást kínál, amely egy hozzá tartozó IBAN-számot és bankkártyát is tartalmaz. A számlanyitás előzetes azonosság-ellenőrzéshez kötött. A számlájáról indított átutalásokra és egyéb műveletekre a számlanyitás során vagy ügyfélfelületén megadott feltételek és esetleges korlátok vonatkoznak.',
         ],
         [
-            'title' => '4. Kölcsönszolgáltatások',
-            'content' => 'A ' . site_name() . ' különféle típusú kölcsönöket is kínál az Ön pénzügyi igényeinek kielégítésére. Valamennyi kölcsönt az Ön hitelképességére és törlesztőképességére vonatkozó értékelésünk alapján kell jóváhagyni. Az egyes kölcsönök konkrét feltételeit, beleértve a kamatlábakat, a lejáratokat és a törlesztési feltételeket, a kölcsönszerződés részletezi. Kölcsön felvételekor szerződési és biztosítási díjak vonatkozhatnak; ezeket a díjakat egyértelműen fel kell tüntetni a hitelszerződésében.',
+            'title' => '4. Átutalások',
+            'content' => 'A számlájáról indított átutalások csapatunk jóváhagyásához kötöttek. A jóváhagyás alatt az összeg le van foglalva a számláján. Szükség esetén az átutalás folytatásához ellenőrző kód vagy díjak megfizetése kérhető; az átutalás előrehaladásáról ügyfélfelületén tájékoztatjuk.'
         ],
         [
             'title' => '5. Titoktartás',

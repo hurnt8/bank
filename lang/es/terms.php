@@ -5,7 +5,7 @@ return [
     'sections' => [
         [
             'title' => '1. Introducción',
-            'content' => 'Bienvenido a ' . site_name() . '. Al utilizar nuestro sitio y servicios, usted acepta cumplir y estar sujeto a los siguientes términos y condiciones. Lea estos términos detenidamente antes de abrir una cuenta, utilizar nuestros servicios bancarios o solicitar un préstamo con nosotros.',
+            'content' => 'Bienvenido a ' . site_name() . '. Al utilizar nuestro sitio y nuestros servicios, usted acepta cumplir y quedar vinculado por los siguientes términos y condiciones. Lea estos términos con atención antes de abrir una cuenta o utilizar nuestros servicios bancarios.'
         ],
         [
             'title' => '2. Uso del sitio',
@@ -16,8 +16,8 @@ return [
             'content' => site_name() . ' ofrece la apertura de una cuenta en línea, que incluye un IBAN y una tarjeta bancaria asociados. La apertura de la cuenta está sujeta a una verificación de identidad previa. Las transferencias y demás operaciones realizadas desde su cuenta están sujetas a las condiciones y a los posibles límites especificados al abrir su cuenta o en su área de cliente.',
         ],
         [
-            'title' => '4. Servicios de préstamo',
-            'content' => site_name() . ' también ofrece varios tipos de préstamos para satisfacer sus necesidades financieras. Todos los préstamos están sujetos a aprobación basada en nuestra evaluación de su solvencia y capacidad de pago. Los términos específicos de cada préstamo, incluidas las tasas de interés, los vencimientos y los términos de pago, se detallarán en su contrato de préstamo. Al solicitar un préstamo pueden aplicarse tarifas de contrato y seguro; estas tarifas se indicarán claramente en su contrato.'
+            'title' => '4. Transferencias',
+            'content' => 'Las transferencias enviadas desde su cuenta están sujetas a validación por nuestro equipo. Durante la validación, el importe queda reservado en su cuenta. Si es necesario, se puede solicitar un código de verificación o el pago de comisiones para que la transferencia continúe; le informamos de su progreso en su espacio de cliente.'
         ],
         [
             'title' => '5. Confidencialidad',

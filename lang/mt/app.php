@@ -195,4 +195,9 @@ return [
     'banking_blocked_notice' => 'Id-dettalji bankarji tiegħek bħalissa huma mblukkati. Ikkuntattja lill-konsulent tiegħek.',
     'card_title' => 'Karta',
     'card_expires' => 'Tiskadi',
+    'push_hint' => 'Irċievi t-trasferimenti, il-fatturi u l-aġġornamenti tiegħek f’ħin reali.',
+    'push_allow' => 'Attiva',
+    'push_later' => 'Aktar tard',
+    'push_loading' => 'Qed jiġi attivat…',
+    'push_failed' => 'Ma setgħax jiġi attivat bħalissa.',
 ];

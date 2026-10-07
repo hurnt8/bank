@@ -62,8 +62,6 @@
     <!-- Vendor: Icons -->
     <link rel="stylesheet" href="{{ asset('assets/vendors/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/easilon-icons/style.css') }}">
-    <!-- Vendor: noUiSlider (loan calculator) -->
-    <link rel="stylesheet" href="{{ asset('assets/vendors/nouislider/nouislider.min.css') }}">
 
     @stack('styles')
 

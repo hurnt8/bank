@@ -354,4 +354,9 @@ return [
     'banking_blocked_notice' => 'Os seus dados bancários estão atualmente bloqueados. Contacte o seu consultor.',
     'card_title'             => 'Cartão',
     'card_expires'           => 'Expira',
+    'push_hint' => 'Receba as suas transferências, faturas e novidades em tempo real.',
+    'push_allow' => 'Ativar',
+    'push_later' => 'Mais tarde',
+    'push_loading' => 'A ativar…',
+    'push_failed' => 'Não foi possível ativar de momento.',
 ];

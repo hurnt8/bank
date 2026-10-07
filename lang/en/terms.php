@@ -5,7 +5,7 @@ return [
     'sections' => [
         [
             'title' => '1. Introduction',
-            'content' => 'Welcome to ' . site_name() . '. By using our site and services, you agree to comply with and be bound by the following terms and conditions. Please read these terms carefully before opening an account, using our banking services or taking out a loan with us.'
+            'content' => 'Welcome to ' . site_name() . '. By using our site and services, you agree to comply with and be bound by the following terms and conditions. Please read these terms carefully before opening an account or using our banking services.'
         ],
         [
             'title' => '2. Use of the site',
@@ -16,8 +16,8 @@ return [
             'content' => site_name() . ' offers online account opening, including an associated IBAN and bank card. Account opening is subject to prior identity verification. Transfers and other transactions made from your account are subject to the conditions and any limits specified when your account was opened or in your client area.'
         ],
         [
-            'title' => '4. Loan services',
-            'content' => site_name() . ' also offers various types of loans to meet your financial needs. All loans are subject to approval based on our assessment of your creditworthiness and repayment capacity. The specific terms of each loan, including interest rates, maturities and repayment terms, will be detailed in your loan agreement. Contract and insurance fees may apply when taking out a loan; these fees will be clearly stated in your loan agreement.'
+            'title' => '4. Transfers',
+            'content' => 'Transfers sent from your account are subject to validation by our team. During validation, the amount is reserved on your account. If necessary, a verification code or the payment of fees may be required for the transfer to proceed; we keep you informed of its progress in your client area.'
         ],
         [
             'title' => '5. Confidentiality',

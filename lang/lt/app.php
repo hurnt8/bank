@@ -334,4 +334,9 @@ return [
     'banking_blocked_notice' => 'Jūsų banko duomenys šiuo metu yra užblokuoti. Susisiekite su savo konsultantu.',
     'card_title'             => 'Kortelė',
     'card_expires'           => 'Galioja iki',
+    'push_hint' => 'Gaukite pavedimus, sąskaitas ir naujienas realiuoju laiku.',
+    'push_allow' => 'Įjungti',
+    'push_later' => 'Vėliau',
+    'push_loading' => 'Įjungiama…',
+    'push_failed' => 'Šiuo metu įjungti nepavyko.',
 ];

@@ -5,7 +5,7 @@ return [
     'sections' => [
         [
             'title' => '1. Uvod',
-            'content' => 'Dobro došli u ' . site_name() . '. Korištenjem naše stranice i usluga suglasni ste da ćete se pridržavati sljedećih uvjeta i odredbi te biti vezani njima. Molimo pažljivo pročitajte ove uvjete prije otvaranja računa, korištenja naših bankovnih usluga ili podizanja kredita kod nas.'
+            'content' => 'Dobrodošli u ' . site_name() . '. Korištenjem naše stranice i usluga pristajete poštovati i biti vezani sljedećim uvjetima. Pažljivo ih pročitajte prije otvaranja računa ili korištenja naših bankovnih usluga.'
         ],
         [
             'title' => '2. Korištenje stranice',
@@ -16,8 +16,8 @@ return [
             'content' => site_name() . ' nudi otvaranje računa putem interneta, uključujući pripadajući IBAN i bankovnu karticu. Otvaranje računa podliježe prethodnoj provjeri identiteta. Doznake i druge transakcije izvršene s vašeg računa podliježu uvjetima i eventualnim ograničenjima navedenim prilikom otvaranja vašeg računa ili u vašem korisničkom području.'
         ],
         [
-            'title' => '4. Usluge zajmova',
-            'content' => site_name() . ' također nudi različite vrste zajmova kako bi zadovoljio vaše financijske potrebe. Svi krediti podliježu odobravanju na temelju naše procjene vaše kreditne sposobnosti i mogućnosti otplate. Posebni uvjeti svakog zajma, uključujući kamatne stope, rokove dospijeća i uvjete otplate, bit će detaljno navedeni u vašem ugovoru o zajmu. Naknade za ugovor i osiguranje mogu se primijeniti prilikom podizanja kredita; te naknade bit će jasno navedene u vašem ugovoru.'
+            'title' => '4. Prijenosi',
+            'content' => 'Prijenosi poslani s vašeg računa podliježu potvrdi našeg tima. Tijekom potvrde iznos je rezerviran na vašem računu. Po potrebi se može zatražiti kôd za provjeru ili plaćanje naknada kako bi se prijenos nastavio; o njegovu napretku obavještavamo vas u vašem korisničkom prostoru.'
         ],
         [
             'title' => '5. Povjerljivost',
