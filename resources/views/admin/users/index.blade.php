@@ -481,7 +481,7 @@
               <label class="form-label-pro">Langue <span style="font-size:.7rem;color:var(--c-muted);font-weight:400">(langue de l'email d'invitation)</span></label>
               <select name="locale" class="form-control-pro">
                 @foreach(['fr'=>'🇫🇷 Français','en'=>'🇬🇧 English','es'=>'🇪🇸 Español','pl'=>'🇵🇱 Polski','bg'=>'🇧🇬 Български','hu'=>'🇭🇺 Magyar','it'=>'🇮🇹 Italiano','de'=>'🇩🇪 Deutsch','lt'=>'🇱🇹 Lietuvių','ro'=>'🇷🇴 Română','lv'=>'🇱🇻 Latviešu','nl'=>'🇳🇱 Nederlands','pt'=>'🇵🇹 Português','hr'=>'🇭🇷 Hrvatski','sk'=>'🇸🇰 Slovenčina','sl'=>'🇸🇮 Slovenščina','mt'=>'🇲🇹 Malti'] as $lc => $llabel)
-                <option value="{{ $lc }}" {{ old('locale')===$lc||(!old('locale')&&$lc==='fr')?'selected':'' }}>{{ $llabel }}</option>
+                <option value="{{ $lc }}" {{ old('locale')===$lc||(!old('locale')&&$lc===app()->getLocale())?'selected':'' }}>{{ $llabel }}</option>
                 @endforeach
               </select>
             </div>

@@ -21,12 +21,18 @@ class SiteContact extends Model
         'iban_bank_code',
         'payment_iban',
         'payment_bic',
+        'otp_clients_enabled',
+        'otp_staff_enabled',
+        'activation_mail_enabled',
         'whatsapp_number',
         'whatsapp_enabled',
     ];
 
     protected $casts = [
         'whatsapp_enabled' => 'boolean',
+        'otp_clients_enabled'     => 'boolean',
+        'otp_staff_enabled'       => 'boolean',
+        'activation_mail_enabled' => 'boolean',
     ];
 
     /**

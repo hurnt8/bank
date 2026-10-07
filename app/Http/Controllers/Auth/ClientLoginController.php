@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\OtpMail;
+use App\Models\SiteContact;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +61,11 @@ class ClientLoginController extends Controller
 
         // Compte non activé : l'adresse e-mail doit d'abord être confirmée. On envoie l'utilisateur
         // sur la page « vérifiez votre boîte mail » (renvoi possible) ; une fois activé, il passe à l'OTP.
+        // E-mail d'activation désactivé dans les paramètres : aucun mail n'est envoyé, le compte est donc validé d'office.
+        if (! $user->email_verified_at && ! SiteContact::current()->activation_mail_enabled) {
+            $user->forceFill(['email_verified_at' => now()])->save();
+        }
+
         if (! $user->email_verified_at) {
             return redirect()->route('verification.notice')
                 ->with('verify_email', $user->email)
@@ -72,6 +78,18 @@ class ClientLoginController extends Controller
                 ->onlyInput('identifier');
         }
 
+        // OTP désactivé pour les clients : connexion directe, aucun code n'est envoyé.
+        if (! SiteContact::current()->otp_clients_enabled) {
+            Auth::login($user, $request->boolean('remember'));
+            $request->session()->regenerate();
+
+            return $this->redirectAuthenticated($user)->withCookie(Cookie::make(
+                'solberg_remembered',
+                json_encode(['name' => $user->name, 'email' => $user->email]),
+                60 * 24 * 30
+            ));
+        }
+
         // Generate OTP
         $otp = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
         Cache::put('otp_' . $user->id, Hash::make($otp), self::OTP_TTL);
@@ -80,7 +98,7 @@ class ClientLoginController extends Controller
         $request->session()->put('otp_remember', $request->boolean('remember'));
 
         try {
-            Mail::to($user->email)->send(new OtpMail($otp, $user));
+            Mail::to($user->email)->locale($user->locale ?: 'fr')->send(new OtpMail($otp, $user));
         } catch (\Throwable $e) {
             Log::error('ClientLoginController: échec envoi OTP', ['user_id' => $user->id, 'message' => $e->getMessage()]);
             return back()->withErrors(['identifier' => __('auth.otp_send_failed')])->onlyInput('identifier');

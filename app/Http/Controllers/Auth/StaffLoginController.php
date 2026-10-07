@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\OtpMail;
+use App\Models\SiteContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -43,6 +44,13 @@ class StaffLoginController extends Controller
                 return back()->withErrors(['email' => 'Votre compte ne dispose pas des droits nécessaires.']);
             }
 
+            // OTP désactivé pour le personnel : la session ouverte par Auth::attempt() est conservée.
+            if (! SiteContact::current()->otp_staff_enabled) {
+                $request->session()->regenerate();
+
+                return $this->redirectAuthenticated($user);
+            }
+
             $remember = $request->boolean('remember');
             // Auth::attempt() vient de connecter la session — on la referme aussitôt
             // pour exiger la vérification OTP (2FA) avant d'accorder l'accès réel.
@@ -56,7 +64,7 @@ class StaffLoginController extends Controller
             $request->session()->put('otp_flow', 'staff');
 
             try {
-                Mail::to($user->email)->send(new OtpMail($otp, $user));
+                Mail::to($user->email)->locale($user->locale ?: 'fr')->send(new OtpMail($otp, $user));
             } catch (\Throwable $e) {
                 Log::error('StaffLoginController: échec envoi OTP', ['user_id' => $user->id, 'message' => $e->getMessage()]);
                 return back()->withErrors(['email' => 'Impossible d\'envoyer le code de vérification.']);

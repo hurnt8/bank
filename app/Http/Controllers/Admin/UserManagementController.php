@@ -127,7 +127,7 @@ class UserManagementController extends Controller
             'tax_number'       => $data['tax_number'] ?? null,
             'activity'         => $data['activity'] ?? null,
             'currency'         => $data['currency'] ?? Currency::default(),
-            'locale'           => $data['locale'] ?? 'fr',
+            'locale'           => $data['locale'] ?? (in_array(app()->getLocale(), ['fr','en','pl','es','bg','hu','it','de','lt','ro','lv','nl','pt','hr','sk','sl','mt'], true) ? app()->getLocale() : 'fr'),
         ]);
 
         $user->assignRole($data['role']);
@@ -135,7 +135,7 @@ class UserManagementController extends Controller
         $activationUrl = route('invitation.activate', ['token' => $token]);
 
         try {
-            Mail::to($user->email)->send(new UserInvitationMail($user, $activationUrl));
+            Mail::to($user->email)->locale($user->locale ?: 'fr')->send(new UserInvitationMail($user, $activationUrl));
             return back()->with('success', "Invitation envoyée à {$user->email}. {$user->name} recevra un email pour activer son compte.");
         } catch (\Exception) {
             return back()->with('success', "Client {$user->name} créé. L'email d'invitation n'a pas pu être envoyé (vérifiez la config mail). Lien d'activation : {$activationUrl}");
@@ -207,7 +207,7 @@ class UserManagementController extends Controller
         $activationUrl = route('invitation.activate', ['token' => $user->invitation_token]);
 
         try {
-            Mail::to($user->email)->send(new UserInvitationMail($user, $activationUrl));
+            Mail::to($user->email)->locale($user->locale ?: 'fr')->send(new UserInvitationMail($user, $activationUrl));
             return back()->with('success', "Invitation renvoyée à {$user->email}.");
         } catch (\Exception $e) {
             return back()->with('error', "Erreur d'envoi : " . $e->getMessage());

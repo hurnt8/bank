@@ -30,7 +30,7 @@ class SignupController extends Controller
 
         $locale = $request->input('locale', app()->getLocale());
         if (! in_array($locale, self::SUPPORTED_LOCALES, true)) {
-            $locale = 'fr';
+            $locale = 'en';
         }
 
         // Compte inactif : email_verified_at reste null jusqu'au clic sur le lien d'activation.
@@ -51,6 +51,11 @@ class SignupController extends Controller
         $sent = EmailVerificationController::sendActivationMail($user);
 
         $this->notifyAdmins($user);
+
+        // Sans e-mail d'activation (interrupteur éteint), le compte est déjà validé : direct à la connexion.
+        if ($user->fresh()->email_verified_at) {
+            return redirect()->route('login')->with('verified_status', __('onboarding.verified_success'));
+        }
 
         $redirect = redirect()->route('verification.notice')->with('verify_email', $user->email);
 

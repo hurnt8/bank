@@ -139,7 +139,7 @@ class OtpController extends Controller
         RateLimiter::clear('otp_attempts_' . $userId);
 
         try {
-            Mail::to($user->email)->send(new OtpMail($otp, $user));
+            Mail::to($user->email)->locale($user->locale ?: 'fr')->send(new OtpMail($otp, $user));
         } catch (\Throwable $e) {
             Log::error('OtpController::resend: échec envoi OTP', ['user_id' => $user->id, 'message' => $e->getMessage()]);
             return response()->json(['error' => __('auth.otp_send_failed')], 500);
@@ -186,7 +186,7 @@ class OtpController extends Controller
         $request->session()->forget(['otp_user_id', 'otp_remember', 'otp_flow']);
 
         try {
-            Mail::to($user->email)->send(new AccountBlockedMail($user, $token));
+            Mail::to($user->email)->locale($user->locale ?: 'fr')->send(new AccountBlockedMail($user, $token));
         } catch (\Throwable $e) {
             Log::error('OtpController::blockAccount: échec envoi email de blocage', ['user_id' => $user->id, 'message' => $e->getMessage()]);
         }

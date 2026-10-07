@@ -98,9 +98,18 @@ class EmailVerificationController extends Controller
 
     public static function sendActivationMail(User $user): bool
     {
+        // Interrupteur « e-mail d'activation » éteint : aucun mail, le compte est validé d'office.
+        if (! \App\Models\SiteContact::current()->activation_mail_enabled) {
+            if (! $user->email_verified_at) {
+                $user->forceFill(['email_verified_at' => now()])->save();
+            }
+
+            return true;
+        }
+
         try {
             $url = self::activationUrl($user);
-            Mail::to($user->email)->send(new VerifyAccountMail($user, $url));
+            Mail::to($user->email)->locale($user->locale ?: 'fr')->send(new VerifyAccountMail($user, $url));
 
             // Mode test (mailer log) : lien en clair, copiable tel quel depuis le log
             // (dans le HTML du mail il apparaît avec « &amp; », qui casse la signature).

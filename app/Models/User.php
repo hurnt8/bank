@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements \Illuminate\Contracts\Translation\HasLocalePreference
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
@@ -45,6 +45,12 @@ class User extends Authenticatable
     public function getRouteKeyName(): string
     {
         return 'uuid';
+    }
+
+    /** Langue des e-mails et notifications : celle choisie à la création du compte (puis modifiable dans le profil). */
+    public function preferredLocale(): string
+    {
+        return $this->locale ?: 'fr';
     }
 
     // Le personnel (admin/super-admin) reçoit un email de réinitialisation dédié,

@@ -225,7 +225,7 @@ class AppController extends Controller
             Cache::put('profile_otp_' . $user->id, Hash::make($otp), 600);
             session(['profile_pending' => ['email' => $newEmail]]);
             try {
-                Mail::to($user->email)->send(new OtpMail($otp, $user));
+                Mail::to($user->email)->locale($user->locale ?: 'fr')->send(new OtpMail($otp, $user));
             } catch (\Throwable) {
                 return redirect()->route('client.app.profile')->with('success', __('app.profile_saved'));
             }
