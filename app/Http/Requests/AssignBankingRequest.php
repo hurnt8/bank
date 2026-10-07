@@ -16,7 +16,7 @@ class AssignBankingRequest extends FormRequest
     {
         return [
             'iban'           => ['required', 'string', 'max:34', new ValidIban()],
-            'bic'            => 'nullable|string|max:11',
+            'bic'            => ['nullable', 'string', 'regex:/^[A-Za-z]{4}[A-Za-z]{2}[A-Za-z0-9]{2}([A-Za-z0-9]{3})?$/'],
             'card_holder'    => 'required|string|max:255',
             'card_last_four' => 'required|digits:4',
             'card_network'   => 'required|string|in:visa,mastercard',

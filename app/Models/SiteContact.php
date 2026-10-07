@@ -17,6 +17,8 @@ class SiteContact extends Model
         'phone_1',
         'phone_2',
         'email',
+        'default_bic',
+        'iban_bank_code',
         'whatsapp_number',
         'whatsapp_enabled',
     ];

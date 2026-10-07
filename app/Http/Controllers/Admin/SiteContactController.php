@@ -25,12 +25,19 @@ class SiteContactController extends Controller
             'phone_1'   => ['nullable', 'string', 'max:255'],
             'phone_2'   => ['nullable', 'string', 'max:255'],
             'email'     => ['nullable', 'email', 'max:255'],
+            'default_bic'      => ['nullable', 'string', 'regex:/^[A-Za-z]{4}[A-Za-z]{2}[A-Za-z0-9]{2}([A-Za-z0-9]{3})?$/'],
+            'iban_bank_code'   => ['nullable', 'digits:5'],
             'whatsapp_number'  => ['nullable', 'string', 'max:30'],
             'whatsapp_enabled' => ['boolean'],
             'logo_light'      => ['nullable', 'image', 'max:2048'],
             'logo_dark'       => ['nullable', 'image', 'max:2048'],
             'email_signature' => ['nullable', 'image', 'max:2048'],
         ]);
+
+        // BIC toujours enregistré en majuscules, sans espaces
+        if (! empty($validated['default_bic'])) {
+            $validated['default_bic'] = strtoupper(str_replace(' ', '', $validated['default_bic']));
+        }
 
         $contact = SiteContact::current();
         $contact->update(collect($validated)->except(['logo_light', 'logo_dark', 'email_signature'])->all());

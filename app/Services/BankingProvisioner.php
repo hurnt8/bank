@@ -17,8 +17,8 @@ use Illuminate\Support\Str;
  */
 class BankingProvisioner
 {
-    /** Code banque fictif à 5 chiffres utilisé dans les IBAN générés. */
-    private const BANK_CODE = '30002';
+    /** Code banque à 5 chiffres par défaut, si aucun n'est configuré dans les coordonnées du site. */
+    private const DEFAULT_BANK_CODE = '30002';
 
     /**
      * Crée l'IBAN et/ou la carte s'ils n'existent pas encore.
@@ -33,7 +33,7 @@ class BankingProvisioner
             $client->bankAccount()->create([
                 'assigned_by' => $assignedBy,
                 'iban'        => $this->generateIban(),
-                'bic'         => $this->bic(),
+                'bic'         => $this->defaultBic(),
                 'status'      => BankAccount::STATUS_ACTIVE,
             ]);
             $created['bank'] = true;
@@ -79,8 +79,9 @@ class BankingProvisioner
             }
 
             // Clé RIB = 97 - ((89*banque + 15*guichet + 3*compte) mod 97)
-            $ribKey = 97 - ((89 * (int) self::BANK_CODE + 15 * (int) $branch + 3 * (int) $account) % 97);
-            $bban   = self::BANK_CODE . $branch . $account . str_pad((string) $ribKey, 2, '0', STR_PAD_LEFT);
+            $bankCode = $this->bankCode();
+            $ribKey = 97 - ((89 * (int) $bankCode + 15 * (int) $branch + 3 * (int) $account) % 97);
+            $bban   = $bankCode . $branch . $account . str_pad((string) $ribKey, 2, '0', STR_PAD_LEFT);
 
             // Clé IBAN = 98 - (BBAN + "FR00" converti en chiffres) mod 97 ; F=15, R=27
             $check = 98 - $this->mod97($bban . '152700');
@@ -90,9 +91,22 @@ class BankingProvisioner
         return $iban;
     }
 
-    /** BIC dérivé du nom du site (4 lettres + FR + PP). */
-    private function bic(): string
+    /** Code banque des IBAN générés : celui configuré en administration, sinon la valeur par défaut. */
+    public function bankCode(): string
     {
+        $configured = (string) \App\Models\SiteContact::current()->iban_bank_code;
+
+        return preg_match('/^\d{5}$/', $configured) ? $configured : self::DEFAULT_BANK_CODE;
+    }
+
+    /** BIC par défaut : celui configuré en administration, sinon dérivé du nom du site (4 lettres + FR + PP). */
+    public function defaultBic(): string
+    {
+        $configured = strtoupper((string) \App\Models\SiteContact::current()->default_bic);
+        if ($configured !== '') {
+            return $configured;
+        }
+
         $letters = strtoupper(preg_replace('/[^A-Za-z]/', '', Str::ascii(site_name())));
 
         return str_pad(substr($letters, 0, 4), 4, 'X') . 'FRPP';

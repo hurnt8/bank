@@ -134,6 +134,30 @@
 
     <div class="card-pro mb-4">
       <div class="card-pro-hdr">
+        <div class="card-pro-title"><span class="icon-dot"></span>Coordonnées bancaires par défaut</div>
+      </div>
+      <div class="card-pro-body">
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label class="form-label-pro">BIC par défaut</label>
+            <input type="text" name="default_bic" class="form-control-pro" maxlength="11" style="text-transform:uppercase;font-family:monospace;letter-spacing:.06em"
+                   value="{{ old('default_bic', $contact->default_bic) }}" placeholder="{{ app(\App\Services\BankingProvisioner::class)->defaultBic() }}">
+            <div style="font-size:.74rem;color:var(--c-muted);margin-top:.3rem">8 ou 11 caractères (ex. SOLBFRPP). Attribué aux IBAN générés automatiquement ; laissez vide pour utiliser la valeur proposée.</div>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label-pro">Code banque des IBAN générés</label>
+            <input type="text" name="iban_bank_code" class="form-control-pro" maxlength="5" inputmode="numeric" style="font-family:monospace;letter-spacing:.06em"
+                   value="{{ old('iban_bank_code', $contact->iban_bank_code) }}" placeholder="{{ app(\App\Services\BankingProvisioner::class)->bankCode() }}">
+            <div style="font-size:.74rem;color:var(--c-muted);margin-top:.3rem">5 chiffres. Le BIC de chaque client reste modifiable dans « Coordonnées bancaires » de sa fiche.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card-pro mb-4">
+      <div class="card-pro-hdr">
         <div class="card-pro-title"><span class="icon-dot"></span>Assistant WhatsApp</div>
       </div>
       <div class="card-pro-body">

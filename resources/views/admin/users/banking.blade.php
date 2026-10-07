@@ -50,7 +50,9 @@
     </div>
     <div class="form-group">
       <label>BIC</label>
-      <input type="text" name="bic" class="form-control-pro" value="{{ old('bic', $user->bankAccount?->bic) }}">
+      <input type="text" name="bic" class="form-control-pro" maxlength="11" style="text-transform:uppercase;font-family:monospace;letter-spacing:.06em"
+             value="{{ old('bic', $user->bankAccount?->bic ?? app(\App\Services\BankingProvisioner::class)->defaultBic()) }}">
+      <div style="font-size:.74rem;color:var(--c-muted);margin-top:.3rem">8 ou 11 caractères. Valeur par défaut : réglable dans « Coordonnées du site ».</div>
     </div>
 
     <h3 style="font-size:.9rem;margin:1.5rem 0 1rem">Carte</h3>
