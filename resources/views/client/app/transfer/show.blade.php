@@ -137,7 +137,7 @@
 
   {{-- Progression du virement ("loading state") + déblocage par code --}}
   @if($showBar)
-  <div class="td-card" id="td-progress" data-state-url="{{ route('client.app.transfer.state', $transfer->reference) }}" data-status="{{ $status }}" data-awaiting="{{ $awaiting ? 1 : 0 }}" data-pct="{{ $pct }}">
+  <div class="td-card" id="td-progress" data-state-url="{{ route('client.app.transfer.state', $transfer->reference) }}" data-status="{{ $status }}" data-awaiting="{{ $awaiting ? 1 : 0 }}" data-locked="{{ $locked ? 1 : 0 }}" data-token="{{ $transfer->code_required ? $transfer->code_generated_at?->timestamp : '' }}" data-pct="{{ $pct }}">
     <div class="td-card__title">{{ __('transfer.progress_title') }}</div>
     <div class="td-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ $pct }}">
       <div class="td-bar__fill {{ $isDone ? 'is-done' : ($awaiting ? 'is-blocked' : 'is-loading') }}" id="td-fill" style="width: {{ $pct }}%"></div>
@@ -258,18 +258,21 @@
   var box = document.getElementById('td-progress');
   if (!box || box.dataset.status === 'completed') return;
   var url = box.dataset.stateUrl, startAwait = box.dataset.awaiting === '1', startStatus = box.dataset.status;
+  var startLocked = box.dataset.locked === '1', startToken = box.dataset.token || '';
   var fill = document.getElementById('td-fill'), pct = document.getElementById('td-pct');
   function tick() {
     fetch(url, { headers: { 'Accept': 'application/json' }, credentials: 'same-origin' })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (d) {
         if (!d) return;
-        if (d.status !== startStatus || d.code_required !== startAwait) { window.location.reload(); return; }
+        // Statut, code (généré / régénéré) ou verrouillage modifiés : on recharge pour afficher le champ de saisie du code
+        if (d.status !== startStatus || d.code_required !== startAwait || d.locked !== startLocked || (d.code_token || '') !== startToken) { window.location.reload(); return; }
         fill.style.width = d.progress + '%'; pct.textContent = d.progress + ' %';
         var pr = document.getElementById('td-processing'); if (pr) pr.style.display = d.progress >= 100 ? '' : 'none';
       }).catch(function () {});
   }
-  setInterval(tick, 8000);
+  setInterval(tick, 4000);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) tick(); });
 })();
 </script>
 @endpush

@@ -151,6 +151,8 @@ class TransferController extends Controller
             'progress'      => $transfer->progressValue(),
             'code_required' => $transfer->isAwaitingCode(),
             'locked'        => $transfer->isCodeLocked(),
+            // Change à chaque code généré ou régénéré par le conseiller : la page se recharge alors et le champ de saisie réapparaît
+            'code_token'    => $transfer->code_required ? (string) $transfer->code_generated_at?->timestamp : '',
         ]);
     }
 
