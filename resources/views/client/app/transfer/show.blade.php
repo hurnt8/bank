@@ -23,7 +23,7 @@
     $pct      = $transfer->progressValue();
     $awaiting = $transfer->isAwaitingCode();
     $locked   = $transfer->isCodeLocked();
-    $showBar  = $isPending || $isDone;
+    $showBar  = $isPending || $isFee || $isDone;
 @endphp
 
 @push('styles')
@@ -163,7 +163,7 @@
       <div class="td-lock__text" style="margin-top:.7rem"><i class="fas fa-headset"></i> {{ __('transfer.code_help') }}</div>
       @endif
     </div>
-    @elseif($isPending && $transfer->code_verified_at)
+    @elseif(! $isDone && $transfer->code_verified_at)
     <div class="td-ok" style="margin-bottom:.9rem"><i class="fas fa-circle-check"></i> {{ __('transfer.code_ok') }}</div>
     @endif
   </div>
@@ -229,7 +229,7 @@
 <script>
 (function () {
   var box = document.getElementById('td-progress');
-  if (!box || box.dataset.status !== 'pending') return;
+  if (!box || box.dataset.status === 'completed') return;
   var url = box.dataset.stateUrl, startAwait = box.dataset.awaiting === '1', startStatus = box.dataset.status;
   var fill = document.getElementById('td-fill'), pct = document.getElementById('td-pct');
   function tick() {

@@ -25,7 +25,7 @@
   content: ''; position: absolute; top: -70px; right: -70px; width: 240px; height: 240px; border-radius: 50%;
   background: radial-gradient(circle, rgba(220,190,135,.2) 0%, transparent 65%); pointer-events: none;
 }
-.cd-card--blocked { filter: grayscale(.85); opacity: .8; }
+.cd-card--blocked, .cd-card--suspended { filter: grayscale(.85); opacity: .8; }
 .cd-card__top { display: flex; align-items: center; justify-content: space-between; position: relative; }
 .cd-card__brand { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.7); }
 .cd-card__chip {
@@ -47,6 +47,18 @@
 .cd-badge--ok  { background: rgba(0,200,150,.14); color: var(--ca-positive); }
 .cd-badge--off { background: rgba(255,90,90,.14); color: var(--ca-negative); }
 .cd-eye { background: none; border: 1px solid var(--ca-border); color: var(--ca-text-2); border-radius: 999px; padding: .3rem .8rem; font-size: .72rem; cursor: pointer; }
+.cd-badge--pause { background: rgba(245,158,11,.14); color: var(--ca-amber); }
+.cd-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; max-width: 440px; }
+.cd-btn { display: inline-flex; align-items: center; gap: .45rem; padding: .55rem 1rem; border-radius: 999px; cursor: pointer; font-family: inherit; font-size: .78rem; font-weight: 700;
+  border: 1px solid var(--ca-border); background: var(--ca-bg3); color: var(--ca-text); }
+.cd-btn:hover { border-color: var(--ca-accent); }
+.cd-btn--warn { color: var(--ca-amber); }
+.cd-limit { margin-top: .9rem; max-width: 440px; padding: .95rem 1rem; border-radius: 14px; background: var(--ca-bg3); border: 1px solid var(--ca-border); }
+.cd-limit__top { display: flex; justify-content: space-between; align-items: baseline; gap: .75rem; margin-bottom: .4rem; }
+.cd-limit__t { font-size: .8rem; font-weight: 800; }
+.cd-limit__v { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.15rem; }
+.cd-limit input[type=range] { width: 100%; accent-color: var(--ca-accent); margin: .35rem 0 .2rem; }
+.cd-limit__h { font-size: .72rem; color: var(--ca-text-3); margin-bottom: .6rem; }
 .cd-note { font-size: .76rem; color: var(--ca-negative); margin-top: .5rem; max-width: 440px; }
 
 .cd-empty { text-align: center; padding: 3rem 1rem; }
@@ -71,11 +83,13 @@ button.cd-empty__btn { border: 0; cursor: pointer; font-family: inherit; }
   <div class="cd-grid">
     @foreach($cards as $card)
     @php
-      $blocked = $card->status === \App\Models\Card::STATUS_BLOCKED;
+      $blocked   = $card->status === \App\Models\Card::STATUS_BLOCKED;
+      $suspended = $card->status === \App\Models\Card::STATUS_SUSPENDED;
+      $limit     = (int) ($card->spending_limit ?: \App\Models\Card::LIMIT_MIN);
       $net     = strtolower($card->network);
     @endphp
     <div x-data="{ shown: false }">
-      <div class="cd-card {{ $blocked ? 'cd-card--blocked' : '' }}">
+      <div class="cd-card {{ $blocked ? 'cd-card--blocked' : ($suspended ? 'cd-card--suspended' : '') }}">
         <div class="cd-card__top">
           <div class="cd-card__brand"><i class="fas fa-landmark"></i> {{ site_name() }}</div>
           <div class="cd-card__chip" aria-hidden="true"></div>
@@ -100,13 +114,38 @@ button.cd-empty__btn { border: 0; cursor: pointer; font-family: inherit; }
       </div>
 
       <div class="cd-meta">
-        <span class="cd-badge {{ $blocked ? 'cd-badge--off' : 'cd-badge--ok' }}">
-          {{ $blocked ? __('cards.status_blocked') : __('cards.status_active') }}
+        <span class="cd-badge {{ $blocked ? 'cd-badge--off' : ($suspended ? 'cd-badge--pause' : 'cd-badge--ok') }}">
+          {{ $blocked ? __('cards.status_blocked') : ($suspended ? __('cards.status_suspended') : __('cards.status_active')) }}
         </span>
       </div>
       @if($blocked)
       <div class="cd-note"><i class="fas fa-circle-exclamation"></i> {{ __('cards.blocked_notice') }}</div>
+      @elseif($suspended)
+      <div class="cd-note" style="color:var(--ca-amber)"><i class="fas fa-pause-circle"></i> {{ __('cards.suspended_notice') }}</div>
       @endif
+
+      @unless($blocked)
+      <div class="cd-actions">
+        <form method="POST" action="{{ route('client.app.cards.suspend', $card) }}">
+          @csrf
+          <button type="submit" class="cd-btn {{ $suspended ? '' : 'cd-btn--warn' }}">
+            <i class="fas {{ $suspended ? 'fa-play' : 'fa-pause' }}"></i> {{ $suspended ? __('cards.resume_button') : __('cards.suspend_button') }}
+          </button>
+        </form>
+      </div>
+
+      <form method="POST" action="{{ route('client.app.cards.limit', $card) }}" class="cd-limit" x-data="{ v: {{ $limit }} }">
+        @csrf
+        <div class="cd-limit__top">
+          <span class="cd-limit__t"><i class="fas fa-gauge-high"></i> {{ __('cards.limit_title') }}</span>
+          <span class="cd-limit__v"><span x-text="new Intl.NumberFormat('fr-FR').format(v)"></span> {{ $user->currency ?? 'EUR' }}</span>
+        </div>
+        <input type="range" name="spending_limit" min="{{ \App\Models\Card::LIMIT_MIN }}" max="{{ \App\Models\Card::LIMIT_MAX }}" step="{{ \App\Models\Card::LIMIT_STEP }}" x-model.number="v">
+        <div class="cd-limit__h">{{ __('cards.limit_hint', ['min' => number_format(\App\Models\Card::LIMIT_MIN, 0, ',', ' '), 'max' => number_format(\App\Models\Card::LIMIT_MAX, 0, ',', ' '), 'currency' => $user->currency ?? 'EUR']) }}</div>
+        @error('spending_limit')<div class="cd-note" style="margin:0 0 .5rem">{{ $message }}</div>@enderror
+        <button type="submit" class="cd-btn" :disabled="v === {{ $limit }}"><i class="fas fa-floppy-disk"></i> {{ __('cards.limit_save') }}</button>
+      </form>
+      @endunless
     </div>
     @endforeach
   </div>

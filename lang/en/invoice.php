@@ -1,0 +1,23 @@
+<?php
+
+return [
+    'title'       => 'Invoice',
+    'number'      => 'Invoice number',
+    'issued'      => 'Date of issue',
+    'due'         => 'Date due',
+    'bill_to'     => 'Bill to',
+    'description' => 'Description',
+    'qty'         => 'Qty',
+    'unit_price'  => 'Unit price',
+    'amount'      => 'Amount',
+    'subtotal'    => 'Subtotal',
+    'tax'         => 'Tax',
+    'total'       => 'Total',
+    'amount_due'  => 'Amount due',
+    'pay_title'   => 'Pay this invoice by bank transfer',
+    'pay_holder'  => 'Beneficiary',
+    'pay_iban'    => 'IBAN',
+    'pay_bic'     => 'BIC',
+    'pay_reference' => 'Reference to quote',
+    'pay_hint'    => 'Please quote the invoice reference in your transfer description.',
+];

@@ -101,59 +101,42 @@ class TransferValidationController extends Controller
     }
 
     /**
-     * Fixe le pourcentage d'avancement d'un virement en attente. Si « exiger un code » est coché,
-     * le virement reste bloqué à ce niveau : le client doit saisir le code généré ici par le conseiller
-     * (et que lui seul peut lui communiquer) pour que le traitement se poursuive.
+     * Générateur de code : crée le code à 6 chiffres du prochain palier. Le client le saisit pour que la
+     * barre avance — 1er code → 70 %, 2e → 99 %, 3e (dernier) → 100 %. La progression ne dépend ni du
+     * paiement de la facture de frais ni du fait que la barre soit déjà à 100 % : seule la saisie des codes la fait avancer.
      */
     public function progress(Request $request, Transfer $transfer)
     {
         $this->authorizeTransfer($transfer);
-        abort_unless($transfer->status === Transfer::STATUS_PENDING, 422, 'Seul un virement en attente peut avancer.');
+        abort_unless(in_array($transfer->status, [Transfer::STATUS_PENDING, Transfer::STATUS_FEE_REQUIRED], true), 422, 'Ce virement ne peut plus avancer.');
 
-        $data = $request->validate([
-            'progress'     => 'required|integer|min:0|max:99',
-            'require_code' => 'nullable|boolean',
-            'regenerate'   => 'nullable|boolean',
-        ]);
-
-        $requireCode = $request->boolean('require_code');
-        $update      = ['progress' => (int) $data['progress'], 'admin_id' => Auth::id()];
-
-        if ($requireCode) {
-            $update['code_required'] = true;
-            // Nouveau code à la première activation, ou à la demande du conseiller
-            if (! $transfer->unlock_code || $request->boolean('regenerate') || $transfer->code_verified_at) {
-                $update['unlock_code']        = Transfer::newUnlockCode();
-                $update['code_generated_at']  = now();
-                $update['code_verified_at']   = null;
-                $update['code_attempts']      = 0;
-                $update['code_locked_until']  = null;
-            }
-        } else {
-            $update['code_required'] = false;
-            $update['unlock_code']   = null;
+        $target = $transfer->nextStageTarget();
+        if ($target === null) {
+            return back()->with('success', "Les 3 codes du virement {$transfer->reference} ont déjà été saisis (barre à 100 %).");
         }
 
-        $transfer->update($update);
+        $transfer->update([
+            'code_required'     => true,
+            'unlock_code'       => Transfer::newUnlockCode(),
+            'code_generated_at' => now(),
+            'code_verified_at'  => null,
+            'code_attempts'     => 0,
+            'code_locked_until' => null,
+            'admin_id'          => Auth::id(),
+        ]);
 
         $client = $transfer->user;
         $locale = $client->locale ?? 'fr';
         ClientNotification::forUser(
             $client->id,
             'transfer',
-            __($requireCode ? 'transfer.notif_code_title' : 'transfer.notif_progress_title', [], $locale),
-            __($requireCode ? 'transfer.notif_code_body' : 'transfer.notif_progress_body', [
-                'reference' => $transfer->reference, 'progress' => $transfer->progress,
-            ], $locale),
+            __('transfer.notif_code_title', [], $locale),
+            __('transfer.notif_code_body', ['reference' => $transfer->reference, 'progress' => $transfer->progress], $locale),
             ['transfer_id' => $transfer->id, 'reference' => $transfer->reference]
         );
 
-        $msg = "Progression du virement {$transfer->reference} fixée à {$transfer->progress} %.";
-        if ($requireCode) {
-            $msg .= ' Code client : ' . $transfer->unlock_code . ' (à lui communiquer).';
-        }
-
-        return back()->with('success', $msg);
+        return back()->with('success', 'Code n°' . ((int) $transfer->code_stage + 1) . ' du virement ' . $transfer->reference
+            . ' (→ ' . $target . ' %) : ' . $transfer->unlock_code . ' — à communiquer au client.');
     }
 
     public function reject(Request $request, Transfer $transfer)
@@ -214,16 +197,27 @@ class TransferValidationController extends Controller
         $this->authorizeTransfer($transfer);
         abort_unless($transfer->status === Transfer::STATUS_PENDING, 422, 'Ce virement n\'est pas en attente.');
 
+        $request->merge([
+            'payment_iban' => strtoupper(preg_replace('/[\s\x{00A0}]+/u', '', (string) $request->input('payment_iban'))) ?: null,
+            'payment_bic'  => strtoupper(preg_replace('/[[:space:]-]+/', '', (string) $request->input('payment_bic'))) ?: null,
+        ]);
+
         $data = $request->validate([
             'fee_amount'  => 'required|numeric|min:0.01|max:9999999',
             'description' => 'nullable|string|max:500',
+            'payment_iban' => ['nullable', 'string', 'max:40', new \App\Rules\ValidIban()],
+            'payment_bic'  => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
         ]);
+
+        if (empty($data['payment_iban']) && ! \App\Models\SiteContact::current()->payment_iban) {
+            return back()->withErrors(['payment_iban' => 'Renseignez l\'IBAN sur lequel le client réglera les frais.'])->withInput();
+        }
 
         $client   = $transfer->user;
         $currency = $transfer->currency;
 
         DB::transaction(function () use ($transfer, $data, $client, $currency, $request) {
-            $desc = $data['description'] ?: 'Frais de traitement pour le virement ' . $transfer->reference;
+            $desc = $data['description'] ?? null ?: 'Frais de traitement pour le virement ' . $transfer->reference;
 
             $invoice = Invoice::create([
                 'reference'   => Invoice::generateReference(),
@@ -234,6 +228,8 @@ class TransferValidationController extends Controller
                 'tax_rate'    => 0,
                 'tax_amount'  => 0,
                 'total'       => $data['fee_amount'],
+                'payment_iban' => $data['payment_iban'] ?? null,
+                'payment_bic'  => $data['payment_bic'] ?? null,
                 'status'      => Invoice::STATUS_SENT,
                 'issue_date'  => now()->toDateString(),
                 'due_date'    => now()->addDays(7)->toDateString(),

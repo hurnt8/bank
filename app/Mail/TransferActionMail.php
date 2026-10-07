@@ -5,6 +5,8 @@ namespace App\Mail;
 use App\Models\Transfer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use App\Services\InvoicePdf;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -93,6 +95,16 @@ class TransferActionMail extends Mailable
 
     public function attachments(): array
     {
+        // Facture de frais : le PDF (avec l'IBAN de règlement) est joint à l'e-mail
+        if ($this->action === 'fee_required' && $this->transfer->invoice) {
+            $invoice = $this->transfer->invoice;
+
+            return [
+                Attachment::fromData(fn () => InvoicePdf::render($invoice), InvoicePdf::filename($invoice))
+                    ->withMime('application/pdf'),
+            ];
+        }
+
         return [];
     }
 }

@@ -76,6 +76,7 @@ class TransferController extends Controller
                     'beneficiary_iban' => $validated['beneficiary_iban'],
                     'note'             => $validated['note'] ?? null,
                     'status'           => Transfer::STATUS_PENDING,
+                    'progress'         => Transfer::INITIAL_PROGRESS,
                 ]);
 
                 // Fonds réservés immédiatement — remboursés si rejet admin
@@ -177,7 +178,12 @@ class TransferController extends Controller
                 : __('transfer.code_wrong', ['left' => $left])]);
         }
 
+        // Le code fait passer la barre au palier suivant (70 % → 99 % → 100 %), quel que soit l'état de la facture
+        $stage  = (int) $transfer->code_stage;
+        $target = $transfer->nextStageTarget() ?? 100;
         $transfer->update([
+            'code_stage'        => min($stage + 1, count(Transfer::CODE_STAGES)),
+            'progress'          => $target,
             'code_required'     => false,
             'unlock_code'       => null,
             'code_verified_at'  => now(),
@@ -185,10 +191,10 @@ class TransferController extends Controller
             'code_locked_until' => null,
         ]);
 
-        // Le conseiller est prévenu : le virement peut reprendre
+        // Le conseiller est prévenu : il peut générer le code suivant ou valider le virement
         foreach (AdminNotification::recipientAdminIds($user) as $adminId) {
             AdminNotification::forAdmin($adminId, 'transfer', 'Code saisi — ' . $transfer->reference,
-                $user->name . ' a saisi le code de déblocage du virement ' . $transfer->reference . ' (' . $transfer->progress . ' %).',
+                $user->name . ' a saisi le code n°' . ($stage + 1) . ' du virement ' . $transfer->reference . ' : la barre est à ' . $target . ' %.',
                 ['transfer_id' => $transfer->id, 'client_id' => $user->id]);
         }
 

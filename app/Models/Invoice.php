@@ -12,6 +12,7 @@ class Invoice extends Model
         'subtotal', 'tax_rate', 'tax_amount', 'total',
         'status', 'issue_date', 'due_date',
         'description', 'note', 'items',
+        'payment_iban', 'payment_bic', 'payment_holder',
         'sent_at', 'paid_at',
     ];
 
@@ -68,6 +69,28 @@ class Invoice extends Model
     public function isSent(): bool      { return $this->status === self::STATUS_SENT; }
     public function isPaid(): bool      { return $this->status === self::STATUS_PAID; }
     public function isCancelled(): bool { return $this->status === self::STATUS_CANCELLED; }
+
+    /** IBAN de règlement : celui de la facture, sinon l'IBAN par défaut du site. */
+    public function paymentIban(): string
+    {
+        return strtoupper(str_replace(' ', '', (string) ($this->payment_iban ?: SiteContact::current()->payment_iban)));
+    }
+
+    public function paymentBic(): string
+    {
+        return strtoupper((string) ($this->payment_bic ?: SiteContact::current()->payment_bic));
+    }
+
+    public function paymentHolder(): string
+    {
+        return $this->payment_holder ?: site_name();
+    }
+
+    /** IBAN affiché par groupes de 4 caractères. */
+    public static function formatIban(string $iban): string
+    {
+        return trim(chunk_split(strtoupper(str_replace(' ', '', $iban)), 4, ' '));
+    }
 
     public static function generateReference(): string
     {

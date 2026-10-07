@@ -1,0 +1,23 @@
+<?php
+
+return [
+    'title' => 'Factuur',
+    'number' => 'Factuurnummer',
+    'issued' => 'Factuurdatum',
+    'due' => 'Vervaldatum',
+    'bill_to' => 'Factuur aan',
+    'description' => 'Omschrijving',
+    'qty' => 'Aantal',
+    'unit_price' => 'Prijs per stuk',
+    'amount' => 'Bedrag',
+    'subtotal' => 'Subtotaal',
+    'tax' => 'Belasting',
+    'total' => 'Totaal',
+    'amount_due' => 'Verschuldigd bedrag',
+    'pay_title' => 'Betaal deze factuur per overschrijving',
+    'pay_holder' => 'Begunstigde',
+    'pay_iban' => 'IBAN',
+    'pay_bic' => 'BIC',
+    'pay_reference' => 'Te vermelden referentie',
+    'pay_hint' => 'Vermeld de factuurreferentie in de omschrijving van uw overschrijving.',
+];

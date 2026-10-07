@@ -172,6 +172,8 @@ Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name
     Route::get('/',                    [ClientAppController::class, 'index'])->name('home');
 
     Route::get('/cards',               [ClientAppController::class, 'cards'])->name('cards');
+    Route::post('/cards/{card}/suspend', [\App\Http\Controllers\Client\CardSettingsController::class, 'toggleSuspend'])->name('cards.suspend');
+    Route::post('/cards/{card}/limit',   [\App\Http\Controllers\Client\CardSettingsController::class, 'updateLimit'])->name('cards.limit');
     Route::post('/cards/request',      [\App\Http\Controllers\Client\CardRequestController::class, 'store'])->middleware('throttle:5,1')->name('cards.request');
 
     Route::get('/profile',             [ClientAppController::class, 'profile'])->name('profile');
@@ -192,6 +194,7 @@ Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name
     // Factures
     Route::get('/invoices',            [ClientAppController::class, 'invoices'])->name('invoices');
     Route::get('/invoices/{invoice}',  [ClientAppController::class, 'invoiceShow'])->name('invoices.show');
+    Route::get('/invoices/{invoice}/pdf', [ClientAppController::class, 'invoicePdf'])->name('invoices.pdf');
 
     // Transferts : hub central (bouton FAB nav) + sous-pages — KYC approuvé requis
     Route::middleware('kyc.approved')->group(function () {
@@ -371,6 +374,7 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('admin')->name('ad
     Route::get('/invoices/create',                  [InvoiceController::class, 'create'])->name('invoices.create');
     Route::post('/invoices',                        [InvoiceController::class, 'store'])->name('invoices.store');
     Route::get('/invoices/{invoice}',               [InvoiceController::class, 'show'])->name('invoices.show');
+    Route::get('/invoices/{invoice}/pdf',           [InvoiceController::class, 'pdf'])->name('invoices.pdf');
     Route::get('/invoices/{invoice}/edit',          [InvoiceController::class, 'edit'])->name('invoices.edit');
     Route::put('/invoices/{invoice}',               [InvoiceController::class, 'update'])->name('invoices.update');
     Route::post('/invoices/{invoice}/send',         [InvoiceController::class, 'send'])->name('invoices.send');

@@ -83,6 +83,7 @@
   </div>
 
   <div class="inv-screen-actions no-print">
+    <a href="{{ route('admin.invoices.pdf', $invoice) }}" target="_blank" class="btn-print"><i class="fas fa-file-pdf"></i> PDF</a>
     <button onclick="window.print()" class="btn-print"><i class="fas fa-print"></i> Imprimer</button>
 
     @if($invoice->isDraft())
@@ -207,6 +208,19 @@
       </div>
     </div>
   </div>
+
+  @if($invoice->paymentIban() !== '')
+  <div class="inv-note" style="background:#f0f5ff;border-left-color:#1B4976">
+    <strong>Règlement par virement :</strong>
+    {{ $invoice->paymentHolder() }} — IBAN <strong style="font-family:monospace">{{ \App\Models\Invoice::formatIban($invoice->paymentIban()) }}</strong>
+    @if($invoice->paymentBic() !== '') — BIC <strong style="font-family:monospace">{{ $invoice->paymentBic() }}</strong>@endif
+    — référence <strong>{{ $invoice->reference }}</strong>
+  </div>
+  @elseif($invoice->isDraft())
+  <div class="inv-note" style="background:#fef2f2;border-left-color:#dc2626">
+    <strong>IBAN de règlement manquant.</strong> Modifiez la facture pour le renseigner avant de l'envoyer.
+  </div>
+  @endif
 
   @if($invoice->note)
   <div class="inv-note">

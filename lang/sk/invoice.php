@@ -1,0 +1,23 @@
+<?php
+
+return [
+    'title' => 'Faktúra',
+    'number' => 'Číslo faktúry',
+    'issued' => 'Dátum vystavenia',
+    'due' => 'Dátum splatnosti',
+    'bill_to' => 'Fakturované',
+    'description' => 'Popis',
+    'qty' => 'Množ.',
+    'unit_price' => 'Jednotková cena',
+    'amount' => 'Suma',
+    'subtotal' => 'Medzisúčet',
+    'tax' => 'Daň',
+    'total' => 'Spolu',
+    'amount_due' => 'Suma na úhradu',
+    'pay_title' => 'Uhraďte túto faktúru prevodom',
+    'pay_holder' => 'Príjemca',
+    'pay_iban' => 'IBAN',
+    'pay_bic' => 'BIC',
+    'pay_reference' => 'Uvádzaná referencia',
+    'pay_hint' => 'V poznámke k prevodu uveďte referenciu faktúry.',
+];

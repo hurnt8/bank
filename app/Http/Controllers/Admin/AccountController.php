@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AccountMovementMail;
 use App\Models\AccountMovement;
+use App\Models\Card;
+use App\Rules\ValidIban;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use App\Models\ClientNotification;
 use App\Models\Currency;
 use App\Models\User;
@@ -69,89 +74,120 @@ class AccountController extends Controller
             ->latest()
             ->paginate(20);
 
-        return view('admin.accounts.show', compact('account', 'movements'));
+        $card = $account->card()->first();
+
+        return view('admin.accounts.show', compact('account', 'movements', 'card'));
     }
 
     public function credit(Request $request, User $account)
     {
-        $this->authorizeAccount($account);
-
-        $validated = $request->validate([
-            'amount' => 'required|numeric|min:0.01|max:9999999',
-            'note'   => 'nullable|string|max:255',
-        ]);
-
-        $cur = $account->currency ?? Currency::default();
-
-        DB::transaction(function () use ($account, $validated, $cur) {
-            $before = (float) $account->balance;
-            $account->increment('balance', $validated['amount']);
-
-            AccountMovement::create([
-                'user_id'        => $account->id,
-                'admin_id'       => Auth::id(),
-                'type'           => 'credit',
-                'amount'         => $validated['amount'],
-                'currency'       => $cur,
-                'balance_before' => $before,
-                'balance_after'  => $before + $validated['amount'],
-                'note'           => $validated['note'] ?? null,
-            ]);
-
-            $locale = $account->locale ?? 'fr';
-            $body   = __('app.notif_account_credited_body', ['amount' => number_format($validated['amount'], 2, ',', ' '), 'currency' => $cur], $locale);
-            if ($validated['note']) $body .= ' — ' . $validated['note'];
-            ClientNotification::forUser(
-                $account->id,
-                'system',
-                __('app.notif_account_credited', [], $locale),
-                $body,
-                ['amount' => $validated['amount'], 'currency' => $cur]
-            );
-        });
-
-        return back()->with('success', 'Compte crédité de ' . number_format($validated['amount'], 2, ',', ' ') . ' ' . $cur . '.');
+        return $this->record($request, $account, 'credit');
     }
 
     public function debit(Request $request, User $account)
     {
+        return $this->record($request, $account, 'debit');
+    }
+
+    /**
+     * Crédit ou débit : l'administrateur choisit le type d'opération (virement SEPA / international, dépôt,
+     * paiement par carte, retrait, frais…) et renseigne la contrepartie. Le client reçoit une notification
+     * et un e-mail qui reprennent ces informations.
+     */
+    private function record(Request $request, User $account, string $direction)
+    {
         $this->authorizeAccount($account);
 
-        $validated = $request->validate([
-            'amount' => 'required|numeric|min:0.01|max:9999999',
-            'note'   => 'nullable|string|max:255',
+        $request->merge([
+            'counterparty_iban' => strtoupper(preg_replace('/[\s\x{00A0}]+/u', '', (string) $request->input('counterparty_iban'))) ?: null,
         ]);
 
+        $validated = $request->validate([
+            'kind'              => ['required', 'string', 'in:' . implode(',', AccountMovement::KINDS[$direction])],
+            'amount'            => 'required|numeric|min:0.01|max:9999999',
+            'counterparty'      => ['nullable', 'string', 'max:120', 'required_if:kind,card'],
+            'counterparty_iban' => ['nullable', 'string', 'max:40', new ValidIban()],
+            'reference'         => 'nullable|string|max:60',
+            'note'              => 'nullable|string|max:255',
+        ]);
+
+        $kind   = $validated['kind'];
+        $amount = round((float) $validated['amount'], 2);
         $cur    = $account->currency ?? Currency::default();
-        $before = (float) $account->balance;
+        $cardId = null;
 
-        DB::transaction(function () use ($account, $validated, $before, $cur) {
-            $account->decrement('balance', $validated['amount']);
+        // Dépense par carte : la carte du client doit être active et le plafond (cumul du mois) respecté
+        if ($kind === 'card') {
+            $card = $account->card()->first();
+            if (! $card) {
+                return back()->withErrors(['kind' => 'Ce client n\'a pas de carte : impossible d\'enregistrer une dépense par carte.'])->withInput();
+            }
+            if ($card->status !== Card::STATUS_ACTIVE) {
+                return back()->withErrors(['kind' => 'La carte du client est ' . ($card->isSuspended() ? 'suspendue' : 'bloquée') . ' : aucune dépense ne peut être enregistrée.'])->withInput();
+            }
+            $spent = (float) AccountMovement::where('user_id', $account->id)->where('kind', 'card')
+                ->where('created_at', '>=', now()->startOfMonth())->sum('amount');
+            $limit = (int) ($card->spending_limit ?: Card::LIMIT_MIN);
+            if ($spent + $amount > $limit) {
+                return back()->withErrors(['amount' => 'Plafond de la carte dépassé : ' . number_format($spent, 2, ',', ' ') . ' déjà dépensés ce mois-ci sur '
+                    . number_format($limit, 0, ',', ' ') . ' ' . $cur . '.'])->withInput();
+            }
+            $cardId = $card->id;
+        }
 
-            AccountMovement::create([
-                'user_id'        => $account->id,
-                'admin_id'       => Auth::id(),
-                'type'           => 'debit',
-                'amount'         => $validated['amount'],
-                'currency'       => $cur,
-                'balance_before' => $before,
-                'balance_after'  => $before - $validated['amount'],
-                'note'           => $validated['note'] ?? null,
+        $movement = DB::transaction(function () use ($account, $validated, $direction, $kind, $amount, $cur, $cardId) {
+            $before = (float) $account->balance;
+            $after  = $direction === 'credit' ? $before + $amount : $before - $amount;
+            $direction === 'credit' ? $account->increment('balance', $amount) : $account->decrement('balance', $amount);
+
+            return AccountMovement::create([
+                'user_id'           => $account->id,
+                'admin_id'          => Auth::id(),
+                'type'              => $direction,
+                'kind'              => $kind,
+                'counterparty'      => $validated['counterparty'] ?? null,
+                'counterparty_iban' => in_array($kind, AccountMovement::TRANSFER_KINDS, true) ? ($validated['counterparty_iban'] ?? null) : null,
+                'reference'         => $validated['reference'] ?? null,
+                'card_id'           => $cardId,
+                'amount'            => $amount,
+                'currency'          => $cur,
+                'balance_before'    => $before,
+                'balance_after'     => $after,
+                'note'              => $validated['note'] ?? null,
             ]);
-
-            $locale = $account->locale ?? 'fr';
-            $body   = __('app.notif_account_debited_body', ['amount' => number_format($validated['amount'], 2, ',', ' '), 'currency' => $cur], $locale);
-            if ($validated['note']) $body .= ' — ' . $validated['note'];
-            ClientNotification::forUser(
-                $account->id,
-                'system',
-                __('app.notif_account_debited', [], $locale),
-                $body,
-                ['amount' => $validated['amount'], 'currency' => $cur]
-            );
         });
 
-        return back()->with('success', 'Compte débité de ' . number_format($validated['amount'], 2, ',', ' ') . ' ' . ($account->currency ?? Currency::default()) . '.');
+        $this->notifyClient($account, $movement);
+
+        return back()->with('success', ($direction === 'credit' ? 'Compte crédité de ' : 'Compte débité de ') . number_format($amount, 2, ',', ' ') . ' ' . $cur
+            . ' (' . $movement->kindLabel('fr') . '). Le client a été prévenu par notification et par e-mail.');
+    }
+
+    /** Notification dans l'application + e-mail, dans la langue du client. */
+    private function notifyClient(User $account, AccountMovement $movement): void
+    {
+        $locale = $account->locale ?? 'fr';
+        $credit = $movement->type === 'credit';
+        $amount = number_format($movement->amount, 2, ',', ' ');
+
+        $body = __($credit ? 'app.notif_account_credited_body' : 'app.notif_account_debited_body', ['amount' => $amount, 'currency' => $movement->currency], $locale)
+            . ' — ' . $movement->kindLabel($locale)
+            . ($movement->counterparty ? ' · ' . $movement->counterparty : '')
+            . ($movement->note ? ' · ' . $movement->note : '');
+
+        ClientNotification::forUser(
+            $account->id,
+            'system',
+            __($credit ? 'app.notif_account_credited' : 'app.notif_account_debited', [], $locale),
+            $body,
+            ['amount' => $movement->amount, 'currency' => $movement->currency, 'kind' => $movement->kind]
+        );
+
+        try {
+            Mail::to($account->email)->locale($locale)->send(new AccountMovementMail($account, $movement));
+        } catch (\Throwable $e) {
+            Log::error('AccountMovementMail failed for client ' . $account->id . ': ' . $e->getMessage());
+        }
     }
 
     private function authorizeAccount(User $client): void

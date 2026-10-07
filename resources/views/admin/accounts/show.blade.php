@@ -114,8 +114,31 @@
       <i class="fas fa-plus"></i>
       Créditer le compte
     </div>
-    <form method="POST" action="{{ route('admin.accounts.credit', $account) }}">
+    <form method="POST" action="{{ route('admin.accounts.credit', $account) }}" x-data="{ kind: '{{ old('kind') }}' }">
       @csrf
+      <div class="acs-field">
+        <label>Type d'opération</label>
+        <select name="kind" x-model="kind" required style="width:100%">
+          <option value="sepa" {{ old('kind') === 'sepa' ? 'selected' : '' }}>Virement SEPA</option>
+          <option value="international" {{ old('kind') === 'international' ? 'selected' : '' }}>Virement international</option>
+          <option value="deposit" {{ old('kind') === 'deposit' ? 'selected' : '' }}>Dépôt</option>
+          <option value="refund" {{ old('kind') === 'refund' ? 'selected' : '' }}>Remboursement</option>
+          <option value="adjustment" {{ old('kind') === 'adjustment' ? 'selected' : '' }}>Ajustement</option>
+        </select>
+      </div>
+      <div class="acs-field" x-show="kind" x-cloak>
+        <label x-text="kind === 'card' ? 'Commerçant *' : 'Expéditeur'"></label>
+        <input type="text" name="counterparty" maxlength="120" value="{{ old('counterparty') }}"
+               :placeholder="kind === 'card' ? 'Ex : Carrefour, Amazon…' : 'Nom de l’expéditeur'" :required="kind === 'card'">
+      </div>
+      <div class="acs-field" x-show="kind === 'sepa' || kind === 'international'" x-cloak>
+        <label>IBAN de l’expéditeur</label>
+        <input type="text" name="counterparty_iban" maxlength="40" value="{{ old('counterparty_iban') }}" placeholder="DE00 0000 0000 0000 0000 00" style="font-family:monospace;text-transform:uppercase">
+      </div>
+      <div class="acs-field" x-show="kind" x-cloak>
+        <label>Référence</label>
+        <input type="text" name="reference" maxlength="60" value="{{ old('reference') }}" placeholder="N° de virement, de ticket…">
+      </div>
       <div class="acs-field">
         <label>Montant ({{ $cur }})</label>
         <input type="number" name="amount" step="0.01" min="0.01" max="9999999"
@@ -139,8 +162,32 @@
       Débiter le compte
     </div>
     <form method="POST" action="{{ route('admin.accounts.debit', $account) }}"
-          data-confirm="Confirmer le débit ?">
+          data-confirm="Confirmer le débit ?" x-data="{ kind: '{{ old('kind') }}' }">
       @csrf
+      <div class="acs-field">
+        <label>Type d'opération</label>
+        <select name="kind" x-model="kind" required style="width:100%">
+          <option value="sepa" {{ old('kind') === 'sepa' ? 'selected' : '' }}>Virement SEPA</option>
+          <option value="international" {{ old('kind') === 'international' ? 'selected' : '' }}>Virement international</option>
+          <option value="card" {{ old('kind') === 'card' ? 'selected' : '' }} {{ $card && $card->status === 'active' ? '' : 'disabled' }}>Paiement par carte{{ $card ? ' (•••• ' . $card->last_four . ')' : ' — aucune carte' }}</option>
+          <option value="withdrawal" {{ old('kind') === 'withdrawal' ? 'selected' : '' }}>Retrait</option>
+          <option value="fee" {{ old('kind') === 'fee' ? 'selected' : '' }}>Frais</option>
+          <option value="adjustment" {{ old('kind') === 'adjustment' ? 'selected' : '' }}>Correction</option>
+        </select>
+      </div>
+      <div class="acs-field" x-show="kind" x-cloak>
+        <label x-text="kind === 'card' ? 'Commerçant *' : 'Bénéficiaire'"></label>
+        <input type="text" name="counterparty" maxlength="120" value="{{ old('counterparty') }}"
+               :placeholder="kind === 'card' ? 'Ex : Carrefour, Amazon…' : 'Nom du bénéficiaire'" :required="kind === 'card'">
+      </div>
+      <div class="acs-field" x-show="kind === 'sepa' || kind === 'international'" x-cloak>
+        <label>IBAN du bénéficiaire</label>
+        <input type="text" name="counterparty_iban" maxlength="40" value="{{ old('counterparty_iban') }}" placeholder="DE00 0000 0000 0000 0000 00" style="font-family:monospace;text-transform:uppercase">
+      </div>
+      <div class="acs-field" x-show="kind" x-cloak>
+        <label>Référence</label>
+        <input type="text" name="reference" maxlength="60" value="{{ old('reference') }}" placeholder="N° de virement, de ticket…">
+      </div>
       <div class="acs-field">
         <label>Montant ({{ $cur }}) — Solde actuel : <span style="color:{{ $bal < 0 ? '#f87171' : 'inherit' }}">{{ number_format($bal, 2, ',', ' ') }}</span></label>
         <input type="number" name="amount" step="0.01" min="0.01" max="9999999"
@@ -191,11 +238,14 @@
   </div>
   <div class="acs-mvt__body">
     <div class="acs-mvt__label">
-      {{ $mvt->type === 'credit' ? 'Crédit' : 'Débit' }}
+      {{ $mvt->type === 'credit' ? 'Crédit' : 'Débit' }} · {{ $mvt->kind ? __('movement.kind_' . $mvt->kind, [], 'fr') : '—' }}
       @if($mvt->admin)
         <span style="font-size:.72rem;font-weight:400;color:var(--c-muted)"> · {{ $mvt->admin->name }}</span>
       @endif
     </div>
+    @if($mvt->counterparty || $mvt->counterparty_iban || $mvt->reference)
+    <div class="acs-mvt__sub">{{ collect([$mvt->counterparty, $mvt->counterparty_iban ? \App\Models\Invoice::formatIban($mvt->counterparty_iban) : null, $mvt->reference])->filter()->implode(' · ') }}</div>
+    @endif
     @if($mvt->note)
     <div class="acs-mvt__sub">{{ $mvt->note }}</div>
     @endif

@@ -1,0 +1,23 @@
+<?php
+
+return [
+    'title' => 'Számla',
+    'number' => 'Számlaszám',
+    'issued' => 'Kiállítás dátuma',
+    'due' => 'Fizetési határidő',
+    'bill_to' => 'Számlázva',
+    'description' => 'Leírás',
+    'qty' => 'Menny.',
+    'unit_price' => 'Egységár',
+    'amount' => 'Összeg',
+    'subtotal' => 'Részösszeg',
+    'tax' => 'Adó',
+    'total' => 'Összesen',
+    'amount_due' => 'Fizetendő összeg',
+    'pay_title' => 'Fizesse ki a számlát átutalással',
+    'pay_holder' => 'Kedvezményezett',
+    'pay_iban' => 'IBAN',
+    'pay_bic' => 'BIC',
+    'pay_reference' => 'Feltüntetendő hivatkozás',
+    'pay_hint' => 'Kérjük, tüntesse fel a számla hivatkozását az átutalás közleményében.',
+];

@@ -74,7 +74,7 @@ class BankingController extends Controller
             }
             if ($user->card) {
                 $user->card->update([
-                    'status' => $user->card->status === Card::STATUS_ACTIVE
+                    'status' => in_array($user->card->status, [Card::STATUS_ACTIVE, Card::STATUS_SUSPENDED], true)
                         ? Card::STATUS_BLOCKED
                         : Card::STATUS_ACTIVE,
                 ]);

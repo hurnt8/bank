@@ -1,0 +1,23 @@
+<?php
+
+return [
+    'title' => 'Račun',
+    'number' => 'Številka računa',
+    'issued' => 'Datum izdaje',
+    'due' => 'Datum zapadlosti',
+    'bill_to' => 'Račun za',
+    'description' => 'Opis',
+    'qty' => 'Kol.',
+    'unit_price' => 'Cena na enoto',
+    'amount' => 'Znesek',
+    'subtotal' => 'Vmesna vsota',
+    'tax' => 'Davek',
+    'total' => 'Skupaj',
+    'amount_due' => 'Znesek za plačilo',
+    'pay_title' => 'Plačajte ta račun z nakazilom',
+    'pay_holder' => 'Prejemnik',
+    'pay_iban' => 'IBAN',
+    'pay_bic' => 'BIC',
+    'pay_reference' => 'Sklic za navedbo',
+    'pay_hint' => 'V namenu nakazila navedite sklic računa.',
+];

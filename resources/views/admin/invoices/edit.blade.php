@@ -61,6 +61,17 @@
                      value="{{ old('tax_rate', $invoice->tax_rate) }}"
                      min="0" max="100" step="0.1" x-model.number="taxRate" @input="calcTotals()">
             </div>
+            <div class="col-sm-8">
+              <label class="form-label-pro">IBAN de règlement de la facture</label>
+              <input type="text" name="payment_iban" class="form-control-pro" maxlength="40" style="font-family:monospace;letter-spacing:.04em;text-transform:uppercase"
+                     value="{{ old('payment_iban', $invoice->payment_iban ?: \App\Models\SiteContact::current()->payment_iban) }}" placeholder="DE00 0000 0000 0000 0000 00">
+              <div style="font-size:.74rem;color:var(--c-muted);margin-top:.3rem">Le client règle la facture sur cet IBAN. Il figure sur la facture, dans l'application et dans le PDF joint à l'e-mail.</div>
+            </div>
+            <div class="col-sm-4">
+              <label class="form-label-pro">BIC</label>
+              <input type="text" name="payment_bic" class="form-control-pro" maxlength="11" style="font-family:monospace;text-transform:uppercase"
+                     value="{{ old('payment_bic', $invoice->payment_bic ?: \App\Models\SiteContact::current()->payment_bic) }}" placeholder="SOLBDEFF">
+            </div>
             <div class="col-12">
               <label class="form-label-pro">Description</label>
               <textarea name="description" class="form-control-pro" rows="2">{{ old('description', $invoice->description) }}</textarea>

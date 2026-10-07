@@ -316,6 +316,44 @@
 </div>
 @endif
 
+{{-- ── Règlement par virement ── --}}
+@if($invoice->status === \App\Models\Invoice::STATUS_SENT && $invoice->paymentIban() !== '')
+<div class="invd-section" style="margin-top:.875rem" x-data="{ copied: '' }">
+  <div class="invd-section__title">{{ __('invoice.pay_title') }}</div>
+  <div class="invd-note" style="display:block">
+    @foreach([
+      ['invoice.pay_holder', $invoice->paymentHolder(), false],
+      ['invoice.pay_iban', \App\Models\Invoice::formatIban($invoice->paymentIban()), $invoice->paymentIban()],
+      ['invoice.pay_bic', $invoice->paymentBic(), $invoice->paymentBic()],
+      ['invoice.pay_reference', $invoice->reference, $invoice->reference],
+    ] as [$lbl, $val, $copy])
+      @continue($val === '')
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.75rem;padding:.4rem 0;border-bottom:1px dashed var(--ca-border)">
+        <span style="color:var(--ca-text-3);font-size:.78rem">{{ __($lbl) }}</span>
+        <span style="display:flex;align-items:center;gap:.5rem;font-weight:700;font-family:ui-monospace,monospace;font-size:.85rem;overflow-wrap:anywhere;text-align:right">
+          {{ $val }}
+          @if($copy)
+          <button type="button" style="background:none;border:1px solid var(--ca-border);color:var(--ca-text-2);border-radius:999px;padding:.15rem .6rem;font-size:.68rem;cursor:pointer"
+                  @click="navigator.clipboard && navigator.clipboard.writeText('{{ $copy }}'); copied = '{{ $lbl }}'; setTimeout(() => copied = '', 1500)">
+            <span x-show="copied !== '{{ $lbl }}'"><i class="fas fa-copy"></i></span>
+            <span x-show="copied === '{{ $lbl }}'" x-cloak>{{ __('app.copied') }}</span>
+          </button>
+          @endif
+        </span>
+      </div>
+    @endforeach
+    <div style="margin-top:.6rem;font-size:.74rem;color:var(--ca-text-3)"><i class="fas fa-circle-info"></i> {{ __('invoice.pay_hint') }}</div>
+  </div>
+</div>
+@endif
+
+<div style="margin-top:.875rem">
+  <a href="{{ route('client.app.invoices.pdf', $invoice) }}" target="_blank" rel="noopener"
+     style="display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:999px;border:1px solid var(--ca-border);background:var(--ca-bg3);color:var(--ca-text);font-size:.8rem;font-weight:700;text-decoration:none">
+    <i class="fas fa-file-pdf"></i> {{ __('app.invoice_download') }}
+  </a>
+</div>
+
 {{-- ── Note ── --}}
 @if($invoice->note)
 <div class="invd-section" style="margin-top:.875rem">

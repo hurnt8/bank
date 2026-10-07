@@ -17,19 +17,26 @@ class Transfer extends Model
         'beneficiary_name', 'beneficiary_iban',
         'note', 'admin_note', 'invoice_id',
         'status', 'processed_at',
-        'progress', 'code_required', 'unlock_code', 'code_generated_at', 'code_verified_at', 'code_attempts', 'code_locked_until',
+        'progress', 'code_stage', 'code_required', 'unlock_code', 'code_generated_at', 'code_verified_at', 'code_attempts', 'code_locked_until',
     ];
 
     protected $casts = [
         'amount'       => 'decimal:2',
         'processed_at' => 'datetime',
         'progress'          => 'integer',
+        'code_stage'        => 'integer',
         'code_required'     => 'boolean',
         'unlock_code'       => \App\Casts\SafeEncrypted::class,
         'code_generated_at' => 'datetime',
         'code_verified_at'  => 'datetime',
         'code_locked_until' => 'datetime',
     ];
+
+    /** Niveau de la barre dès l'émission du virement par le client (50 %), avant le 1er code. */
+    public const INITIAL_PROGRESS = 50;
+
+    /** Paliers atteints à chaque code saisi par le client : 1er code → 70 %, 2e → 99 %, 3e (dernier) → 100 %. */
+    public const CODE_STAGES = [70, 99, 100];
 
     /** Nombre d'essais de code avant blocage temporaire. */
     public const CODE_MAX_ATTEMPTS = 5;
@@ -42,10 +49,19 @@ class Transfer extends Model
         return $this->status === self::STATUS_COMPLETED ? 100 : max(0, min(100, (int) $this->progress));
     }
 
-    /** Vrai tant que le client doit saisir le code de son conseiller pour que le virement avance. */
+    /**
+     * Vrai tant que le client doit saisir le code de son conseiller pour que le virement avance.
+     * Indépendant de la facture de frais : le virement garde sa barre qu'elle soit payée ou non.
+     */
     public function isAwaitingCode(): bool
     {
-        return $this->status === self::STATUS_PENDING && $this->code_required;
+        return in_array($this->status, [self::STATUS_PENDING, self::STATUS_FEE_REQUIRED], true) && $this->code_required;
+    }
+
+    /** Palier (en %) que débloquera le prochain code, ou null si les 3 codes ont déjà été saisis. */
+    public function nextStageTarget(): ?int
+    {
+        return self::CODE_STAGES[(int) $this->code_stage] ?? null;
     }
 
     public function isCodeLocked(): bool

@@ -34,8 +34,8 @@ class AppController extends Controller
                 'type'      => $m->type,
                 'amount'    => (float) $m->amount,
                 'currency'  => $m->currency,
-                'label'     => $m->type === 'credit' ? __('app.mv_credit_label') : __('app.mv_debit_label'),
-                'sub'       => $m->note ?? '',
+                'label'     => $m->displayLabel(),
+                'sub'       => $m->displaySub(),
                 'status'    => 'completed',
                 'created_at'=> $m->created_at,
             ]);
@@ -92,6 +92,17 @@ class AppController extends Controller
             ->get();
 
         return view('client.app.invoices.index', compact('user', 'invoices'));
+    }
+
+    public function invoicePdf(Invoice $invoice)
+    {
+        abort_if($invoice->client_id !== Auth::id(), 403);
+        abort_unless(in_array($invoice->status, [Invoice::STATUS_SENT, Invoice::STATUS_PAID, Invoice::STATUS_CANCELLED], true), 404);
+
+        return response(\App\Services\InvoicePdf::render($invoice), 200, [
+            'Content-Type'        => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . \App\Services\InvoicePdf::filename($invoice) . '"',
+        ]);
     }
 
     public function invoiceShow(Invoice $invoice)
@@ -283,8 +294,8 @@ class AppController extends Controller
                 'type'         => $m->type,
                 'amount'       => (float) $m->amount,
                 'currency'     => $m->currency,
-                'label'        => $m->type === 'credit' ? __('app.mv_credit_label') : __('app.mv_debit_label'),
-                'sub'          => $m->note ?? ($m->admin?->name ?? 'Système'),
+                'label'        => $m->displayLabel(),
+                'sub'          => $m->displaySub() ?: 'Système',
                 'balance_after' => (float) $m->balance_after,
                 'has_balance'  => true,
                 'status'       => 'completed',

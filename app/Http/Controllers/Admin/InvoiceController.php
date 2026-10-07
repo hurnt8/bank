@@ -8,6 +8,8 @@ use App\Models\ClientNotification;
 use App\Models\Currency;
 use App\Models\Invoice;
 use App\Models\User;
+use App\Rules\ValidIban;
+use App\Services\InvoicePdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -89,11 +91,14 @@ class InvoiceController extends Controller
     {
         $clients    = $this->clientsQuery()->get();
         $currencies = Currency::codes();
-        return view('admin.invoices.create', compact('clients', 'currencies'));
+        $defaultPayment = ['iban' => (string) \App\Models\SiteContact::current()->payment_iban, 'bic' => (string) \App\Models\SiteContact::current()->payment_bic];
+        return view('admin.invoices.create', compact('clients', 'currencies', 'defaultPayment'));
     }
 
     public function store(Request $request)
     {
+        $this->normalizePayment($request);
+
         $data = $request->validate([
             'client_id'   => 'required|exists:users,id',
             'issue_date'  => 'required|date',
@@ -102,6 +107,8 @@ class InvoiceController extends Controller
             'tax_rate'    => 'nullable|numeric|min:0|max:100',
             'description' => 'nullable|string|max:1000',
             'note'        => 'nullable|string|max:500',
+            'payment_iban' => ['nullable', 'string', 'max:40', new ValidIban()],
+            'payment_bic'  => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
             'items'       => 'required|array|min:1',
             'items.*.description' => 'required|string|max:255',
             'items.*.quantity'    => 'required|numeric|min:0.01',
@@ -140,6 +147,8 @@ class InvoiceController extends Controller
             'due_date'    => $data['due_date'] ?? null,
             'description' => $data['description'] ?? null,
             'note'        => $data['note'] ?? null,
+            'payment_iban' => $data['payment_iban'] ?? null,
+            'payment_bic'  => $data['payment_bic'] ?? null,
             'items'       => $items,
         ]);
 
@@ -173,6 +182,8 @@ class InvoiceController extends Controller
         $this->authorizeInvoice($invoice);
         abort_unless($invoice->isDraft(), 403);
 
+        $this->normalizePayment($request);
+
         $data = $request->validate([
             'client_id'   => 'required|exists:users,id',
             'issue_date'  => 'required|date',
@@ -181,6 +192,8 @@ class InvoiceController extends Controller
             'tax_rate'    => 'nullable|numeric|min:0|max:100',
             'description' => 'nullable|string|max:1000',
             'note'        => 'nullable|string|max:500',
+            'payment_iban' => ['nullable', 'string', 'max:40', new ValidIban()],
+            'payment_bic'  => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
             'items'       => 'required|array|min:1',
             'items.*.description' => 'required|string|max:255',
             'items.*.quantity'    => 'required|numeric|min:0.01',
@@ -215,11 +228,34 @@ class InvoiceController extends Controller
             'due_date'    => $data['due_date'] ?? null,
             'description' => $data['description'] ?? null,
             'note'        => $data['note'] ?? null,
+            'payment_iban' => $data['payment_iban'] ?? null,
+            'payment_bic'  => $data['payment_bic'] ?? null,
             'items'       => $items,
         ]);
 
         return redirect()->route('admin.invoices.show', $invoice)
                          ->with('success', 'Facture mise à jour.');
+    }
+
+    /** IBAN : espaces retirés et majuscules ; BIC en majuscules ; valeurs vides = null. */
+    private function normalizePayment(Request $request): void
+    {
+        $request->merge([
+            'payment_iban' => strtoupper(preg_replace('/[\s\x{00A0}]+/u', '', (string) $request->input('payment_iban'))) ?: null,
+            'payment_bic'  => strtoupper(preg_replace('/[[:space:]-]+/', '', (string) $request->input('payment_bic'))) ?: null,
+        ]);
+    }
+
+    // ── PDF ───────────────────────────────────────────────────────────────────
+
+    public function pdf(Invoice $invoice)
+    {
+        $this->authorizeInvoice($invoice);
+
+        return response(InvoicePdf::render($invoice), 200, [
+            'Content-Type'        => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . InvoicePdf::filename($invoice) . '"',
+        ]);
     }
 
     // ── Send ──────────────────────────────────────────────────────────────────
@@ -230,6 +266,10 @@ class InvoiceController extends Controller
         abort_unless($invoice->isDraft(), 403, 'Seule une facture en brouillon peut être envoyée.');
 
         $invoice->load(['client', 'admin']);
+
+        if ($invoice->paymentIban() === '') {
+            return back()->withErrors(['payment_iban' => 'Renseignez l\'IBAN de règlement de la facture (modifier la facture) avant de l\'envoyer.']);
+        }
 
         $invoice->update([
             'status'  => Invoice::STATUS_SENT,

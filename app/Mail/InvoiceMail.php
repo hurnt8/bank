@@ -5,6 +5,8 @@ namespace App\Mail;
 use App\Models\Invoice;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use App\Services\InvoicePdf;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -52,6 +54,9 @@ class InvoiceMail extends Mailable
 
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromData(fn () => InvoicePdf::render($this->invoice), InvoicePdf::filename($this->invoice))
+                ->withMime('application/pdf'),
+        ];
     }
 }

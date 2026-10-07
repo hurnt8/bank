@@ -150,6 +150,17 @@
                    value="{{ old('iban_bank_code', $contact->iban_bank_code) }}" placeholder="{{ app(\App\Services\BankingProvisioner::class)->bankCode() }}">
             <div style="font-size:.74rem;color:var(--c-muted);margin-top:.3rem">8 chiffres (IBAN allemand, DE). Le BIC de chaque client reste modifiable dans « Coordonnées bancaires » de sa fiche.</div>
           </div>
+          <div class="col-sm-8">
+            <label class="form-label-pro">IBAN de règlement des factures (par défaut)</label>
+            <input type="text" name="payment_iban" class="form-control-pro" maxlength="40" style="font-family:monospace;text-transform:uppercase"
+                   value="{{ old('payment_iban', $contact->payment_iban) }}" placeholder="DE00 0000 0000 0000 0000 00">
+            <div style="font-size:.74rem;color:var(--c-muted);margin-top:.3rem">Pré-rempli dans les nouvelles factures et dans « Facturer les frais » ; modifiable facture par facture.</div>
+          </div>
+          <div class="col-sm-4">
+            <label class="form-label-pro">BIC de règlement</label>
+            <input type="text" name="payment_bic" class="form-control-pro" maxlength="11" style="font-family:monospace;text-transform:uppercase"
+                   value="{{ old('payment_bic', $contact->payment_bic) }}" placeholder="SOLBDEFF">
+          </div>
         </div>
       </div>
     </div>
