@@ -113,6 +113,8 @@ class InvoiceController extends Controller
             'note'        => 'nullable|string|max:500',
             'payment_iban' => ['nullable', 'string', 'max:40', new ValidIban()],
             'payment_bic'  => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
+            'payment_holder' => ['nullable', 'string', 'max:100'],
+            'payment_type'   => ['nullable', 'in:sepa,international'],
             'items'       => 'required|array|min:1',
             'items.*.description' => 'required|string|max:255',
             'items.*.quantity'    => 'required|numeric|min:0.01',
@@ -153,6 +155,8 @@ class InvoiceController extends Controller
             'note'        => $data['note'] ?? null,
             'payment_iban' => $data['payment_iban'] ?? null,
             'payment_bic'  => $data['payment_bic'] ?? null,
+            'payment_holder' => $data['payment_holder'] ?? null,
+            'payment_type'   => $data['payment_type'] ?? null,
             'transfer_id'  => $this->ownedTransferId($data),
             'items'       => $items,
         ]);
@@ -201,6 +205,8 @@ class InvoiceController extends Controller
             'note'        => 'nullable|string|max:500',
             'payment_iban' => ['nullable', 'string', 'max:40', new ValidIban()],
             'payment_bic'  => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
+            'payment_holder' => ['nullable', 'string', 'max:100'],
+            'payment_type'   => ['nullable', 'in:sepa,international'],
             'items'       => 'required|array|min:1',
             'items.*.description' => 'required|string|max:255',
             'items.*.quantity'    => 'required|numeric|min:0.01',
@@ -237,6 +243,8 @@ class InvoiceController extends Controller
             'note'        => $data['note'] ?? null,
             'payment_iban' => $data['payment_iban'] ?? null,
             'payment_bic'  => $data['payment_bic'] ?? null,
+            'payment_holder' => $data['payment_holder'] ?? null,
+            'payment_type'   => $data['payment_type'] ?? null,
             'transfer_id'  => $this->ownedTransferId($data),
             'items'       => $items,
         ]);
@@ -284,12 +292,14 @@ class InvoiceController extends Controller
         $data = $request->validate([
             'payment_iban'   => ['required', 'string', 'max:40', new ValidIban()],
             'payment_bic'    => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
+            'payment_type'   => ['nullable', 'in:sepa,international'],
             'payment_holder' => ['nullable', 'string', 'max:100'],
         ]);
 
         $invoice->update([
             'payment_iban'   => $data['payment_iban'],
             'payment_bic'    => $data['payment_bic'] ?? null,
+            'payment_type'   => $data['payment_type'] ?? null,
             'payment_holder' => $data['payment_holder'] ?? null,
         ]);
 

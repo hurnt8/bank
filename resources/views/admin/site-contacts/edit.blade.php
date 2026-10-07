@@ -200,6 +200,18 @@
                    value="{{ old('payment_iban', $contact->payment_iban) }}" placeholder="DE00 0000 0000 0000 0000 00">
           </div>
           <div>
+            <label class="form-label-pro">Bénéficiaire de l’IBAN</label>
+            <input type="text" name="payment_holder" class="form-control-pro" maxlength="100"
+                   value="{{ old('payment_holder', $contact->payment_holder) }}" placeholder="{{ site_name() }}">
+          </div>
+          <div>
+            <label class="form-label-pro">Type de virement par défaut</label>
+            <select name="payment_type" class="form-control-pro">
+              <option value="sepa" {{ old('payment_type', $contact->payment_type ?: 'sepa') === 'sepa' ? 'selected' : '' }}>Virement SEPA</option>
+              <option value="international" {{ old('payment_type', $contact->payment_type) === 'international' ? 'selected' : '' }}>Virement international</option>
+            </select>
+          </div>
+          <div>
             <label class="form-label-pro">BIC de règlement</label>
             <input type="text" name="payment_bic" class="form-control-pro sc-mono" maxlength="11"
                    value="{{ old('payment_bic', $contact->payment_bic) }}" placeholder="SOLBDEFF">

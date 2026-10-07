@@ -12,7 +12,7 @@ class Invoice extends Model
         'subtotal', 'tax_rate', 'tax_amount', 'total',
         'status', 'issue_date', 'due_date',
         'description', 'note', 'items',
-        'payment_iban', 'payment_bic', 'payment_holder',
+        'payment_iban', 'payment_bic', 'payment_holder', 'payment_type',
         'sent_at', 'paid_at',
     ];
 
@@ -130,9 +130,24 @@ class Invoice extends Model
         return strtoupper((string) ($this->payment_bic ?: SiteContact::current()->payment_bic));
     }
 
+    /** Bénéficiaire (titulaire) de l'IBAN de règlement : saisi sur la facture, sinon réglage du site, sinon nom du site. */
     public function paymentHolder(): string
     {
-        return $this->payment_holder ?: site_name();
+        return $this->payment_holder ?: (SiteContact::current()->payment_holder ?: site_name());
+    }
+
+    /** Type de virement à exécuter pour régler la facture : sepa ou international. */
+    public function paymentType(): string
+    {
+        $t = $this->payment_type ?: SiteContact::current()->payment_type;
+
+        return in_array($t, ['sepa', 'international'], true) ? $t : 'sepa';
+    }
+
+    /** « Virement SEPA » / « Virement international » dans la langue demandée. */
+    public function paymentTypeLabel(?string $locale = null): string
+    {
+        return __('movement.kind_' . $this->paymentType(), [], $locale);
     }
 
     /** Logo du site en data-URI (utilisable par le PDF) : logo téléversé, sinon logo par défaut ; null si rien d'exploitable. */

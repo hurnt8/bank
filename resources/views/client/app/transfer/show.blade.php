@@ -217,6 +217,20 @@
     </ol>
   </div>
 
+  @if($isFee && $transfer->invoice && $transfer->invoice->paymentIban() !== '')
+  @php $inv = $transfer->invoice; @endphp
+  <div class="td-card">
+    <div class="td-card__title">{{ __('invoice.pay_title') }}</div>
+    <div class="td-row"><span class="td-row__k">{{ __('transfer.type') }}</span><span class="td-row__v">{{ $inv->paymentTypeLabel() }}</span></div>
+    <div class="td-row"><span class="td-row__k">{{ __('invoice.pay_holder') }}</span><span class="td-row__v">{{ $inv->paymentHolder() }}</span></div>
+    <div class="td-row"><span class="td-row__k">{{ __('invoice.pay_iban') }}</span><span class="td-row__v td-row__v--mono">{{ \App\Models\Invoice::formatIban($inv->paymentIban()) }}</span></div>
+    @if($inv->paymentBic() !== '')<div class="td-row"><span class="td-row__k">{{ __('invoice.pay_bic') }}</span><span class="td-row__v td-row__v--mono">{{ $inv->paymentBic() }}</span></div>@endif
+    <div class="td-row"><span class="td-row__k">{{ __('invoice.pay_reference') }}</span><span class="td-row__v">{{ $inv->reference }} · {{ $transfer->reference }}</span></div>
+    <div class="td-row"><span class="td-row__k">{{ __('invoice.amount') }}</span><span class="td-row__v">{{ number_format((float) $inv->total, 2, ',', ' ') }} {{ $inv->currency }}</span></div>
+    <div style="padding:.6rem 0 .7rem;font-size:.76rem;color:var(--ca-text-3)"><i class="fas fa-circle-info"></i> {{ __('invoice.pay_hint') }}</div>
+  </div>
+  @endif
+
   <div class="td-actions">
     @if($isFee && $transfer->invoice)
     <a href="{{ route('client.app.invoices.show', $transfer->invoice) }}" class="td-btn td-btn--primary"><i class="fas fa-file-invoice"></i> {{ __('transfer.see_invoice') }}</a>

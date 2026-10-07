@@ -21,6 +21,8 @@ class SiteContact extends Model
         'iban_bank_code',
         'payment_iban',
         'payment_bic',
+        'payment_holder',
+        'payment_type',
         'otp_clients_enabled',
         'otp_staff_enabled',
         'activation_mail_enabled',

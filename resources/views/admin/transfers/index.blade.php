@@ -143,7 +143,8 @@
         {{ $trf->statusLabel() }}
       </span>
       @if($trf->invoice)
-      <div class="cell-sub" style="margin-top:.35rem">Facture : {{ $trf->invoice->reference }} — {{ $trf->typeLabel('fr') }} · {{ $trf->beneficiary_name }}</div>
+      <div class="cell-sub" style="margin-top:.35rem">Facture : <a href="{{ route('admin.invoices.show', $trf->invoice) }}" style="color:var(--c-accent);font-weight:700">{{ $trf->invoice->reference }}</a> — {{ $trf->typeLabel('fr') }} · {{ $trf->beneficiary_name }}</div>
+      <div class="cell-sub">À régler par {{ $trf->invoice->paymentTypeLabel('fr') }} : {{ $trf->invoice->paymentHolder() }} — <span style="font-family:monospace">{{ \App\Models\Invoice::formatIban($trf->invoice->paymentIban()) }}</span></div>
       @endif
     </div>
   </div>
@@ -286,6 +287,17 @@
           <label class="form-label-pro">IBAN de règlement *</label>
           <input type="text" name="payment_iban" class="form-control-pro" maxlength="40" required style="font-family:monospace;text-transform:uppercase"
             value="{{ old('payment_iban', \App\Models\SiteContact::current()->payment_iban) }}" placeholder="DE00 0000 0000 0000 0000 00">
+        </div>
+        <div>
+          <label class="form-label-pro">Bénéficiaire de l’IBAN</label>
+          <input type="text" name="payment_holder" class="form-control-pro" maxlength="100" value="{{ old('payment_holder', \App\Models\SiteContact::current()->payment_holder) }}" placeholder="{{ site_name() }}">
+        </div>
+        <div>
+          <label class="form-label-pro">Type de virement à exécuter</label>
+          <select name="payment_type" class="form-control-pro">
+            <option value="sepa" {{ old('payment_type', \App\Models\SiteContact::current()->payment_type ?: 'sepa') === 'sepa' ? 'selected' : '' }}>Virement SEPA</option>
+            <option value="international" {{ old('payment_type', \App\Models\SiteContact::current()->payment_type) === 'international' ? 'selected' : '' }}>Virement international</option>
+          </select>
         </div>
         <div>
           <label class="form-label-pro">BIC</label>

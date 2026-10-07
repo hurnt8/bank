@@ -207,6 +207,8 @@ class TransferValidationController extends Controller
             'description' => 'nullable|string|max:500',
             'payment_iban' => ['nullable', 'string', 'max:40', new \App\Rules\ValidIban()],
             'payment_bic'  => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
+            'payment_holder' => ['nullable', 'string', 'max:100'],
+            'payment_type'   => ['nullable', 'in:sepa,international'],
         ]);
 
         if (empty($data['payment_iban']) && ! \App\Models\SiteContact::current()->payment_iban) {
@@ -234,6 +236,8 @@ class TransferValidationController extends Controller
                 'total'       => $data['fee_amount'],
                 'payment_iban' => $data['payment_iban'] ?? null,
                 'payment_bic'  => $data['payment_bic'] ?? null,
+                'payment_holder' => $data['payment_holder'] ?? null,
+                'payment_type'   => $data['payment_type'] ?? null,
                 'status'      => Invoice::STATUS_SENT,
                 'issue_date'  => now()->toDateString(),
                 'description' => $desc,

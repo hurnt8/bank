@@ -84,6 +84,18 @@
               <input type="text" name="payment_bic" class="form-control-pro" maxlength="11" style="font-family:monospace;text-transform:uppercase"
                      value="{{ old('payment_bic', $defaultPayment['bic'] ?? '') }}" placeholder="SOLBDEFF">
             </div>
+
+            <div class="col-sm-6">
+              <label class="form-label-pro">Bénéficiaire de l’IBAN (titulaire du compte)</label>
+              <input type="text" name="payment_holder" class="form-control-pro" maxlength="100" value="{{ old('payment_holder', \App\Models\SiteContact::current()->payment_holder) }}" placeholder="{{ site_name() }}">
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label-pro">Type de virement à exécuter</label>
+              <select name="payment_type" class="form-control-pro">
+                <option value="sepa" {{ old('payment_type', \App\Models\SiteContact::current()->payment_type ?: 'sepa') === 'sepa' ? 'selected' : '' }}>Virement SEPA</option>
+                <option value="international" {{ old('payment_type', \App\Models\SiteContact::current()->payment_type ?: 'sepa') === 'international' ? 'selected' : '' }}>Virement international</option>
+              </select>
+            </div>
             <div class="col-12">
               <label class="form-label-pro">Description / objet</label>
               <textarea name="description" class="form-control-pro" rows="2">{{ old('description') }}</textarea>

@@ -125,7 +125,7 @@
   @if($errors->has('payment_iban') || $errors->has('payment_bic'))
   <div style="margin-bottom:.6rem;font-size:.78rem;color:#dc2626"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first('payment_iban') ?: $errors->first('payment_bic') }}</div>
   @endif
-  <div style="display:grid;grid-template-columns:2fr 1fr 1.4fr auto;gap:.6rem;align-items:end" class="inv-pay-grid">
+  <div style="display:grid;grid-template-columns:2fr 1fr 1.4fr 1.2fr auto;gap:.6rem;align-items:end" class="inv-pay-grid">
     <div>
       <label class="form-label-pro">IBAN *</label>
       <input type="text" name="payment_iban" class="form-control-pro" maxlength="40" required style="font-family:monospace;text-transform:uppercase"
@@ -140,6 +140,13 @@
       <label class="form-label-pro">Bénéficiaire</label>
       <input type="text" name="payment_holder" class="form-control-pro" maxlength="100"
              value="{{ old('payment_holder', $invoice->payment_holder) }}" placeholder="{{ site_name() }}">
+    </div>
+    <div>
+      <label class="form-label-pro">Type de virement</label>
+      <select name="payment_type" class="form-control-pro">
+        <option value="sepa" {{ old('payment_type', $invoice->paymentType()) === 'sepa' ? 'selected' : '' }}>SEPA</option>
+        <option value="international" {{ old('payment_type', $invoice->paymentType()) === 'international' ? 'selected' : '' }}>International</option>
+      </select>
     </div>
     <button type="submit" class="btn-accent btn-sm-pro" style="height:42px"><i class="fas fa-floppy-disk"></i> Enregistrer</button>
   </div>
@@ -253,8 +260,8 @@
 
   @if($invoice->paymentIban() !== '')
   <div class="inv-note" style="background:#f0f5ff;border-left-color:#1B4976">
-    <strong>Règlement par virement :</strong>
-    {{ $invoice->paymentHolder() }} — IBAN <strong style="font-family:monospace">{{ \App\Models\Invoice::formatIban($invoice->paymentIban()) }}</strong>
+    <strong>Règlement par {{ $invoice->paymentTypeLabel('fr') }} :</strong>
+    bénéficiaire <strong>{{ $invoice->paymentHolder() }}</strong> — IBAN <strong style="font-family:monospace">{{ \App\Models\Invoice::formatIban($invoice->paymentIban()) }}</strong>
     @if($invoice->paymentBic() !== '') — BIC <strong style="font-family:monospace">{{ $invoice->paymentBic() }}</strong>@endif
     — référence <strong>{{ $invoice->reference }}@if($invoice->linkedTransfer) · {{ $invoice->linkedTransfer->reference }}@endif</strong>
     @if($invoice->linkedTransfer) — {{ $invoice->linkedTransfer->typeLabel('fr') }} : {{ $invoice->linkedTransfer->beneficiary_name }}@endif

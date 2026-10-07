@@ -338,6 +338,7 @@
   <div class="invd-section__title">{{ __('invoice.pay_title') }}</div>
   <div class="invd-note" style="display:block">
     @foreach([
+      ['transfer.type', $invoice->paymentTypeLabel(), false],
       ['invoice.pay_holder', $invoice->paymentHolder(), false],
       ['invoice.pay_iban', \App\Models\Invoice::formatIban($invoice->paymentIban()), $invoice->paymentIban()],
       ['invoice.pay_bic', $invoice->paymentBic(), $invoice->paymentBic()],

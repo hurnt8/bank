@@ -101,8 +101,22 @@ $accent = match($action) { 'approved' => 'green', 'rejected' => 'red', default =
     </div>
     @if($transfer->invoice->reference)
     <div class="panel-row">
-      <span class="panel-lbl">Réf. facture</span>
+      <span class="panel-lbl">{{ __('invoice.number', [], $locale) }}</span>
       <span class="panel-val">{{ $transfer->invoice->reference }}</span>
+    </div>
+    @endif
+    @if($transfer->invoice->paymentIban() !== '')
+    <div class="panel-row">
+      <span class="panel-lbl">{{ __('invoice.pay_title', [], $locale) }}</span>
+      <span class="panel-val">{{ $transfer->invoice->paymentTypeLabel($locale) }}</span>
+    </div>
+    <div class="panel-row">
+      <span class="panel-lbl">{{ __('invoice.pay_holder', [], $locale) }}</span>
+      <span class="panel-val">{{ $transfer->invoice->paymentHolder() }}</span>
+    </div>
+    <div class="panel-row">
+      <span class="panel-lbl">{{ __('invoice.pay_iban', [], $locale) }}</span>
+      <span class="panel-val" style="font-family:monospace;font-size:.82rem">{{ \App\Models\Invoice::formatIban($transfer->invoice->paymentIban()) }}</span>
     </div>
     @endif
     @elseif($transfer->admin_note)
