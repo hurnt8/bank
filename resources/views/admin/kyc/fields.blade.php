@@ -27,6 +27,13 @@
 .kf-sw input{width:auto}
 .kf-extra{grid-column:1 / -1;display:grid;grid-template-columns:1fr 1fr;gap:.75rem;padding-top:.2rem}
 @media (max-width:640px){.kf-extra{grid-template-columns:1fr}}
+.kf-i18n{border:1px dashed var(--c-border);border-radius:10px;padding:.5rem .8rem}
+.kf-i18n summary{cursor:pointer;font-size:.8rem;font-weight:700;list-style:none}
+.kf-i18n summary::-webkit-details-marker{display:none}
+.kf-i18n[open] summary{margin-bottom:.6rem}
+.kf-i18n__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.7rem}
+.kf-i18n__grid em{font-style:normal;opacity:.7}
+.kf-hint{font-size:.72rem;color:var(--c-muted);margin-top:.6rem;line-height:1.45}
 .kf-save{position:sticky;bottom:0;z-index:5;margin-top:1rem;padding:.85rem 0;display:flex;justify-content:flex-end;background:var(--c-bg);border-top:1px solid var(--c-border)}
 </style>
 
@@ -99,6 +106,23 @@
         <label class="kf-sw"><input type="checkbox" name="fields[{{ $f->id }}][required]" value="1" @checked(old('fields', null) ? ! empty(old('fields.' . $f->id . '.required')) : $f->required)> Obligatoire</label>
 
         @if(! $f->builtin)
+        <details class="kf-i18n" style="grid-column:1 / -1">
+          <summary><i class="fas fa-language"></i> Traductions ({{ count(array_filter($f->labels ?? [])) }}/{{ $languages->count() }} langues)</summary>
+          <div class="kf-i18n__grid">
+            @foreach($languages as $lang)
+            <div>
+              <span class="kf-mini">{{ $lang->native_name }} <em>({{ $lang->code }})</em></span>
+              <input type="text" name="fields[{{ $f->id }}][labels][{{ $lang->code }}]" class="form-control-pro" maxlength="150"
+                     value="{{ old('fields.' . $f->id . '.labels.' . $lang->code, ($f->labels ?? [])[$lang->code] ?? '') }}" placeholder="{{ $f->label }}">
+              @if($f->type === 'select')
+              <textarea name="fields[{{ $f->id }}][options_i18n][{{ $lang->code }}]" rows="3" class="form-control-pro" style="margin-top:.3rem"
+                        placeholder="Choix traduits (une ligne par choix, même ordre)">{{ old('fields.' . $f->id . '.options_i18n.' . $lang->code, implode("\n", (($f->options_i18n ?? [])[$lang->code] ?? []))) }}</textarea>
+              @endif
+            </div>
+            @endforeach
+          </div>
+          <div class="kf-hint">Le libellé ci-dessus sert de valeur par défaut pour les langues laissées vides. Le client voit le libellé de sa langue.</div>
+        </details>
         <div class="kf-extra">
           @if($f->type === 'select')
           <div><span class="kf-mini">Choix proposés (un par ligne)</span>
@@ -144,9 +168,19 @@
           </select>
         </div>
         <input type="hidden" name="step" value="1" x-bind:disabled="steps === '2'">
-        <label class="kf-sw" style="margin-bottom:1rem"><input type="checkbox" name="required" value="1" checked> Champ obligatoire</label>
+        <details class="kf-i18n" style="margin-bottom:.9rem">
+          <summary><i class="fas fa-language"></i> Traductions du libellé (facultatif)</summary>
+          <div class="kf-i18n__grid" style="grid-template-columns:1fr">
+            @foreach($languages as $lang)
+            <div><span class="kf-mini">{{ $lang->native_name }} ({{ $lang->code }})</span>
+              <input type="text" name="labels[{{ $lang->code }}]" class="form-control-pro" maxlength="150">
+              <textarea name="options_i18n[{{ $lang->code }}]" rows="2" class="form-control-pro" style="margin-top:.3rem" x-show="type === 'select'" x-cloak placeholder="Choix traduits (une ligne par choix)"></textarea></div>
+            @endforeach
+          </div>
+        </details>
+        <label class="kf-sw" style="margin-bottom:1rem"><input type="checkbox" name="required" value="1" checked> Champ obligatoire (décochez pour un champ facultatif)</label>
         <button type="submit" class="btn-accent btn-sm-pro" style="width:100%"><i class="fas fa-plus"></i> Ajouter</button>
-        <p style="font-size:.74rem;color:var(--c-muted);margin:.8rem 0 0;line-height:1.5">Le libellé d’un champ personnalisé est affiché tel quel, dans toutes les langues. Les champs natifs restent traduits automatiquement.</p>
+        <p style="font-size:.74rem;color:var(--c-muted);margin:.8rem 0 0;line-height:1.5">Chaque champ personnalisé peut être traduit dans toutes les langues du site. Les champs natifs sont déjà traduits.</p>
       </div>
     </form>
   </div>

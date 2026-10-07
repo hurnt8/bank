@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class KycField extends Model
 {
-    protected $fillable = ['key', 'label_key', 'label', 'type', 'options', 'step', 'required', 'enabled', 'builtin', 'sort'];
+    protected $fillable = ['key', 'label_key', 'label', 'labels', 'type', 'options', 'options_i18n', 'step', 'required', 'enabled', 'builtin', 'sort'];
 
     protected $casts = [
         'options'  => 'array',
+        'labels'   => 'array',
+        'options_i18n' => 'array',
         'required' => 'boolean',
         'enabled'  => 'boolean',
         'builtin'  => 'boolean',
@@ -33,10 +35,34 @@ class KycField extends Model
         return in_array($this->type, ['file', 'image'], true);
     }
 
-    /** Libellé dans la langue courante : traduction pour un champ natif, texte saisi pour un champ personnalisé. */
-    public function displayLabel(): string
+    /**
+     * Libellé dans la langue du client : traduction automatique pour un champ natif ; pour un champ personnalisé,
+     * la traduction saisie par l'administrateur pour cette langue, sinon le libellé par défaut.
+     */
+    public function displayLabel(?string $locale = null): string
     {
-        return $this->builtin && $this->label_key ? __($this->label_key) : (string) ($this->label ?: $this->key);
+        if ($this->builtin && $this->label_key) {
+            return __($this->label_key, [], $locale);
+        }
+
+        $locale = $locale ?: app()->getLocale();
+        $tr     = trim((string) (($this->labels ?? [])[$locale] ?? ''));
+
+        return $tr !== '' ? $tr : (string) ($this->label ?: $this->key);
+    }
+
+    /** Choix d'une liste : [valeur enregistrée => texte affiché dans la langue courante]. */
+    public function displayOptions(?string $locale = null): array
+    {
+        $locale = $locale ?: app()->getLocale();
+        $values = array_values($this->options ?? []);
+        $tr     = array_values(($this->options_i18n ?? [])[$locale] ?? []);
+        $out    = [];
+        foreach ($values as $i => $v) {
+            $out[$v] = trim((string) ($tr[$i] ?? '')) !== '' ? trim($tr[$i]) : $v;
+        }
+
+        return $out;
     }
 
     public function scopeActive($query)

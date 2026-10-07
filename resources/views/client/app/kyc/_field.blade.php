@@ -47,7 +47,7 @@
   @elseif($f->type === 'select')
     <select id="f_{{ $f->key }}" name="{{ $f->key }}" @required($f->required)>
       <option value="">—</option>
-      @foreach($f->options ?? [] as $o)<option value="{{ $o }}" @selected($val === $o)>{{ $o }}</option>@endforeach
+      @foreach($f->displayOptions() as $o => $shown)<option value="{{ $o }}" @selected($val === $o)>{{ $shown }}</option>@endforeach
     </select>
   @elseif($f->type === 'textarea')
     <textarea id="f_{{ $f->key }}" name="{{ $f->key }}" rows="3" @required($f->required)>{{ $val }}</textarea>
