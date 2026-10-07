@@ -2,6 +2,9 @@
     $locale = app()->getLocale();
     $siteContact = \App\Models\SiteContact::current();
     $socialLinks = \App\Models\SocialLink::where('is_visible', true)->orderBy('sort_order')->get();
+    // Une seule adresse : elle rejoint la colonne Contact (pas de colonne « Adresses » à moitié vide) et les autres colonnes s'élargissent
+    $addresses = array_values(array_filter([$siteContact->address_1, $siteContact->address_2, $siteContact->address_3]));
+    $single    = count($addresses) <= 1;
 @endphp
 
 <footer class="site-footer">
@@ -9,7 +12,7 @@
         <div class="row g-4 gutter-y-50">
 
             {{-- ── Colonne marque (toujours visible) ── --}}
-            <div class="col-lg-3 col-md-6">
+            <div class="{{ $single ? 'col-lg-4' : 'col-lg-3' }} col-md-6">
                 <a href="{{ route('home', ['locale' => $locale]) }}" class="d-inline-block mb-4">
                     <x-logo variant="full" theme="dark" size="lg" :dark="$siteContact->logo_dark_path ? Storage::url($siteContact->logo_dark_path) : null" :name="$siteContact->name" class="footer-logo" />
                 </a>
@@ -54,14 +57,15 @@
                 </div>
             </div>
 
-            {{-- ── Adresses (accordion mobile) ── --}}
+            {{-- ── Adresses (accordion mobile) : colonne dédiée seulement s'il y en a plusieurs ── --}}
+            @unless($single)
             <div class="col-lg-2 col-md-6 col-sm-6 col-12" x-data="{ open: false }">
                 <h5 class="footer-heading footer-accordion-heading" @click="open = !open">
                     @lang('menu.addresses')
                     <i class="fas fa-chevron-down footer-toggle-icon" :class="{ 'rotated': open }"></i>
                 </h5>
                 <div class="footer-collapse" x-show="open">
-                    @foreach (array_filter([$siteContact->address_1, $siteContact->address_2, $siteContact->address_3]) as $address)
+                    @foreach ($addresses as $address)
                     <div class="footer-contact-item">
                         <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
                         <span>{{ $address }}</span>
@@ -69,14 +73,21 @@
                     @endforeach
                 </div>
             </div>
+            @endunless
 
             {{-- ── Contact + newsletter (accordion mobile) ── --}}
-            <div class="col-lg-3 col-md-6" x-data="{ open: false }">
+            <div class="{{ $single ? 'col-lg-4' : 'col-lg-3' }} col-md-6" x-data="{ open: false }">
                 <h5 class="footer-heading footer-accordion-heading" @click="open = !open">
                     @lang('menu.contact')
                     <i class="fas fa-chevron-down footer-toggle-icon" :class="{ 'rotated': open }"></i>
                 </h5>
                 <div class="footer-collapse" x-show="open">
+                    @if($single && $addresses)
+                    <div class="footer-contact-item">
+                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <span>{{ $addresses[0] }}</span>
+                    </div>
+                    @endif
                     @foreach (array_filter([$siteContact->phone_1, $siteContact->phone_2]) as $phone)
                     <div class="footer-contact-item">
                         <div class="icon"><i class="fas fa-phone-alt"></i></div>

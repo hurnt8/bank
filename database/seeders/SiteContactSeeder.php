@@ -18,7 +18,7 @@ class SiteContactSeeder extends Seeder
      * Idempotent : n'ecrase que les valeurs vides ou les placeholders laisses par les
      * migrations. Ce qu'un administrateur a saisi est preserve, donc rejouable en prod.
      */
-    private const DEFAULT_NAME = 'Mellenthin Financial';
+    private const DEFAULT_NAME = 'Santander Bank';
 
     /** Valeurs posees par les migrations : a considerer comme "non configure". */
     private const LEGACY_NAMES = ['Solberg Grupo'];
