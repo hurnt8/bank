@@ -132,13 +132,13 @@ class KycController extends Controller
         $provisioner = app(BankingProvisioner::class);
         $created     = $provisioner->provision($client, Auth::id());
 
-        if (! $created['bank'] && ! $created['card']) {
+        if (! $created['bank']) {
             return '';
         }
 
         $provisioner->notifyAssigned($client);
 
-        return ' IBAN et carte générés automatiquement.';
+        return ' IBAN généré automatiquement (la carte sera émise sur demande du client).';
     }
 
     public function reject(Request $request, KycVerification $kyc)

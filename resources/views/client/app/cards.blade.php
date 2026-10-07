@@ -54,6 +54,9 @@
   display: flex; align-items: center; justify-content: center; font-size: 1.9rem; color: var(--ca-text-3); }
 .cd-empty__t { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
 .cd-empty__s { font-size: .82rem; color: var(--ca-text-3); line-height: 1.6; max-width: 360px; margin: 0 auto 1.4rem; }
+.cd-ok { margin-bottom: 1rem; padding: .8rem 1rem; border-radius: 12px; background: rgba(0,200,150,.1); border: 1px solid rgba(0,200,150,.3); color: var(--ca-text-2); font-size: .82rem; }
+.cd-pending { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.2rem; border-radius: 999px; font-size: .82rem; font-weight: 700; background: rgba(245,158,11,.12); color: var(--ca-amber); }
+button.cd-empty__btn { border: 0; cursor: pointer; font-family: inherit; }
 .cd-empty__btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.4rem; border-radius: 999px; font-size: .85rem; font-weight: 700;
   color: #fff; background: linear-gradient(135deg, #DCBE87, #C6A15B); }
 </style>
@@ -61,6 +64,7 @@
 
 @section('content')
 <div class="cd-page">
+  @if(session('success'))<div class="cd-ok" role="status"><i class="fas fa-circle-check"></i> {{ session('success') }}</div>@endif
   @if($cards->isNotEmpty())
   <p class="cd-sub">{{ __('cards.subtitle') }}</p>
 
@@ -112,7 +116,16 @@
     <div class="cd-empty__ico"><i class="fas fa-credit-card"></i></div>
     <div class="cd-empty__t">{{ __('cards.empty_title') }}</div>
     <p class="cd-empty__s">{{ __('cards.empty_text') }}</p>
-    <a href="{{ route('client.app.support') }}" class="cd-empty__btn"><i class="fas fa-headset"></i> {{ __('cards.contact') }}</a>
+    @if($pendingRequest)
+      <span class="cd-pending"><i class="fas fa-hourglass-half"></i> {{ __('cards.request_pending') }}</span>
+    @else
+      <form method="POST" action="{{ route('client.app.cards.request') }}" x-data="{ busy: false }" @submit="busy = true">
+        @csrf
+        <button type="submit" class="cd-empty__btn" :disabled="busy">
+          <i class="fas" :class="busy ? 'fa-spinner fa-spin' : 'fa-credit-card'"></i> {{ __('cards.request_button') }}
+        </button>
+      </form>
+    @endif
   </div>
   @endif
 </div>

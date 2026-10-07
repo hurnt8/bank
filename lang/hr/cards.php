@@ -1,0 +1,24 @@
+<?php
+
+return [
+    'nav' => 'Kartice',
+    'title' => 'Moje kartice',
+    'subtitle' => 'Kartice povezane s vašim računom',
+    'holder' => 'Vlasnik',
+    'expires' => 'Vrijedi do',
+    'status_active' => 'Aktivna',
+    'status_blocked' => 'Blokirana',
+    'blocked_notice' => 'Ova kartica je blokirana. Obratite se svom savjetniku kako biste je ponovno aktivirali.',
+    'show' => 'Prikaži',
+    'hide' => 'Sakrij',
+    'empty_title' => 'Nema povezane kartice',
+    'empty_text' => 'Još nemate karticu. Zatražite svoju Visa karticu: izdat će se nakon odobrenja vašeg savjetnika.',
+    'request_button' => 'Zatraži moju Visa karticu',
+    'request_sent' => 'Zahtjev je poslan. Vaš će ga savjetnik razmotriti.',
+    'request_pending' => 'Zahtjev za karticu je u obradi',
+    'notif_approved' => 'Vaša Visa kartica je spremna',
+    'notif_approved_body' => 'Vaš je zahtjev prihvaćen. Karticu pronađite u odjeljku Kartice.',
+    'notif_rejected' => 'Zahtjev za karticu odbijen',
+    'notif_rejected_body' => 'Vaš zahtjev za karticu nije prihvaćen. Obratite se svom savjetniku za više informacija.',
+    'contact' => 'Kontaktiraj mog savjetnika',
+];

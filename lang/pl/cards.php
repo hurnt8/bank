@@ -1,0 +1,24 @@
+<?php
+
+return [
+    'nav' => 'Karty',
+    'title' => 'Moje karty',
+    'subtitle' => 'Karty powiązane z Twoim kontem',
+    'holder' => 'Posiadacz',
+    'expires' => 'Ważna do',
+    'status_active' => 'Aktywna',
+    'status_blocked' => 'Zablokowana',
+    'blocked_notice' => 'Ta karta jest zablokowana. Skontaktuj się ze swoim doradcą, aby ją odblokować.',
+    'show' => 'Pokaż',
+    'hide' => 'Ukryj',
+    'empty_title' => 'Brak powiązanej karty',
+    'empty_text' => 'Nie masz jeszcze karty. Złóż wniosek o kartę Visa: zostanie wydana po zatwierdzeniu przez doradcę.',
+    'request_button' => 'Złóż wniosek o kartę Visa',
+    'request_sent' => 'Wniosek wysłany. Twój doradca go rozpatrzy.',
+    'request_pending' => 'Wniosek o kartę w trakcie rozpatrywania',
+    'notif_approved' => 'Twoja karta Visa jest gotowa',
+    'notif_approved_body' => 'Twój wniosek został zaakceptowany. Kartę znajdziesz w sekcji Karty.',
+    'notif_rejected' => 'Wniosek o kartę odrzucony',
+    'notif_rejected_body' => 'Twój wniosek o kartę nie został zaakceptowany. Skontaktuj się z doradcą, aby uzyskać więcej informacji.',
+    'contact' => 'Skontaktuj się z moim doradcą',
+];

@@ -811,6 +811,12 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
          class="sidebar-link {{ request()->routeIs('admin.transfers*') ? 'active':'' }}">
         <i class="fas fa-exchange-alt icon"></i> Transferts
       </a>
+      <a href="{{ route('admin.card-requests.index') }}"
+         class="sidebar-link {{ request()->routeIs('admin.card-requests*') ? 'active':'' }}">
+        <i class="fas fa-credit-card icon"></i> Demandes de carte
+        @php $cardReqPending = \App\Models\CardRequest::where('status','pending')->count(); @endphp
+        @if($cardReqPending)<span style="margin-left:auto;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--c-accent);color:var(--c-on-accent);font-size:.62rem;font-weight:800;display:inline-flex;align-items:center;justify-content:center">{{ $cardReqPending }}</span>@endif
+      </a>
       <a href="{{ route('admin.invoices.index') }}"
          class="sidebar-link {{ request()->routeIs('admin.invoices*') ? 'active':'' }}">
         <i class="fas fa-file-invoice icon"></i> Factures
@@ -869,6 +875,12 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
       <a href="{{ route('admin.transfers.index') }}"
          class="sidebar-link {{ request()->routeIs('admin.transfers*') ? 'active':'' }}">
         <i class="fas fa-exchange-alt icon"></i> Transferts
+      </a>
+      <a href="{{ route('admin.card-requests.index') }}"
+         class="sidebar-link {{ request()->routeIs('admin.card-requests*') ? 'active':'' }}">
+        <i class="fas fa-credit-card icon"></i> Demandes de carte
+        @php $cardReqPending = \App\Models\CardRequest::where('status','pending')->count(); @endphp
+        @if($cardReqPending)<span style="margin-left:auto;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--c-accent);color:var(--c-on-accent);font-size:.62rem;font-weight:800;display:inline-flex;align-items:center;justify-content:center">{{ $cardReqPending }}</span>@endif
       </a>
       <a href="{{ route('admin.invoices.index') }}"
          class="sidebar-link {{ request()->routeIs('admin.invoices*') ? 'active':'' }}">

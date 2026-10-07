@@ -2,7 +2,7 @@
 
 return [
     'notif_assigned'      => 'Bankdaten zugewiesen',
-    'notif_assigned_body' => 'Ihnen wurden soeben eine IBAN und eine Karte zugewiesen. Prüfen Sie Ihren Kundenbereich.',
+    'notif_assigned_body' => 'Ihnen wurde soeben eine IBAN zugewiesen. Prüfen Sie Ihren Kundenbereich.',
 
     'section_title' => 'Konto & Bankkarte',
     'faqs' => [

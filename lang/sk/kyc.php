@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title' => 'Overenie totožnosti',
+    'required_notice' => 'Pre prístup k tejto funkcii si najprv overte svoju totožnosť.',
+    'submitted_success' => 'Vaše dokumenty boli odoslané. Upozorníme vás, hneď ako bude overenie spracované.',
+    'status_non_soumis' => 'Neodoslané',
+    'status_en_attente' => 'Čaká na overenie',
+    'status_approuve' => 'Totožnosť overená',
+    'status_rejete' => 'Overenie zamietnuté',
+    'label_id_document_type' => 'Typ dokladu totožnosti',
+    'option_cni' => 'Občiansky preukaz',
+    'option_passeport' => 'Pas',
+    'option_permis' => 'Vodičský preukaz',
+    'label_id_front' => 'Doklad totožnosti (predná strana)',
+    'label_id_back' => 'Doklad totožnosti (zadná strana, ak existuje)',
+    'label_selfie' => 'Selfie',
+    'selfie_hint' => 'Urobte jasné selfie svojej tváre bez toho, aby niečo zakrývalo vaše črty.',
+    'submit' => 'Odoslať na overenie',
+    'rejection_reason_label' => 'Dôvod zamietnutia',
+    'resubmit' => 'Odoslať znova',
+    'notif_approved' => 'Totožnosť overená',
+    'notif_approved_body' => 'Overenie vašej totožnosti bolo schválené.',
+    'notif_rejected' => 'Overenie zamietnuté',
+    'notif_rejected_body' => 'Overenie vašej totožnosti bolo zamietnuté. Dôvod: :reason',
+];

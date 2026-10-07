@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title' => 'Preverjanje identitete',
+    'required_notice' => 'Za dostop do te funkcije najprej preverite svojo identiteto.',
+    'submitted_success' => 'Vaši dokumenti so bili oddani. Obvestili vas bomo, ko bo preverjanje obdelano.',
+    'status_non_soumis' => 'Ni oddano',
+    'status_en_attente' => 'Čaka na preverjanje',
+    'status_approuve' => 'Identiteta preverjena',
+    'status_rejete' => 'Preverjanje zavrnjeno',
+    'label_id_document_type' => 'Vrsta osebnega dokumenta',
+    'option_cni' => 'Osebna izkaznica',
+    'option_passeport' => 'Potni list',
+    'option_permis' => 'Vozniško dovoljenje',
+    'label_id_front' => 'Osebni dokument (sprednja stran)',
+    'label_id_back' => 'Osebni dokument (zadnja stran, če obstaja)',
+    'label_selfie' => 'Selfi',
+    'selfie_hint' => 'Posnemite jasen selfi svojega obraza, brez česar koli, kar bi prekrivalo obrazne poteze.',
+    'submit' => 'Oddaj v preverjanje',
+    'rejection_reason_label' => 'Razlog za zavrnitev',
+    'resubmit' => 'Ponovno oddaj',
+    'notif_approved' => 'Identiteta preverjena',
+    'notif_approved_body' => 'Preverjanje vaše identitete je bilo odobreno.',
+    'notif_rejected' => 'Preverjanje zavrnjeno',
+    'notif_rejected_body' => 'Preverjanje vaše identitete je bilo zavrnjeno. Razlog: :reason',
+];

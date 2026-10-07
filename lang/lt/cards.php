@@ -1,0 +1,24 @@
+<?php
+
+return [
+    'nav' => 'Kortelės',
+    'title' => 'Mano kortelės',
+    'subtitle' => 'Su jūsų sąskaita susietos kortelės',
+    'holder' => 'Savininkas',
+    'expires' => 'Galioja iki',
+    'status_active' => 'Aktyvi',
+    'status_blocked' => 'Užblokuota',
+    'blocked_notice' => 'Ši kortelė užblokuota. Susisiekite su savo konsultantu, kad ją vėl aktyvuotumėte.',
+    'show' => 'Rodyti',
+    'hide' => 'Slėpti',
+    'empty_title' => 'Nėra susietos kortelės',
+    'empty_text' => 'Dar neturite kortelės. Užsakykite savo „Visa“ kortelę: ji bus išduota konsultantui patvirtinus.',
+    'request_button' => 'Užsakyti „Visa“ kortelę',
+    'request_sent' => 'Prašymas išsiųstas. Jūsų konsultantas jį išnagrinės.',
+    'request_pending' => 'Kortelės prašymas nagrinėjamas',
+    'notif_approved' => 'Jūsų „Visa“ kortelė paruošta',
+    'notif_approved_body' => 'Jūsų prašymas patvirtintas. Kortelę rasite skiltyje „Kortelės“.',
+    'notif_rejected' => 'Kortelės prašymas atmestas',
+    'notif_rejected_body' => 'Jūsų kortelės prašymas nebuvo patvirtintas. Dėl išsamesnės informacijos susisiekite su konsultantu.',
+    'contact' => 'Susisiekti su mano konsultantu',
+];

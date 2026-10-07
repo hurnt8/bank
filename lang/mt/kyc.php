@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title' => 'Verifika tal-identità',
+    'required_notice' => 'Jekk jogħġbok ivverifika l-identità tiegħek l-ewwel biex taċċessa din il-funzjoni.',
+    'submitted_success' => 'Id-dokumenti tiegħek ġew sottomessi. Se nnotifikawk malli l-verifika tiġi pproċessata.',
+    'status_non_soumis' => 'Mhux sottomess',
+    'status_en_attente' => 'Qed tistenna l-verifika',
+    'status_approuve' => 'Identità vverifikata',
+    'status_rejete' => 'Verifika miċħuda',
+    'label_id_document_type' => 'Tip ta’ dokument ta’ identità',
+    'option_cni' => 'Karta tal-identità nazzjonali',
+    'option_passeport' => 'Passaport',
+    'option_permis' => 'Liċenzja tas-sewqan',
+    'label_id_front' => 'Dokument ta’ identità (quddiem)',
+    'label_id_back' => 'Dokument ta’ identità (wara, jekk applikabbli)',
+    'label_selfie' => 'Selfie',
+    'selfie_hint' => 'Ħu selfie ċara ta’ wiċċek, mingħajr xejn li jgħatti l-karatteristiċi tiegħek.',
+    'submit' => 'Ibgħat għall-verifika',
+    'rejection_reason_label' => 'Raġuni tal-miċħda',
+    'resubmit' => 'Erġa’ ibgħat',
+    'notif_approved' => 'Identità vverifikata',
+    'notif_approved_body' => 'Il-verifika tal-identità tiegħek ġiet approvata.',
+    'notif_rejected' => 'Verifika miċħuda',
+    'notif_rejected_body' => 'Il-verifika tal-identità tiegħek ġiet miċħuda. Raġuni: :reason',
+];

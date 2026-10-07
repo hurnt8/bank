@@ -78,7 +78,9 @@ class AppController extends Controller
         $user  = Auth::user();
         $cards = Card::where('user_id', $user->id)->latest()->get();
 
-        return view('client.app.cards', compact('user', 'cards'));
+        $pendingRequest = \App\Models\CardRequest::where('user_id', $user->id)->where('status', \App\Models\CardRequest::STATUS_PENDING)->exists();
+
+        return view('client.app.cards', compact('user', 'cards', 'pendingRequest'));
     }
 
     public function invoices()
@@ -112,7 +114,7 @@ class AppController extends Controller
     {
         $user      = Auth::user();
         $validated = $request->validate([
-            'locale' => 'nullable|in:fr,en,pl,es,bg,hu,it,de,lt,ro,lv,nl,pt,hr',
+            'locale' => 'nullable|in:fr,en,pl,es,bg,hu,it,de,lt,ro,lv,nl,pt,hr,sk,sl,mt',
             'phone'  => 'nullable|string|max:30',
         ]);
 

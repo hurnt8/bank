@@ -1,0 +1,24 @@
+<?php
+
+return [
+    'nav' => 'Kaarten',
+    'title' => 'Mijn kaarten',
+    'subtitle' => 'Kaarten gekoppeld aan uw rekening',
+    'holder' => 'Kaarthouder',
+    'expires' => 'Verloopt',
+    'status_active' => 'Actief',
+    'status_blocked' => 'Geblokkeerd',
+    'blocked_notice' => 'Deze kaart is geblokkeerd. Neem contact op met uw adviseur om de kaart te heractiveren.',
+    'show' => 'Tonen',
+    'hide' => 'Verbergen',
+    'empty_title' => 'Geen kaart gekoppeld',
+    'empty_text' => 'U heeft nog geen kaart. Vraag uw Visa-kaart aan: deze wordt uitgegeven nadat uw adviseur de aanvraag heeft goedgekeurd.',
+    'request_button' => 'Mijn Visa-kaart aanvragen',
+    'request_sent' => 'Aanvraag verzonden. Uw adviseur zal deze beoordelen.',
+    'request_pending' => 'Kaartaanvraag in behandeling',
+    'notif_approved' => 'Uw Visa-kaart is klaar',
+    'notif_approved_body' => 'Uw aanvraag is geaccepteerd. U vindt uw kaart in het onderdeel Kaarten.',
+    'notif_rejected' => 'Kaartaanvraag afgewezen',
+    'notif_rejected_body' => 'Uw kaartaanvraag is niet geaccepteerd. Neem contact op met uw adviseur voor meer informatie.',
+    'contact' => 'Contact opnemen met mijn adviseur',
+];

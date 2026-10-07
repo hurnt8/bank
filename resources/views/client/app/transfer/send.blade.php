@@ -49,6 +49,10 @@ textarea.sd-input { padding-left: 1rem; min-height: 78px; resize: vertical; }
   border: 1px solid var(--ca-border); background: var(--ca-bg3); color: var(--ca-text-2); font-size: .74rem; font-weight: 600; font-family: inherit; }
 .sd-chip:hover { border-color: var(--ca-accent); }
 
+.sd-amount__input { width: 100%; max-width: 280px; border: 0; border-bottom: 2px solid var(--ca-border); background: transparent; color: var(--ca-text); text-align: center;
+  font: inherit; font-size: inherit; line-height: 1.1; outline: none; padding: 0 0 .2rem; border-radius: 0; }
+.sd-amount__input:focus { border-bottom-color: var(--ca-accent); }
+.sd-amount__input::placeholder { color: var(--ca-text-3); opacity: .45; }
 .sd-keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: .55rem; margin: .9rem auto 1rem; max-width: 340px; }
 .sd-key { min-height: 54px; border-radius: 14px; border: 1px solid var(--ca-border); background: var(--ca-bg3); color: var(--ca-text);
   font-size: 1.25rem; font-weight: 700; font-family: 'Space Grotesk', sans-serif; cursor: pointer; touch-action: manipulation; transition: background .12s, transform .08s; }
@@ -148,22 +152,15 @@ textarea.sd-input { padding-left: 1rem; min-height: 78px; resize: vertical; }
         </div>
 
         <div class="sd-amount">
-          <div class="sd-amount__val" :class="numeric <= 0 && 'is-empty'"><sup>{{ $currency }}</sup><span x-text="display">0</span></div>
+          <label class="sd-amount__val" for="amount_input"><sup>{{ $currency }}</sup>
+            <input type="text" id="amount_input" class="sd-amount__input" inputmode="decimal" autocomplete="off" placeholder="0" :value="raw"
+                   @input="setRaw($event.target.value); $event.target.value = raw" aria-label="{{ __('transfer.amount_title') }}">
+          </label>
           <div class="sd-amount__sub">
             <span x-show="numeric > 0 && numeric <= balance" style="display:none">{{ __('transfer.remaining') }} : <strong x-text="fmt(balance - numeric)"></strong></span>
             <span class="bad" x-show="numeric > balance" style="display:none"><i class="fas fa-exclamation-triangle"></i> {{ __('transfer.insufficient') }}</span>
           </div>
           <button type="button" class="sd-chip" @click="useMax()" x-show="balance > 0"><i class="fas fa-wand-magic-sparkles"></i> {{ __('transfer.use_max') }}</button>
-        </div>
-
-        <div class="sd-keypad" role="group" aria-label="{{ __('transfer.amount_title') }}">
-          @foreach(['1','2','3','4','5','6','7','8','9','.','0','del'] as $k)
-            @if($k === 'del')
-            <button type="button" class="sd-key sd-key--del" @click="press('del')" aria-label="Effacer"><i class="fas fa-delete-left"></i></button>
-            @else
-            <button type="button" class="sd-key" @click="press('{{ $k }}')">{{ $k }}</button>
-            @endif
-          @endforeach
         </div>
 
         <div class="sd-summary" x-show="canSend" style="display:none">
@@ -206,13 +203,6 @@ window.sendTransfer = function (cfg) {
       this.iban = document.getElementById('beneficiary_iban').value;
       // Retour arrière du navigateur : on ne reste jamais bloqué sur l'écran de chargement
       window.addEventListener('pageshow', (e) => { if (e.persisted) this.stop(); });
-      // Saisie du montant au clavier physique (hors champs texte)
-      window.addEventListener('keydown', (e) => {
-        if (this.sending || e.ctrlKey || e.metaKey || e.altKey) return;
-        const t = e.target; if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
-        if (/^[0-9]$/.test(e.key) || e.key === '.' || e.key === ',') { this.press(e.key === ',' ? '.' : e.key); e.preventDefault(); }
-        else if (e.key === 'Backspace') { this.press('del'); e.preventDefault(); }
-      });
     },
 
     get numeric() { return parseFloat(this.raw) || 0; },
@@ -225,15 +215,14 @@ window.sendTransfer = function (cfg) {
     formatIban() { this.iban = this.ibanClean.replace(/(.{4})/g, '$1 ').trim(); },
     useMax() { this.raw = String(Math.floor(this.balance * 100) / 100); },
 
-    press(k) {
-      if (k === 'del') { this.raw = this.raw.slice(0, -1); return; }
-      if (k === '.' && this.raw.includes('.')) return;
-      if (k === '.' && this.raw === '') { this.raw = '0.'; return; }
-      if (this.raw === '0' && k !== '.') { this.raw = k; return; }
-      const dec = this.raw.split('.')[1];
-      if (dec !== undefined && dec.length >= 2) return;
-      if (this.raw.replace('.', '').length >= 10) return;
-      this.raw += k;
+    // Nettoie la saisie : chiffres et un seul séparateur, 2 décimales max
+    setRaw(v) {
+      v = String(v).replace(',', '.').replace(/[^0-9.]/g, '');
+      const i = v.indexOf('.');
+      if (i > -1) v = v.slice(0, i + 1) + v.slice(i + 1).replace(/./g, '').slice(0, 2);
+      v = v.replace(/^0+(?=d)/, '');
+      if (v.replace('.', '').length > 10) v = v.slice(0, 10);
+      this.raw = v;
     },
 
     onSubmit(e) {

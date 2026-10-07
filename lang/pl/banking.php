@@ -2,7 +2,7 @@
 
 return [
     'notif_assigned'      => 'Przypisano dane bankowe',
-    'notif_assigned_body' => 'Właśnie przypisano Ci numer IBAN i kartę. Sprawdź swój obszar klienta.',
+    'notif_assigned_body' => 'Właśnie przypisano Ci numer IBAN. Sprawdź swój obszar klienta.',
 
     'section_title' => 'Konto i karta bankowa',
     'faqs' => [

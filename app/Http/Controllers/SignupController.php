@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 
 class SignupController extends Controller
 {
-    private const SUPPORTED_LOCALES = ['fr', 'en', 'pl', 'es', 'bg', 'hu', 'it', 'de', 'lt', 'ro', 'lv', 'nl', 'pt', 'hr'];
+    private const SUPPORTED_LOCALES = ['fr', 'en', 'pl', 'es', 'bg', 'hu', 'it', 'de', 'lt', 'ro', 'lv', 'nl', 'pt', 'hr', 'sk', 'sl', 'mt'];
 
     public function create(string $locale)
     {

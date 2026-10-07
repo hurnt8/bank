@@ -2,7 +2,7 @@
 
 return [
     'notif_assigned'      => 'Dodijeljeni bankovni podaci',
-    'notif_assigned_body' => 'Upravo su vam dodijeljeni IBAN i kartica. Provjerite svoj klijentski prostor.',
+    'notif_assigned_body' => 'Upravo vam je dodijeljen IBAN. Provjerite svoj klijentski prostor.',
 
     'section_title' => 'Račun i bankovna kartica',
     'faqs' => [

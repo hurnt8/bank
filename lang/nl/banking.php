@@ -2,7 +2,7 @@
 
 return [
     'notif_assigned'      => 'Bankgegevens toegewezen',
-    'notif_assigned_body' => 'Er is zojuist een IBAN en een kaart aan u toegewezen. Controleer uw klantomgeving.',
+    'notif_assigned_body' => 'Er is zojuist een IBAN aan u toegewezen. Controleer uw klantomgeving.',
 
     'section_title' => 'Rekening & bankkaart',
     'faqs' => [

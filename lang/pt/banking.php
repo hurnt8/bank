@@ -2,7 +2,7 @@
 
 return [
     'notif_assigned'      => 'Dados bancários atribuídos',
-    'notif_assigned_body' => 'Acabou de lhe ser atribuído um IBAN e um cartão. Consulte o seu espaço de cliente.',
+    'notif_assigned_body' => 'Acabou de lhe ser atribuído um IBAN. Consulte o seu espaço de cliente.',
 
     'section_title' => 'Conta e cartão bancário',
     'faqs' => [

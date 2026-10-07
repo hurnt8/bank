@@ -2,7 +2,7 @@
 
 return [
     'notif_assigned'      => 'Date bancare atribuite',
-    'notif_assigned_body' => 'Vi s-au atribuit un IBAN și un card. Consultați spațiul dumneavoastră de client.',
+    'notif_assigned_body' => 'Vi s-a atribuit un IBAN. Consultați spațiul dumneavoastră de client.',
 
     'section_title' => 'Cont și card bancar',
     'faqs' => [

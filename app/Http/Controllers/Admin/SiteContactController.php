@@ -17,6 +17,11 @@ class SiteContactController extends Controller
 
     public function update(Request $request)
     {
+        // BIC normalisé avant validation : majuscules, sans espaces ni tirets
+        if ($request->has('default_bic')) {
+            $request->merge(['default_bic' => strtoupper(preg_replace('/[[:space:]-]+/', '', (string) $request->input('default_bic'))) ?: null]);
+        }
+
         $validated = $request->validate([
             'name'       => ['required', 'string', 'max:255'],
             'address_1' => ['nullable', 'string', 'max:255'],
@@ -25,19 +30,16 @@ class SiteContactController extends Controller
             'phone_1'   => ['nullable', 'string', 'max:255'],
             'phone_2'   => ['nullable', 'string', 'max:255'],
             'email'     => ['nullable', 'email', 'max:255'],
-            'default_bic'      => ['nullable', 'string', 'regex:/^[A-Za-z]{4}[A-Za-z]{2}[A-Za-z0-9]{2}([A-Za-z0-9]{3})?$/'],
-            'iban_bank_code'   => ['nullable', 'digits:5'],
+            'default_bic'      => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
+            'iban_bank_code'   => ['nullable', 'digits:8'],
             'whatsapp_number'  => ['nullable', 'string', 'max:30'],
             'whatsapp_enabled' => ['boolean'],
             'logo_light'      => ['nullable', 'image', 'max:2048'],
             'logo_dark'       => ['nullable', 'image', 'max:2048'],
             'email_signature' => ['nullable', 'image', 'max:2048'],
+        ], [
+            'default_bic.regex' => 'Le BIC doit contenir 8 ou 11 caractères (lettres et chiffres), ex. SOLBDEFF.',
         ]);
-
-        // BIC toujours enregistré en majuscules, sans espaces
-        if (! empty($validated['default_bic'])) {
-            $validated['default_bic'] = strtoupper(str_replace(' ', '', $validated['default_bic']));
-        }
 
         $contact = SiteContact::current();
         $contact->update(collect($validated)->except(['logo_light', 'logo_dark', 'email_signature'])->all());

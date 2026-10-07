@@ -1,0 +1,24 @@
+<?php
+
+return [
+    'nav' => 'Cartões',
+    'title' => 'Os meus cartões',
+    'subtitle' => 'Cartões associados à sua conta',
+    'holder' => 'Titular',
+    'expires' => 'Validade',
+    'status_active' => 'Ativo',
+    'status_blocked' => 'Bloqueado',
+    'blocked_notice' => 'Este cartão está bloqueado. Contacte o seu gestor para o reativar.',
+    'show' => 'Mostrar',
+    'hide' => 'Ocultar',
+    'empty_title' => 'Nenhum cartão associado',
+    'empty_text' => 'Ainda não tem um cartão. Peça o seu cartão Visa: será emitido após aprovação do seu gestor.',
+    'request_button' => 'Pedir o meu cartão Visa',
+    'request_sent' => 'Pedido enviado. O seu gestor irá analisá-lo.',
+    'request_pending' => 'Pedido de cartão em análise',
+    'notif_approved' => 'O seu cartão Visa está pronto',
+    'notif_approved_body' => 'O seu pedido foi aceite. Encontre o seu cartão na secção Cartões.',
+    'notif_rejected' => 'Pedido de cartão recusado',
+    'notif_rejected_body' => 'O seu pedido de cartão não foi aceite. Contacte o seu gestor para mais informações.',
+    'contact' => 'Contactar o meu gestor',
+];

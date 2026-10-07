@@ -36,4 +36,5 @@ return [
     'subscribe'        => 'Pretplatite se',
     'read_more'        => 'Saznajte više',
     'footer_desc'      => site_name() . ' je 100% online banka: otvorite račun, dobijte svoju karticu i IBAN u nekoliko minuta, te iskoristite i naša rješenja financiranja diljem Europe.',
+    'addresses' => 'Adrese',
 ];

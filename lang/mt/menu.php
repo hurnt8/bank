@@ -32,4 +32,10 @@ return [
     'subscribe'        => 'Abbona',
     'read_more'        => 'Tgħallem aktar',
     'footer_desc'      => site_name() . " huwa l-imsieħeb fdat tiegħek għal soluzzjonijiet ta' finanzjament rapidi, flessibbli u personalizzati madwar l-Ewropa.",
+    'open_account' => 'Iftaħ kont',
+    'banking_account' => 'Kont bankarju',
+    'banking_card' => 'Karta bankarja',
+    'banking_transfer' => 'Trasferimenti',
+    'banking_loans' => 'Self u finanzjament',
+    'addresses' => 'Indirizzi',
 ];

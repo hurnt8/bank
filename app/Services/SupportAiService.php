@@ -70,6 +70,7 @@ class SupportAiService
         'bg' => 'bulgare',  'hu' => 'hongrois',    'it' => 'italien',  'de' => 'allemand',
         'lt' => 'lituanien','ro' => 'roumain',     'lv' => 'letton',   'nl' => 'néerlandais',
         'pt' => 'portugais','hr' => 'croate',
+        'sk' => 'slovaque', 'sl' => 'slovène', 'mt' => 'maltais',
     ];
 
     private function buildSystemPrompt(User $client): string

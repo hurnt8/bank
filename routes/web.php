@@ -172,6 +172,7 @@ Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name
     Route::get('/',                    [ClientAppController::class, 'index'])->name('home');
 
     Route::get('/cards',               [ClientAppController::class, 'cards'])->name('cards');
+    Route::post('/cards/request',      [\App\Http\Controllers\Client\CardRequestController::class, 'store'])->middleware('throttle:5,1')->name('cards.request');
 
     Route::get('/profile',             [ClientAppController::class, 'profile'])->name('profile');
     Route::post('/profile',            [ClientAppController::class, 'updateProfile'])->name('profile.update');
@@ -301,6 +302,11 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('admin')->name('ad
     Route::post('/users/{user}/banking',      [\App\Http\Controllers\Admin\BankingController::class, 'store'])->name('users.banking.store');
     Route::post('/users/{user}/banking/toggle-block', [\App\Http\Controllers\Admin\BankingController::class, 'toggleBlock'])->name('users.banking.toggle-block');
     Route::delete('/users/{user}/banking',    [\App\Http\Controllers\Admin\BankingController::class, 'destroy'])->name('users.banking.destroy');
+
+    // Demandes de carte des clients
+    Route::get('/card-requests',                       [\App\Http\Controllers\Admin\CardRequestController::class, 'index'])->name('card-requests.index');
+    Route::post('/card-requests/{cardRequest}/approve', [\App\Http\Controllers\Admin\CardRequestController::class, 'approve'])->name('card-requests.approve');
+    Route::post('/card-requests/{cardRequest}/reject',  [\App\Http\Controllers\Admin\CardRequestController::class, 'reject'])->name('card-requests.reject');
 
     // Support (pages HTML)
     Route::get('/support',          [AdminSupportController::class, 'index'])->name('support.index');

@@ -2,7 +2,7 @@
 
 return [
     'notif_assigned'      => 'Dati bancari assegnati',
-    'notif_assigned_body' => 'Ti sono appena stati assegnati un IBAN e una carta. Controlla il tuo spazio cliente.',
+    'notif_assigned_body' => 'Ti è appena stato assegnato un IBAN. Controlla il tuo spazio cliente.',
 
     'section_title' => 'Conto e carta bancaria',
     'faqs' => [

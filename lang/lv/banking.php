@@ -2,7 +2,7 @@
 
 return [
     'notif_assigned'      => 'Piešķirti bankas dati',
-    'notif_assigned_body' => 'Jums tikko tika piešķirts IBAN un karte. Pārbaudiet savu klienta zonu.',
+    'notif_assigned_body' => 'Jums tikko tika piešķirts IBAN. Pārbaudiet savu klienta zonu.',
 
     'section_title' => 'Konts un bankas karte',
     'faqs' => [
