@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Verificarea identității dumneavoastră a fost aprobată.',
     'notif_rejected'      => 'Verificare respinsă',
     'notif_rejected_body' => 'Verificarea identității dumneavoastră a fost respinsă. Motiv: :reason',
+    'submitted_info' => 'Informațiile dvs. au fost transmise. Vă vom anunța imediat ce verificarea este procesată.',
+    'pending_sub_docs' => 'Documentele dvs. sunt în curs de analiză.',
+    'pending_sub_info' => 'Informațiile dvs. sunt în curs de analiză.',
+    'step_saved_docs' => 'Documentele dvs. au fost salvate. Treceți la pasul următor.',
+    'confirm_submit_info' => 'Transmiteți informațiile pentru verificare?',
+    'already_pending' => 'Verificarea dvs. este deja în curs de procesare.',
+    'already_approved' => 'Identitatea dvs. este deja verificată.',
+    'combined_sub' => 'Completați informațiile și încărcați documentele solicitate.',
 ];

@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Jūsu identitātes pārbaude ir apstiprināta.',
     'notif_rejected'      => 'Pārbaude noraidīta',
     'notif_rejected_body' => 'Jūsu identitātes pārbaude tika noraidīta. Iemesls: :reason',
+    'submitted_info' => 'Jūsu informācija ir iesniegta. Mēs jūs informēsim, tiklīdz pārbaude tiks apstrādāta.',
+    'pending_sub_docs' => 'Jūsu dokumenti tiek pārbaudīti.',
+    'pending_sub_info' => 'Jūsu informācija tiek pārbaudīta.',
+    'step_saved_docs' => 'Jūsu dokumenti ir saglabāti. Dodieties uz nākamo soli.',
+    'confirm_submit_info' => 'Iesniegt informāciju pārbaudei?',
+    'already_pending' => 'Jūsu pārbaude jau tiek apstrādāta.',
+    'already_approved' => 'Jūsu identitāte jau ir apstiprināta.',
+    'combined_sub' => 'Aizpildiet savu informāciju un augšupielādējiet pieprasītos dokumentus.',
 ];

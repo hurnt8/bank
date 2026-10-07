@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'La tua verifica dell\'identità è stata approvata.',
     'notif_rejected'      => 'Verifica rifiutata',
     'notif_rejected_body' => 'La tua verifica dell\'identità è stata rifiutata. Motivo: :reason',
+    'submitted_info' => 'Le tue informazioni sono state inviate. Ti avviseremo non appena la verifica sarà elaborata.',
+    'pending_sub_docs' => 'I tuoi documenti sono in fase di revisione.',
+    'pending_sub_info' => 'Le tue informazioni sono in fase di revisione.',
+    'step_saved_docs' => 'I tuoi documenti sono stati salvati. Passa al passaggio successivo.',
+    'confirm_submit_info' => 'Inviare le tue informazioni per la verifica?',
+    'already_pending' => 'La tua verifica è già in corso.',
+    'already_approved' => 'La tua identità è già verificata.',
+    'combined_sub' => 'Inserisci le tue informazioni e carica i documenti richiesti.',
 ];

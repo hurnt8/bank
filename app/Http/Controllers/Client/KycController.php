@@ -45,8 +45,8 @@ class KycController extends Controller
         $step  = (int) $request->input('step', 1);
         abort_unless(isset($steps[$step]), 404);
 
-        abort_if($user->kycVerification?->status === KycVerification::STATUS_EN_ATTENTE, 422, 'Votre vérification est déjà en cours de traitement.');
-        abort_if($user->kycVerification?->status === KycVerification::STATUS_APPROUVE, 422, 'Votre identité est déjà vérifiée.');
+        abort_if($user->kycVerification?->status === KycVerification::STATUS_EN_ATTENTE, 422, __('kyc.already_pending'));
+        abort_if($user->kycVerification?->status === KycVerification::STATUS_APPROUVE, 422, __('kyc.already_approved'));
 
         $fields = $steps[$step];
         $request->validate(KycForm::rules($fields, $user), [], KycForm::attributes($fields));
@@ -56,7 +56,10 @@ class KycController extends Controller
         });
 
         if ($step < $total) {
-            return redirect()->route('client.app.kyc.show', ['step' => $step + 1])->with('success', __('onboarding.step1_saved'));
+            $savedFiles = $fields->contains(fn ($f) => $f->isFile());
+
+            return redirect()->route('client.app.kyc.show', ['step' => $step + 1])
+                ->with('success', __($savedFiles ? 'kyc.step_saved_docs' : 'onboarding.step1_saved'));
         }
 
         // Dernière étape : tout doit être complet avant de transmettre
@@ -77,6 +80,6 @@ class KycController extends Controller
             'rejection_reason' => null,
         ]);
 
-        return redirect()->route('client.app.kyc.show')->with('success', __('kyc.submitted_success'));
+        return redirect()->route('client.app.kyc.show')->with('success', __(KycForm::hasFiles() ? 'kyc.submitted_success' : 'kyc.submitted_info'));
     }
 }

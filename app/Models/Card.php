@@ -16,7 +16,7 @@ class Card extends Model
     const LIMIT_MAX = 5000;
     const LIMIT_STEP = 100;
 
-    protected $fillable = ['user_id', 'assigned_by', 'holder_name', 'last_four', 'network', 'expires_at', 'status', 'spending_limit'];
+    protected $fillable = ['user_id', 'assigned_by', 'holder_name', 'last_four', 'network', 'card_type', 'expires_at', 'status', 'spending_limit'];
 
     protected $casts = [
         'expires_at' => 'date',

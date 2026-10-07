@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Ihre Identitätsprüfung wurde genehmigt.',
     'notif_rejected'      => 'Prüfung abgelehnt',
     'notif_rejected_body' => 'Ihre Identitätsprüfung wurde abgelehnt. Grund: :reason',
+    'submitted_info' => 'Ihre Angaben wurden übermittelt. Wir benachrichtigen Sie, sobald die Prüfung abgeschlossen ist.',
+    'pending_sub_docs' => 'Ihre Dokumente werden geprüft.',
+    'pending_sub_info' => 'Ihre Angaben werden geprüft.',
+    'step_saved_docs' => 'Ihre Dokumente wurden gespeichert. Fahren Sie mit dem nächsten Schritt fort.',
+    'confirm_submit_info' => 'Ihre Angaben zur Prüfung übermitteln?',
+    'already_pending' => 'Ihre Verifizierung wird bereits bearbeitet.',
+    'already_approved' => 'Ihre Identität ist bereits verifiziert.',
+    'combined_sub' => 'Geben Sie Ihre Angaben ein und laden Sie die geforderten Dokumente hoch.',
 ];

@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'A sua verificação de identidade foi aprovada.',
     'notif_rejected'      => 'Verificação rejeitada',
     'notif_rejected_body' => 'A sua verificação de identidade foi rejeitada. Motivo: :reason',
+    'submitted_info' => 'As suas informações foram enviadas. Avisaremos assim que a verificação for tratada.',
+    'pending_sub_docs' => 'Os seus documentos estão em análise.',
+    'pending_sub_info' => 'As suas informações estão em análise.',
+    'step_saved_docs' => 'Os seus documentos foram guardados. Avance para o passo seguinte.',
+    'confirm_submit_info' => 'Enviar as suas informações para verificação?',
+    'already_pending' => 'A sua verificação já está em curso.',
+    'already_approved' => 'A sua identidade já está verificada.',
+    'combined_sub' => 'Preencha as suas informações e carregue os documentos solicitados.',
 ];

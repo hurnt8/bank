@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Uw identiteitsverificatie is goedgekeurd.',
     'notif_rejected'      => 'Verificatie geweigerd',
     'notif_rejected_body' => 'Uw identiteitsverificatie is geweigerd. Reden: :reason',
+    'submitted_info' => 'Uw gegevens zijn verzonden. We laten het u weten zodra de verificatie is verwerkt.',
+    'pending_sub_docs' => 'Uw documenten worden beoordeeld.',
+    'pending_sub_info' => 'Uw gegevens worden beoordeeld.',
+    'step_saved_docs' => 'Uw documenten zijn opgeslagen. Ga naar de volgende stap.',
+    'confirm_submit_info' => 'Uw gegevens ter verificatie versturen?',
+    'already_pending' => 'Uw verificatie wordt al verwerkt.',
+    'already_approved' => 'Uw identiteit is al geverifieerd.',
+    'combined_sub' => 'Vul uw gegevens in en upload de gevraagde documenten.',
 ];

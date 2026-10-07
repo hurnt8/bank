@@ -54,6 +54,12 @@ class KycForm
         return array_combine(range(1, count($groups)), $groups);
     }
 
+    /** La vérification demande-t-elle des pièces à envoyer (champs fichier actifs) ? Sinon, ce sont de simples informations. */
+    public static function hasFiles(): bool
+    {
+        return self::fields()->contains(fn ($f) => $f->isFile());
+    }
+
     // ── Lecture ──
 
     public static function filePath(User $user, KycField $field): ?string

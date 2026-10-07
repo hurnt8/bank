@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Votre vérification d\'identité a été approuvée.',
     'notif_rejected'      => 'Vérification rejetée',
     'notif_rejected_body' => 'Votre vérification d\'identité a été rejetée. Motif : :reason',
+    'submitted_info' => 'Vos informations ont été transmises. Nous vous notifierons dès que la vérification sera traitée.',
+    'pending_sub_docs' => 'Vos documents sont en cours d\'examen.',
+    'pending_sub_info' => 'Vos informations sont en cours d\'examen.',
+    'step_saved_docs' => 'Vos documents ont été enregistrés. Passez à l\'étape suivante.',
+    'confirm_submit_info' => 'Transmettre vos informations pour vérification ?',
+    'already_pending' => 'Votre vérification est déjà en cours de traitement.',
+    'already_approved' => 'Votre identité est déjà vérifiée.',
+    'combined_sub' => 'Renseignez vos informations et téléversez les justificatifs demandés.',
 ];

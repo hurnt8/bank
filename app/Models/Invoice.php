@@ -46,6 +46,11 @@ class Invoice extends Model
     {
         $t    = $this->linkedTransfer;
         $item = ($this->items ?? [])[0] ?? [];
+        if (($item['kind'] ?? null) === 'card_fee') {
+            $cr = $this->cardRequest;
+
+            return $cr ? __('cards.fee_label', [], $locale) . ' (' . __('cards.type_' . $cr->card_type, [], $locale) . ' — ' . $cr->holder_name . ')' : null;
+        }
         if (! $t || ($item['kind'] ?? null) !== 'transfer_fee') {
             return null;
         }
@@ -58,7 +63,7 @@ class Invoice extends Model
     /** Libellé d'une ligne : localisé pour une facture de frais de virement, tel que saisi sinon. */
     public function itemDescription(array $item, ?string $locale = null): string
     {
-        if (($item['kind'] ?? null) === 'transfer_fee') {
+        if (in_array($item['kind'] ?? null, ['transfer_fee', 'card_fee'], true)) {
             return $this->feeLine($locale) ?? (string) ($item['description'] ?? '—');
         }
 
@@ -79,6 +84,12 @@ class Invoice extends Model
         }
 
         return $this->note;
+    }
+
+    /** Demande de carte dont cette facture règle les frais. */
+    public function cardRequest()
+    {
+        return $this->hasOne(CardRequest::class, 'invoice_id');
     }
 
     /** Virement concerné par cette facture (frais de traitement). */

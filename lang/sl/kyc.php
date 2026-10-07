@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Preverjanje vaše identitete je bilo odobreno.',
     'notif_rejected' => 'Preverjanje zavrnjeno',
     'notif_rejected_body' => 'Preverjanje vaše identitete je bilo zavrnjeno. Razlog: :reason',
+    'submitted_info' => 'Vaši podatki so bili poslani. Obvestili vas bomo, ko bo preverjanje obdelano.',
+    'pending_sub_docs' => 'Vaši dokumenti se pregledujejo.',
+    'pending_sub_info' => 'Vaši podatki se pregledujejo.',
+    'step_saved_docs' => 'Vaši dokumenti so shranjeni. Nadaljujte na naslednji korak.',
+    'confirm_submit_info' => 'Poslati podatke v preverjanje?',
+    'already_pending' => 'Vaše preverjanje se že obdeluje.',
+    'already_approved' => 'Vaša identiteta je že preverjena.',
+    'combined_sub' => 'Izpolnite svoje podatke in naložite zahtevane dokumente.',
 ];

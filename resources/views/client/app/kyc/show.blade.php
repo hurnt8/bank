@@ -114,6 +114,7 @@
   $status = $kyc->status ?? $K::STATUS_NON_SOUMIS;
   $locked = in_array($status, [$K::STATUS_EN_ATTENTE, $K::STATUS_APPROUVE]);
   $isLast = $step === $total;
+  $hasFiles = \App\Services\KycForm::hasFiles();
 
   // Intitulé d'une étape selon son contenu : informations, pièces justificatives ou les deux
   $meta = function ($stepFields) {
@@ -121,7 +122,7 @@
       $hasInfo = $stepFields->contains(fn ($f) => ! $f->isFile());
       if ($hasInfo && ! $hasFile) return ['onboarding.step1_label', 'onboarding.step1_title', 'onboarding.step1_sub'];
       if ($hasFile && ! $hasInfo) return ['onboarding.step2_label', 'onboarding.step2_title', 'onboarding.step2_sub'];
-      return ['kyc.title', 'kyc.title', 'onboarding.step1_sub'];
+      return ['kyc.title', 'kyc.title', 'kyc.combined_sub'];
   };
 @endphp
 
@@ -153,6 +154,9 @@
   </div>
   <div>
     <div class="kyc-status__title">{{ __('kyc.status_' . $status) }}</div>
+    @if($status === $K::STATUS_EN_ATTENTE)
+      <div class="kyc-status__sub">{{ __($hasFiles ? 'kyc.pending_sub_docs' : 'kyc.pending_sub_info') }}</div>
+    @endif
     @if($status === $K::STATUS_REJETE && $kyc->rejection_reason)
       <div class="kyc-status__sub">{{ __('kyc.rejection_reason_label') }} : {{ $kyc->rejection_reason }}</div>
     @endif
@@ -189,7 +193,7 @@
 <div class="alert alert-danger" style="margin-bottom:1rem">{{ $errors->first() }}</div>
 @endif
 
-<form data-confirm="{{ $isLast ? __('onboarding.confirm_submit') : __('onboarding.confirm_info') }}" method="POST" action="{{ route('client.app.kyc.store') }}" enctype="multipart/form-data" novalidate>
+<form data-confirm="{{ $isLast ? __($hasFiles ? 'onboarding.confirm_submit' : 'kyc.confirm_submit_info') : __('onboarding.confirm_info') }}" method="POST" action="{{ route('client.app.kyc.store') }}" enctype="multipart/form-data" novalidate>
   @csrf
   <input type="hidden" name="step" value="{{ $step }}">
 

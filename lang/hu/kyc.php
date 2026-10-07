@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Személyazonosság-ellenőrzését jóváhagytuk.',
     'notif_rejected'      => 'Ellenőrzés elutasítva',
     'notif_rejected_body' => 'Személyazonosság-ellenőrzését elutasítottuk. Indok: :reason',
+    'submitted_info' => 'Adatait elküldtük. Értesítjük, amint az ellenőrzés megtörtént.',
+    'pending_sub_docs' => 'Dokumentumait most vizsgáljuk.',
+    'pending_sub_info' => 'Adatait most vizsgáljuk.',
+    'step_saved_docs' => 'Dokumentumait mentettük. Folytassa a következő lépéssel.',
+    'confirm_submit_info' => 'Elküldi adatait ellenőrzésre?',
+    'already_pending' => 'Ellenőrzése már folyamatban van.',
+    'already_approved' => 'Személyazonossága már ellenőrizve van.',
+    'combined_sub' => 'Adja meg adatait, és töltse fel a kért dokumentumokat.',
 ];

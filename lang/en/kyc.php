@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Your identity verification has been approved.',
     'notif_rejected'      => 'Verification rejected',
     'notif_rejected_body' => 'Your identity verification was rejected. Reason: :reason',
+    'submitted_info' => 'Your information has been submitted. We will notify you as soon as the verification is processed.',
+    'pending_sub_docs' => 'Your documents are being reviewed.',
+    'pending_sub_info' => 'Your information is being reviewed.',
+    'step_saved_docs' => 'Your documents have been saved. Continue to the next step.',
+    'confirm_submit_info' => 'Submit your information for verification?',
+    'already_pending' => 'Your verification is already being processed.',
+    'already_approved' => 'Your identity is already verified.',
+    'combined_sub' => 'Fill in your information and upload the requested documents.',
 ];

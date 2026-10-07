@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Overenie vašej totožnosti bolo schválené.',
     'notif_rejected' => 'Overenie zamietnuté',
     'notif_rejected_body' => 'Overenie vašej totožnosti bolo zamietnuté. Dôvod: :reason',
+    'submitted_info' => 'Vaše údaje boli odoslané. Upozorníme vás, hneď ako bude overenie spracované.',
+    'pending_sub_docs' => 'Vaše dokumenty sa posudzujú.',
+    'pending_sub_info' => 'Vaše údaje sa posudzujú.',
+    'step_saved_docs' => 'Vaše dokumenty boli uložené. Pokračujte ďalším krokom.',
+    'confirm_submit_info' => 'Odoslať údaje na overenie?',
+    'already_pending' => 'Vaše overenie sa už spracúva.',
+    'already_approved' => 'Vaša identita je už overená.',
+    'combined_sub' => 'Vyplňte svoje údaje a nahrajte požadované dokumenty.',
 ];

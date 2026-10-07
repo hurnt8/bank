@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Vaša provjera identiteta je odobrena.',
     'notif_rejected'      => 'Provjera odbijena',
     'notif_rejected_body' => 'Vaša provjera identiteta je odbijena. Razlog: :reason',
+    'submitted_info' => 'Vaši podaci su poslani. Obavijestit ćemo vas čim provjera bude obrađena.',
+    'pending_sub_docs' => 'Vaši dokumenti se pregledavaju.',
+    'pending_sub_info' => 'Vaši podaci se pregledavaju.',
+    'step_saved_docs' => 'Vaši dokumenti su spremljeni. Nastavite na sljedeći korak.',
+    'confirm_submit_info' => 'Poslati podatke na provjeru?',
+    'already_pending' => 'Vaša provjera se već obrađuje.',
+    'already_approved' => 'Vaš identitet je već potvrđen.',
+    'combined_sub' => 'Unesite svoje podatke i učitajte tražene dokumente.',
 ];

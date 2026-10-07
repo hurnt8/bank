@@ -44,11 +44,12 @@ class BankingProvisioner
     }
 
     /** Émet la carte Visa d'un client (demande validée par un administrateur). Sans effet s'il en a déjà une. */
-    public function issueCard(User $client, ?int $assignedBy = null): Card
+    public function issueCard(User $client, ?int $assignedBy = null, string $type = 'virtual', ?string $holder = null): Card
     {
         return $client->card()->first() ?? $client->card()->create([
             'assigned_by' => $assignedBy,
-            'holder_name' => $this->holderName($client),
+            'holder_name' => $holder ? mb_substr(strtoupper(Str::ascii($holder)), 0, 26) : $this->holderName($client),
+            'card_type'   => $type,
             'last_four'   => str_pad((string) random_int(0, 9999), 4, '0', STR_PAD_LEFT),
             'network'     => 'visa',
             'expires_at'  => now()->addYears(4)->endOfMonth()->toDateString(),

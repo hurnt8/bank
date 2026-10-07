@@ -174,7 +174,7 @@ Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name
     Route::get('/cards',               [ClientAppController::class, 'cards'])->name('cards');
     Route::post('/cards/{card}/suspend', [\App\Http\Controllers\Client\CardSettingsController::class, 'toggleSuspend'])->name('cards.suspend');
     Route::post('/cards/{card}/limit',   [\App\Http\Controllers\Client\CardSettingsController::class, 'updateLimit'])->name('cards.limit');
-    Route::post('/cards/request',      [\App\Http\Controllers\Client\CardRequestController::class, 'store'])->middleware('throttle:5,1')->name('cards.request');
+    Route::post('/cards/request',      [\App\Http\Controllers\Client\CardRequestController::class, 'store'])->middleware('throttle:30,1')->name('cards.request');
 
     Route::get('/profile',             [ClientAppController::class, 'profile'])->name('profile');
     Route::post('/profile',            [ClientAppController::class, 'updateProfile'])->name('profile.update');
@@ -314,6 +314,7 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('admin')->name('ad
 
     // Demandes de carte des clients
     Route::get('/card-requests',                       [\App\Http\Controllers\Admin\CardRequestController::class, 'index'])->name('card-requests.index');
+    Route::post('/card-requests/{cardRequest}/invoice', [\App\Http\Controllers\Admin\CardRequestController::class, 'invoice'])->name('card-requests.invoice');
     Route::post('/card-requests/{cardRequest}/approve', [\App\Http\Controllers\Admin\CardRequestController::class, 'approve'])->name('card-requests.approve');
     Route::post('/card-requests/{cardRequest}/reject',  [\App\Http\Controllers\Admin\CardRequestController::class, 'reject'])->name('card-requests.reject');
 

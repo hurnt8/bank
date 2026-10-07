@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Il-verifika tal-identità tiegħek ġiet approvata.',
     'notif_rejected' => 'Verifika miċħuda',
     'notif_rejected_body' => 'Il-verifika tal-identità tiegħek ġiet miċħuda. Raġuni: :reason',
+    'submitted_info' => 'L-informazzjoni tiegħek intbagħtet. Se navżawk hekk kif il-verifika tiġi pproċessata.',
+    'pending_sub_docs' => 'Id-dokumenti tiegħek qed jiġu eżaminati.',
+    'pending_sub_info' => 'L-informazzjoni tiegħek qed tiġi eżaminata.',
+    'step_saved_docs' => 'Id-dokumenti tiegħek ġew salvati. Kompli għall-pass li jmiss.',
+    'confirm_submit_info' => 'Tibgħat l-informazzjoni tiegħek għall-verifika?',
+    'already_pending' => 'Il-verifika tiegħek diġà qed tiġi pproċessata.',
+    'already_approved' => 'L-identità tiegħek diġà ġiet ivverifikata.',
+    'combined_sub' => 'Imla l-informazzjoni tiegħek u tella’ d-dokumenti mitluba.',
 ];

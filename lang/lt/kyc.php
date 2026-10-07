@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Jūsų tapatybės patvirtinimas buvo patvirtintas.',
     'notif_rejected'      => 'Patvirtinimas atmestas',
     'notif_rejected_body' => 'Jūsų tapatybės patvirtinimas buvo atmestas. Priežastis: :reason',
+    'submitted_info' => 'Jūsų duomenys pateikti. Pranešime, kai patikra bus apdorota.',
+    'pending_sub_docs' => 'Jūsų dokumentai peržiūrimi.',
+    'pending_sub_info' => 'Jūsų duomenys peržiūrimi.',
+    'step_saved_docs' => 'Jūsų dokumentai išsaugoti. Pereikite prie kito žingsnio.',
+    'confirm_submit_info' => 'Pateikti duomenis patikrai?',
+    'already_pending' => 'Jūsų patikra jau vykdoma.',
+    'already_approved' => 'Jūsų tapatybė jau patvirtinta.',
+    'combined_sub' => 'Užpildykite savo duomenis ir įkelkite prašomus dokumentus.',
 ];

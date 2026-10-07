@@ -23,4 +23,12 @@ return [
     'notif_approved_body' => 'Twoja weryfikacja tożsamości została zatwierdzona.',
     'notif_rejected'      => 'Weryfikacja odrzucona',
     'notif_rejected_body' => 'Twoja weryfikacja tożsamości została odrzucona. Powód: :reason',
+    'submitted_info' => 'Twoje dane zostały przesłane. Powiadomimy Cię, gdy weryfikacja zostanie zakończona.',
+    'pending_sub_docs' => 'Twoje dokumenty są sprawdzane.',
+    'pending_sub_info' => 'Twoje dane są sprawdzane.',
+    'step_saved_docs' => 'Twoje dokumenty zostały zapisane. Przejdź do następnego kroku.',
+    'confirm_submit_info' => 'Przesłać dane do weryfikacji?',
+    'already_pending' => 'Twoja weryfikacja jest już w toku.',
+    'already_approved' => 'Twoja tożsamość została już zweryfikowana.',
+    'combined_sub' => 'Uzupełnij swoje dane i prześlij wymagane dokumenty.',
 ];

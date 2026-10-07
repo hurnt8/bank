@@ -78,7 +78,9 @@ class AppController extends Controller
         $user  = Auth::user();
         $cards = Card::where('user_id', $user->id)->latest()->get();
 
-        $pendingRequest = \App\Models\CardRequest::where('user_id', $user->id)->where('status', \App\Models\CardRequest::STATUS_PENDING)->exists();
+        $pendingRequest = \App\Models\CardRequest::with('invoice')->where('user_id', $user->id)
+            ->whereIn('status', [\App\Models\CardRequest::STATUS_PENDING, \App\Models\CardRequest::STATUS_AWAITING_PAYMENT])
+            ->latest()->first();
 
         return view('client.app.cards', compact('user', 'cards', 'pendingRequest'));
     }
