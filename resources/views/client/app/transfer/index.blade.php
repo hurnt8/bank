@@ -1,196 +1,239 @@
 @extends('layouts.client-app')
 @section('title', __('app.nav_transfer') . ' — ' . site_name())
 @section('page_title', __('app.nav_transfer'))
+@section('main_class', 'ca-main--narrow')
 
 @section('content')
 
 @push('styles')
 <style>
-/* ── Balance hero ── */
-.trf-hero{
-  margin:.875rem 1.25rem 0;
-  background:linear-gradient(145deg,#1B527A,#0D2E54);
-  border-radius:20px;
-  padding:1.375rem 1.5rem;
-  position:relative;overflow:hidden;
-  box-shadow:0 12px 32px rgba(0,0,0,.4);
-}
-.trf-hero::before{
-  content:'';position:absolute;top:-60px;right:-60px;
-  width:200px;height:200px;border-radius:50%;
-  background:radial-gradient(circle,rgba(27,138,122,.18) 0%,transparent 70%);
-  pointer-events:none;
-}
-.trf-hero__lbl{font-size:.63rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:.3rem}
-.trf-hero__bal{font-family:'Outfit',sans-serif;font-size:2rem;font-weight:900;color:#fff;line-height:1}
-.trf-hero__cur{font-size:.875rem;font-weight:600;color:rgba(255,255,255,.5);margin-left:.3rem}
-.trf-hero__sub{font-size:.72rem;color:rgba(255,255,255,.35);margin-top:.35rem}
+[x-cloak]{display:none !important}
+.tx{padding:1rem 1.25rem 0;display:flex;flex-direction:column;gap:1rem}
 
-/* ── Action grid ── */
-.trf-actions{display:grid;grid-template-columns:1fr 1fr;gap:.875rem;padding:1rem 1.25rem 0}
-.trf-action{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.625rem;
-  padding:1.375rem 1rem;border-radius:18px;text-decoration:none;transition:.18s;
-}
-.trf-action:active{transform:scale(.97)}
-.trf-action--send{background:rgba(27,138,122,.15);border:1px solid rgba(27,138,122,.28)}
-.trf-action--recv{background:rgba(220,190,135,.12);border:1px solid rgba(220,190,135,.22)}
-.trf-action__ico{
-  width:54px;height:54px;border-radius:16px;
-  display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:#fff;
-}
-.trf-action--send .trf-action__ico{background:linear-gradient(145deg,#F5EDDD,#DCBE87);box-shadow:0 4px 14px rgba(220,190,135,.4)}
-.trf-action--recv .trf-action__ico{background:linear-gradient(145deg,#F5EDDD,#DCBE87);box-shadow:0 4px 14px rgba(220,190,135,.35)}
-.trf-action__name{font-size:.875rem;font-weight:700;color:var(--ca-text)}
-.trf-action__desc{font-size:.7rem;color:var(--ca-text-3);text-align:center;line-height:1.4}
+/* Solde */
+.tx-hero{background:linear-gradient(145deg,#1B527A,#0D2E54);border-radius:20px;padding:1.4rem 1.5rem;position:relative;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.tx-hero::before{content:'';position:absolute;top:-70px;right:-70px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,rgba(27,138,122,.22),transparent 70%)}
+.tx-hero__lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5)}
+.tx-hero__bal{font-family:'Outfit',sans-serif;font-size:2.1rem;font-weight:900;color:#fff;line-height:1.1;margin-top:.35rem}
+.tx-hero__cur{font-size:.9rem;font-weight:600;color:rgba(255,255,255,.55);margin-left:.3rem}
+.tx-hero__sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.35rem}
 
-/* ── Section header ── */
-.trf-section{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.25rem .625rem}
-.trf-section__title{font-size:.85rem;font-weight:700;color:var(--ca-text)}
-.trf-section__link{font-size:.75rem;font-weight:600;color:var(--ca-accent-l);display:inline-flex;align-items:center;gap:.3rem}
+/* Actions */
+.tx-actions{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.tx-act{display:flex;align-items:center;gap:.75rem;padding:.9rem 1rem;border-radius:16px;background:var(--ca-bg3);border:1px solid var(--ca-border);text-decoration:none;color:var(--ca-text);font-family:inherit;cursor:pointer;text-align:left;transition:.18s}
+.tx-act:active{transform:scale(.98)}
+.tx-act:hover{background:var(--ca-bg4)}
+.tx-act[disabled]{opacity:.45;cursor:not-allowed}
+.tx-act__ico{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;background:linear-gradient(145deg,#F5EDDD,#DCBE87);box-shadow:0 4px 12px rgba(220,190,135,.3)}
+.tx-act__name{font-size:.875rem;font-weight:700}
+.tx-act__desc{font-size:.68rem;color:var(--ca-text-3);margin-top:.1rem;line-height:1.35}
 
-/* ── Transfer list ── */
-.trf-list{padding:0 1.25rem;display:flex;flex-direction:column;gap:.5rem}
-.trf-item{
-  display:flex;align-items:center;gap:.875rem;
-  background:var(--ca-bg2);border:1px solid var(--ca-border);
-  border-radius:14px;padding:.875rem 1rem;
-}
-.trf-item__ico{
-  width:42px;height:42px;border-radius:50%;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:.9rem;
-}
-.trf-item__ico--send   {background:rgba(255,90,90,.12);color:var(--ca-negative)}
-.trf-item__ico--pending{background:rgba(245,158,11,.12);color:#f59e0b}
-.trf-item__ico--fee    {background:rgba(96,165,250,.12);color:#60a5fa}
-.trf-item__ico--done   {background:rgba(74,222,128,.12);color:var(--ca-positive)}
-.trf-item__ico--rej    {background:rgba(148,163,184,.12);color:#94a3b8}
+.tx-alert{padding:.8rem 1rem;border-radius:14px;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.25);font-size:.76rem;color:#f87171;line-height:1.5;display:flex;gap:.6rem}
 
-.trf-item__body{flex:1;min-width:0}
-.trf-item__name{font-size:.875rem;font-weight:600;color:var(--ca-text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.trf-item__ref{font-size:.7rem;color:var(--ca-text-3);font-family:monospace;margin-top:.1rem}
-.trf-item__right{text-align:right;flex-shrink:0}
-.trf-item__amt{font-family:'Outfit',sans-serif;font-size:.9375rem;font-weight:800}
-.trf-item__amt--neg{color:var(--ca-negative)}
-.trf-item__amt--pos{color:var(--ca-positive)}
-.trf-item__amt--muted{color:var(--ca-text-3)}
-.trf-item__date{font-size:.67rem;color:var(--ca-text-3);margin-top:.15rem}
+/* En-tête de liste + filtres */
+.tx-head{display:flex;align-items:center;justify-content:space-between}
+.tx-head__title{font-size:.9rem;font-weight:700;color:var(--ca-text)}
+.tx-head__link{font-size:.75rem;font-weight:600;color:var(--ca-accent-l);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem}
+.tx-chips{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.15rem;scrollbar-width:none}
+.tx-chips::-webkit-scrollbar{display:none}
+.tx-chip{flex-shrink:0;padding:.4rem .85rem;border-radius:999px;border:1px solid var(--ca-border);background:transparent;color:var(--ca-text-2);font-size:.73rem;font-weight:600;font-family:inherit;cursor:pointer;transition:.15s}
+.tx-chip.is-on{background:var(--ca-accent);border-color:var(--ca-accent-l);color:#fff}
 
-.trf-item__body .ca-badge{margin-top:.2rem;text-transform:uppercase}
+/* Liste */
+.tx-list{background:var(--ca-bg3);border:1px solid var(--ca-border);border-radius:18px;overflow:hidden}
+.tx-row{display:flex;align-items:center;gap:.875rem;padding:.9rem 1.1rem;width:100%;background:none;border:0;border-bottom:1px solid var(--ca-border-2);color:inherit;font-family:inherit;text-align:left;cursor:pointer;transition:.15s}
+.tx-row:last-child{border-bottom:0}
+.tx-row:hover{background:var(--ca-bg4)}
+.tx-ico{width:42px;height:42px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.tx-ico--pending{background:rgba(245,158,11,.12);color:#f59e0b}
+.tx-ico--fee{background:rgba(96,165,250,.12);color:#60a5fa}
+.tx-ico--done{background:rgba(74,222,128,.12);color:var(--ca-positive)}
+.tx-ico--rej{background:rgba(148,163,184,.12);color:#94a3b8}
+.tx-row__body{flex:1;min-width:0}
+.tx-row__name{font-size:.875rem;font-weight:600;color:var(--ca-text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tx-row__sub{font-size:.7rem;color:var(--ca-text-3);margin-top:.15rem}
+.tx-row__right{text-align:right;flex-shrink:0}
+.tx-row__amt{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:800;color:var(--ca-negative)}
+.tx-row__amt.is-rej{color:var(--ca-text-3);text-decoration:line-through}
+.tx-row__st{font-size:.65rem;margin-top:.2rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.tx-st--pending{color:#f59e0b}.tx-st--fee{color:#60a5fa}.tx-st--done{color:var(--ca-positive)}.tx-st--rej{color:#94a3b8}
+.tx-none{padding:2rem 1rem;text-align:center;color:var(--ca-text-3);font-size:.82rem}
+.tx-none i{display:block;font-size:2rem;opacity:.25;margin-bottom:.6rem}
 
-/* ── Empty ── */
-.trf-empty{text-align:center;padding:2.5rem 1rem}
-.trf-empty__ico{font-size:2.25rem;opacity:.25;margin-bottom:.75rem}
-.trf-empty__title{font-size:.875rem;font-weight:600;color:var(--ca-text-2)}
+/* Modales */
+.tx-modal{position:fixed;inset:0;z-index:900;display:flex;align-items:flex-end;justify-content:center;padding:1rem}
+.tx-modal__bg{position:absolute;inset:0;background:rgba(2,10,20,.66);backdrop-filter:blur(3px)}
+.tx-modal__box{position:relative;width:100%;max-width:420px;background:var(--ca-bg2);color:var(--ca-text);border:1px solid var(--ca-border);border-radius:22px;padding:1.4rem 1.4rem 1.25rem;box-shadow:0 24px 60px rgba(0,0,0,.5);max-height:88vh;overflow-y:auto}
+@media (min-width:768px){.tx-modal{align-items:center}}
+.tx-modal__x{position:absolute;top:.8rem;right:.8rem;width:32px;height:32px;border-radius:50%;border:0;background:var(--ca-bg4);color:var(--ca-text-2);cursor:pointer}
+.tx-modal__title{font-size:1rem;font-weight:800;margin-bottom:1rem;padding-right:2rem}
+.tx-big{text-align:center;padding:.4rem 0 1rem}
+.tx-big__amt{font-family:'Outfit',sans-serif;font-size:1.9rem;font-weight:900}
+.tx-big__who{font-size:.85rem;color:var(--ca-text-2);margin-top:.2rem}
+.tx-kv{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-top:1px solid var(--ca-border-2);font-size:.8rem}
+.tx-kv__k{color:var(--ca-text-3);flex-shrink:0}
+.tx-kv__v{color:var(--ca-text);font-weight:600;text-align:right;word-break:break-all}
+.tx-kv__v--mono{font-family:monospace;font-size:.78rem}
+.tx-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;margin-top:1rem;padding:.85rem;border-radius:14px;border:0;font-family:inherit;font-size:.85rem;font-weight:700;cursor:pointer;text-decoration:none;background:linear-gradient(145deg,#F5EDDD,#DCBE87);color:#1a2b3c}
+.tx-btn--ghost{background:var(--ca-bg4);color:var(--ca-text);margin-top:.6rem}
 </style>
 @endpush
 
-@php $currency = $user->currency ?? \App\Models\Currency::default(); @endphp
+@php
+  $currency = $user->currency ?? \App\Models\Currency::default();
+  $negative = (float) $user->balance < 0;
+  $iban     = $user->bankAccount?->iban ?: '';
+  $bic      = $user->bankAccount?->bic ?: '—';
+  $shareText = "IBAN : {$iban}\nBIC : {$bic}\nTitulaire : {$user->name}";
 
-{{-- Balance hero ── --}}
-<div class="trf-hero">
-  <div class="trf-hero__lbl">{{ __('app.balance') }}</div>
-  <div>
-    <span class="trf-hero__bal">{{ number_format((float)$user->balance, 2, ',', ' ') }}</span>
-    <span class="trf-hero__cur">{{ $currency }}</span>
+  $kinds = [
+    \App\Models\Transfer::STATUS_PENDING      => ['pending', 'hourglass-half'],
+    \App\Models\Transfer::STATUS_FEE_REQUIRED => ['fee', 'file-invoice'],
+    \App\Models\Transfer::STATUS_COMPLETED    => ['done', 'check'],
+    \App\Models\Transfer::STATUS_REJECTED     => ['rej', 'xmark'],
+  ];
+  $rows = $transfers->map(function ($t) use ($kinds, $currency) {
+    [$k] = $kinds[$t->status] ?? ['pending', 'hourglass-half'];
+    return [
+      'ref'    => $t->reference,
+      'name'   => $t->beneficiary_name ?? '—',
+      'iban'   => trim(chunk_split((string) $t->beneficiary_iban, 4, ' ')),
+      'amount' => number_format((float) $t->amount, 2, ',', ' ') . ' ' . ($t->currency ?: $currency),
+      'date'   => $t->created_at->format('d/m/Y · H:i'),
+      'kind'   => $k,
+      'status' => __('transfer.status_' . $t->status),
+      'url'    => route('client.app.transfer.show', $t->reference),
+    ];
+  })->values();
+@endphp
+
+<div class="tx" x-data="{
+  modal: null, sel: null, filter: 'all', copied: false,
+  rows: @js($rows),
+  open(i){ this.sel = this.rows[i]; this.modal = 'detail'; },
+  copy(t){ navigator.clipboard.writeText(t).then(()=>{ this.copied = true; setTimeout(()=>this.copied=false, 2000); }).catch(()=>{}); },
+  get shown(){ return this.rows.map((r,i)=>({r,i})).filter(x => this.filter === 'all' || x.r.kind === this.filter); }
+}" @keydown.escape.window="modal = null">
+
+  {{-- Solde --}}
+  <div class="tx-hero">
+    <div class="tx-hero__lbl">{{ __('app.balance') }}</div>
+    <div class="tx-hero__bal">{{ number_format((float)$user->balance, 2, ',', ' ') }}<span class="tx-hero__cur">{{ $currency }}</span></div>
+    <div class="tx-hero__sub">{{ __('app.available') }}</div>
   </div>
-  <div class="trf-hero__sub">{{ __('app.available') }}</div>
-</div>
 
-{{-- Alerte solde négatif ── --}}
-@if((float)$user->balance < 0)
-<div style="margin:.875rem 1.25rem 0;padding:.875rem 1rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.25);border-left:3px solid #f87171;border-radius:0 14px 14px 0;display:flex;align-items:flex-start;gap:.625rem">
-  <i class="fas fa-circle-exclamation" style="color:#f87171;margin-top:.1rem;flex-shrink:0"></i>
-  <div>
-    <div style="font-size:.8rem;font-weight:700;color:#f87171;margin-bottom:.2rem">Envoi bloqué — Solde négatif</div>
-    <div style="font-size:.73rem;color:var(--ca-text-3);line-height:1.5">Votre solde est négatif ({{ number_format((float)$user->balance,2,',',' ') }} {{ $user->currency ?? \App\Models\Currency::default() }}). Les virements sont désactivés jusqu'à la régularisation de votre compte.</div>
+  @if($negative)
+  <div class="tx-alert">
+    <i class="fas fa-circle-exclamation" style="margin-top:.15rem"></i>
+    <div>Solde négatif ({{ number_format((float)$user->balance,2,',',' ') }} {{ $currency }}). Les virements sont désactivés jusqu'à la régularisation de votre compte.</div>
   </div>
-</div>
-@endif
+  @endif
+  @if($errors->has('blocked'))
+  <div class="tx-alert"><i class="fas fa-ban" style="margin-top:.15rem"></i><div>{{ $errors->first('blocked') }}</div></div>
+  @endif
 
-@if($errors->has('blocked'))
-<div style="margin:.5rem 1.25rem 0;padding:.75rem 1rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.25);border-radius:12px;font-size:.78rem;color:#f87171">
-  <i class="fas fa-ban"></i> {{ $errors->first('blocked') }}
-</div>
-@endif
+  {{-- Actions --}}
+  <div class="tx-actions">
+    @if($negative)
+    <button type="button" class="tx-act" disabled>
+      <span class="tx-act__ico"><i class="fas fa-lock"></i></span>
+      <span><div class="tx-act__name">{{ __('app.action_send') }}</div></span>
+    </button>
+    @else
+    <a href="{{ route('client.app.transfer.send') }}" class="tx-act">
+      <span class="tx-act__ico"><i class="fas fa-paper-plane"></i></span>
+      <span><div class="tx-act__name">{{ __('app.action_send') }}</div><div class="tx-act__desc">{{ __('app.send_subtitle') }}</div></span>
+    </a>
+    @endif
+    <button type="button" class="tx-act" @click="modal = 'receive'">
+      <span class="tx-act__ico"><i class="fas fa-arrow-down"></i></span>
+      <span><div class="tx-act__name">{{ __('app.action_receive') }}</div><div class="tx-act__desc">{{ __('app.receive_subtitle_short') }}</div></span>
+    </button>
+  </div>
 
-{{-- Actions ── --}}
-<div class="trf-actions">
-  @if((float)$user->balance < 0)
-  <div class="trf-action trf-action--send" style="opacity:.4;pointer-events:none;cursor:not-allowed">
-    <div class="trf-action__ico"><i class="fas fa-lock"></i></div>
-    <div class="trf-action__name">{{ __('app.action_send') }}</div>
-    <div class="trf-action__desc">Solde négatif</div>
+  {{-- Liste --}}
+  @if($transfers->isNotEmpty())
+  <div class="tx-head">
+    <span class="tx-head__title">Virements récents</span>
+    <a href="{{ route('client.app.movements') }}" class="tx-head__link">{{ __('app.see_all') }} <i class="fas fa-chevron-right" style="font-size:.6rem"></i></a>
+  </div>
+
+  <div class="tx-chips">
+    <button type="button" class="tx-chip" :class="{'is-on': filter==='all'}" @click="filter='all'">{{ __('app.see_all') }}</button>
+    <button type="button" class="tx-chip" :class="{'is-on': filter==='pending'}" @click="filter='pending'">{{ __('transfer.status_pending') }}</button>
+    <button type="button" class="tx-chip" :class="{'is-on': filter==='fee'}" @click="filter='fee'">{{ __('transfer.status_fee_required') }}</button>
+    <button type="button" class="tx-chip" :class="{'is-on': filter==='done'}" @click="filter='done'">{{ __('transfer.status_completed') }}</button>
+    <button type="button" class="tx-chip" :class="{'is-on': filter==='rej'}" @click="filter='rej'">{{ __('transfer.status_rejected') }}</button>
+  </div>
+
+  <div class="tx-list">
+    @foreach($rows as $i => $r)
+    @php [$k, $icon] = [$r['kind'], collect($kinds)->first(fn ($v) => $v[0] === $r['kind'])[1]]; @endphp
+    <button type="button" class="tx-row" x-show="filter === 'all' || filter === '{{ $k }}'" @click="open({{ $i }})">
+      <span class="tx-ico tx-ico--{{ $k }}"><i class="fas fa-{{ $icon }}"></i></span>
+      <span class="tx-row__body">
+        <div class="tx-row__name">{{ $r['name'] }}</div>
+        <div class="tx-row__sub">{{ $r['date'] }}</div>
+      </span>
+      <span class="tx-row__right">
+        <div class="tx-row__amt {{ $k === 'rej' ? 'is-rej' : '' }}">-{{ $r['amount'] }}</div>
+        <div class="tx-row__st tx-st--{{ $k }}">{{ $r['status'] }}</div>
+      </span>
+    </button>
+    @endforeach
+    <div class="tx-none" x-show="shown.length === 0" x-cloak><i class="fas fa-filter"></i>{{ __('app.no_activity') }}</div>
   </div>
   @else
-  <a href="{{ route('client.app.transfer.send') }}" class="trf-action trf-action--send">
-    <div class="trf-action__ico"><i class="fas fa-paper-plane"></i></div>
-    <div class="trf-action__name">{{ __('app.action_send') }}</div>
-    <div class="trf-action__desc">{{ __('app.send_subtitle') }}</div>
-  </a>
+  <div class="tx-list"><div class="tx-none"><i class="fas fa-right-left"></i>{{ __('app.no_activity') }}</div></div>
   @endif
-  <a href="{{ route('client.app.transfer.receive') }}" class="trf-action trf-action--recv">
-    <div class="trf-action__ico"><i class="fas fa-arrow-down"></i></div>
-    <div class="trf-action__name">{{ __('app.action_receive') }}</div>
-    <div class="trf-action__desc">{{ __('app.receive_subtitle_short') }}</div>
-  </a>
-</div>
 
-{{-- Recent transfers ── --}}
-@if($transfers->isNotEmpty())
-<div class="trf-section">
-  <span class="trf-section__title">Virements récents</span>
-  <a href="{{ route('client.app.movements') }}" class="trf-section__link">
-    Voir tout <i class="fas fa-chevron-right" style="font-size:.6rem"></i>
-  </a>
-</div>
-
-<div class="trf-list">
-  @foreach($transfers as $t)
-  @php
-    $isPending = $t->status === \App\Models\Transfer::STATUS_PENDING;
-    $isFee     = $t->status === \App\Models\Transfer::STATUS_FEE_REQUIRED;
-    $isDone    = $t->status === \App\Models\Transfer::STATUS_COMPLETED;
-    $isRej     = $t->status === \App\Models\Transfer::STATUS_REJECTED;
-
-    $icoClass  = $isPending ? 'pending' : ($isFee ? 'fee' : ($isDone ? 'done' : ($isRej ? 'rej' : 'send')));
-    $amtClass  = $isRej ? 'muted' : 'neg';
-    $icon      = $isPending ? 'hourglass-half' : ($isFee ? 'file-invoice' : ($isDone ? 'check' : ($isRej ? 'xmark' : 'paper-plane')));
-  @endphp
-  <a href="{{ route('client.app.transfer.show', $t->reference) }}" class="trf-item" style="text-decoration:none;color:inherit">
-    <div class="trf-item__ico trf-item__ico--{{ $icoClass }}">
-      <i class="fas fa-{{ $icon }}"></i>
+  {{-- Modale : détail d'un virement --}}
+  <div class="tx-modal" x-show="modal === 'detail'" x-cloak x-transition.opacity>
+    <div class="tx-modal__bg" @click="modal = null"></div>
+    <div class="tx-modal__box" x-show="sel" @click.stop>
+      <button type="button" class="tx-modal__x" @click="modal = null" aria-label="×"><i class="fas fa-xmark"></i></button>
+      <div class="tx-modal__title">{{ __('transfer.details') }}</div>
+      <template x-if="sel">
+        <div>
+          <div class="tx-big">
+            <div class="tx-big__amt" x-text="'-' + sel.amount"></div>
+            <div class="tx-big__who" x-text="sel.name"></div>
+            <div class="tx-row__st" :class="'tx-st--' + sel.kind" x-text="sel.status" style="margin-top:.5rem"></div>
+          </div>
+          <div class="tx-kv"><span class="tx-kv__k">Réf.</span><span class="tx-kv__v tx-kv__v--mono" x-text="sel.ref"></span></div>
+          <div class="tx-kv"><span class="tx-kv__k">IBAN</span><span class="tx-kv__v tx-kv__v--mono" x-text="sel.iban"></span></div>
+          <div class="tx-kv"><span class="tx-kv__k">Date</span><span class="tx-kv__v" x-text="sel.date"></span></div>
+          <a :href="sel.url" class="tx-btn"><i class="fas fa-arrow-right"></i> {{ __('transfer.details') }}</a>
+        </div>
+      </template>
     </div>
-    <div class="trf-item__body">
-      <div class="trf-item__name">{{ $t->beneficiary_name ?? '—' }}</div>
-      <div class="trf-item__ref">{{ $t->reference }}</div>
-      @if($isPending)
-        <x-status-badge domain="movement" status="pending" label="En attente de validation" />
-      @elseif($isFee)
-        <x-status-badge domain="movement" status="fee_required" label="Frais requis" />
-      @elseif($isDone)
-        <x-status-badge domain="movement" status="completed" label="Validé" />
-      @elseif($isRej)
-        <x-status-badge domain="movement" status="rejected" label="Rejeté" />
+  </div>
+
+  {{-- Modale : recevoir (coordonnées bancaires) --}}
+  <div class="tx-modal" x-show="modal === 'receive'" x-cloak x-transition.opacity>
+    <div class="tx-modal__bg" @click="modal = null"></div>
+    <div class="tx-modal__box" @click.stop>
+      <button type="button" class="tx-modal__x" @click="modal = null" aria-label="×"><i class="fas fa-xmark"></i></button>
+      <div class="tx-modal__title">{{ __('app.receive_title') }}</div>
+      <div class="tx-big">
+        <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ca-text-3)">{{ __('app.receive_iban') }}</div>
+        <div style="font-family:monospace;font-size:1rem;font-weight:700;margin-top:.4rem;word-break:break-all">{{ $iban !== '' ? trim(chunk_split($iban, 4, ' ')) : '—' }}</div>
+      </div>
+      <div class="tx-kv"><span class="tx-kv__k">{{ __('app.receive_bic') }}</span><span class="tx-kv__v tx-kv__v--mono">{{ $bic }}</span></div>
+      <div class="tx-kv"><span class="tx-kv__k">{{ __('app.receive_name') }}</span><span class="tx-kv__v">{{ $user->name }}</span></div>
+      <div class="tx-kv"><span class="tx-kv__k">{{ __('app.receive_bank') }}</span><span class="tx-kv__v">{{ site_name() }}</span></div>
+      @if($iban !== '')
+      <button type="button" class="tx-btn" @click="copy(@js($iban))">
+        <i class="fas" :class="copied ? 'fa-check' : 'fa-copy'"></i>
+        <span x-text="copied ? @js(__('app.copied')) : @js(__('app.copy_iban'))"></span>
+      </button>
+      <button type="button" class="tx-btn tx-btn--ghost" @click="navigator.share ? navigator.share({title: @js(site_name()), text: @js($shareText)}).catch(()=>{}) : copy(@js($shareText))">
+        <i class="fas fa-share-nodes"></i> {{ __('app.share_details') }}
+      </button>
       @endif
     </div>
-    <div class="trf-item__right">
-      <div class="trf-item__amt trf-item__amt--{{ $amtClass }}"
-           style="{{ $isRej ? 'text-decoration:line-through' : '' }}">
-        -{{ number_format($t->amount, 2, ',', ' ') }}
-      </div>
-      <div class="trf-item__date">{{ $t->created_at->format('d/m · H:i') }}</div>
-    </div>
-  </a>
-  @endforeach
+  </div>
 </div>
-
-@else
-<div class="trf-empty">
-  <div class="trf-empty__ico"><i class="fas fa-right-left"></i></div>
-  <div class="trf-empty__title">{{ __('app.no_activity') }}</div>
-</div>
-@endif
 
 <div style="height:1.5rem"></div>
 @endsection
