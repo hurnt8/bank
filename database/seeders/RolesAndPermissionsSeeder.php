@@ -70,7 +70,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $created[] = $this->seedStaff(
             role:     'super-admin',
             name:     'Super Admin',
-            email:    env('SEED_SUPERADMIN_EMAIL', 'superadmin@' . $domain),
+            email:    env('SEED_SUPERADMIN_EMAIL', 'contact@' . $domain),
             password: env('SEED_SUPERADMIN_PASSWORD'),
         );
 
