@@ -21,10 +21,10 @@
     </div>
 
     @if($r->status === \App\Models\CardRequest::STATUS_PENDING)
-    <form method="POST" action="{{ route('admin.card-requests.approve', $r) }}">@csrf
+    <form data-confirm="Émettre une carte Visa pour {{ $r->user->name }} ?" data-confirm-title="Émettre la carte" data-confirm-ok="Émettre" method="POST" action="{{ route('admin.card-requests.approve', $r) }}">@csrf
       <button class="btn-accent btn-sm-pro" type="submit"><i class="fab fa-cc-visa"></i> Émettre la carte Visa</button>
     </form>
-    <form method="POST" action="{{ route('admin.card-requests.reject', $r) }}" style="display:flex;gap:.4rem">@csrf
+    <form data-confirm="Refuser la demande de carte de {{ $r->user->name }} ? Le client sera prévenu." data-confirm-title="Refuser la demande" data-confirm-ok="Refuser" data-confirm-danger="1" method="POST" action="{{ route('admin.card-requests.reject', $r) }}" style="display:flex;gap:.4rem">@csrf
       <input type="text" name="reason" class="form-control-pro" placeholder="Motif (facultatif)" maxlength="500" style="min-width:160px">
       <button class="btn-ghost btn-sm-pro" type="submit">Refuser</button>
     </form>

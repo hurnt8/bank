@@ -18,7 +18,7 @@
 <div class="flash flash-err mb-4"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first() }}</div>
 @endif
 
-<form action="{{ route('admin.invoices.update', $invoice) }}" method="POST"
+<form data-confirm="Enregistrer les modifications de la facture {{ $invoice->reference }} ?" data-confirm-title="Modifier la facture" data-confirm-ok="Enregistrer" action="{{ route('admin.invoices.update', $invoice) }}" method="POST"
       x-data="invoiceEditForm()" x-init="init()">
   @csrf @method('PUT')
 

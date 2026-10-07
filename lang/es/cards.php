@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'Límite actualizado.',
     'suspended_done' => 'Tarjeta suspendida.',
     'resumed_done' => 'Tarjeta reactivada.',
+    'confirm_suspend' => '¿Suspender esta tarjeta? No será posible pagar mientras esté suspendida.',
+    'confirm_resume' => '¿Reactivar esta tarjeta?',
+    'confirm_limit' => '¿Establecer el límite de gasto en :amount?',
+    'confirm_request' => '¿Solicitar su tarjeta Visa? Su asesor la revisará.',
 ];

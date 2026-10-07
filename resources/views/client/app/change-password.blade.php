@@ -92,7 +92,7 @@
 </div>
 @endif
 
-<form method="POST" action="{{ route('client.app.profile.password.save') }}" x-data="cpForm()" @submit="submitting = true">
+<form data-confirm="{{ __('app.confirm_password') }}" method="POST" action="{{ route('client.app.profile.password.save') }}" x-data="cpForm()" @submit="submitting = true">
   @csrf
 
   {{-- Mot de passe actuel --}}

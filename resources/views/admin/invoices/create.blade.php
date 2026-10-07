@@ -18,7 +18,7 @@
 <div class="flash flash-err mb-4"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first() }}</div>
 @endif
 
-<form action="{{ route('admin.invoices.store') }}" method="POST"
+<form data-confirm="Créer cette facture en brouillon ?" data-confirm-title="Nouvelle facture" data-confirm-ok="Créer" action="{{ route('admin.invoices.store') }}" method="POST"
       x-data="invoiceForm()" x-init="addLine()" @submit.prevent="submitForm()">
   @csrf
 

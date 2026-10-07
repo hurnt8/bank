@@ -37,7 +37,7 @@
 @endif
 
 <div class="card-pro" style="padding:1.5rem;max-width:640px">
-  <form method="POST" action="{{ route('admin.users.banking.store', $user) }}">
+  <form data-confirm="Enregistrer les coordonnées bancaires et la carte de ce client ?" data-confirm-title="Coordonnées bancaires" data-confirm-ok="Enregistrer" method="POST" action="{{ route('admin.users.banking.store', $user) }}">
     @csrf
 
     <h3 style="font-size:.9rem;margin-bottom:1rem">Compte bancaire</h3>
@@ -90,7 +90,7 @@
 
   @if($user->bankAccount)
   <div style="display:flex;gap:.75rem;margin-top:1rem;border-top:1px solid var(--c-border);padding-top:1rem">
-    <form method="POST" action="{{ route('admin.users.banking.toggle-block', $user) }}">
+    <form data-confirm="Bloquer ou débloquer le compte et la carte de ce client ?" data-confirm-title="Bloquer / débloquer" data-confirm-ok="Confirmer" data-confirm-danger="1" method="POST" action="{{ route('admin.users.banking.toggle-block', $user) }}">
       @csrf
       <button type="submit" class="btn-ghost btn-sm-pro">
         @if($user->bankAccount->status === \App\Models\BankAccount::STATUS_ACTIVE)

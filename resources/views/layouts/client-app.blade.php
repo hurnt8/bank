@@ -199,6 +199,78 @@
 
 @stack('scripts')
 
+{{-- ══ Confirmation d'action (formulaires / liens portant data-confirm) ══ --}}
+<div id="cxa-confirm" role="dialog" aria-modal="true" aria-labelledby="cxa-confirm-title" hidden>
+  <div class="cxa-confirm__backdrop" data-cxa-cancel></div>
+  <div class="cxa-confirm__box">
+    <div class="cxa-confirm__icon" id="cxa-confirm-icon"><i class="fas fa-circle-question"></i></div>
+    <h3 id="cxa-confirm-title" class="cxa-confirm__title">{{ __('app.confirm_title') }}</h3>
+    <p id="cxa-confirm-msg" class="cxa-confirm__msg"></p>
+    <div class="cxa-confirm__actions">
+      <button type="button" class="cxa-confirm__btn cxa-confirm__btn--ghost" data-cxa-cancel>{{ __('app.confirm_cancel') }}</button>
+      <button type="button" class="cxa-confirm__btn cxa-confirm__btn--ok" id="cxa-confirm-ok">{{ __('app.confirm_ok') }}</button>
+    </div>
+  </div>
+</div>
+<style>
+#cxa-confirm { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: flex-end; justify-content: center; padding: 1rem; }
+#cxa-confirm[hidden] { display: none; }
+@media (min-width: 640px) { #cxa-confirm { align-items: center; } }
+.cxa-confirm__backdrop { position: absolute; inset: 0; background: rgba(3, 12, 10, .62); backdrop-filter: blur(3px); }
+.cxa-confirm__box { position: relative; width: 100%; max-width: 400px; background: var(--ca-bg2, #12332a); color: var(--ca-text, #fff); border: 1px solid var(--ca-border, rgba(255,255,255,.12));
+  border-radius: 22px; padding: 1.6rem 1.4rem 1.25rem; text-align: center; box-shadow: 0 24px 70px rgba(0,0,0,.45); animation: cxaConfirmIn .18s ease-out; }
+@keyframes cxaConfirmIn { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
+.cxa-confirm__icon { width: 54px; height: 54px; margin: 0 auto .85rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.35rem;
+  background: rgba(220,190,135,.16); color: var(--ca-accent, #DCBE87); }
+.cxa-confirm__icon.is-danger { background: rgba(255,90,90,.14); color: var(--ca-negative, #ff5a5a); }
+.cxa-confirm__title { margin: 0 0 .4rem; font-size: 1.05rem; font-weight: 800; }
+.cxa-confirm__msg { margin: 0 0 1.25rem; font-size: .84rem; line-height: 1.55; color: var(--ca-text-2, rgba(255,255,255,.7)); overflow-wrap: anywhere; }
+.cxa-confirm__actions { display: flex; gap: .6rem; }
+.cxa-confirm__btn { flex: 1; min-height: 48px; border-radius: 999px; font-family: inherit; font-size: .88rem; font-weight: 800; cursor: pointer; border: 1px solid transparent; }
+.cxa-confirm__btn--ghost { background: transparent; color: var(--ca-text-2, rgba(255,255,255,.75)); border-color: var(--ca-border, rgba(255,255,255,.18)); }
+.cxa-confirm__btn--ok { color: #fff; background: linear-gradient(135deg, #DCBE87, #C6A15B); }
+.cxa-confirm__btn--ok.is-danger { background: linear-gradient(135deg, #f87171, #dc2626); }
+</style>
+<script>
+(function () {
+  var box = document.getElementById('cxa-confirm'); if (!box) return;
+  var msg = document.getElementById('cxa-confirm-msg'), ttl = document.getElementById('cxa-confirm-title'),
+      ok = document.getElementById('cxa-confirm-ok'), ico = document.getElementById('cxa-confirm-icon'), pending = null;
+  var defTitle = ttl.textContent, defOk = ok.textContent;
+
+  function close() { box.hidden = true; pending = null; }
+  function open(el, run) {
+    if (!box.hidden) return;
+    msg.textContent = el.getAttribute('data-confirm') || '';
+    ttl.textContent = el.getAttribute('data-confirm-title') || defTitle;
+    ok.textContent  = el.getAttribute('data-confirm-ok') || defOk;
+    var danger = el.getAttribute('data-confirm-danger') === '1';
+    ico.classList.toggle('is-danger', danger); ok.classList.toggle('is-danger', danger);
+    pending = run; box.hidden = false; ok.focus();
+  }
+  box.querySelectorAll('[data-cxa-cancel]').forEach(function (b) { b.addEventListener('click', close); });
+  ok.addEventListener('click', function () { var run = pending; close(); if (run) run(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
+
+  // Formulaires : la soumission est interceptée, puis rejouée une fois confirmée.
+  document.addEventListener('submit', function (e) {
+    var form = e.target.closest ? e.target.closest('form[data-confirm]') : null;
+    if (!form || form.dataset.cxaOk === '1') return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    open(form, function () { form.dataset.cxaOk = '1'; (form.requestSubmit ? form.requestSubmit() : form.submit()); setTimeout(function () { delete form.dataset.cxaOk; }, 400); });
+  }, true);
+
+  // Liens et boutons hors formulaire.
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-confirm]');
+    if (!el || el.tagName === 'FORM' || el.closest('form[data-confirm]') || el.dataset.cxaOk === '1') return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    open(el, function () { el.dataset.cxaOk = '1'; el.click(); });
+  }, true);
+})();
+</script>
+
+
 {{-- ══ Push Notifications ══ --}}
 <div id="cxa-push-banner" style="display:none;position:fixed;bottom:calc(var(--ca-nav-h) + env(safe-area-inset-bottom,0px) + .5rem);left:.875rem;right:.875rem;z-index:9000;background:#0E3B2E;border:1px solid rgba(220,190,135,.35);border-radius:16px;padding:.875rem 1rem;box-shadow:0 8px 32px rgba(14,59,46,.5);display:none;align-items:center;gap:.875rem">
   <div style="width:42px;height:42px;border-radius:13px;background:rgba(220,190,135,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0">

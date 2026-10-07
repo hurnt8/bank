@@ -64,4 +64,5 @@ return [
     'notif_progress_body' => 'Prevod :reference je spracovaný na :progress %.',
     'notif_code_title' => 'Pre váš prevod je potrebný kód',
     'notif_code_body' => 'Prevod :reference sa zastavil na :progress %. Odblokovací kód získate od svojho poradcu.',
+    'confirm_send' => 'Poslať :amount príjemcovi :name? Prevod bude odoslaný na schválenie.',
 ];

@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'Limit zaktualizowany.',
     'suspended_done' => 'Karta zawieszona.',
     'resumed_done' => 'Karta aktywowana ponownie.',
+    'confirm_suspend' => 'Zawiesić tę kartę? Dopóki jest zawieszona, płatności są niemożliwe.',
+    'confirm_resume' => 'Aktywować kartę ponownie?',
+    'confirm_limit' => 'Ustawić limit wydatków na :amount?',
+    'confirm_request' => 'Złożyć wniosek o kartę Visa? Doradca go rozpatrzy.',
 ];

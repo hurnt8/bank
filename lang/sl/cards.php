@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'Omejitev je posodobljena.',
     'suspended_done' => 'Kartica je začasno ustavljena.',
     'resumed_done' => 'Kartica je ponovno aktivirana.',
+    'confirm_suspend' => 'Začasno ustaviti to kartico? Dokler je ustavljena, plačila niso mogoča.',
+    'confirm_resume' => 'Ponovno aktivirati to kartico?',
+    'confirm_limit' => 'Nastaviti omejitev porabe na :amount?',
+    'confirm_request' => 'Zaprositi za kartico Visa? Vaš svetovalec jo bo pregledal.',
 ];

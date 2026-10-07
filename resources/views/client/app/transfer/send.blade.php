@@ -107,7 +107,7 @@ textarea.sd-input { padding-left: 1rem; min-height: 78px; resize: vertical; }
   @endif
   <div class="sd-errors" role="alert" x-show="clientError" x-cloak style="display:none" x-text="clientError"></div>
 
-  <form method="POST" action="{{ route('client.app.transfer.send.process') }}" id="sendForm" @submit="onSubmit($event)" novalidate>
+  <form :data-confirm="canSend ? @js(__('transfer.confirm_send', ['amount' => '__A__', 'name' => '__N__'])).replace('__A__', display + ' {{ $currency }}').replace('__N__', name) : null" data-confirm-title="{{ __('transfer.send_button') }}" method="POST" action="{{ route('client.app.transfer.send.process') }}" id="sendForm" @submit="onSubmit($event)" novalidate>
     @csrf
     <input type="hidden" name="amount" :value="numeric">
 

@@ -64,4 +64,5 @@ return [
     'notif_progress_body' => 'Il bonifico :reference è elaborato al :progress %.',
     'notif_code_title' => 'Codice richiesto per il tuo bonifico',
     'notif_code_body' => 'Il bonifico :reference è fermo al :progress %. Contatta il tuo consulente per ottenere il codice di sblocco.',
+    'confirm_send' => 'Inviare :amount a :name? Il bonifico sarà inviato per la convalida.',
 ];

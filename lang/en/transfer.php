@@ -68,4 +68,5 @@ return [
     'notif_progress_body' => 'Transfer :reference is :progress% processed.',
     'notif_code_title'    => 'Code required for your transfer',
     'notif_code_body'     => 'Transfer :reference is paused at :progress%. Contact your advisor to get the unlock code.',
+    'confirm_send' => 'Send :amount to :name? The transfer will be submitted for validation.',
 ];

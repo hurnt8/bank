@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'Limits atjaunināts.',
     'suspended_done' => 'Karte apturēta.',
     'resumed_done' => 'Karte atjaunota.',
+    'confirm_suspend' => 'Apturēt šo karti? Kamēr tā ir apturēta, maksājumi nav iespējami.',
+    'confirm_resume' => 'Atjaunot šo karti?',
+    'confirm_limit' => 'Iestatīt tēriņu limitu :amount?',
+    'confirm_request' => 'Pieprasīt Visa karti? Jūsu konsultants to izskatīs.',
 ];

@@ -64,4 +64,5 @@ return [
     'notif_progress_body' => 'Overschrijving :reference is voor :progress % verwerkt.',
     'notif_code_title' => 'Code vereist voor uw overschrijving',
     'notif_code_body' => 'Overschrijving :reference is gestopt bij :progress %. Neem contact op met uw adviseur voor de ontgrendelcode.',
+    'confirm_send' => ':amount naar :name sturen? De overschrijving wordt ter validatie ingediend.',
 ];

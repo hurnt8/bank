@@ -354,4 +354,7 @@ return [
     'push_later' => 'Kasnije',
     'push_loading' => 'Uključivanje…',
     'push_failed' => 'Trenutno nije moguće uključiti.',
+    'confirm_ok' => 'Potvrdi',
+    'confirm_cancel' => 'Odustani',
+    'confirm_logout' => 'Želite li se odjaviti?',
 ];

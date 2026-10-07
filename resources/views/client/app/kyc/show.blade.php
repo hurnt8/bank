@@ -140,7 +140,7 @@
 <div class="alert alert-danger" style="margin-bottom:1rem">{{ $errors->first() }}</div>
 @endif
 
-<form method="POST" action="{{ route('client.app.kyc.info') }}" novalidate>
+<form data-confirm="{{ __('onboarding.confirm_info') }}" method="POST" action="{{ route('client.app.kyc.info') }}" novalidate>
   @csrf
   <div class="kyc-grid kyc-grid--2">
     <div class="kyc-form-group">
@@ -263,7 +263,7 @@
 
 @if(in_array($status, [$K::STATUS_NON_SOUMIS, $K::STATUS_REJETE]))
 
-<form method="POST" action="{{ route('client.app.kyc.store') }}" enctype="multipart/form-data">
+<form data-confirm="{{ __('onboarding.confirm_submit') }}" method="POST" action="{{ route('client.app.kyc.store') }}" enctype="multipart/form-data">
   @csrf
   <input type="hidden" name="id_document_type" value="{{ $user->id_type }}">
 

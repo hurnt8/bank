@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'Limite aggiornato.',
     'suspended_done' => 'Carta sospesa.',
     'resumed_done' => 'Carta riattivata.',
+    'confirm_suspend' => 'Sospendere questa carta? Non sarà possibile pagare finché è sospesa.',
+    'confirm_resume' => 'Riattivare questa carta?',
+    'confirm_limit' => 'Impostare il limite di spesa a :amount?',
+    'confirm_request' => 'Richiedere la tua carta Visa? Il tuo consulente la esaminerà.',
 ];

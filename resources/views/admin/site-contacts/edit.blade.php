@@ -57,7 +57,7 @@
 <div class="flash flash-err mb-4"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first() }}</div>
 @endif
 
-<form action="{{ route('admin.site-contacts.update') }}" method="POST" enctype="multipart/form-data">
+<form data-confirm="Enregistrer les coordonnées et les paramètres de connexion du site ? Ils s’appliquent immédiatement à tout le site." data-confirm-title="Paramètres du site" data-confirm-ok="Enregistrer" action="{{ route('admin.site-contacts.update') }}" method="POST" enctype="multipart/form-data">
 @csrf
 
 <div class="sc-grid">

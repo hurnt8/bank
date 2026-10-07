@@ -64,4 +64,5 @@ return [
     'notif_progress_body' => 'Die Überweisung :reference ist zu :progress % bearbeitet.',
     'notif_code_title' => 'Code für Ihre Überweisung erforderlich',
     'notif_code_body' => 'Die Überweisung :reference ist bei :progress % angehalten. Wenden Sie sich an Ihren Berater, um den Freischaltcode zu erhalten.',
+    'confirm_send' => ':amount an :name senden? Die Überweisung wird zur Freigabe eingereicht.',
 ];

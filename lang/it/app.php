@@ -339,4 +339,7 @@ return [
     'push_later' => 'Più tardi',
     'push_loading' => 'Attivazione…',
     'push_failed' => 'Impossibile attivare al momento.',
+    'confirm_ok' => 'Conferma',
+    'confirm_cancel' => 'Annulla',
+    'confirm_logout' => 'Vuoi disconnetterti?',
 ];

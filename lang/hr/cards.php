@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'Limit je ažuriran.',
     'suspended_done' => 'Kartica je suspendirana.',
     'resumed_done' => 'Kartica je ponovno aktivirana.',
+    'confirm_suspend' => 'Suspendirati ovu karticu? Plaćanje neće biti moguće dok je suspendirana.',
+    'confirm_resume' => 'Ponovno aktivirati ovu karticu?',
+    'confirm_limit' => 'Postaviti limit potrošnje na :amount?',
+    'confirm_request' => 'Zatražiti Visa karticu? Vaš će je savjetnik razmotriti.',
 ];

@@ -339,4 +339,7 @@ return [
     'push_later' => 'Vėliau',
     'push_loading' => 'Įjungiama…',
     'push_failed' => 'Šiuo metu įjungti nepavyko.',
+    'confirm_ok' => 'Patvirtinti',
+    'confirm_cancel' => 'Atšaukti',
+    'confirm_logout' => 'Ar norite atsijungti?',
 ];

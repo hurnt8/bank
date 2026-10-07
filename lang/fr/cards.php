@@ -31,4 +31,8 @@ return [
     'limit_saved'      => 'Plafond mis à jour.',
     'suspended_done'   => 'Carte suspendue.',
     'resumed_done'     => 'Carte réactivée.',
+    'confirm_suspend' => 'Suspendre cette carte ? Aucun paiement ne sera possible tant qu’elle est suspendue.',
+    'confirm_resume' => 'Réactiver cette carte ?',
+    'confirm_limit' => 'Définir le plafond de dépenses à :amount ?',
+    'confirm_request' => 'Demander votre carte Visa ? Votre conseiller l’examinera.',
 ];

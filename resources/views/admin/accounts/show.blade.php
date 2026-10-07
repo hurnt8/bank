@@ -137,8 +137,10 @@
     <div class="acs-op__head acs-op__head--{{ $dir }}">
       <i class="fas fa-{{ $isCredit ? 'plus' : 'minus' }}"></i> {{ $title }}
     </div>
-    <form method="POST" action="{{ route('admin.accounts.' . $dir, $account) }}" x-data="{ kind: '{{ old('kind', $firstKind) }}' }"
-          @if(! $isCredit) data-confirm="Confirmer le débit ?" @endif>
+    <form method="POST" action="{{ route('admin.accounts.' . $dir, $account) }}"
+          x-data="{ kind: '{{ old('kind', $firstKind) }}', amount: '{{ old('amount') }}', labels: @js($kindLabels) }"
+          :data-confirm="'{{ $isCredit ? 'Créditer' : 'Débiter' }} ' + (amount || '0') + ' {{ $cur }} ({{ $isCredit ? 'crédit' : 'débit' }} : ' + (labels[kind] || kind) + ') sur le compte de {{ addslashes($account->name) }} ? Le client sera prévenu par notification et par e-mail, avec la facture en pièce jointe.'"
+          data-confirm-title="{{ $isCredit ? 'Confirmer le crédit' : 'Confirmer le débit' }}" data-confirm-ok="{{ $isCredit ? 'Créditer' : 'Débiter' }}" @if(! $isCredit) data-confirm-danger="1" @endif>
       @csrf
       <div class="acs-field">
         <label>Type d'opération</label>
@@ -159,7 +161,7 @@
 
       <div class="acs-field">
         <label>Montant ({{ $cur }})@unless($isCredit) — solde actuel : <span style="color:{{ $bal < 0 ? '#f87171' : 'inherit' }}">{{ number_format($bal, 2, ',', ' ') }}</span>@endunless</label>
-        <input type="number" name="amount" step="0.01" min="0.01" max="9999999" placeholder="0,00" value="{{ old('amount') }}" required>
+        <input type="number" name="amount" step="0.01" min="0.01" max="9999999" placeholder="0,00" value="{{ old('amount') }}" x-model="amount" required>
       </div>
 
       <div class="acs-row2">

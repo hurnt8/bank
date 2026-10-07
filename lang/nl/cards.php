@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'Limiet bijgewerkt.',
     'suspended_done' => 'Kaart gepauzeerd.',
     'resumed_done' => 'Kaart geheractiveerd.',
+    'confirm_suspend' => 'Deze kaart pauzeren? Betalen is niet mogelijk zolang de kaart gepauzeerd is.',
+    'confirm_resume' => 'Deze kaart heractiveren?',
+    'confirm_limit' => 'De bestedingslimiet instellen op :amount?',
+    'confirm_request' => 'Uw Visa-kaart aanvragen? Uw adviseur zal de aanvraag beoordelen.',
 ];

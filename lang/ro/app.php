@@ -339,4 +339,7 @@ return [
     'push_later' => 'Mai târziu',
     'push_loading' => 'Se activează…',
     'push_failed' => 'Momentan nu s-a putut activa.',
+    'confirm_ok' => 'Confirmă',
+    'confirm_cancel' => 'Anulează',
+    'confirm_logout' => 'Doriți să vă deconectați?',
 ];

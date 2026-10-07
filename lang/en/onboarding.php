@@ -110,4 +110,6 @@ return [
     'recovery_aside_1'    => 'Receive a secure link by email',
     'recovery_aside_2'    => 'Choose a new password',
     'recovery_aside_3'    => 'Sign in again in seconds',
+    'confirm_submit' => 'Send your documents for verification?',
+    'confirm_info' => 'Save your personal information?',
 ];

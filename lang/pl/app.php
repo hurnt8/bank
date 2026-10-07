@@ -332,4 +332,7 @@ return [
     'push_later' => 'Później',
     'push_loading' => 'Włączanie…',
     'push_failed' => 'Nie można teraz włączyć powiadomień.',
+    'confirm_ok' => 'Potwierdź',
+    'confirm_cancel' => 'Anuluj',
+    'confirm_logout' => 'Czy chcesz się wylogować?',
 ];

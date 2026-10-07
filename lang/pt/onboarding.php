@@ -104,4 +104,6 @@ return [
     'recovery_aside_1' => 'Receba uma ligação segura por e-mail',
     'recovery_aside_2' => 'Escolha uma nova palavra-passe',
     'recovery_aside_3' => 'Inicie sessão novamente em segundos',
+    'confirm_submit' => 'Enviar os seus documentos para verificação?',
+    'confirm_info' => 'Guardar as suas informações pessoais?',
 ];

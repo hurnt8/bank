@@ -118,7 +118,7 @@
 
 {{-- IBAN de règlement : modifiable tant que la facture n'est ni payée ni annulée --}}
 @if($invoice->isDraft() || $invoice->isSent())
-<form method="POST" action="{{ route('admin.invoices.payment', $invoice) }}" class="no-print"
+<form data-confirm="Enregistrer l’IBAN de règlement de la facture {{ $invoice->reference }} ?" data-confirm-title="IBAN de règlement" data-confirm-ok="Enregistrer" method="POST" action="{{ route('admin.invoices.payment', $invoice) }}" class="no-print"
       style="max-width:820px;margin:0 auto 1rem;padding:1rem 1.1rem;border:1.5px solid var(--c-border);border-radius:10px;background:var(--c-bg)">
   @csrf
   <div style="font-size:.8rem;font-weight:800;margin-bottom:.6rem"><i class="fas fa-building-columns"></i> IBAN de règlement de la facture</div>

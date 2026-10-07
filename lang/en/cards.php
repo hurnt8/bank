@@ -31,4 +31,8 @@ return [
     'limit_saved'      => 'Limit updated.',
     'suspended_done'   => 'Card suspended.',
     'resumed_done'     => 'Card reactivated.',
+    'confirm_suspend' => 'Suspend this card? No payment will be possible while it is suspended.',
+    'confirm_resume' => 'Reactivate this card?',
+    'confirm_limit' => 'Set the spending limit to :amount?',
+    'confirm_request' => 'Request your Visa card? Your advisor will review it.',
 ];

@@ -64,4 +64,5 @@ return [
     'notif_progress_body' => 'Przelew :reference jest przetworzony w :progress %.',
     'notif_code_title' => 'Wymagany kod do Twojego przelewu',
     'notif_code_body' => 'Przelew :reference został wstrzymany na poziomie :progress %. Skontaktuj się z doradcą, aby otrzymać kod odblokowujący.',
+    'confirm_send' => 'Wysłać :amount do :name? Przelew zostanie przekazany do zatwierdzenia.',
 ];

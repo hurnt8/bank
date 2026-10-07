@@ -46,13 +46,13 @@
 @if($kyc->status === \App\Models\KycVerification::STATUS_EN_ATTENTE)
 <div class="card-pro" style="padding:1.25rem">
   <div style="display:flex;gap:1rem;flex-wrap:wrap">
-    <form method="POST" action="{{ route('admin.kyc.approve', $kyc) }}" style="flex:1;min-width:200px">
+    <form data-confirm="Approuver cette vérification d’identité ? L’IBAN du client sera généré automatiquement." data-confirm-title="Approuver la vérification" data-confirm-ok="Approuver" method="POST" action="{{ route('admin.kyc.approve', $kyc) }}" style="flex:1;min-width:200px">
       @csrf
       <button type="submit" class="btn-navy" style="width:100%;background:var(--c-green)">
         <i class="fas fa-check"></i> Approuver
       </button>
     </form>
-    <form method="POST" action="{{ route('admin.kyc.reject', $kyc) }}" style="flex:2;min-width:300px;display:flex;gap:.6rem" x-data="{ reason: '' }">
+    <form data-confirm="Rejeter cette vérification d’identité ? Le client sera prévenu avec le motif." data-confirm-title="Rejeter la vérification" data-confirm-ok="Rejeter" data-confirm-danger="1" method="POST" action="{{ route('admin.kyc.reject', $kyc) }}" style="flex:2;min-width:300px;display:flex;gap:.6rem" x-data="{ reason: '' }">
       @csrf
       <input type="text" name="reason" x-model="reason" placeholder="Motif du rejet (obligatoire)" class="form-control-pro" required style="flex:1">
       <button type="submit" class="btn-ghost" style="border-color:var(--c-red);color:var(--c-red)" :disabled="!reason.trim()">

@@ -104,4 +104,6 @@ return [
     'recovery_aside_1' => 'Dostanete bezpečný odkaz e-mailom',
     'recovery_aside_2' => 'Zvoľte nové heslo',
     'recovery_aside_3' => 'Prihláste sa znova za pár sekúnd',
+    'confirm_submit' => 'Odoslať dokumenty na overenie?',
+    'confirm_info' => 'Uložiť osobné údaje?',
 ];

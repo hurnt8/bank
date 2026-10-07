@@ -64,4 +64,5 @@ return [
     'notif_progress_body' => 'A transferência :reference está processada a :progress %.',
     'notif_code_title' => 'Código necessário para a sua transferência',
     'notif_code_body' => 'A transferência :reference está parada em :progress %. Contacte o seu gestor para obter o código de desbloqueio.',
+    'confirm_send' => 'Enviar :amount a :name? A transferência será submetida para validação.',
 ];

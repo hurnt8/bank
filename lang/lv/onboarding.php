@@ -104,4 +104,6 @@ return [
     'recovery_aside_1' => 'Saņemiet drošu saiti pa e-pastu',
     'recovery_aside_2' => 'Izvēlieties jaunu paroli',
     'recovery_aside_3' => 'Piesakieties atkal dažu sekunžu laikā',
+    'confirm_submit' => 'Nosūtīt dokumentus pārbaudei?',
+    'confirm_info' => 'Saglabāt personas datus?',
 ];

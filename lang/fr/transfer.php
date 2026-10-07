@@ -68,4 +68,5 @@ return [
     'notif_progress_body' => 'Le virement :reference est traité à :progress %.',
     'notif_code_title'    => 'Code requis pour votre virement',
     'notif_code_body'     => 'Le virement :reference est arrêté à :progress %. Contactez votre conseiller pour obtenir le code de déblocage.',
+    'confirm_send' => 'Envoyer :amount à :name ? Le virement sera soumis à validation.',
 ];

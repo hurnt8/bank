@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'Limitas atnaujintas.',
     'suspended_done' => 'Kortelė sustabdyta.',
     'resumed_done' => 'Kortelė vėl aktyvuota.',
+    'confirm_suspend' => 'Sustabdyti šią kortelę? Kol ji sustabdyta, mokėjimai neįmanomi.',
+    'confirm_resume' => 'Vėl aktyvuoti šią kortelę?',
+    'confirm_limit' => 'Nustatyti išlaidų limitą :amount?',
+    'confirm_request' => 'Užsakyti „Visa“ kortelę? Konsultantas ją išnagrinės.',
 ];

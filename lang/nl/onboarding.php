@@ -104,4 +104,6 @@ return [
     'recovery_aside_1' => 'Ontvang een beveiligde link per e-mail',
     'recovery_aside_2' => 'Kies een nieuw wachtwoord',
     'recovery_aside_3' => 'Binnen enkele seconden weer ingelogd',
+    'confirm_submit' => 'Uw documenten ter verificatie versturen?',
+    'confirm_info' => 'Uw persoonlijke gegevens opslaan?',
 ];

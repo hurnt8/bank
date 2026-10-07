@@ -339,4 +339,7 @@ return [
     'push_later' => 'Később',
     'push_loading' => 'Bekapcsolás…',
     'push_failed' => 'Jelenleg nem sikerült bekapcsolni.',
+    'confirm_ok' => 'Megerősítés',
+    'confirm_cancel' => 'Mégse',
+    'confirm_logout' => 'Szeretne kijelentkezni?',
 ];

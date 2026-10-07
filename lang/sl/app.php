@@ -200,4 +200,7 @@ return [
     'push_later' => 'Pozneje',
     'push_loading' => 'Vklapljanje …',
     'push_failed' => 'Trenutno vklop ni uspel.',
+    'confirm_ok' => 'Potrdi',
+    'confirm_cancel' => 'Prekliči',
+    'confirm_logout' => 'Ali se želite odjaviti?',
 ];

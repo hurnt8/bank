@@ -64,4 +64,5 @@ return [
     'notif_progress_body' => 'A(z) :reference átutalás :progress %-ban feldolgozva.',
     'notif_code_title' => 'Kód szükséges az átutalásához',
     'notif_code_body' => 'A(z) :reference átutalás :progress %-nál leállt. A feloldó kódért forduljon tanácsadójához.',
+    'confirm_send' => 'Elküld :amount összeget :name részére? Az átutalás jóváhagyásra kerül.',
 ];

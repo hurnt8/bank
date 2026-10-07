@@ -339,4 +339,7 @@ return [
     'push_later' => 'Vēlāk',
     'push_loading' => 'Ieslēdz…',
     'push_failed' => 'Pašlaik neizdevās ieslēgt.',
+    'confirm_ok' => 'Apstiprināt',
+    'confirm_cancel' => 'Atcelt',
+    'confirm_logout' => 'Vai vēlaties izrakstīties?',
 ];

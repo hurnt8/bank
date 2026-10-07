@@ -104,4 +104,6 @@ return [
     'recovery_aside_1' => 'Primite sigurnu poveznicu e-poštom',
     'recovery_aside_2' => 'Odaberite novu lozinku',
     'recovery_aside_3' => 'Ponovno se prijavite za nekoliko sekundi',
+    'confirm_submit' => 'Poslati dokumente na provjeru?',
+    'confirm_info' => 'Spremiti osobne podatke?',
 ];

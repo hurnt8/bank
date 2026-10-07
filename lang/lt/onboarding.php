@@ -104,4 +104,6 @@ return [
     'recovery_aside_1' => 'Gaukite saugią nuorodą el. paštu',
     'recovery_aside_2' => 'Pasirinkite naują slaptažodį',
     'recovery_aside_3' => 'Prisijunkite iš naujo per kelias sekundes',
+    'confirm_submit' => 'Siųsti dokumentus patikrinti?',
+    'confirm_info' => 'Išsaugoti asmeninę informaciją?',
 ];

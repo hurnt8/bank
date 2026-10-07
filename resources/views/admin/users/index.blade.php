@@ -139,7 +139,7 @@
             <div style="display:flex;gap:.375rem;justify-content:flex-end">
               {{-- Renvoyer invitation si pas encore activé --}}
               @if($user->invitation_token)
-              <form action="{{ route('admin.users.resend-invite',$user) }}" method="POST">
+              <form data-confirm="Renvoyer l’e-mail d’invitation à {{ $user->email }} ?" data-confirm-title="Renvoyer l’invitation" data-confirm-ok="Renvoyer" action="{{ route('admin.users.resend-invite',$user) }}" method="POST">
                 @csrf
                 <button type="submit" class="btn-icon btn-icon-success" title="Renvoyer l'invitation">
                   <i class="fas fa-paper-plane"></i>
@@ -253,7 +253,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
               </div>
 
-              <form action="{{ route('admin.users.update',$user) }}" method="POST">
+              <form data-confirm="Enregistrer les modifications de {{ $user->name }} ?" data-confirm-title="Modifier le compte" data-confirm-ok="Enregistrer" action="{{ route('admin.users.update',$user) }}" method="POST">
                 @csrf @method('PUT')
                 <div class="modal-body" style="padding:1.5rem">
                   <div class="row g-3">
@@ -378,7 +378,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
               </div>
 
-              <form action="{{ route('admin.users.assign-admin', $user) }}" method="POST">
+              <form data-confirm="Changer l’administrateur responsable de {{ $user->name }} ?" data-confirm-title="Administrateur responsable" data-confirm-ok="Changer" action="{{ route('admin.users.assign-admin', $user) }}" method="POST">
                 @csrf
                 <div class="modal-body" style="padding:1.5rem">
 
@@ -438,7 +438,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
-      <form action="{{ route('admin.users.store') }}" method="POST">
+      <form data-confirm="Créer ce compte et envoyer l’invitation par e-mail ?" data-confirm-title="Nouveau compte" data-confirm-ok="Créer" action="{{ route('admin.users.store') }}" method="POST">
         @csrf
         <div class="modal-body" style="padding:1.5rem">
 

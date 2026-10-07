@@ -199,7 +199,7 @@
       onclick="toggleForm('reject-{{ $trf->id }}',{{ $trf->id }})">
       <i class="fas fa-times"></i> Rejeter
     </button>
-    <form method="POST" action="{{ route('admin.transfers.progress', $trf) }}" style="display:inline">
+    <form data-confirm="Générer le code n°{{ (int) $trf->code_stage + 1 }} du virement {{ $trf->reference }} ? Le client devra le saisir (code à lui communiquer) pour faire avancer la barre." data-confirm-title="Générer le code" data-confirm-ok="Générer" method="POST" action="{{ route('admin.transfers.progress', $trf) }}" style="display:inline">
       @csrf
       @if($trf->nextStageTarget() !== null)
       <button type="submit" class="btn-ghost btn-sm-pro" data-no-confirm

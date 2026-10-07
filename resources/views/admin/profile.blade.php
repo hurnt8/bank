@@ -27,7 +27,7 @@
       <div class="card-pro-title"><span class="icon-dot"></span> Informations de contact</div>
     </div>
     <div class="card-pro-body">
-      <form method="POST" action="{{ route('admin.profile.update') }}">
+      <form data-confirm="Enregistrer les modifications de votre profil ?" data-confirm-title="Profil" data-confirm-ok="Enregistrer" method="POST" action="{{ route('admin.profile.update') }}">
         @csrf
 
         <div style="margin-bottom:1.125rem">
@@ -98,7 +98,7 @@
       <div class="card-pro-title"><span class="icon-dot"></span> Changer le mot de passe</div>
     </div>
     <div class="card-pro-body">
-      <form method="POST" action="{{ route('admin.profile.password') }}">
+      <form data-confirm="Changer votre mot de passe ?" data-confirm-title="Mot de passe" data-confirm-ok="Changer" method="POST" action="{{ route('admin.profile.password') }}">
         @csrf
 
         <div style="margin-bottom:1rem">

@@ -104,4 +104,6 @@ return [
     'recovery_aside_1' => 'Biztonságos hivatkozás e-mailben',
     'recovery_aside_2' => 'Válasszon új jelszót',
     'recovery_aside_3' => 'Jelentkezzen be újra másodpercek alatt',
+    'confirm_submit' => 'Elküldi a dokumentumokat ellenőrzésre?',
+    'confirm_info' => 'Menti személyes adatait?',
 ];

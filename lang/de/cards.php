@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'Limit aktualisiert.',
     'suspended_done' => 'Karte pausiert.',
     'resumed_done' => 'Karte reaktiviert.',
+    'confirm_suspend' => 'Diese Karte pausieren? Solange sie pausiert ist, sind keine Zahlungen möglich.',
+    'confirm_resume' => 'Diese Karte reaktivieren?',
+    'confirm_limit' => 'Ausgabenlimit auf :amount festlegen?',
+    'confirm_request' => 'Visa-Karte beantragen? Ihr Berater wird den Antrag prüfen.',
 ];

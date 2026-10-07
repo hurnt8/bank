@@ -359,4 +359,7 @@ return [
     'push_later' => 'Mais tarde',
     'push_loading' => 'A ativar…',
     'push_failed' => 'Não foi possível ativar de momento.',
+    'confirm_ok' => 'Confirmar',
+    'confirm_cancel' => 'Cancelar',
+    'confirm_logout' => 'Quer terminar a sessão?',
 ];

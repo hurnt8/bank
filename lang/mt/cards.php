@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'Limitu aġġornat.',
     'suspended_done' => 'Karta sospiża.',
     'resumed_done' => 'Karta attivata mill-ġdid.',
+    'confirm_suspend' => 'Tissospendi din il-karta? Ma jistgħux isiru ħlasijiet sakemm tkun sospiża.',
+    'confirm_resume' => 'Terġa’ tattiva din il-karta?',
+    'confirm_limit' => 'Tistabbilixxi l-limitu tal-infiq għal :amount?',
+    'confirm_request' => 'Titlob il-karta Visa tiegħek? Il-konsulent tiegħek se janalizzaha.',
 ];

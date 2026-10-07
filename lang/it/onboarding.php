@@ -104,4 +104,6 @@ return [
     'recovery_aside_1' => 'Ricevi un link sicuro via e-mail',
     'recovery_aside_2' => 'Scegli una nuova password',
     'recovery_aside_3' => 'Accedi di nuovo in pochi secondi',
+    'confirm_submit' => 'Inviare i documenti per la verifica?',
+    'confirm_info' => 'Salvare le tue informazioni personali?',
 ];

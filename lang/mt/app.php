@@ -200,4 +200,7 @@ return [
     'push_later' => 'Aktar tard',
     'push_loading' => 'Qed jiġi attivat…',
     'push_failed' => 'Ma setgħax jiġi attivat bħalissa.',
+    'confirm_ok' => 'Ikkonferma',
+    'confirm_cancel' => 'Ikkanċella',
+    'confirm_logout' => 'Trid toħroġ?',
 ];

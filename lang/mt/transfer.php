@@ -64,4 +64,5 @@ return [
     'notif_progress_body' => 'It-trasferiment :reference huwa pproċessat fi :progress %.',
     'notif_code_title' => 'Kodiċi meħtieġ għat-trasferiment tiegħek',
     'notif_code_body' => 'It-trasferiment :reference twaqqaf fi :progress %. Ikkuntattja lill-konsulent tiegħek biex tikseb il-kodiċi ta’ żblokk.',
+    'confirm_send' => 'Tibgħat :amount lil :name? It-trasferiment se jintbagħat għall-validazzjoni.',
 ];

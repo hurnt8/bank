@@ -15,7 +15,7 @@
 <div class="flash flash-err mb-4"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first() }}</div>
 @endif
 
-<form action="{{ route('admin.currencies.update') }}" method="POST">
+<form data-confirm="Enregistrer les devises (devise par défaut et activation) ?" data-confirm-title="Devises" data-confirm-ok="Enregistrer" action="{{ route('admin.currencies.update') }}" method="POST">
 @csrf
 @method('PUT')
 
@@ -122,7 +122,7 @@
 
 <div class="card-pro mt-4" style="padding:1.5rem">
   <h5 style="margin-bottom:1rem">Ajouter une devise</h5>
-  <form action="{{ route('admin.currencies.store') }}" method="POST">
+  <form data-confirm="Ajouter cette devise ?" data-confirm-title="Nouvelle devise" data-confirm-ok="Ajouter" action="{{ route('admin.currencies.store') }}" method="POST">
     @csrf
     <div class="d-flex flex-wrap gap-3">
       <div>

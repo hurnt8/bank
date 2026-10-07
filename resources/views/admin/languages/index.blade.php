@@ -15,7 +15,7 @@
 <div class="flash flash-err mb-4"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first() }}</div>
 @endif
 
-<form action="{{ route('admin.languages.update') }}" method="POST">
+<form data-confirm="Enregistrer les langues disponibles sur le site ?" data-confirm-title="Langues" data-confirm-ok="Enregistrer" action="{{ route('admin.languages.update') }}" method="POST">
 @csrf
 @method('PUT')
 

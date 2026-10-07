@@ -125,7 +125,7 @@ button.cd-empty__btn { border: 0; cursor: pointer; font-family: inherit; }
 
       @unless($blocked)
       <div class="cd-actions">
-        <form method="POST" action="{{ route('client.app.cards.suspend', $card) }}">
+        <form data-confirm="{{ $suspended ? __('cards.confirm_resume') : __('cards.confirm_suspend') }}" data-confirm-title="{{ $suspended ? __('cards.resume_button') : __('cards.suspend_button') }}"{!! $suspended ? '' : ' data-confirm-danger="1"' !!} method="POST" action="{{ route('client.app.cards.suspend', $card) }}">
           @csrf
           <button type="submit" class="cd-btn {{ $suspended ? '' : 'cd-btn--warn' }}">
             <i class="fas {{ $suspended ? 'fa-play' : 'fa-pause' }}"></i> {{ $suspended ? __('cards.resume_button') : __('cards.suspend_button') }}
@@ -133,7 +133,7 @@ button.cd-empty__btn { border: 0; cursor: pointer; font-family: inherit; }
         </form>
       </div>
 
-      <form method="POST" action="{{ route('client.app.cards.limit', $card) }}" class="cd-limit" x-data="{ v: {{ $limit }} }">
+      <form :data-confirm="@js(__('cards.confirm_limit', ['amount' => '__AMT__'])).replace('__AMT__', new Intl.NumberFormat('fr-FR').format(v) + ' {{ $user->currency ?? 'EUR' }}')" data-confirm-title="{{ __('cards.limit_title') }}" method="POST" action="{{ route('client.app.cards.limit', $card) }}" class="cd-limit" x-data="{ v: {{ $limit }} }">
         @csrf
         <div class="cd-limit__top">
           <span class="cd-limit__t"><i class="fas fa-gauge-high"></i> {{ __('cards.limit_title') }}</span>
@@ -157,7 +157,7 @@ button.cd-empty__btn { border: 0; cursor: pointer; font-family: inherit; }
     @if($pendingRequest)
       <span class="cd-pending"><i class="fas fa-hourglass-half"></i> {{ __('cards.request_pending') }}</span>
     @else
-      <form method="POST" action="{{ route('client.app.cards.request') }}" x-data="{ busy: false }" @submit="busy = true">
+      <form data-confirm="{{ __('cards.confirm_request') }}" data-confirm-title="{{ __('cards.request_button') }}" method="POST" action="{{ route('client.app.cards.request') }}" x-data="{ busy: false }" @submit="busy = true">
         @csrf
         <button type="submit" class="cd-empty__btn" :disabled="busy">
           <i class="fas" :class="busy ? 'fa-spinner fa-spin' : 'fa-credit-card'"></i> {{ __('cards.request_button') }}

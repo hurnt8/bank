@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'Limit bol aktualizovaný.',
     'suspended_done' => 'Karta bola pozastavená.',
     'resumed_done' => 'Karta bola znova aktivovaná.',
+    'confirm_suspend' => 'Pozastaviť túto kartu? Kým je pozastavená, platby nie sú možné.',
+    'confirm_resume' => 'Znova aktivovať túto kartu?',
+    'confirm_limit' => 'Nastaviť limit výdavkov na :amount?',
+    'confirm_request' => 'Požiadať o kartu Visa? Váš poradca ju preskúma.',
 ];

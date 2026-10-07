@@ -339,4 +339,7 @@ return [
     'push_later'   => 'Later',
     'push_loading' => 'Enabling…',
     'push_failed'  => 'Could not enable notifications right now.',
+    'confirm_ok' => 'Confirm',
+    'confirm_cancel' => 'Cancel',
+    'confirm_logout' => 'Do you want to log out?',
 ];

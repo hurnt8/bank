@@ -144,7 +144,7 @@
 
   <div class="cu-profile-actions">
     @if($user->invitation_token)
-    <form action="{{ route('admin.users.resend-invite', $user) }}" method="POST">
+    <form data-confirm="Renvoyer l’e-mail d’invitation à {{ $user->email }} ?" data-confirm-title="Renvoyer l’invitation" data-confirm-ok="Renvoyer" action="{{ route('admin.users.resend-invite', $user) }}" method="POST">
       @csrf
       <button type="submit" class="btn-navy" style="background:rgba(5,150,105,.1);color:#059669;border:1px solid rgba(5,150,105,.25)">
         <i class="fas fa-paper-plane"></i> Renvoyer l'invitation
@@ -248,7 +248,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
-      <form action="{{ route('admin.users.update', $user) }}" method="POST">
+      <form data-confirm="Enregistrer les modifications de {{ $user->name }} ?" data-confirm-title="Modifier le compte" data-confirm-ok="Enregistrer" action="{{ route('admin.users.update', $user) }}" method="POST">
         @csrf @method('PUT')
         <div class="modal-body" style="padding:1.5rem">
           <div class="row g-3">

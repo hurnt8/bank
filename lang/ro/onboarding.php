@@ -104,4 +104,6 @@ return [
     'recovery_aside_1' => 'Primiți un link securizat prin e-mail',
     'recovery_aside_2' => 'Alegeți o nouă parolă',
     'recovery_aside_3' => 'Autentificați-vă din nou în câteva secunde',
+    'confirm_submit' => 'Trimiteți documentele pentru verificare?',
+    'confirm_info' => 'Salvați informațiile personale?',
 ];

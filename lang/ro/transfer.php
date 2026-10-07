@@ -64,4 +64,5 @@ return [
     'notif_progress_body' => 'Transferul :reference este procesat în proporție de :progress %.',
     'notif_code_title' => 'Cod necesar pentru transferul dumneavoastră',
     'notif_code_body' => 'Transferul :reference este oprit la :progress %. Contactați consilierul pentru a obține codul de deblocare.',
+    'confirm_send' => 'Trimiteți :amount către :name? Transferul va fi trimis spre validare.',
 ];

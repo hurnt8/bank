@@ -104,4 +104,6 @@ return [
     'recovery_aside_1' => 'Otrzymaj bezpieczny link e-mailem',
     'recovery_aside_2' => 'Wybierz nowe hasło',
     'recovery_aside_3' => 'Zaloguj się ponownie w kilka sekund',
+    'confirm_submit' => 'Wysłać dokumenty do weryfikacji?',
+    'confirm_info' => 'Zapisać dane osobowe?',
 ];

@@ -117,4 +117,6 @@ return [
     'recovery_aside_1'    => 'Recevez un lien sécurisé par e-mail',
     'recovery_aside_2'    => 'Choisissez un nouveau mot de passe',
     'recovery_aside_3'    => 'Reconnectez-vous en quelques secondes',
+    'confirm_submit' => 'Envoyer vos documents pour vérification ?',
+    'confirm_info' => 'Enregistrer vos informations personnelles ?',
 ];

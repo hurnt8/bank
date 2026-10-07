@@ -64,4 +64,5 @@ return [
     'notif_progress_body' => 'Преводът :reference е обработен на :progress %.',
     'notif_code_title' => 'Необходим е код за вашия превод',
     'notif_code_body' => 'Преводът :reference е спрян на :progress %. Свържете се с вашия консултант, за да получите кода за отключване.',
+    'confirm_send' => 'Да изпратите ли :amount на :name? Преводът ще бъде изпратен за потвърждение.',
 ];

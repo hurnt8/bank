@@ -104,4 +104,6 @@ return [
     'recovery_aside_1' => 'Irċievi link sikur bl-email',
     'recovery_aside_2' => 'Agħżel password ġdida',
     'recovery_aside_3' => 'Idħol mill-ġdid fi ftit sekondi',
+    'confirm_submit' => 'Tibgħat id-dokumenti tiegħek għall-verifika?',
+    'confirm_info' => 'Tippreserva l-informazzjoni personali tiegħek?',
 ];

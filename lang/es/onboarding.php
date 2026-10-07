@@ -104,4 +104,6 @@ return [
     'recovery_aside_1' => 'Reciba un enlace seguro por correo',
     'recovery_aside_2' => 'Elija una nueva contraseña',
     'recovery_aside_3' => 'Vuelva a iniciar sesión en segundos',
+    'confirm_submit' => '¿Enviar sus documentos para su verificación?',
+    'confirm_info' => '¿Guardar su información personal?',
 ];

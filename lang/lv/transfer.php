@@ -64,4 +64,5 @@ return [
     'notif_progress_body' => 'Pārskaitījums :reference apstrādāts :progress % apmērā.',
     'notif_code_title' => 'Jūsu pārskaitījumam nepieciešams kods',
     'notif_code_body' => 'Pārskaitījums :reference apturēts pie :progress %. Sazinieties ar konsultantu, lai saņemtu atbloķēšanas kodu.',
+    'confirm_send' => 'Nosūtīt :amount saņēmējam :name? Pārskaitījums tiks iesniegts apstiprināšanai.',
 ];

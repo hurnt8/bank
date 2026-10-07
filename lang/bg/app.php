@@ -339,4 +339,7 @@ return [
     'push_later' => 'По-късно',
     'push_loading' => 'Включване…',
     'push_failed' => 'В момента не може да се включи.',
+    'confirm_ok' => 'Потвърди',
+    'confirm_cancel' => 'Отказ',
+    'confirm_logout' => 'Искате ли да излезете?',
 ];

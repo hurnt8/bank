@@ -200,4 +200,7 @@ return [
     'push_later' => 'Neskôr',
     'push_loading' => 'Zapína sa…',
     'push_failed' => 'Teraz sa nepodarilo zapnúť.',
+    'confirm_ok' => 'Potvrdiť',
+    'confirm_cancel' => 'Zrušiť',
+    'confirm_logout' => 'Chcete sa odhlásiť?',
 ];

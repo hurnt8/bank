@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'Plafon actualizat.',
     'suspended_done' => 'Card suspendat.',
     'resumed_done' => 'Card reactivat.',
+    'confirm_suspend' => 'Suspendați acest card? Nu se vor putea face plăți cât timp este suspendat.',
+    'confirm_resume' => 'Reactivați acest card?',
+    'confirm_limit' => 'Setați plafonul de cheltuieli la :amount?',
+    'confirm_request' => 'Solicitați cardul Visa? Consilierul dumneavoastră îl va analiza.',
 ];

@@ -31,4 +31,8 @@ return [
     'limit_saved' => 'A limit frissítve.',
     'suspended_done' => 'Kártya felfüggesztve.',
     'resumed_done' => 'Kártya újraaktiválva.',
+    'confirm_suspend' => 'Felfüggeszti ezt a kártyát? Amíg fel van függesztve, nem lehet fizetni.',
+    'confirm_resume' => 'Újraaktiválja ezt a kártyát?',
+    'confirm_limit' => ':amount legyen a költési limit?',
+    'confirm_request' => 'Igényli Visa kártyáját? Tanácsadója elbírálja.',
 ];

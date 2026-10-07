@@ -359,4 +359,7 @@ return [
     'push_later' => 'Later',
     'push_loading' => 'Bezig met activeren…',
     'push_failed' => 'Activeren is nu niet mogelijk.',
+    'confirm_ok' => 'Bevestigen',
+    'confirm_cancel' => 'Annuleren',
+    'confirm_logout' => 'Wilt u uitloggen?',
 ];

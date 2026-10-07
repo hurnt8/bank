@@ -359,4 +359,7 @@ return [
     'push_later'   => 'Plus tard',
     'push_loading' => 'Activation…',
     'push_failed'  => 'Activation impossible pour le moment.',
+    'confirm_ok' => 'Confirmer',
+    'confirm_cancel' => 'Annuler',
+    'confirm_logout' => 'Voulez-vous vous déconnecter ?',
 ];

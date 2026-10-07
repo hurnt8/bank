@@ -332,4 +332,7 @@ return [
     'push_later' => 'Más tarde',
     'push_loading' => 'Activando…',
     'push_failed' => 'No se pudo activar por ahora.',
+    'confirm_ok' => 'Confirmar',
+    'confirm_cancel' => 'Cancelar',
+    'confirm_logout' => '¿Quiere cerrar la sesión?',
 ];

@@ -18,7 +18,7 @@
 <div class="flash flash-err mb-4"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first() }}</div>
 @endif
 
-<form action="{{ route('admin.social-links.update', $link) }}" method="POST">
+<form data-confirm="Enregistrer les modifications de ce réseau social ?" data-confirm-title="Réseau social" data-confirm-ok="Enregistrer" action="{{ route('admin.social-links.update', $link) }}" method="POST">
 @csrf
 @method('PUT')
 <div class="row g-4">
