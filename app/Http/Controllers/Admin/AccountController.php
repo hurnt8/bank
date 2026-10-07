@@ -76,7 +76,11 @@ class AccountController extends Controller
 
         $card = $account->card()->first();
 
-        return view('admin.accounts.show', compact('account', 'movements', 'card'));
+        // Dépenses carte du mois (comparées au plafond choisi par le client)
+        $cardSpent = (float) AccountMovement::where('user_id', $account->id)->where('kind', 'card')
+            ->where('created_at', '>=', now()->startOfMonth())->sum('amount');
+
+        return view('admin.accounts.show', compact('account', 'movements', 'card', 'cardSpent'));
     }
 
     public function credit(Request $request, User $account)
