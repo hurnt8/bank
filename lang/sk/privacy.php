@@ -1,0 +1,52 @@
+<?php
+
+return [
+    'title' => 'Zásady ochrany osobných údajov',
+    'introduction_title' => '1. Úvod',
+    'introduction_text' => 'V spoločnosti ' . site_name() . ' sa zaväzujeme chrániť a rešpektovať vaše súkromie. Tieto zásady ochrany osobných údajov vysvetľujú, ako zhromažďujeme, používame, sprístupňujeme a chránime vaše osobné údaje, keď používate náš web a svoj online bankový účet. Používaním nášho webu súhlasíte s postupmi opísanými v týchto zásadách.',
+    'information_collection_title' => '2. Údaje, ktoré zhromažďujeme',
+    'information_collection_text' => 'Môžeme zhromažďovať a spracúvať tieto údaje o vás:',
+    'information_collection_list' => [
+        'Údaje, ktoré nám poskytnete priamo, ako napríklad meno, adresa, e-mailová adresa, telefónne číslo, finančné údaje atď.',
+        'Údaje zhromaždené automaticky pri používaní nášho webu vrátane vašej IP adresy, typu prehliadača, navštívených stránok a dĺžky návštevy.',
+        'Údaje od tretích strán, ako sú obchodní partneri alebo verejné zdroje.',
+    ],
+    'information_use_title' => '3. Používanie vašich údajov',
+    'information_use_text' => 'Zhromaždené údaje používame na:',
+    'information_use_list' => [
+        'Otvorenie a správu vášho bankového účtu, karty a vašich transakcií (prevody, pohyby na účte).',
+        'Zlepšovanie nášho webu a služieb, a to aj analýzou spôsobu, akým náš web používate, a prispôsobením vašej skúsenosti.',
+        'Komunikáciu s vami, najmä s cieľom informovať vás o stave vášho účtu, aktualizáciách našich služieb a propagačných ponukách.',
+        'Plnenie našich zákonných a regulačných povinností vrátane povinností overovania totožnosti (KYC).',
+    ],
+    'information_sharing_title' => '4. Zdieľanie vašich údajov',
+    'information_sharing_text' => 'Vaše osobné údaje môžeme zdieľať s:',
+    'information_sharing_list' => [
+        'Našimi partnermi a poskytovateľmi služieb, ktorí nám pomáhajú poskytovať a zlepšovať naše bankové služby.',
+        'Inými finančnými inštitúciami na spracovanie vašich bankových transakcií a riadenie finančných rizík.',
+        'Regulačnými a vládnymi orgánmi, ak to vyžaduje zákon, a to aj v rámci našich povinností v oblasti boja proti praniu špinavých peňazí.',
+        'Tretími stranami v rámci obchodnej transakcie, ako je zlúčenie, akvizícia alebo predaj majetku.',
+    ],
+    'information_security_title' => '5. Bezpečnosť vašich údajov',
+    'information_security_text' => 'Zavádzame primerané technické a organizačné bezpečnostné opatrenia na ochranu vašich osobných údajov pred stratou, zneužitím, neoprávneným prístupom, zverejnením, zmenou a zničením. Absolútnu bezpečnosť údajov prenášaných prostredníctvom internetu však nemožno zaručiť.',
+    'your_rights_title' => '6. Vaše práva',
+    'your_rights_text' => 'Máte právo:',
+    'your_rights_list' => [
+        'Získať prístup k vašim osobným údajom, ktoré spracúvame.',
+        'Požiadať o opravu svojich osobných údajov, ak sú nepresné alebo neúplné.',
+        'Požiadať o vymazanie svojich osobných údajov za určitých podmienok.',
+        'Namietať proti spracúvaniu vašich osobných údajov za určitých okolností.',
+        'Kedykoľvek odvolať súhlas so spracúvaním osobných údajov, ak je spracúvanie založené na vašom súhlase.',
+    ],
+    'your_rights_contact' => 'Ak chcete uplatniť svoje práva, kontaktujte nás na e-mailovej adrese uvedenej nižšie v sekcii „Kontakt“.',
+    'policy_updates_title' => '7. Zmeny týchto zásad ochrany osobných údajov',
+    'policy_updates_text' => 'Tieto zásady ochrany osobných údajov môžeme z času na čas aktualizovať, aby odrážali zmeny v našich postupoch a službách. Odporúčame vám pravidelne kontrolovať túto stránku. Dátum poslednej aktualizácie je uvedený v hornej časti týchto zásad.',
+    'contact_title' => '8. Kontakt',
+    'contact_text' => 'Ak máte akékoľvek otázky, obavy alebo požiadavky týkajúce sa týchto zásad ochrany osobných údajov alebo spôsobu, akým nakladáme s vašimi osobnými údajmi, kontaktujte nás na:',
+    'contact_details' => [
+        site_name(),
+        'Adresa: Rua de Santo António 33, 7200-175, Portugal',
+        'E-mail: ' . site_email(),
+        'Telefón: ' . site_phone() . ' ',
+    ],
+];

@@ -1,43 +1,43 @@
 <?php
 
 return [
-    'title' => 'Pogoji in določila',
+    'title' => 'Splošni pogoji',
     'sections' => [
         [
             'title' => '1. Uvod',
-            'content' => 'Dobrodošli pri ' . site_name() . '. Z uporabo naše spletne strani in storitev se strinjate, da se boste držali in bili vezani na naslednje pogoje in določila. Prosimo, natančno preberite te pogoje, preden uporabite našo spletno stran ali sklenete posojilo z nami.'
+            'content' => 'Dobrodošli pri ' . site_name() . '. Z uporabo naše strani in storitev se strinjate, da boste upoštevali in bili zavezani k naslednjim pogojem. Pred odprtjem računa ali uporabo naših bančnih storitev te pogoje pozorno preberite.'
         ],
         [
-            'title' => '2. Uporaba spletne strani',
-            'content' => 'Z dostopom do naše spletne strani se strinjate, da naše storitve uporabljate le za zakonite namene in v skladu s temi pogoji. Strinjate se, da naše spletne strani ne boste uporabljali na način, ki bi povzročil škodo, prekinitev ali motnje v naših storitvah ali dostopu drugih uporabnikov.'
+            'title' => '2. Uporaba strani',
+            'content' => 'Z dostopom do naše strani se strinjate, da boste naše storitve uporabljali samo v zakonite namene in v skladu s temi pogoji. Strinjate se, da strani ne boste uporabljali na način, ki povzroča škodo, prekinitev ali motnje naših storitev ali dostopa drugih uporabnikov.'
         ],
         [
-            'title' => '3. Posojilne storitve',
-            'content' => site_name() . ' ponuja različne vrste posojil, da zadosti vašim finančnim potrebam. Vsa posojila so predmet odobritve na podlagi naše ocene vaše kreditne sposobnosti in zmožnosti odplačevanja. Specifični pogoji vsakega posojila, vključno z obrestnimi merami, ročnostmi in pogoji odplačevanja, bodo podrobno opisani v vaši posojilni pogodbi.'
+            'title' => '3. Račun, kartica in bančne storitve',
+            'content' => site_name() . ' ponuja spletno odprtje računa, vključno s pripadajočim IBAN in bančno kartico. Kartica se izda na zahtevo stranke po odobritvi svetovalca. Odprtje računa je pogojeno s predhodnim preverjanjem identitete. Nakazila in druge transakcije z vašega računa podlegajo pogojem in morebitnim omejitvam, določenim ob odprtju računa ali v vašem odjemalskem prostoru.'
         ],
         [
-            'title' => '4. Stroški pogodbe in zavarovanja',
-            'content' => 'Ob sklenitvi posojila pri ' . site_name() . ' se lahko zaračunajo stroški pogodbe in zavarovanja. Ta pristojbina pokriva upravne stroške, povezane s postavitvijo in upravljanjem vašega posojila. Specifične podrobnosti o teh stroških bodo jasno navedene v vaši posojilni pogodbi. Te stroške morate plačati v skladu s predpisi.'
+            'title' => '4. Nakazila',
+            'content' => 'Nakazila, poslana z vašega računa, podlegajo potrditvi naše ekipe. Med potrjevanjem je znesek rezerviran na vašem računu. Po potrebi se lahko za nadaljevanje nakazila zahteva koda za odklep ali plačilo stroškov; o poteku nakazila vas bomo obveščali v vašem odjemalskem prostoru.'
         ],
         [
             'title' => '5. Zaupnost',
-            'content' => 'Zasebnost vaših osebnih podatkov jemljemo zelo resno. Za več podrobnosti o tem, kako zbiramo, uporabljamo in ščitimo vaše osebne podatke, si oglejte našo <a href="#">politiko zasebnosti</a>.'
+            'content' => 'Zasebnost vaših osebnih podatkov jemljemo zelo resno. Za več podrobnosti o tem, kako zbiramo, uporabljamo in varujemo vaše osebne podatke, glejte našo <a href="#">politiko zasebnosti</a>.'
         ],
         [
-            'title' => '6. Preklic',
-            'content' => 'Pridržujemo si pravico, da brez predhodnega obvestila prekinemo ali začasno onemogočimo vaš dostop do naše spletne strani in naših storitev, če menimo, da ste kršili te pogoje ali če menimo, da je to potrebno za zaščito naših interesov ali interesov naših uporabnikov.'
+            'title' => '6. Prekinitev',
+            'content' => 'Pridržujemo si pravico, da vam brez predhodnega obvestila prekinemo ali začasno onemogočimo dostop do naše strani in storitev, če menimo, da ste kršili te pogoje ali če menimo, da je to potrebno za zaščito naših interesov ali interesov naših uporabnikov.'
         ],
         [
             'title' => '7. Omejitev odgovornosti',
-            'content' => site_name() . ' ne bo odgovoren za kakršno koli posredno, posebno ali posledično izgubo ali škodo, ki izhaja iz uporabe ali nezmožnosti uporabe naše spletne strani ali storitev, vključno z izgubo dobička, izgubo podatkov ali prekinitev poslovanja, tudi če smo bili obveščeni o možnosti take škode.'
+            'content' => site_name() . ' ne odgovarja za nobeno posredno, posebno ali posledično izgubo ali škodo, ki izhaja iz uporabe ali nezmožnosti uporabe naše strani ali storitev, vključno z izgubo dobička, izgubo podatkov ali prekinitvijo poslovanja, tudi če smo bili opozorjeni na možnost take škode.'
         ],
         [
             'title' => '8. Spremembe pogojev',
-            'content' => 'Ti pogoji in določila se lahko občasno spremenijo, da odražajo spremembe v naših praksah ali v veljavnih zakonih. O pomembnih spremembah vas bomo obvestili z objavo novih pogojev na naši spletni strani. Vaša nadaljnja uporaba naše spletne strani po takšnih spremembah pomeni vašo sprejemljivost novih pogojev.'
+            'content' => 'Te pogoje lahko občasno spremenimo, da odražajo spremembe naših praks ali veljavne zakonodaje. O bistvenih spremembah vas bomo obvestili z objavo novih pogojev na naši strani. Vaša nadaljnja uporaba strani po takšnih spremembah pomeni sprejetje novih pogojev.'
         ],
         [
             'title' => '9. Kontakt',
-            'content' => 'Če imate kakršna koli vprašanja ali pomisleke glede teh pogojev in določil, nas kontaktirajte na:<br><br>' . site_name() . '<br>Naslov: Calcea Victoriei 118, Sector 1, 010093 Bukarešta<br>E-pošta: ' . site_email() . '<br>Telefon: ' . site_phone() . ' '
+            'content' => 'Če imate kakršna koli vprašanja ali pomisleke glede teh pogojev, nas kontaktirajte na:<br><br>' . site_name() . '<br>Naslov: Rua de Santo António 33, 7200-175, Portugal<br>E-pošta: ' . site_email() . '<br>Telefon: ' . site_phone() . ' '
         ],
     ],
 ];

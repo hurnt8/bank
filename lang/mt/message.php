@@ -1,9 +1,10 @@
 <?php
 
 return [
-    'success_contact' => 'messaġġ mibgħut b\'suċċess',
-    'success_sbscribe' => 'L-abbonament tlesta b\'suċċess',
-    'error' => 'Ġara żball waqt li intbagħat. Jekk jogħġbok erġa\' pprova aktar tard.',
-    'success_loan' => 'It-talba tiegħek għal self intbagħtet b\'suċċess. Aħna nipprovdulek tweġiba kemm jista\' jkun malajr.',
-    'error_loan' => 'Ġara żball waqt li intbagħtet l-applikazzjoni tiegħek għas-self. Jekk jogħġbok erġa\' pprova aktar tard.',
+    'success_contact' => 'Il-messaġġ intbagħat b’suċċess',
+    'success_sbscribe' => 'L-abbonament tlesta b’suċċess',
+    'error' => 'Seħħet żball waqt l-ibgħat. Jekk jogħġbok erġa’ pprova aktar tard.',
+    'no_reply_notice' => 'Din hija email iġġenerata awtomatikament. Jekk jogħġbok tweġibx.',
+    // Jintwera meta d-daqs totali tal-fajls imtellgħin jaqbeż il-post_max_size.
+    'upload_too_large' => 'Il-fajls imtellgħin huma kbar wisq. Jekk jogħġbok ikkompressahom jew ibgħathom wieħed wieħed.',
 ];
