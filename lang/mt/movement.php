@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'Trasferiment SEPA',
-    'kind_international' => 'Trasferiment internazzjonali',
+    'kind_instant' => 'Trasferiment f’ħin reali',
     'kind_deposit' => 'Depożitu',
     'kind_withdrawal' => 'Irtirar',
     'kind_card' => 'Ħlas bil-karta',

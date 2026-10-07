@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'Transferência SEPA',
-    'kind_international' => 'Transferência internacional',
+    'kind_instant' => 'Transferência em tempo real',
     'kind_deposit' => 'Depósito',
     'kind_withdrawal' => 'Levantamento',
     'kind_card' => 'Pagamento com cartão',

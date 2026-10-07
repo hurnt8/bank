@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'SEPA prevod',
-    'kind_international' => 'Medzinárodný prevod',
+    'kind_instant' => 'Prevod v reálnom čase',
     'kind_deposit' => 'Vklad',
     'kind_withdrawal' => 'Výber',
     'kind_card' => 'Platba kartou',

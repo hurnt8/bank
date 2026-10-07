@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'Transfer SEPA',
-    'kind_international' => 'Transfer internațional',
+    'kind_instant' => 'Transfer în timp real',
     'kind_deposit' => 'Depunere',
     'kind_withdrawal' => 'Retragere',
     'kind_card' => 'Plată cu cardul',

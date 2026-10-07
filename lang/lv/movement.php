@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'SEPA pārskaitījums',
-    'kind_international' => 'Starptautisks pārskaitījums',
+    'kind_instant' => 'Pārskaitījums reāllaikā',
     'kind_deposit' => 'Iemaksa',
     'kind_withdrawal' => 'Naudas izņemšana',
     'kind_card' => 'Maksājums ar karti',

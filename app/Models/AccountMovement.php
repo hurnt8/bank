@@ -8,12 +8,12 @@ class AccountMovement extends Model
 {
     /** Types d'opération proposés à l'administrateur selon le sens (crédit / débit). */
     public const KINDS = [
-        'credit' => ['sepa', 'international', 'deposit', 'refund', 'adjustment'],
-        'debit'  => ['sepa', 'international', 'card', 'withdrawal', 'fee', 'adjustment'],
+        'credit' => ['sepa', 'instant', 'deposit', 'refund', 'adjustment'],
+        'debit'  => ['sepa', 'instant', 'card', 'withdrawal', 'fee', 'adjustment'],
     ];
 
     /** Types qui concernent un virement (informations de la contrepartie : IBAN). */
-    public const TRANSFER_KINDS = ['sepa', 'international'];
+    public const TRANSFER_KINDS = ['sepa', 'instant'];
 
     protected $fillable = [
         'user_id', 'admin_id', 'type', 'kind', 'counterparty', 'counterparty_iban', 'reference', 'card_id', 'amount', 'currency',

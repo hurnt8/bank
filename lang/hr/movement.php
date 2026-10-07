@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'SEPA prijenos',
-    'kind_international' => 'Međunarodni prijenos',
+    'kind_instant' => 'Prijenos u stvarnom vremenu',
     'kind_deposit' => 'Uplata',
     'kind_withdrawal' => 'Isplata',
     'kind_card' => 'Plaćanje karticom',

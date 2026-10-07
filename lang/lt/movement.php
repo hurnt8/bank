@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'SEPA pavedimas',
-    'kind_international' => 'Tarptautinis pavedimas',
+    'kind_instant' => 'Pervedimas realiuoju laiku',
     'kind_deposit' => 'Įnašas',
     'kind_withdrawal' => 'Išgryninimas',
     'kind_card' => 'Mokėjimas kortele',

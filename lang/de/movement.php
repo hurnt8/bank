@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'SEPA-Überweisung',
-    'kind_international' => 'Internationale Überweisung',
+    'kind_instant' => 'Echtzeitüberweisung',
     'kind_deposit' => 'Einzahlung',
     'kind_withdrawal' => 'Abhebung',
     'kind_card' => 'Kartenzahlung',

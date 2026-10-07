@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'SEPA nakazilo',
-    'kind_international' => 'Mednarodno nakazilo',
+    'kind_instant' => 'Nakazilo v realnem času',
     'kind_deposit' => 'Vplačilo',
     'kind_withdrawal' => 'Dvig',
     'kind_card' => 'Plačilo s kartico',

@@ -40,7 +40,7 @@ class SiteContactController extends Controller
             'payment_iban'     => ['nullable', 'string', 'max:40', new \App\Rules\ValidIban()],
             'payment_bic'      => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
             'payment_holder'   => ['nullable', 'string', 'max:100'],
-            'payment_type'     => ['nullable', 'in:sepa,international'],
+            'payment_type'     => ['nullable', 'in:sepa,instant'],
             'whatsapp_number'  => ['nullable', 'string', 'max:30'],
             'whatsapp_enabled' => ['boolean'],
             'otp_clients_enabled'     => ['boolean'],

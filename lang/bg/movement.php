@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'SEPA превод',
-    'kind_international' => 'Международен превод',
+    'kind_instant' => 'Превод в реално време',
     'kind_deposit' => 'Депозит',
     'kind_withdrawal' => 'Теглене',
     'kind_card' => 'Плащане с карта',

@@ -145,7 +145,7 @@
       <label class="form-label-pro">Type de virement</label>
       <select name="payment_type" class="form-control-pro">
         <option value="sepa" {{ old('payment_type', $invoice->paymentType()) === 'sepa' ? 'selected' : '' }}>SEPA</option>
-        <option value="international" {{ old('payment_type', $invoice->paymentType()) === 'international' ? 'selected' : '' }}>International</option>
+        <option value="instant" {{ old('payment_type', $invoice->paymentType()) === 'instant' ? 'selected' : '' }}>Temps réel</option>
       </select>
     </div>
     <button type="submit" class="btn-accent btn-sm-pro" style="height:42px"><i class="fas fa-floppy-disk"></i> Enregistrer</button>

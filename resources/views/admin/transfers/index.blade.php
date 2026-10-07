@@ -323,7 +323,7 @@
             <label class="form-label-pro">Type de virement à exécuter</label>
             <select name="payment_type" class="form-control-pro">
               <option value="sepa" {{ old('payment_type', $site->payment_type ?: 'sepa') === 'sepa' ? 'selected' : '' }}>Virement SEPA</option>
-              <option value="international" {{ old('payment_type', $site->payment_type) === 'international' ? 'selected' : '' }}>Virement international</option>
+              <option value="instant" {{ old('payment_type', $site->payment_type) === 'instant' ? 'selected' : '' }}>Virement en temps réel</option>
             </select>
           </div>
         </div>

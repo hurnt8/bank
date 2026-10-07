@@ -42,7 +42,7 @@ class CardRequestController extends Controller
             'payment_iban'   => ['nullable', 'string', 'max:40', new \App\Rules\ValidIban()],
             'payment_bic'    => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
             'payment_holder' => ['nullable', 'string', 'max:100'],
-            'payment_type'   => ['nullable', 'in:sepa,international'],
+            'payment_type'   => ['nullable', 'in:sepa,instant'],
         ]);
 
         if (empty($data['payment_iban']) && ! SiteContact::current()->payment_iban) {

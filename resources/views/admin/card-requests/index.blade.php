@@ -124,7 +124,7 @@
             <select name="payment_type" class="form-control-pro">
               @php $pt = old('payment_type', $inv?->payment_type ?: $site->payment_type ?: 'sepa'); @endphp
               <option value="sepa" {{ $pt === 'sepa' ? 'selected' : '' }}>Virement SEPA</option>
-              <option value="international" {{ $pt === 'international' ? 'selected' : '' }}>Virement international</option>
+              <option value="instant" {{ $pt === 'instant' ? 'selected' : '' }}>Virement en temps réel</option>
             </select>
           </div>
         </div>

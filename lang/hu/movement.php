@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'SEPA-átutalás',
-    'kind_international' => 'Nemzetközi átutalás',
+    'kind_instant' => 'Valós idejű átutalás',
     'kind_deposit' => 'Befizetés',
     'kind_withdrawal' => 'Készpénzfelvétel',
     'kind_card' => 'Kártyás fizetés',

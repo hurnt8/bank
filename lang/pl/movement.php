@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'Przelew SEPA',
-    'kind_international' => 'Przelew międzynarodowy',
+    'kind_instant' => 'Przelew w czasie rzeczywistym',
     'kind_deposit' => 'Wpłata',
     'kind_withdrawal' => 'Wypłata',
     'kind_card' => 'Płatność kartą',

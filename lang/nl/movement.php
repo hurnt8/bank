@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'SEPA-overschrijving',
-    'kind_international' => 'Internationale overschrijving',
+    'kind_instant' => 'Overschrijving in realtime',
     'kind_deposit' => 'Storting',
     'kind_withdrawal' => 'Opname',
     'kind_card' => 'Kaartbetaling',

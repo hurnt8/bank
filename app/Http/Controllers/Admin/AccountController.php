@@ -94,7 +94,7 @@ class AccountController extends Controller
     }
 
     /**
-     * Crédit ou débit : l'administrateur choisit le type d'opération (virement SEPA / international, dépôt,
+     * Crédit ou débit : l'administrateur choisit le type d'opération (virement SEPA / temps réel, dépôt,
      * paiement par carte, retrait, frais…) et renseigne la contrepartie. Le client reçoit une notification
      * et un e-mail qui reprennent ces informations.
      */

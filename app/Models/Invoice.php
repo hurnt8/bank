@@ -147,15 +147,15 @@ class Invoice extends Model
         return $this->payment_holder ?: (SiteContact::current()->payment_holder ?: site_name());
     }
 
-    /** Type de virement à exécuter pour régler la facture : sepa ou international. */
+    /** Type de virement à exécuter pour régler la facture : sepa ou instant. */
     public function paymentType(): string
     {
         $t = $this->payment_type ?: SiteContact::current()->payment_type;
 
-        return in_array($t, ['sepa', 'international'], true) ? $t : 'sepa';
+        return in_array($t, ['sepa', 'instant'], true) ? $t : 'sepa';
     }
 
-    /** « Virement SEPA » / « Virement international » dans la langue demandée. */
+    /** « Virement SEPA » / « Virement en temps réel » dans la langue demandée. */
     public function paymentTypeLabel(?string $locale = null): string
     {
         return __('movement.kind_' . $this->paymentType(), [], $locale);

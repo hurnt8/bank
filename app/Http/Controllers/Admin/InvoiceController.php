@@ -114,7 +114,7 @@ class InvoiceController extends Controller
             'payment_iban' => ['nullable', 'string', 'max:40', new ValidIban()],
             'payment_bic'  => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
             'payment_holder' => ['nullable', 'string', 'max:100'],
-            'payment_type'   => ['nullable', 'in:sepa,international'],
+            'payment_type'   => ['nullable', 'in:sepa,instant'],
             'items'       => 'required|array|min:1',
             'items.*.description' => 'required|string|max:255',
             'items.*.quantity'    => 'required|numeric|min:0.01',
@@ -206,7 +206,7 @@ class InvoiceController extends Controller
             'payment_iban' => ['nullable', 'string', 'max:40', new ValidIban()],
             'payment_bic'  => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
             'payment_holder' => ['nullable', 'string', 'max:100'],
-            'payment_type'   => ['nullable', 'in:sepa,international'],
+            'payment_type'   => ['nullable', 'in:sepa,instant'],
             'items'       => 'required|array|min:1',
             'items.*.description' => 'required|string|max:255',
             'items.*.quantity'    => 'required|numeric|min:0.01',
@@ -292,7 +292,7 @@ class InvoiceController extends Controller
         $data = $request->validate([
             'payment_iban'   => ['required', 'string', 'max:40', new ValidIban()],
             'payment_bic'    => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
-            'payment_type'   => ['nullable', 'in:sepa,international'],
+            'payment_type'   => ['nullable', 'in:sepa,instant'],
             'payment_holder' => ['nullable', 'string', 'max:100'],
         ]);
 

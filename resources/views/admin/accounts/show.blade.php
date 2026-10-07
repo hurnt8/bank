@@ -124,7 +124,7 @@
 
 {{-- Credit / Debit forms --}}
 @php
-  $kindLabels = ['sepa' => 'Virement SEPA', 'international' => 'Virement international', 'deposit' => 'Dépôt', 'refund' => 'Remboursement', 'adjustment' => 'Ajustement / correction',
+  $kindLabels = ['sepa' => 'Virement SEPA', 'instant' => 'Virement en temps réel', 'deposit' => 'Dépôt', 'refund' => 'Remboursement', 'adjustment' => 'Ajustement / correction',
                  'card' => 'Paiement par carte', 'withdrawal' => 'Retrait', 'fee' => 'Frais'];
   $cardActive = $card && $card->status === \App\Models\Card::STATUS_ACTIVE;
   $cardLimit  = $card ? (int) ($card->spending_limit ?: \App\Models\Card::LIMIT_MIN) : 0;
@@ -176,7 +176,7 @@
         </div>
       </div>
 
-      <div class="acs-field" x-show="kind === 'sepa' || kind === 'international'" x-cloak>
+      <div class="acs-field" x-show="kind === 'sepa' || kind === 'instant'" x-cloak>
         <label>IBAN {{ $isCredit ? 'de l’expéditeur' : 'du bénéficiaire' }}</label>
         <input type="text" name="counterparty_iban" maxlength="40" value="{{ old('counterparty_iban') }}" placeholder="DE00 0000 0000 0000 0000 00" style="font-family:monospace;text-transform:uppercase">
       </div>

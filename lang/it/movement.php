@@ -2,7 +2,7 @@
 
 return [
     'kind_sepa' => 'Bonifico SEPA',
-    'kind_international' => 'Bonifico internazionale',
+    'kind_instant' => 'Bonifico in tempo reale',
     'kind_deposit' => 'Versamento',
     'kind_withdrawal' => 'Prelievo',
     'kind_card' => 'Pagamento con carta',
