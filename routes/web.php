@@ -39,9 +39,15 @@ use Illuminate\Support\Facades\Schema;
 |
 */
 
-$supportedLocales = Schema::hasTable('languages')
-    ? Language::enabledCodes()
-    : ['fr', 'en'];
+// Langues actives : si la base est injoignable (déploiement, .env pas encore renseigné, composer install),
+// on retombe sur fr/en au lieu de faire échouer toute commande artisan qui charge les routes.
+try {
+    $supportedLocales = Schema::hasTable('languages')
+        ? Language::enabledCodes()
+        : ['fr', 'en'];
+} catch (\Throwable $e) {
+    $supportedLocales = ['fr', 'en'];
+}
 
 Route::get('/', function (Request $request) use ($supportedLocales) {
     $locale = 'en';
