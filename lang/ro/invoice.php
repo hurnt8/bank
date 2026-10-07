@@ -20,4 +20,5 @@ return [
     'pay_bic' => 'BIC',
     'pay_reference' => 'Referința de menționat',
     'pay_hint' => 'Menționați referința facturii în descrierea transferului dumneavoastră.',
+    'status'      => 'Stare',
 ];

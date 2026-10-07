@@ -20,4 +20,5 @@ return [
     'pay_bic'     => 'BIC',
     'pay_reference' => 'Reference to quote',
     'pay_hint'    => 'Please quote the invoice reference in your transfer description.',
+    'status'      => 'Status',
 ];

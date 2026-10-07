@@ -20,4 +20,5 @@ return [
     'pay_bic' => 'BIC',
     'pay_reference' => 'Numer referencyjny do podania',
     'pay_hint' => 'Podaj numer referencyjny faktury w tytule przelewu.',
+    'status'      => 'Status',
 ];

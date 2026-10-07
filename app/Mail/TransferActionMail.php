@@ -6,6 +6,7 @@ use App\Models\Transfer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use App\Services\InvoicePdf;
+use App\Services\OperationPdf;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -105,6 +106,12 @@ class TransferActionMail extends Mailable
             ];
         }
 
-        return [];
+        // Virement validé ou rejeté : la facture / le justificatif de l'opération est joint à l'e-mail
+        $transfer = $this->transfer;
+
+        return [
+            Attachment::fromData(fn () => OperationPdf::forTransfer($transfer), OperationPdf::transferFilename($transfer))
+                ->withMime('application/pdf'),
+        ];
     }
 }

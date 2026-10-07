@@ -20,4 +20,5 @@ return [
     'pay_bic' => 'BIC',
     'pay_reference' => 'Referenza li għandha tiġi indikata',
     'pay_hint' => 'Indika r-referenza tal-fattura fid-deskrizzjoni tat-trasferiment tiegħek.',
+    'status'      => 'Stat',
 ];

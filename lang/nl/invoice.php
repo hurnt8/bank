@@ -20,4 +20,5 @@ return [
     'pay_bic' => 'BIC',
     'pay_reference' => 'Te vermelden referentie',
     'pay_hint' => 'Vermeld de factuurreferentie in de omschrijving van uw overschrijving.',
+    'status'      => 'Status',
 ];

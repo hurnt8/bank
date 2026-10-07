@@ -20,4 +20,5 @@ return [
     'pay_bic' => 'BIC',
     'pay_reference' => 'Riferimento da indicare',
     'pay_hint' => 'Indica il riferimento della fattura nella causale del bonifico.',
+    'status'      => 'Stato',
 ];

@@ -20,4 +20,5 @@ return [
     'pay_bic' => 'BIC',
     'pay_reference' => 'Nurodytina nuoroda',
     'pay_hint' => 'Pavedimo paskirtyje nurodykite sąskaitos nuorodą.',
+    'status'      => 'Būsena',
 ];

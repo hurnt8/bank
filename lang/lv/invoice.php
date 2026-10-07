@@ -20,4 +20,5 @@ return [
     'pay_bic' => 'BIC',
     'pay_reference' => 'Norādāmā atsauce',
     'pay_hint' => 'Pārskaitījuma mērķī norādiet rēķina atsauci.',
+    'status'      => 'Statuss',
 ];

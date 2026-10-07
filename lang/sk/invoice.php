@@ -20,4 +20,5 @@ return [
     'pay_bic' => 'BIC',
     'pay_reference' => 'Uvádzaná referencia',
     'pay_hint' => 'V poznámke k prevodu uveďte referenciu faktúry.',
+    'status'      => 'Stav',
 ];

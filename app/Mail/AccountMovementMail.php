@@ -6,6 +6,8 @@ use App\Models\AccountMovement;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use App\Services\OperationPdf;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -36,5 +38,16 @@ class AccountMovementMail extends Mailable
             view: 'emails.account-movement',
             with: ['client' => $this->client, 'movement' => $this->movement, 'locale' => $this->clientLocale()],
         );
+    }
+
+    /** Crédit ou débit : la facture / le justificatif de l'opération (PDF) est joint à l'e-mail. */
+    public function attachments(): array
+    {
+        $movement = $this->movement;
+
+        return [
+            Attachment::fromData(fn () => OperationPdf::forMovement($movement), OperationPdf::movementFilename($movement))
+                ->withMime('application/pdf'),
+        ];
     }
 }

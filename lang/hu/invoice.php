@@ -20,4 +20,5 @@ return [
     'pay_bic' => 'BIC',
     'pay_reference' => 'Feltüntetendő hivatkozás',
     'pay_hint' => 'Kérjük, tüntesse fel a számla hivatkozását az átutalás közleményében.',
+    'status'      => 'Állapot',
 ];

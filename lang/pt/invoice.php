@@ -20,4 +20,5 @@ return [
     'pay_bic' => 'BIC',
     'pay_reference' => 'Referência a indicar',
     'pay_hint' => 'Indique a referência da fatura na descrição da sua transferência.',
+    'status'      => 'Estado',
 ];

@@ -20,4 +20,5 @@ return [
     'pay_bic' => 'BIC',
     'pay_reference' => 'Anzugebende Referenz',
     'pay_hint' => 'Bitte geben Sie die Rechnungsreferenz im Verwendungszweck Ihrer Überweisung an.',
+    'status'      => 'Status',
 ];
