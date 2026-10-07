@@ -106,4 +106,6 @@ return [
     'recovery_aside_3' => 'Prisijunkite iš naujo per kelias sekundes',
     'confirm_submit' => 'Siųsti dokumentus patikrinti?',
     'confirm_info' => 'Išsaugoti asmeninę informaciją?',
+    'signup_done_direct' => 'Jūsų paskyra sukurta ir aktyvuota. Sveiki atvykę!',
+    'signup_done_verify' => 'Jūsų paskyra sukurta. Ką tik išsiuntėme jums aktyvinimo el. laišką.',
 ];

@@ -106,4 +106,6 @@ return [
     'recovery_aside_3' => 'In Sekunden wieder anmelden',
     'confirm_submit' => 'Dokumente zur Prüfung senden?',
     'confirm_info' => 'Persönliche Angaben speichern?',
+    'signup_done_direct' => 'Ihr Konto wurde erstellt und aktiviert. Willkommen!',
+    'signup_done_verify' => 'Ihr Konto wurde erstellt. Eine Aktivierungs-E-Mail wurde soeben an Sie gesendet.',
 ];

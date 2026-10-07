@@ -112,4 +112,6 @@ return [
     'recovery_aside_3'    => 'Sign in again in seconds',
     'confirm_submit' => 'Send your documents for verification?',
     'confirm_info' => 'Save your personal information?',
+    'signup_done_direct' => 'Your account has been created and activated. Welcome!',
+    'signup_done_verify' => 'Your account has been created. An activation email has just been sent to you.',
 ];

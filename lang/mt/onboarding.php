@@ -106,4 +106,6 @@ return [
     'recovery_aside_3' => 'Idħol mill-ġdid fi ftit sekondi',
     'confirm_submit' => 'Tibgħat id-dokumenti tiegħek għall-verifika?',
     'confirm_info' => 'Tippreserva l-informazzjoni personali tiegħek?',
+    'signup_done_direct' => 'Il-kont tiegħek inħoloq u ġie attivat. Merħba!',
+    'signup_done_verify' => 'Il-kont tiegħek inħoloq. Għadna kemm bgħatnielek email ta\' attivazzjoni.',
 ];

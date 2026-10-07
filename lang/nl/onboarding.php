@@ -106,4 +106,6 @@ return [
     'recovery_aside_3' => 'Binnen enkele seconden weer ingelogd',
     'confirm_submit' => 'Uw documenten ter verificatie versturen?',
     'confirm_info' => 'Uw persoonlijke gegevens opslaan?',
+    'signup_done_direct' => 'Uw account is aangemaakt en geactiveerd. Welkom!',
+    'signup_done_verify' => 'Uw account is aangemaakt. Er is zojuist een activatiemail naar u verzonden.',
 ];

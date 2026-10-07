@@ -119,4 +119,6 @@ return [
     'recovery_aside_3'    => 'Reconnectez-vous en quelques secondes',
     'confirm_submit' => 'Envoyer vos documents pour vérification ?',
     'confirm_info' => 'Enregistrer vos informations personnelles ?',
+    'signup_done_direct' => 'Votre compte a été créé et activé. Bienvenue !',
+    'signup_done_verify' => 'Votre compte a été créé. Un e-mail d\'activation vient de vous être envoyé.',
 ];

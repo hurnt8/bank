@@ -106,4 +106,6 @@ return [
     'recovery_aside_3' => 'Prijavite se znova v nekaj sekundah',
     'confirm_submit' => 'Poslati dokumente v preverjanje?',
     'confirm_info' => 'Shraniti osebne podatke?',
+    'signup_done_direct' => 'Vaš račun je ustvarjen in aktiviran. Dobrodošli!',
+    'signup_done_verify' => 'Vaš račun je ustvarjen. Pravkar smo vam poslali aktivacijsko e-pošto.',
 ];

@@ -19,6 +19,9 @@
     <p class="card-sub">{{ __('onboarding.check_sub', ['email' => $email]) }}</p>
   </div>
 
+  @if(session('signup_ok') && ! session('error'))
+  <div class="msg msg--ok" role="status"><i class="fas fa-circle-check"></i><span>{{ session('signup_ok') }}</span></div>
+  @endif
   @if(session('resent'))
   <div class="msg msg--ok" role="status"><i class="fas fa-circle-check"></i><span>{{ session('resent') }}</span></div>
   @endif

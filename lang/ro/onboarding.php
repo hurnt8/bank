@@ -106,4 +106,6 @@ return [
     'recovery_aside_3' => 'Autentificați-vă din nou în câteva secunde',
     'confirm_submit' => 'Trimiteți documentele pentru verificare?',
     'confirm_info' => 'Salvați informațiile personale?',
+    'signup_done_direct' => 'Contul dvs. a fost creat și activat. Bun venit!',
+    'signup_done_verify' => 'Contul dvs. a fost creat. Tocmai v-am trimis un e-mail de activare.',
 ];

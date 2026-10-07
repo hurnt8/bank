@@ -106,4 +106,6 @@ return [
     'recovery_aside_3' => 'Zaloguj się ponownie w kilka sekund',
     'confirm_submit' => 'Wysłać dokumenty do weryfikacji?',
     'confirm_info' => 'Zapisać dane osobowe?',
+    'signup_done_direct' => 'Twoje konto zostało utworzone i aktywowane. Witamy!',
+    'signup_done_verify' => 'Twoje konto zostało utworzone. Właśnie wysłaliśmy do Ciebie e-mail aktywacyjny.',
 ];

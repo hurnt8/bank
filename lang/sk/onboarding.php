@@ -106,4 +106,6 @@ return [
     'recovery_aside_3' => 'Prihláste sa znova za pár sekúnd',
     'confirm_submit' => 'Odoslať dokumenty na overenie?',
     'confirm_info' => 'Uložiť osobné údaje?',
+    'signup_done_direct' => 'Váš účet bol vytvorený a aktivovaný. Vitajte!',
+    'signup_done_verify' => 'Váš účet bol vytvorený. Práve sme vám poslali aktivačný e-mail.',
 ];

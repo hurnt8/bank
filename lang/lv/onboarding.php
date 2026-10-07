@@ -106,4 +106,6 @@ return [
     'recovery_aside_3' => 'Piesakieties atkal dažu sekunžu laikā',
     'confirm_submit' => 'Nosūtīt dokumentus pārbaudei?',
     'confirm_info' => 'Saglabāt personas datus?',
+    'signup_done_direct' => 'Jūsu konts ir izveidots un aktivizēts. Laipni lūdzam!',
+    'signup_done_verify' => 'Jūsu konts ir izveidots. Mēs tikko nosūtījām jums aktivizācijas e-pastu.',
 ];

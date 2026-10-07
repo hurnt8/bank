@@ -7,6 +7,7 @@ use App\Mail\AdminNewAccountMail;
 use App\Models\AdminNotification;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -52,12 +53,15 @@ class SignupController extends Controller
 
         $this->notifyAdmins($user);
 
-        // Sans e-mail d'activation (interrupteur éteint), le compte est déjà validé : direct à la connexion.
+        // Sans e-mail d'activation (interrupteur éteint), le compte est déjà validé : connexion directe à l'espace client.
         if ($user->fresh()->email_verified_at) {
-            return redirect()->route('login')->with('verified_status', __('onboarding.verified_success'));
+            Auth::login($user->fresh());
+            $request->session()->regenerate();
+
+            return redirect()->route('client.app.home')->with('success', __('onboarding.signup_done_direct'));
         }
 
-        $redirect = redirect()->route('verification.notice')->with('verify_email', $user->email);
+        $redirect = redirect()->route('verification.notice')->with('verify_email', $user->email)->with('signup_ok', __('onboarding.signup_done_verify'));
 
         return $sent ? $redirect : $redirect->with('error', __('onboarding.resend_failed'));
     }

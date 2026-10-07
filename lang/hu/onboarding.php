@@ -106,4 +106,6 @@ return [
     'recovery_aside_3' => 'Jelentkezzen be újra másodpercek alatt',
     'confirm_submit' => 'Elküldi a dokumentumokat ellenőrzésre?',
     'confirm_info' => 'Menti személyes adatait?',
+    'signup_done_direct' => 'Fiókja létrejött és aktiválva lett. Üdvözöljük!',
+    'signup_done_verify' => 'Fiókja létrejött. Az aktiváló e-mailt az imént elküldtük Önnek.',
 ];

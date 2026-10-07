@@ -106,4 +106,6 @@ return [
     'recovery_aside_3' => 'Inicie sessão novamente em segundos',
     'confirm_submit' => 'Enviar os seus documentos para verificação?',
     'confirm_info' => 'Guardar as suas informações pessoais?',
+    'signup_done_direct' => 'A sua conta foi criada e ativada. Bem-vindo!',
+    'signup_done_verify' => 'A sua conta foi criada. Acabámos de lhe enviar um e-mail de ativação.',
 ];
