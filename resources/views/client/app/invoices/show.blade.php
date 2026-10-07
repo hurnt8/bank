@@ -322,7 +322,7 @@
 <div class="invd-section" style="margin-top:.875rem">
   <div class="invd-section__title">{{ __('transfer.detail_title') }}</div>
   <div class="invd-note" style="display:block">
-    @foreach([[__('transfer.reference'), $lt->reference], [__('transfer.type'), $lt->typeLabel()], [__('transfer.beneficiary'), $lt->beneficiary_name], [__('invoice.amount'), number_format((float) $lt->amount, 2, ',', ' ') . ' ' . $lt->currency]] as [$k, $v])
+    @foreach([[__('transfer.reference'), $lt->reference], [__('transfer.type'), $lt->typeLabel()], [__('transfer.beneficiary'), $lt->beneficiary_name], ...($lt->beneficiary_iban ? [[__('invoice.pay_iban'), \App\Models\Invoice::formatIban((string) $lt->beneficiary_iban)]] : []), [__('invoice.amount'), number_format((float) $lt->amount, 2, ',', ' ') . ' ' . $lt->currency]] as [$k, $v])
     <div style="display:flex;justify-content:space-between;gap:.75rem;padding:.4rem 0;border-bottom:1px dashed var(--ca-border)">
       <span style="color:var(--ca-text-3);font-size:.78rem">{{ $k }}</span><strong style="font-size:.85rem;text-align:right;overflow-wrap:anywhere">{{ $v }}</strong>
     </div>
@@ -341,7 +341,11 @@
       ['invoice.pay_holder', $invoice->paymentHolder(), false],
       ['invoice.pay_iban', \App\Models\Invoice::formatIban($invoice->paymentIban()), $invoice->paymentIban()],
       ['invoice.pay_bic', $invoice->paymentBic(), $invoice->paymentBic()],
-      ['invoice.pay_reference', $invoice->reference, $invoice->reference],
+      ['invoice.pay_reference', $invoice->reference . ($invoice->linkedTransfer ? ' · ' . $invoice->linkedTransfer->reference : ''), $invoice->reference],
+      ...($invoice->linkedTransfer ? [
+        ['transfer.type', $invoice->linkedTransfer->typeLabel(), false],
+        ['transfer.beneficiary', $invoice->linkedTransfer->beneficiary_name, false],
+      ] : []),
     ] as [$lbl, $val, $copy])
       @continue($val === '')
       <div style="display:flex;justify-content:space-between;align-items:center;gap:.75rem;padding:.4rem 0;border-bottom:1px dashed var(--ca-border)">

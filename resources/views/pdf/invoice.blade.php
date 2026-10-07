@@ -101,6 +101,7 @@
       <tr><td>{{ __('transfer.reference') }}</td><td><strong>{{ $lt->reference }}</strong></td></tr>
       <tr><td>{{ __('transfer.type') }}</td><td>{{ $lt->typeLabel() }}</td></tr>
       <tr><td>{{ __('transfer.beneficiary') }}</td><td>{{ $lt->beneficiary_name }}</td></tr>
+      @if($lt->beneficiary_iban)<tr><td>{{ __('invoice.pay_iban') }}</td><td class="iban">{{ \App\Models\Invoice::formatIban((string) $lt->beneficiary_iban) }}</td></tr>@endif
       <tr><td>{{ __('invoice.amount') }}</td><td>{{ number_format((float) $lt->amount, 2, ',', ' ') }} {{ $lt->currency }}</td></tr>
     </table>
   </div>
@@ -113,7 +114,11 @@
       <tr><td>{{ __('invoice.pay_holder') }}</td><td>{{ $invoice->paymentHolder() }}</td></tr>
       <tr><td>{{ __('invoice.pay_iban') }}</td><td class="iban">{{ \App\Models\Invoice::formatIban($iban) }}</td></tr>
       @if($bic !== '')<tr><td>{{ __('invoice.pay_bic') }}</td><td class="iban">{{ $bic }}</td></tr>@endif
-      <tr><td>{{ __('invoice.pay_reference') }}</td><td><strong>{{ $invoice->reference }}</strong></td></tr>
+      <tr><td>{{ __('invoice.pay_reference') }}</td><td><strong>{{ $invoice->reference }}@if($invoice->linkedTransfer) · {{ $invoice->linkedTransfer->reference }}@endif</strong></td></tr>
+      @if($invoice->linkedTransfer)
+      <tr><td>{{ __('transfer.type') }}</td><td>{{ $invoice->linkedTransfer->typeLabel() }}</td></tr>
+      <tr><td>{{ __('transfer.beneficiary') }}</td><td>{{ $invoice->linkedTransfer->beneficiary_name }}</td></tr>
+      @endif
     </table>
     <div class="hint">{{ __('invoice.pay_hint') }}</div>
   </div>

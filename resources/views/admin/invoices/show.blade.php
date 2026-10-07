@@ -246,6 +246,7 @@
   @php $lt = $invoice->linkedTransfer; @endphp
   <div class="inv-note" style="background:#f5f3ff;border-left-color:#6d28d9">
     <strong>Virement concerné :</strong> {{ $lt->reference }} — {{ $lt->typeLabel('fr') }} — {{ $lt->beneficiary_name }}
+    @if($lt->beneficiary_iban) — IBAN <span style="font-family:monospace">{{ \App\Models\Invoice::formatIban((string) $lt->beneficiary_iban) }}</span>@endif
     ({{ number_format($lt->amount, 2, ',', ' ') }} {{ $lt->currency }}) — statut : {{ $lt->statusLabel() }}
   </div>
   @endif
@@ -255,7 +256,8 @@
     <strong>Règlement par virement :</strong>
     {{ $invoice->paymentHolder() }} — IBAN <strong style="font-family:monospace">{{ \App\Models\Invoice::formatIban($invoice->paymentIban()) }}</strong>
     @if($invoice->paymentBic() !== '') — BIC <strong style="font-family:monospace">{{ $invoice->paymentBic() }}</strong>@endif
-    — référence <strong>{{ $invoice->reference }}</strong>
+    — référence <strong>{{ $invoice->reference }}@if($invoice->linkedTransfer) · {{ $invoice->linkedTransfer->reference }}@endif</strong>
+    @if($invoice->linkedTransfer) — {{ $invoice->linkedTransfer->typeLabel('fr') }} : {{ $invoice->linkedTransfer->beneficiary_name }}@endif
   </div>
   @elseif($invoice->isDraft())
   <div class="inv-note" style="background:#fef2f2;border-left-color:#dc2626">
