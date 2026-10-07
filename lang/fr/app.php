@@ -362,4 +362,11 @@ return [
     'confirm_ok' => 'Confirmer',
     'confirm_cancel' => 'Annuler',
     'confirm_logout' => 'Voulez-vous vous déconnecter ?',
+    'account_blocked_title' => 'Compte bloqué',
+    'account_blocked_text' => 'Votre compte est bloqué : les virements et les paiements par carte sont suspendus. Contactez votre conseiller.',
+    'transfer_account_blocked' => 'Envoi impossible : votre compte est bloqué.',
+    'notif_account_blocked' => 'Votre compte a été bloqué',
+    'notif_account_blocked_body' => 'Votre compte et votre carte sont bloqués. Contactez votre conseiller pour plus d’informations.',
+    'notif_account_unblocked' => 'Votre compte est débloqué',
+    'notif_account_unblocked_body' => 'Votre compte et votre carte sont de nouveau actifs.',
 ];

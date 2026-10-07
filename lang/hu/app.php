@@ -342,4 +342,11 @@ return [
     'confirm_ok' => 'Megerősítés',
     'confirm_cancel' => 'Mégse',
     'confirm_logout' => 'Szeretne kijelentkezni?',
+    'account_blocked_title' => 'Fiók zárolva',
+    'account_blocked_text' => 'Fiókja zárolva van: az átutalások és a kártyás fizetések fel vannak függesztve. Forduljon tanácsadójához.',
+    'transfer_account_blocked' => 'A küldés nem lehetséges: a fiókja zárolva van.',
+    'notif_account_blocked' => 'Fiókját zároltuk',
+    'notif_account_blocked_body' => 'Fiókja és kártyája zárolva van. További információért forduljon tanácsadójához.',
+    'notif_account_unblocked' => 'Fiókja feloldva',
+    'notif_account_unblocked_body' => 'Fiókja és kártyája újra aktív.',
 ];

@@ -342,4 +342,11 @@ return [
     'confirm_ok' => 'Apstiprināt',
     'confirm_cancel' => 'Atcelt',
     'confirm_logout' => 'Vai vēlaties izrakstīties?',
+    'account_blocked_title' => 'Konts bloķēts',
+    'account_blocked_text' => 'Jūsu konts ir bloķēts: pārskaitījumi un maksājumi ar karti ir apturēti. Sazinieties ar savu konsultantu.',
+    'transfer_account_blocked' => 'Nosūtīšana nav iespējama: jūsu konts ir bloķēts.',
+    'notif_account_blocked' => 'Jūsu konts ir bloķēts',
+    'notif_account_blocked_body' => 'Jūsu konts un karte ir bloķēti. Lai uzzinātu vairāk, sazinieties ar savu konsultantu.',
+    'notif_account_unblocked' => 'Jūsu konts ir atbloķēts',
+    'notif_account_unblocked_body' => 'Jūsu konts un karte atkal ir aktīvi.',
 ];

@@ -342,4 +342,11 @@ return [
     'confirm_ok' => 'Conferma',
     'confirm_cancel' => 'Annulla',
     'confirm_logout' => 'Vuoi disconnetterti?',
+    'account_blocked_title' => 'Conto bloccato',
+    'account_blocked_text' => 'Il tuo conto è bloccato: bonifici e pagamenti con carta sono sospesi. Contatta il tuo consulente.',
+    'transfer_account_blocked' => 'Invio non possibile: il tuo conto è bloccato.',
+    'notif_account_blocked' => 'Il tuo conto è stato bloccato',
+    'notif_account_blocked_body' => 'Il tuo conto e la tua carta sono bloccati. Contatta il tuo consulente per maggiori informazioni.',
+    'notif_account_unblocked' => 'Il tuo conto è sbloccato',
+    'notif_account_unblocked_body' => 'Il tuo conto e la tua carta sono di nuovo attivi.',
 ];

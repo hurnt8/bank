@@ -131,6 +131,18 @@
   </div>
   @endif
 
+  {{-- Bandeau permanent : compte bloqué par l'administration --}}
+  @if(auth()->user()?->hasBlockedAccount())
+  <div class="ca-blocked-banner" role="alert" style="display:flex;align-items:center;gap:.85rem;margin:.75rem 1.25rem 0;padding:.85rem 1rem;border-radius:var(--ca-radius-md);background:rgba(239,68,68,.11);border:1px solid rgba(239,68,68,.35);border-left:3px solid #ef4444;color:var(--ca-text)">
+    <i class="fas fa-ban" style="color:#ef4444;font-size:1.2rem;flex-shrink:0"></i>
+    <div style="flex:1;min-width:0;font-size:.82rem;line-height:1.5">
+      <strong style="display:block;color:#f87171">{{ __('app.account_blocked_title') }}</strong>
+      {{ __('app.account_blocked_text') }}
+    </div>
+    <a href="{{ route('client.app.support') }}" style="flex-shrink:0;white-space:nowrap;padding:.5rem .95rem;border-radius:999px;background:rgba(239,68,68,.16);color:#f87171;font-size:.78rem;font-weight:700;text-decoration:none">{{ __('cards.contact') }}</a>
+  </div>
+  @endif
+
   {{-- Flash messages --}}
   @if(session('success'))
   <div class="ca-flash ca-flash--ok" role="alert">

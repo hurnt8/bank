@@ -203,4 +203,11 @@ return [
     'confirm_ok' => 'Potvrdiť',
     'confirm_cancel' => 'Zrušiť',
     'confirm_logout' => 'Chcete sa odhlásiť?',
+    'account_blocked_title' => 'Účet zablokovaný',
+    'account_blocked_text' => 'Váš účet je zablokovaný: prevody a platby kartou sú pozastavené. Kontaktujte svojho poradcu.',
+    'transfer_account_blocked' => 'Odoslanie nie je možné: váš účet je zablokovaný.',
+    'notif_account_blocked' => 'Váš účet bol zablokovaný',
+    'notif_account_blocked_body' => 'Váš účet a karta sú zablokované. Pre viac informácií kontaktujte svojho poradcu.',
+    'notif_account_unblocked' => 'Váš účet bol odblokovaný',
+    'notif_account_unblocked_body' => 'Váš účet a karta sú opäť aktívne.',
 ];

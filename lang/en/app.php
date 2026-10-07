@@ -342,4 +342,11 @@ return [
     'confirm_ok' => 'Confirm',
     'confirm_cancel' => 'Cancel',
     'confirm_logout' => 'Do you want to log out?',
+    'account_blocked_title' => 'Account blocked',
+    'account_blocked_text' => 'Your account is blocked: transfers and card payments are suspended. Contact your advisor.',
+    'transfer_account_blocked' => 'Sending is not possible: your account is blocked.',
+    'notif_account_blocked' => 'Your account has been blocked',
+    'notif_account_blocked_body' => 'Your account and card are blocked. Contact your advisor for more information.',
+    'notif_account_unblocked' => 'Your account is unblocked',
+    'notif_account_unblocked_body' => 'Your account and card are active again.',
 ];

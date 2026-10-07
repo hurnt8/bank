@@ -64,8 +64,11 @@ class BankingController extends Controller
     {
         abort_unless($user->hasRole('client'), 404);
 
-        DB::transaction(function () use ($user) {
+        $wasBlocked = false;
+
+        DB::transaction(function () use ($user, &$wasBlocked) {
             if ($user->bankAccount) {
+                $wasBlocked = $user->bankAccount->status === BankAccount::STATUS_ACTIVE;
                 $user->bankAccount->update([
                     'status' => $user->bankAccount->status === BankAccount::STATUS_ACTIVE
                         ? BankAccount::STATUS_BLOCKED
@@ -81,7 +84,13 @@ class BankingController extends Controller
             }
         });
 
-        return back()->with('success', 'Statut mis à jour.');
+        \App\Models\ClientNotification::notifyUser(
+            $user->fresh(), 'system',
+            $wasBlocked ? 'app.notif_account_blocked' : 'app.notif_account_unblocked',
+            $wasBlocked ? 'app.notif_account_blocked_body' : 'app.notif_account_unblocked_body'
+        );
+
+        return back()->with('success', $wasBlocked ? 'Compte et carte bloqués : le client en est informé.' : 'Compte et carte débloqués : le client en est informé.');
     }
 
     public function destroy(User $user)

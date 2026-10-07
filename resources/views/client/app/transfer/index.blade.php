@@ -81,7 +81,8 @@
 
 @php
   $currency = $user->currency ?? \App\Models\Currency::default();
-  $negative = (float) $user->balance < 0;
+  $blocked  = $user->hasBlockedAccount();
+  $negative = (float) $user->balance < 0 || $blocked;
   $iban     = $user->bankAccount?->iban ?: '';
   $bic      = $user->bankAccount?->bic ?: '—';
   $shareText = "IBAN : {$iban}\nBIC : {$bic}\nTitulaire : {$user->name}";
@@ -122,7 +123,9 @@
     <div class="tx-hero__sub">{{ __('app.available') }}</div>
   </div>
 
-  @if($negative)
+  @if($blocked)
+  <div class="tx-alert"><i class="fas fa-ban" style="margin-top:.15rem"></i><div><strong>{{ __('app.account_blocked_title') }}</strong> — {{ __('app.transfer_account_blocked') }}</div></div>
+  @elseif($negative)
   <div class="tx-alert">
     <i class="fas fa-circle-exclamation" style="margin-top:.15rem"></i>
     <div>Solde négatif ({{ number_format((float)$user->balance,2,',',' ') }} {{ $currency }}). Les virements sont désactivés jusqu'à la régularisation de votre compte.</div>

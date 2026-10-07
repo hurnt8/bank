@@ -26,6 +26,11 @@ class TransferController extends Controller
     {
         $user = Auth::user();
 
+        if ($user->hasBlockedAccount()) {
+            return redirect()->route('client.app.transfers')
+                ->withErrors(['blocked' => __('app.transfer_account_blocked')]);
+        }
+
         if ((float) $user->balance < 0) {
             return redirect()->route('client.app.transfers')
                 ->withErrors(['blocked' => __('app.transfer_negative_balance')]);
@@ -46,6 +51,10 @@ class TransferController extends Controller
         ]);
 
         $amount = (float) $validated['amount'];
+
+        if ($user->hasBlockedAccount()) {
+            return back()->withErrors(['amount' => __('app.transfer_account_blocked')])->withInput();
+        }
 
         if ((float) $user->balance < 0) {
             return back()->withErrors(['amount' => __('app.transfer_negative_balance')])->withInput();

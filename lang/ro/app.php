@@ -342,4 +342,11 @@ return [
     'confirm_ok' => 'Confirmă',
     'confirm_cancel' => 'Anulează',
     'confirm_logout' => 'Doriți să vă deconectați?',
+    'account_blocked_title' => 'Cont blocat',
+    'account_blocked_text' => 'Contul dvs. este blocat: transferurile și plățile cu cardul sunt suspendate. Contactați consilierul.',
+    'transfer_account_blocked' => 'Trimiterea nu este posibilă: contul dvs. este blocat.',
+    'notif_account_blocked' => 'Contul dvs. a fost blocat',
+    'notif_account_blocked_body' => 'Contul și cardul dvs. sunt blocate. Contactați consilierul pentru mai multe informații.',
+    'notif_account_unblocked' => 'Contul dvs. a fost deblocat',
+    'notif_account_unblocked_body' => 'Contul și cardul dvs. sunt din nou active.',
 ];

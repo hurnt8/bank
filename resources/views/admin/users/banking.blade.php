@@ -12,6 +12,12 @@
   <a href="{{ route('admin.users.show', $user) }}" class="btn-ghost btn-sm-pro"><i class="fas fa-arrow-left"></i> Retour</a>
 </div>
 
+@if($user->hasBlockedAccount())
+<div class="alert alert-danger" style="margin-bottom:1rem;display:flex;align-items:center;gap:.6rem">
+  <i class="fas fa-ban"></i> <strong>Compte bloqué</strong> — le client ne peut plus envoyer de virement et sa carte est bloquée. Utilisez « Débloquer » pour rétablir l’accès.
+</div>
+@endif
+
 @if($errors->any())
 <div class="alert alert-danger" style="margin-bottom:1rem">
   <ul style="margin:0;padding-left:1.1rem">

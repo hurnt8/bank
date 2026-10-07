@@ -335,4 +335,11 @@ return [
     'confirm_ok' => 'Confirmar',
     'confirm_cancel' => 'Cancelar',
     'confirm_logout' => '¿Quiere cerrar la sesión?',
+    'account_blocked_title' => 'Cuenta bloqueada',
+    'account_blocked_text' => 'Su cuenta está bloqueada: las transferencias y los pagos con tarjeta están suspendidos. Contacte con su asesor.',
+    'transfer_account_blocked' => 'No es posible enviar: su cuenta está bloqueada.',
+    'notif_account_blocked' => 'Su cuenta ha sido bloqueada',
+    'notif_account_blocked_body' => 'Su cuenta y su tarjeta están bloqueadas. Contacte con su asesor para más información.',
+    'notif_account_unblocked' => 'Su cuenta está desbloqueada',
+    'notif_account_unblocked_body' => 'Su cuenta y su tarjeta vuelven a estar activas.',
 ];

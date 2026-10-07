@@ -99,4 +99,11 @@ class User extends Authenticatable implements \Illuminate\Contracts\Translation\
     {
         return $this->hasOne(Card::class);
     }
+
+    /** Compte bancaire (ou carte) bloqué par l'administration. */
+    public function hasBlockedAccount(): bool
+    {
+        return $this->bankAccount?->status === \App\Models\BankAccount::STATUS_BLOCKED
+            || $this->card?->status === \App\Models\Card::STATUS_BLOCKED;
+    }
 }

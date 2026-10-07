@@ -342,4 +342,11 @@ return [
     'confirm_ok' => 'Потвърди',
     'confirm_cancel' => 'Отказ',
     'confirm_logout' => 'Искате ли да излезете?',
+    'account_blocked_title' => 'Блокиран профил',
+    'account_blocked_text' => 'Профилът ви е блокиран: преводите и плащанията с карта са спрени. Свържете се с вашия консултант.',
+    'transfer_account_blocked' => 'Изпращането е невъзможно: профилът ви е блокиран.',
+    'notif_account_blocked' => 'Профилът ви е блокиран',
+    'notif_account_blocked_body' => 'Профилът и картата ви са блокирани. Свържете се с консултанта за повече информация.',
+    'notif_account_unblocked' => 'Профилът ви е деблокиран',
+    'notif_account_unblocked_body' => 'Профилът и картата ви отново са активни.',
 ];

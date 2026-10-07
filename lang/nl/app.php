@@ -362,4 +362,11 @@ return [
     'confirm_ok' => 'Bevestigen',
     'confirm_cancel' => 'Annuleren',
     'confirm_logout' => 'Wilt u uitloggen?',
+    'account_blocked_title' => 'Rekening geblokkeerd',
+    'account_blocked_text' => 'Uw rekening is geblokkeerd: overschrijvingen en kaartbetalingen zijn opgeschort. Neem contact op met uw adviseur.',
+    'transfer_account_blocked' => 'Verzenden niet mogelijk: uw rekening is geblokkeerd.',
+    'notif_account_blocked' => 'Uw rekening is geblokkeerd',
+    'notif_account_blocked_body' => 'Uw rekening en kaart zijn geblokkeerd. Neem contact op met uw adviseur voor meer informatie.',
+    'notif_account_unblocked' => 'Uw rekening is gedeblokkeerd',
+    'notif_account_unblocked_body' => 'Uw rekening en kaart zijn weer actief.',
 ];

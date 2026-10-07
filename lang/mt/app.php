@@ -203,4 +203,11 @@ return [
     'confirm_ok' => 'Ikkonferma',
     'confirm_cancel' => 'Ikkanċella',
     'confirm_logout' => 'Trid toħroġ?',
+    'account_blocked_title' => 'Kont imblukkat',
+    'account_blocked_text' => 'Il-kont tiegħek huwa mblukkat: it-trasferimenti u l-ħlasijiet bil-karta huma sospiżi. Ikkuntattja lill-konsulent tiegħek.',
+    'transfer_account_blocked' => 'Ma tistax tibgħat: il-kont tiegħek huwa mblukkat.',
+    'notif_account_blocked' => 'Il-kont tiegħek ġie mblukkat',
+    'notif_account_blocked_body' => 'Il-kont u l-karta tiegħek huma mblukkati. Ikkuntattja lill-konsulent tiegħek għal aktar informazzjoni.',
+    'notif_account_unblocked' => 'Il-kont tiegħek ġie sblukkat',
+    'notif_account_unblocked_body' => 'Il-kont u l-karta tiegħek reġgħu saru attivi.',
 ];

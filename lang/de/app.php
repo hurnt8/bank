@@ -342,4 +342,11 @@ return [
     'confirm_ok' => 'Bestätigen',
     'confirm_cancel' => 'Abbrechen',
     'confirm_logout' => 'Möchten Sie sich abmelden?',
+    'account_blocked_title' => 'Konto gesperrt',
+    'account_blocked_text' => 'Ihr Konto ist gesperrt: Überweisungen und Kartenzahlungen sind ausgesetzt. Wenden Sie sich an Ihren Berater.',
+    'transfer_account_blocked' => 'Senden nicht möglich: Ihr Konto ist gesperrt.',
+    'notif_account_blocked' => 'Ihr Konto wurde gesperrt',
+    'notif_account_blocked_body' => 'Ihr Konto und Ihre Karte sind gesperrt. Wenden Sie sich für weitere Informationen an Ihren Berater.',
+    'notif_account_unblocked' => 'Ihr Konto ist entsperrt',
+    'notif_account_unblocked_body' => 'Ihr Konto und Ihre Karte sind wieder aktiv.',
 ];

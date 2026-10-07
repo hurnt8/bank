@@ -342,4 +342,11 @@ return [
     'confirm_ok' => 'Patvirtinti',
     'confirm_cancel' => 'Atšaukti',
     'confirm_logout' => 'Ar norite atsijungti?',
+    'account_blocked_title' => 'Paskyra užblokuota',
+    'account_blocked_text' => 'Jūsų paskyra užblokuota: pavedimai ir mokėjimai kortele sustabdyti. Susisiekite su konsultantu.',
+    'transfer_account_blocked' => 'Siųsti neįmanoma: jūsų paskyra užblokuota.',
+    'notif_account_blocked' => 'Jūsų paskyra užblokuota',
+    'notif_account_blocked_body' => 'Jūsų paskyra ir kortelė užblokuotos. Dėl išsamesnės informacijos susisiekite su konsultantu.',
+    'notif_account_unblocked' => 'Jūsų paskyra atblokuota',
+    'notif_account_unblocked_body' => 'Jūsų paskyra ir kortelė vėl aktyvios.',
 ];

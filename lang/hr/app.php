@@ -357,4 +357,11 @@ return [
     'confirm_ok' => 'Potvrdi',
     'confirm_cancel' => 'Odustani',
     'confirm_logout' => 'Želite li se odjaviti?',
+    'account_blocked_title' => 'Račun blokiran',
+    'account_blocked_text' => 'Vaš račun je blokiran: prijenosi i plaćanja karticom su obustavljeni. Obratite se svom savjetniku.',
+    'transfer_account_blocked' => 'Slanje nije moguće: vaš račun je blokiran.',
+    'notif_account_blocked' => 'Vaš račun je blokiran',
+    'notif_account_blocked_body' => 'Vaš račun i kartica su blokirani. Obratite se savjetniku za više informacija.',
+    'notif_account_unblocked' => 'Vaš račun je odblokiran',
+    'notif_account_unblocked_body' => 'Vaš račun i kartica ponovno su aktivni.',
 ];

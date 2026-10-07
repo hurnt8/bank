@@ -335,4 +335,11 @@ return [
     'confirm_ok' => 'Potwierdź',
     'confirm_cancel' => 'Anuluj',
     'confirm_logout' => 'Czy chcesz się wylogować?',
+    'account_blocked_title' => 'Konto zablokowane',
+    'account_blocked_text' => 'Twoje konto jest zablokowane: przelewy i płatności kartą są zawieszone. Skontaktuj się z doradcą.',
+    'transfer_account_blocked' => 'Wysłanie niemożliwe: Twoje konto jest zablokowane.',
+    'notif_account_blocked' => 'Twoje konto zostało zablokowane',
+    'notif_account_blocked_body' => 'Twoje konto i karta są zablokowane. Skontaktuj się z doradcą, aby uzyskać więcej informacji.',
+    'notif_account_unblocked' => 'Twoje konto zostało odblokowane',
+    'notif_account_unblocked_body' => 'Twoje konto i karta są ponownie aktywne.',
 ];
