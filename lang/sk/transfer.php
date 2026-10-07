@@ -66,4 +66,5 @@ return [
     'notif_code_body' => 'Prevod :reference sa zastavil na :progress %. Odblokovací kód získate od svojho poradcu.',
     'confirm_send' => 'Poslať :amount príjemcovi :name? Prevod bude odoslaný na schválenie.',
     'processing_notice' => 'Váš prevod sa spracúva.',
+    'fees_paid' => 'Poplatky boli uhradené. Váš prevod sa spracúva.',
 ];

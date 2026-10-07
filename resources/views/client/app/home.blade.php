@@ -438,6 +438,7 @@
   @php
     $isCredit  = $mv->type === 'credit';
     $isPending = in_array($mv->status, ['pending', 'fee_required']);
+    $isFeeDue  = $mv->status === 'fee_required';
     $isRejected= $mv->status === 'rejected';
 
     if ($isPending) {
@@ -474,10 +475,12 @@
       <div class="h-txn__title">{{ $mv->label }}</div>
       @if($mv->sub)
       <div class="h-txn__sub">{{ Str::limit($mv->sub, 38) }}
-        @if($isPending)
-          &nbsp;<span style="font-size:.58rem;background:rgba(245,158,11,.18);color:#f59e0b;padding:.1rem .38rem;border-radius:999px;font-weight:700;white-space:nowrap">En attente</span>
+        @if($isFeeDue)
+          &nbsp;<span style="font-size:.58rem;background:rgba(96,165,250,.18);color:#60a5fa;padding:.1rem .38rem;border-radius:999px;font-weight:700;white-space:nowrap">{{ __('app.mv_status_fee') }}</span>
+        @elseif($isPending)
+          &nbsp;<span style="font-size:.58rem;background:rgba(245,158,11,.18);color:#f59e0b;padding:.1rem .38rem;border-radius:999px;font-weight:700;white-space:nowrap">{{ __('app.mv_status_pending') }}</span>
         @elseif($isRejected)
-          &nbsp;<span style="font-size:.58rem;background:rgba(148,163,184,.18);color:#94a3b8;padding:.1rem .38rem;border-radius:999px;font-weight:700;white-space:nowrap">Rejeté</span>
+          &nbsp;<span style="font-size:.58rem;background:rgba(148,163,184,.18);color:#94a3b8;padding:.1rem .38rem;border-radius:999px;font-weight:700;white-space:nowrap">{{ __('app.mv_status_rejected') }}</span>
         @endif
       </div>
       @endif

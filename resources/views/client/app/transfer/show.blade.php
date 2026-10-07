@@ -123,6 +123,9 @@
   @if($isRej && $transfer->admin_note)
   <div class="td-note td-note--bad"><strong>{{ __('transfer.reject_reason') }}</strong>{{ $transfer->admin_note }}</div>
   @endif
+  @if($transfer->invoice && $transfer->invoice->status === 'paid' && ! $isDone && ! $isRej)
+  <div class="td-ok" style="margin-bottom:.9rem"><i class="fas fa-circle-check"></i> {{ __('transfer.fees_paid') }}</div>
+  @endif
   @if($feeDue)
   <div class="td-note td-note--info">
     <strong>{{ __('transfer.fee_title') }}</strong>

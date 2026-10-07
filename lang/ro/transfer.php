@@ -66,4 +66,5 @@ return [
     'notif_code_body' => 'Transferul :reference este oprit la :progress %. Contactați consilierul pentru a obține codul de deblocare.',
     'confirm_send' => 'Trimiteți :amount către :name? Transferul va fi trimis spre validare.',
     'processing_notice' => 'Transferul dvs. este în curs de procesare.',
+    'fees_paid' => 'Taxele au fost plătite. Transferul dvs. este în curs de procesare.',
 ];

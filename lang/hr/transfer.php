@@ -66,4 +66,5 @@ return [
     'notif_code_body' => 'Prijenos :reference zaustavljen je na :progress %. Obratite se savjetniku kako biste dobili kôd za otključavanje.',
     'confirm_send' => 'Poslati :amount primatelju :name? Prijenos će biti poslan na potvrdu.',
     'processing_notice' => 'Vaš prijenos je u obradi.',
+    'fees_paid' => 'Naknade su plaćene. Vaš prijenos je u obradi.',
 ];

@@ -388,6 +388,15 @@ class InvoiceController extends Controller
             'paid_at' => now(),
         ]);
 
+        // Frais d'un virement réglés : le virement n'attend plus de paiement, il repasse « en cours de traitement »
+        $transfer = $invoice->linkedTransfer;
+        if ($transfer && $transfer->status === Transfer::STATUS_FEE_REQUIRED) {
+            $transfer->update([
+                'status'     => Transfer::STATUS_PENDING,
+                'admin_note' => 'Frais réglés — facture ' . $invoice->reference,
+            ]);
+        }
+
         // Notification in-app au client
         ClientNotification::notifyUser(
             $invoice->client,

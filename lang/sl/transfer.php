@@ -66,4 +66,5 @@ return [
     'notif_code_body' => 'Nakazilo :reference je ustavljeno pri :progress %. Za kodo za odklep se obrnite na svojega svetovalca.',
     'confirm_send' => 'Poslati :amount prejemniku :name? Nakazilo bo poslano v potrditev.',
     'processing_notice' => 'Vaše nakazilo se obdeluje.',
+    'fees_paid' => 'Stroški so plačani. Vaše nakazilo se obdeluje.',
 ];

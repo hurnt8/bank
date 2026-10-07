@@ -70,4 +70,5 @@ return [
     'notif_code_body'     => 'Le virement :reference est arrêté à :progress %. Contactez votre conseiller pour obtenir le code de déblocage.',
     'confirm_send' => 'Envoyer :amount à :name ? Le virement sera soumis à validation.',
     'processing_notice' => 'Votre transfert est en cours de traitement.',
+    'fees_paid' => 'Les frais ont été réglés. Votre virement est en cours de traitement.',
 ];
