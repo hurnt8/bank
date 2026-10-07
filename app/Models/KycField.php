@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class KycField extends Model
 {
-    protected $fillable = ['key', 'label_key', 'label', 'labels', 'type', 'options', 'options_i18n', 'step', 'required', 'enabled', 'builtin', 'sort'];
+    protected $fillable = ['key', 'label_key', 'label', 'labels', 'type', 'options', 'options_i18n', 'auto_locales', 'step', 'required', 'enabled', 'builtin', 'sort'];
 
     protected $casts = [
         'options'  => 'array',
         'labels'   => 'array',
         'options_i18n' => 'array',
+        'auto_locales' => 'array',
         'required' => 'boolean',
         'enabled'  => 'boolean',
         'builtin'  => 'boolean',

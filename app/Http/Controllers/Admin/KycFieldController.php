@@ -8,6 +8,7 @@ use App\Models\KycField;
 use App\Models\Language;
 use App\Models\SiteContact;
 use App\Services\KycDocumentService;
+use App\Services\KycTranslator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -42,6 +43,7 @@ class KycFieldController extends Controller
         $fields = KycField::all()->keyBy('id');
 
         $enabledCount = 0;
+        $toTranslate  = [];
         foreach ($data['fields'] as $id => $row) {
             $f = $fields->get((int) $id);
             if (! $f) {
@@ -63,19 +65,25 @@ class KycFieldController extends Controller
                     return back()->withErrors(['fields' => 'Le libellé d’un champ personnalisé est obligatoire.'])->withInput();
                 }
                 $update['label']  = $label;
-                $update['labels'] = self::cleanLabels($row['labels'] ?? [], $locales);
+                $labelsIn = self::cleanLabels($row['labels'] ?? [], $locales) ?? [];
+                $optsIn   = null;
+                $options  = null;
                 if ($f->type === 'select') {
                     $options = self::parseOptions($row['options'] ?? '');
                     if (count($options) < 2) {
                         return back()->withErrors(['fields' => 'La liste « ' . $label . ' » doit proposer au moins 2 choix (un par ligne).'])->withInput();
                     }
                     $update['options'] = $options;
-                    $i18n = self::cleanOptionTranslations($row['options_i18n'] ?? [], $locales, count($options));
-                    if ($i18n === false) {
+                    $optsIn = self::cleanOptionTranslations($row['options_i18n'] ?? [], $locales, count($options));
+                    if ($optsIn === false) {
                         return back()->withErrors(['fields' => 'Les traductions des choix de « ' . $label . ' » doivent avoir autant de lignes que la liste par défaut (' . count($options) . ').'])->withInput();
                     }
-                    $update['options_i18n'] = $i18n;
                 }
+                $changed = $label !== $f->label || ($f->type === 'select' && $options !== array_values($f->options ?? []));
+                [$update['labels'], $update['options_i18n'], $update['auto_locales']] = self::retainAuto(
+                    $labelsIn, $optsIn ?? [], $locales, $f->auto_locales ?? [], $f->labels ?? [], $f->options_i18n ?? [], $changed
+                );
+                $toTranslate[] = $f->id;
             }
 
             $f->update($update);
@@ -87,7 +95,11 @@ class KycFieldController extends Controller
 
         SiteContact::current()->update(['kyc_steps' => (int) $data['kyc_steps']]);
 
-        return redirect()->route('admin.kyc.fields')->with('success', 'Formulaire de vérification d’identité enregistré.');
+        foreach ($toTranslate as $id) {
+            self::translateLater($id);
+        }
+
+        return redirect()->route('admin.kyc.fields')->with('success', 'Formulaire de vérification d’identité enregistré.' . ($toTranslate ? self::autoNote() : ''));
     }
 
     public function store(Request $request)
@@ -117,13 +129,13 @@ class KycFieldController extends Controller
             }
         }
 
-        KycField::create([
+        $field = KycField::create([
             'key'      => 'c_' . Str::limit(Str::slug($data['label'], '_'), 30, '') . '_' . Str::lower(Str::random(4)),
             'label'    => trim($data['label']),
             'labels'   => self::cleanLabels($data['labels'] ?? [], $locales),
             'type'     => $data['type'],
             'options'  => $options,
-            'options_i18n' => $i18n,
+            'options_i18n' => is_array($i18n) ? $i18n : null,
             'step'     => (int) $data['step'],
             'required' => $request->boolean('required'),
             'enabled'  => true,
@@ -131,7 +143,9 @@ class KycFieldController extends Controller
             'sort'     => ((int) KycField::max('sort')) + 10,
         ]);
 
-        return redirect()->route('admin.kyc.fields')->with('success', 'Champ « ' . trim($data['label']) . ' » ajouté.');
+        self::translateLater($field->id);
+
+        return redirect()->route('admin.kyc.fields')->with('success', 'Champ « ' . trim($data['label']) . ' » ajouté.' . self::autoNote());
     }
 
     /** Supprime un champ personnalisé et les réponses (fichiers compris) déjà enregistrées. */
@@ -146,6 +160,56 @@ class KycFieldController extends Controller
         $field->delete();
 
         return redirect()->route('admin.kyc.fields')->with('success', 'Champ supprimé.');
+    }
+
+    private static function autoNote(): string
+    {
+        return ' Traduction automatique dans toutes les langues en cours : rechargez la page dans quelques secondes pour la voir (vous pourrez ensuite la corriger).';
+    }
+
+    /**
+     * Garde les traductions automatiques toujours valables et retire celles dont le libellé ou les choix de départ ont changé
+     * (elles seront régénérées). Une traduction modifiée à la main n'est plus considérée comme automatique.
+     *
+     * @return array{0: ?array, 1: ?array, 2: ?array} [libellés, choix traduits, langues automatiques]
+     */
+    private static function retainAuto(array $labels, array $optionsI18n, array $locales, array $autoPrev, array $labelsPrev, array $optionsPrev, bool $changed): array
+    {
+        $auto = [];
+        foreach ($locales as $code) {
+            if (! in_array($code, $autoPrev, true)) {
+                continue;
+            }
+            $same = ($labels[$code] ?? null) === ($labelsPrev[$code] ?? null) && ($optionsI18n[$code] ?? null) === ($optionsPrev[$code] ?? null);
+            if (! $same) {
+                continue;                           // corrigée à la main
+            }
+            if ($changed) {
+                unset($labels[$code], $optionsI18n[$code]);   // texte de départ modifié : à régénérer
+            } else {
+                $auto[] = $code;
+            }
+        }
+
+        return [$labels ?: null, $optionsI18n ?: null, $auto ?: null];
+    }
+
+    /** Lance la traduction automatique dans un processus indépendant : elle peut durer plusieurs dizaines de secondes. */
+    private static function translateLater(int $id): void
+    {
+        // Sous Apache, PHP_BINARY désigne httpd : on retombe alors sur l'exécutable php du dossier PHP
+        $php = str_contains(strtolower(basename(PHP_BINARY)), 'php') ? PHP_BINARY : rtrim(PHP_BINDIR, '\/') . DIRECTORY_SEPARATOR . (PHP_OS_FAMILY === 'Windows' ? 'php.exe' : 'php');
+        if (! is_file($php)) {
+            $php = 'php';
+        }
+        $artisan = base_path('artisan');
+
+        if (PHP_OS_FAMILY === 'Windows') {
+            $cmd = 'start /B "" ' . escapeshellarg($php) . ' ' . escapeshellarg($artisan) . ' kyc:translate-field ' . (int) $id . ' > NUL 2>&1';
+            pclose(popen($cmd, 'r'));
+        } else {
+            exec(escapeshellarg($php) . ' ' . escapeshellarg($artisan) . ' kyc:translate-field ' . (int) $id . ' > /dev/null 2>&1 &');
+        }
     }
 
     /** Traductions du libellé : uniquement les langues disponibles, sans valeur vide. */

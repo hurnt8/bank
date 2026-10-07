@@ -33,6 +33,7 @@
 .kf-i18n[open] summary{margin-bottom:.6rem}
 .kf-i18n__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.7rem}
 .kf-i18n__grid em{font-style:normal;opacity:.7}
+.kf-auto{font-size:.6rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:.05rem .4rem;border-radius:999px;background:rgba(27,73,118,.12);color:#1B4976;margin-left:.2rem}
 .kf-hint{font-size:.72rem;color:var(--c-muted);margin-top:.6rem;line-height:1.45}
 .kf-save{position:sticky;bottom:0;z-index:5;margin-top:1rem;padding:.85rem 0;display:flex;justify-content:flex-end;background:var(--c-bg);border-top:1px solid var(--c-border)}
 </style>
@@ -111,7 +112,7 @@
           <div class="kf-i18n__grid">
             @foreach($languages as $lang)
             <div>
-              <span class="kf-mini">{{ $lang->native_name }} <em>({{ $lang->code }})</em></span>
+              <span class="kf-mini">{{ $lang->native_name }} <em>({{ $lang->code }})</em>@if(in_array($lang->code, $f->auto_locales ?? [], true)) <span class="kf-auto" title="Traduit automatiquement — modifiez le texte pour le corriger">auto</span>@endif</span>
               <input type="text" name="fields[{{ $f->id }}][labels][{{ $lang->code }}]" class="form-control-pro" maxlength="150"
                      value="{{ old('fields.' . $f->id . '.labels.' . $lang->code, ($f->labels ?? [])[$lang->code] ?? '') }}" placeholder="{{ $f->label }}">
               @if($f->type === 'select')
@@ -121,7 +122,7 @@
             </div>
             @endforeach
           </div>
-          <div class="kf-hint">Le libellé ci-dessus sert de valeur par défaut pour les langues laissées vides. Le client voit le libellé de sa langue.</div>
+          <div class="kf-hint">À l’enregistrement, les langues laissées vides sont traduites automatiquement depuis le libellé par défaut (français) ; vous pouvez ensuite corriger n’importe quelle traduction. Le client voit le libellé de sa langue.</div>
         </details>
         <div class="kf-extra">
           @if($f->type === 'select')
@@ -169,7 +170,7 @@
         </div>
         <input type="hidden" name="step" value="1" x-bind:disabled="steps === '2'">
         <details class="kf-i18n" style="margin-bottom:.9rem">
-          <summary><i class="fas fa-language"></i> Traductions du libellé (facultatif)</summary>
+          <summary><i class="fas fa-language"></i> Traductions du libellé (automatiques si vides)</summary>
           <div class="kf-i18n__grid" style="grid-template-columns:1fr">
             @foreach($languages as $lang)
             <div><span class="kf-mini">{{ $lang->native_name }} ({{ $lang->code }})</span>
