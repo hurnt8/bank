@@ -43,7 +43,26 @@ class KycController extends Controller
     {
         $kyc->load(['user', 'reviews.reviewer']);
 
-        return view('admin.kyc.show', compact('kyc'));
+        // Informations fournies, selon les champs configurés (natifs et personnalisés)
+        $fields = \App\Services\KycForm::fields();
+        $user   = $kyc->user;
+        $answers = $fields->reject(fn ($f) => $f->isFile())->map(fn ($f) => [
+            'label' => $f->displayLabel(),
+            'value' => \App\Services\KycForm::value($user, $f),
+            'required' => $f->required,
+        ]);
+        $customFiles = $fields->filter(fn ($f) => $f->isFile() && ! $f->builtin)->filter(fn ($f) => \App\Services\KycForm::filePath($user, $f));
+
+        return view('admin.kyc.show', compact('kyc', 'answers', 'customFiles'));
+    }
+
+    /** Fichier d'un champ personnalisé, servi en streaming. */
+    public function answerFile(KycVerification $kyc, string $key)
+    {
+        $path = \App\Models\KycAnswer::where('user_id', $kyc->user_id)->where('field_key', $key)->value('file_path');
+        abort_if(! $path || ! Storage::disk('local')->exists($path), 404);
+
+        return Storage::disk('local')->response($path);
     }
 
     /** Sert le document/selfie en streaming — jamais via une URL publique. */

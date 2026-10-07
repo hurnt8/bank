@@ -178,7 +178,7 @@ $roleConf = [
     'bg'     => 'var(--c-blue-l)',
     'badge'  => 'bs-blue',
     'name'   => 'Client',
-    'desc'   => 'Espace personnel : compte, cartes, RIB, virements et factures.',
+    'desc'   => 'Espace personnel : compte, cartes, IBAN, virements et factures.',
     'accent' => 'var(--c-blue)',
   ],
 ];
@@ -245,7 +245,7 @@ $roleConf = [
         $matrix = [
           // [label, sub, client, admin, super]
           ['Tableau de bord personnel',         'Accès au dashboard',                        1, 1, 1],
-          ['Consulter ses cartes et son RIB',    'IBAN, BIC et cartes du compte',              1, 1, 1],
+          ['Consulter ses cartes et son IBAN',    'IBAN, BIC et cartes du compte',              1, 1, 1],
           ['Effectuer des virements',            'Après vérification d\'identité',             1, 1, 1],
           ['__section' => 'Gestion des clients'],
           ['Vérifier les identités (KYC)',       'Approuver, rejeter ou valider un compte',    0, 1, 1],

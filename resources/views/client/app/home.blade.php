@@ -421,7 +421,7 @@
     <div class="h-action__ico h-action__ico--green">
       <i class="fas fa-building-columns"></i>
     </div>
-    <span class="h-action__lbl">IBAN / RIB</span>
+    <span class="h-action__lbl">IBAN</span>
   </a>
 </div>
 

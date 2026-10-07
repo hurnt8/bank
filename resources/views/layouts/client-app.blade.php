@@ -178,12 +178,12 @@
     <span>{{ __('cards.nav') }}</span>
   </a>
 
-  {{-- RIB --}}
+  {{-- IBAN --}}
   <a href="{{ route('client.app.payment-methods') }}"
      class="ca-nav-item {{ request()->routeIs('client.app.payment-methods', 'client.app.transfer.receive') ? 'active' : '' }}"
-     aria-label="RIB">
+     aria-label="IBAN">
     <i class="fas fa-building-columns"></i>
-    <span>RIB</span>
+    <span>IBAN</span>
   </a>
 
   {{-- Profil --}}

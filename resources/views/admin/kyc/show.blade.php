@@ -22,6 +22,18 @@
 </div>
 
 
+@if($answers->isNotEmpty())
+<div class="card-pro" style="padding:0;margin-bottom:1.5rem">
+  <div style="padding:.9rem 1.25rem;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--c-muted);border-bottom:1px solid var(--c-border)">Informations fournies</div>
+  @foreach($answers as $a)
+  <div style="display:flex;justify-content:space-between;gap:1rem;padding:.65rem 1.25rem;border-top:1px solid var(--c-border);font-size:.85rem">
+    <span style="color:var(--c-muted)">{{ $a['label'] }}</span>
+    <strong style="text-align:right;overflow-wrap:anywhere">@if(filled($a['value'])){{ $a['value'] }}@else<span style="color:#dc2626;font-weight:600">{{ $a['required'] ? 'Non renseigné' : '—' }}</span>@endif</strong>
+  </div>
+  @endforeach
+</div>
+@endif
+
 <div class="kyc-doc-grid">
   @if($kyc->id_document_front_path)
   <div class="kyc-doc-card">
@@ -41,6 +53,12 @@
     <img src="{{ route('admin.kyc.document', [$kyc, 'selfie']) }}" alt="Selfie">
   </div>
   @endif
+  @foreach($customFiles as $cf)
+  <div class="kyc-doc-card">
+    <div class="kyc-doc-card__label">{{ $cf->displayLabel() }}</div>
+    <img src="{{ route('admin.kyc.file', [$kyc, $cf->key]) }}" alt="{{ $cf->displayLabel() }}">
+  </div>
+  @endforeach
 </div>
 
 @if($kyc->status === \App\Models\KycVerification::STATUS_EN_ATTENTE)

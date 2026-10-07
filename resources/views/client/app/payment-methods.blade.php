@@ -1,6 +1,6 @@
 @extends('layouts.client-app')
 @section('title', __('app.payment_methods') . ' — ' . site_name())
-@section('page_title', 'RIB')
+@section('page_title', 'IBAN')
 @section('back_btn', true)
 @section('back_url', route('client.app.home'))
 

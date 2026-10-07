@@ -215,8 +215,8 @@ Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name
 
     // Vérification d'identité (KYC)
     Route::get('/kyc',  [\App\Http\Controllers\Client\KycController::class, 'show'])->name('kyc.show');
-    Route::post('/kyc', [\App\Http\Controllers\Client\KycController::class, 'store'])->name('kyc.store');
-    Route::post('/kyc/info', [\App\Http\Controllers\Client\KycController::class, 'saveInfo'])->name('kyc.info');
+    Route::post('/kyc', [\App\Http\Controllers\Client\KycController::class, 'saveStep'])->name('kyc.store');
+    Route::post('/kyc/info', [\App\Http\Controllers\Client\KycController::class, 'saveStep'])->name('kyc.info');
 
     // ── Push notifications ──────────────────────────────────────────────────
     Route::post('/push/subscribe',   [\App\Http\Controllers\Client\PushController::class, 'subscribe'])->name('push.subscribe');
@@ -292,8 +292,14 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('admin')->name('ad
     Route::post('/transfers/{transfer}/invoice',      [TransferValidationController::class, 'invoice'])->name('transfers.invoice');
 
     // Vérification d'identité (KYC)
+    // Champs du formulaire de vérification d'identité (configurables)
+    Route::get('/kyc/fields',                  [\App\Http\Controllers\Admin\KycFieldController::class, 'index'])->name('kyc.fields');
+    Route::post('/kyc/fields',                 [\App\Http\Controllers\Admin\KycFieldController::class, 'update'])->name('kyc.fields.update');
+    Route::post('/kyc/fields/new',             [\App\Http\Controllers\Admin\KycFieldController::class, 'store'])->name('kyc.fields.store');
+    Route::delete('/kyc/fields/{field}',       [\App\Http\Controllers\Admin\KycFieldController::class, 'destroy'])->name('kyc.fields.destroy');
     Route::get('/kyc',                         [\App\Http\Controllers\Admin\KycController::class, 'index'])->name('kyc.index');
     Route::get('/kyc/{kyc}',                   [\App\Http\Controllers\Admin\KycController::class, 'show'])->name('kyc.show');
+    Route::get('/kyc/{kyc}/file/{key}',        [\App\Http\Controllers\Admin\KycController::class, 'answerFile'])->name('kyc.file');
     Route::get('/kyc/{kyc}/document/{type}',   [\App\Http\Controllers\Admin\KycController::class, 'document'])->name('kyc.document');
     Route::post('/kyc/{kyc}/approve',          [\App\Http\Controllers\Admin\KycController::class, 'approve'])->name('kyc.approve');
     Route::post('/kyc/{kyc}/reject',           [\App\Http\Controllers\Admin\KycController::class, 'reject'])->name('kyc.reject');

@@ -112,112 +112,36 @@
 @php
   $K = \App\Models\KycVerification::class;
   $status = $kyc->status ?? $K::STATUS_NON_SOUMIS;
-  $docsDone = in_array($status, [$K::STATUS_EN_ATTENTE, $K::STATUS_APPROUVE]);
-  $step1Done = $infoComplete;
+  $locked = in_array($status, [$K::STATUS_EN_ATTENTE, $K::STATUS_APPROUVE]);
+  $isLast = $step === $total;
+
+  // Intitulé d'une étape selon son contenu : informations, pièces justificatives ou les deux
+  $meta = function ($stepFields) {
+      $hasFile = $stepFields->contains(fn ($f) => $f->isFile());
+      $hasInfo = $stepFields->contains(fn ($f) => ! $f->isFile());
+      if ($hasInfo && ! $hasFile) return ['onboarding.step1_label', 'onboarding.step1_title', 'onboarding.step1_sub'];
+      if ($hasFile && ! $hasInfo) return ['onboarding.step2_label', 'onboarding.step2_title', 'onboarding.step2_sub'];
+      return ['kyc.title', 'kyc.title', 'onboarding.step1_sub'];
+  };
 @endphp
 
 {{-- Indicateur de progression --}}
+@if($total > 1)
 <div class="kyc-steps" role="list">
-  <div class="kyc-step {{ $step === 1 ? 'is-current' : ($step1Done ? 'is-done' : '') }}" role="listitem">
-    <div class="kyc-step__dot">@if($step1Done && $step !== 1)<i class="fas fa-check"></i>@else 1 @endif</div>
-    <div class="kyc-step__label">{{ __('onboarding.step1_label') }}</div>
+  @foreach($steps as $n => $stepFields)
+  @php $done = $locked || ($n !== $step && ! \App\Services\KycForm::missingRequired($user, $stepFields)); @endphp
+  <div class="kyc-step {{ $done ? 'is-done' : ($n === $step ? 'is-current' : '') }}" role="listitem">
+    <div class="kyc-step__dot">@if($done)<i class="fas fa-check"></i>@else {{ $n }} @endif</div>
+    <div class="kyc-step__label">{{ __($meta($stepFields)[0]) }}</div>
   </div>
-  <div class="kyc-step {{ $docsDone ? 'is-done' : ($step === 2 ? 'is-current' : '') }}" role="listitem">
-    <div class="kyc-step__dot">@if($docsDone)<i class="fas fa-check"></i>@else 2 @endif</div>
-    <div class="kyc-step__label">{{ __('onboarding.step2_label') }}</div>
-  </div>
+  @endforeach
 </div>
-<div class="kyc-progress-txt">{{ __('onboarding.kyc_progress', ['current' => $step, 'total' => 2]) }}</div>
-
-@if($step === 1)
-{{-- ───────────── Étape 1 : informations personnelles ───────────── --}}
-<div class="kyc-head">
-  <h2>{{ __('onboarding.step1_title') }}</h2>
-  <p>{{ __('onboarding.step1_sub') }}</p>
-</div>
-
-@if($errors->any())
-<div class="alert alert-danger" style="margin-bottom:1rem">{{ $errors->first() }}</div>
+<div class="kyc-progress-txt">{{ __('onboarding.kyc_progress', ['current' => $locked ? $total : $step, 'total' => $total]) }}</div>
 @endif
 
-<form data-confirm="{{ __('onboarding.confirm_info') }}" method="POST" action="{{ route('client.app.kyc.info') }}" novalidate>
-  @csrf
-  <div class="kyc-grid kyc-grid--2">
-    <div class="kyc-form-group">
-      <label for="birth_date">{{ __('onboarding.f_birth_date') }} *</label>
-      <input type="date" id="birth_date" name="birth_date" max="{{ now()->subDay()->toDateString() }}"
-             value="{{ old('birth_date', optional($user->birth_date)->toDateString()) }}" required>
-      @error('birth_date')<span class="form-error">{{ $message }}</span>@enderror
-    </div>
-    <div class="kyc-form-group" x-data="kycCountry(@js(old('country', $user->country)))">
-      <label for="country">{{ __('onboarding.f_country') }} *</label>
-      <select id="country" name="country" x-model="country" autocomplete="country-name" required>
-        <option value="">— {{ __('onboarding.f_country') }} —</option>
-        {{-- Valeur déjà enregistrée : conservée même avant le chargement de la liste --}}
-        @if(old('country', $user->country))
-        <option value="{{ old('country', $user->country) }}" selected>{{ old('country', $user->country) }}</option>
-        @endif
-        <template x-for="c in countries" :key="c.code">
-          <option :value="c.name" x-text="c.name" :selected="c.name === country"></option>
-        </template>
-      </select>
-      <div class="kyc-hint" x-show="detected" style="display:none;color:var(--ca-positive)">
-        <i class="fas fa-location-dot"></i> {{ __('onboarding.country_detected') }}
-      </div>
-      @error('country')<span class="form-error">{{ $message }}</span>@enderror
-    </div>
-    <div class="kyc-form-group span-2">
-      <label for="address">{{ __('onboarding.f_address') }} *</label>
-      <input type="text" id="address" name="address" value="{{ old('address', $user->address) }}" autocomplete="street-address" required>
-      @error('address')<span class="form-error">{{ $message }}</span>@enderror
-    </div>
-    <div class="kyc-form-group">
-      <label for="id_type">{{ __('onboarding.f_id_type') }} *</label>
-      <select id="id_type" name="id_type" required>
-        @foreach(['cni' => 'option_cni', 'passeport' => 'option_passeport', 'permis' => 'option_permis'] as $val => $key)
-          <option value="{{ $val }}" @selected(old('id_type', $user->id_type) === $val)>{{ __('kyc.'.$key) }}</option>
-        @endforeach
-      </select>
-      @error('id_type')<span class="form-error">{{ $message }}</span>@enderror
-    </div>
-    <div class="kyc-form-group">
-      <label for="id_number">{{ __('onboarding.f_id_number') }} *</label>
-      <input type="text" id="id_number" name="id_number" value="{{ old('id_number', $user->id_number) }}" autocomplete="off" required>
-      @error('id_number')<span class="form-error">{{ $message }}</span>@enderror
-    </div>
-    <div class="kyc-form-group">
-      <label for="date_delivre">{{ __('onboarding.f_date_delivre') }} <em>({{ __('onboarding.optional') }})</em></label>
-      <input type="date" id="date_delivre" name="date_delivre" max="{{ now()->toDateString() }}"
-             value="{{ old('date_delivre', optional($user->date_delivre)->toDateString()) }}">
-      @error('date_delivre')<span class="form-error">{{ $message }}</span>@enderror
-    </div>
-    <div class="kyc-form-group">
-      <label for="tax_number">{{ __('onboarding.f_tax_number') }} <em>({{ __('onboarding.optional') }})</em></label>
-      <input type="text" id="tax_number" name="tax_number" value="{{ old('tax_number', $user->tax_number) }}" autocomplete="off">
-      @error('tax_number')<span class="form-error">{{ $message }}</span>@enderror
-    </div>
-    <div class="kyc-form-group span-2">
-      <label for="activity">{{ __('onboarding.f_activity') }} <em>({{ __('onboarding.optional') }})</em></label>
-      <input type="text" id="activity" name="activity" value="{{ old('activity', $user->activity) }}">
-      @error('activity')<span class="form-error">{{ $message }}</span>@enderror
-    </div>
-  </div>
+@php [$lblKey, $titleKey, $subKey] = $meta($fields); @endphp
 
-  <div class="kyc-actions">
-    <button type="submit" class="kyc-submit-btn">{{ __('onboarding.continue') }} <i class="fas fa-arrow-right"></i></button>
-    @if($step1Done)
-    <a href="{{ route('client.app.kyc.show') }}" class="kyc-ghost-btn"><i class="fas fa-arrow-left"></i> {{ __('onboarding.back') }}</a>
-    @endif
-  </div>
-</form>
-
-@else
-{{-- ───────────── Étape 2 : documents ───────────── --}}
-<div class="kyc-head">
-  <h2>{{ __('onboarding.step2_title') }}</h2>
-  <p>{{ __('onboarding.step2_sub') }}</p>
-</div>
-
+@if($status !== $K::STATUS_NON_SOUMIS)
 <div class="kyc-status kyc-status--{{ $status }}">
   <div class="kyc-status__ico">
     @switch($status)
@@ -234,24 +158,18 @@
     @endif
   </div>
 </div>
-
-@if($errors->any())
-<div class="alert alert-danger" style="margin-bottom:1rem">{{ $errors->first() }}</div>
 @endif
 
 @if($kyc && $kyc->submitted_at)
 <div class="kyc-head"><h2 style="font-size:.95rem">{{ __('onboarding.doc_status') }}</h2></div>
 <div class="kyc-docs">
-  @foreach([
-    ['onboarding.doc_id_front', $kyc->id_document_front_path, false],
-    ['onboarding.doc_id_back',  $kyc->id_document_back_path,  true],
-    ['onboarding.doc_selfie',   $kyc->selfie_path,            false],
-  ] as [$label, $path, $optional])
+  @foreach($allFields->filter(fn ($f) => $f->isFile()) as $f)
+  @php $has = (bool) \App\Services\KycForm::filePath($user, $f); @endphp
   <div class="kyc-doc">
-    <span class="kyc-doc__name">{{ __($label) }}</span>
-    @if($path)
+    <span class="kyc-doc__name">{{ $f->displayLabel() }}</span>
+    @if($has)
       <span class="kyc-badge kyc-badge--ok"><i class="fas fa-check"></i> {{ __('onboarding.doc_sent') }}</span>
-    @elseif($optional)
+    @elseif(! $f->required)
       <span class="kyc-badge kyc-badge--opt">{{ __('onboarding.doc_optional') }}</span>
     @else
       <span class="kyc-badge kyc-badge--no">{{ __('onboarding.doc_missing') }}</span>
@@ -261,50 +179,35 @@
 </div>
 @endif
 
-@if(in_array($status, [$K::STATUS_NON_SOUMIS, $K::STATUS_REJETE]))
+@if(! $locked)
+<div class="kyc-head">
+  <h2>{{ __($titleKey) }}</h2>
+  <p>{{ __($subKey) }}</p>
+</div>
 
-<form data-confirm="{{ __('onboarding.confirm_submit') }}" method="POST" action="{{ route('client.app.kyc.store') }}" enctype="multipart/form-data">
+@if($errors->any())
+<div class="alert alert-danger" style="margin-bottom:1rem">{{ $errors->first() }}</div>
+@endif
+
+<form data-confirm="{{ $isLast ? __('onboarding.confirm_submit') : __('onboarding.confirm_info') }}" method="POST" action="{{ route('client.app.kyc.store') }}" enctype="multipart/form-data" novalidate>
   @csrf
-  <input type="hidden" name="id_document_type" value="{{ $user->id_type }}">
+  <input type="hidden" name="step" value="{{ $step }}">
 
-  <div class="kyc-form-group">
-    <label>{{ __('kyc.label_id_front') }} *</label>
-    <label class="kyc-file"><i class="fas fa-cloud-arrow-up"></i>
-      <span class="kyc-file__txt" data-default="{{ __('onboarding.doc_choose') }}">{{ __('onboarding.doc_choose') }}</span>
-      <input type="file" name="id_document_front" accept="image/jpeg,image/png,application/pdf" required>
-    </label>
-    @error('id_document_front')<span class="form-error">{{ $message }}</span>@enderror
-  </div>
-
-  <div class="kyc-form-group">
-    <label>{{ __('kyc.label_id_back') }}</label>
-    <label class="kyc-file"><i class="fas fa-cloud-arrow-up"></i>
-      <span class="kyc-file__txt" data-default="{{ __('onboarding.doc_choose') }}">{{ __('onboarding.doc_choose') }}</span>
-      <input type="file" name="id_document_back" accept="image/jpeg,image/png,application/pdf">
-    </label>
-    @error('id_document_back')<span class="form-error">{{ $message }}</span>@enderror
-  </div>
-
-  <div class="kyc-form-group">
-    <label>{{ __('kyc.label_selfie') }} *</label>
-    <label class="kyc-file"><i class="fas fa-camera"></i>
-      <span class="kyc-file__txt" data-default="{{ __('onboarding.doc_choose') }}">{{ __('onboarding.doc_choose') }}</span>
-      <input type="file" name="selfie" accept="image/jpeg,image/png" capture="user" id="kyc-selfie-input" required>
-    </label>
-    <div class="kyc-hint">{{ __('kyc.selfie_hint') }}</div>
-    <img id="kyc-selfie-preview" class="kyc-selfie-preview" alt="">
-    @error('selfie')<span class="form-error">{{ $message }}</span>@enderror
+  <div class="kyc-grid kyc-grid--2">
+    @foreach($fields as $f)
+      @include('client.app.kyc._field', ['f' => $f, 'user' => $user])
+    @endforeach
   </div>
 
   <div class="kyc-actions">
     <button type="submit" class="kyc-submit-btn">
-      {{ $status === $K::STATUS_REJETE ? __('kyc.resubmit') : __('kyc.submit') }}
+      @if($isLast){{ $status === $K::STATUS_REJETE ? __('kyc.resubmit') : __('kyc.submit') }}@else{{ __('onboarding.continue') }} <i class="fas fa-arrow-right"></i>@endif
     </button>
-    <a href="{{ route('client.app.kyc.show', ['step' => 1]) }}" class="kyc-ghost-btn"><i class="fas fa-pen"></i> {{ __('onboarding.edit_info') }}</a>
+    @if($step > 1)
+    <a href="{{ route('client.app.kyc.show', ['step' => $step - 1]) }}" class="kyc-ghost-btn"><i class="fas fa-arrow-left"></i> {{ __('onboarding.back') }}</a>
+    @endif
   </div>
 </form>
-
-@endif
 @endif
 
 </div>

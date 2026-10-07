@@ -54,7 +54,7 @@
         <i class="fas fa-credit-card"></i>
       </div>
       <div class="ca-settings-item__text">
-        <div class="ca-settings-item__label">RIB</div>
+        <div class="ca-settings-item__label">IBAN</div>
         <div class="ca-settings-item__sub">{{ $user->bankAccount ? $user->bankAccount->maskedIban() : __('app.not_configured') }}</div>
       </div>
       <div class="ca-settings-item__right"><i class="fas fa-chevron-right"></i></div>

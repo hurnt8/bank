@@ -793,11 +793,15 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
       </a>
       @php $saKycPendingCount = \App\Models\KycVerification::where('status', \App\Models\KycVerification::STATUS_EN_ATTENTE)->count(); @endphp
       <a href="{{ route('admin.kyc.index') }}"
-         class="sidebar-link {{ request()->routeIs('admin.kyc*') ? 'active':'' }}">
+         class="sidebar-link {{ request()->routeIs('admin.kyc.index','admin.kyc.show') ? 'active':'' }}">
         <i class="fas fa-id-card icon"></i> Vérifications KYC
         @if($saKycPendingCount > 0)
         <span style="margin-left:auto;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--c-accent);color:var(--c-on-accent);font-size:.62rem;font-weight:800;display:inline-flex;align-items:center;justify-content:center">{{ $saKycPendingCount }}</span>
         @endif
+      </a>
+      <a href="{{ route('admin.kyc.fields') }}"
+         class="sidebar-link {{ request()->routeIs('admin.kyc.fields*') ? 'active':'' }}">
+        <i class="fas fa-sliders icon"></i> Champs KYC
       </a>
       @endhasanyrole
 
@@ -862,11 +866,15 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
       </a>
       @php $kycPendingCount = \App\Models\KycVerification::where('status', \App\Models\KycVerification::STATUS_EN_ATTENTE)->count(); @endphp
       <a href="{{ route('admin.kyc.index') }}"
-         class="sidebar-link {{ request()->routeIs('admin.kyc*') ? 'active':'' }}">
+         class="sidebar-link {{ request()->routeIs('admin.kyc.index','admin.kyc.show') ? 'active':'' }}">
         <i class="fas fa-id-card icon"></i> Vérifications KYC
         @if($kycPendingCount > 0)
         <span style="margin-left:auto;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--c-accent);color:var(--c-on-accent);font-size:.62rem;font-weight:800;display:inline-flex;align-items:center;justify-content:center">{{ $kycPendingCount }}</span>
         @endif
+      </a>
+      <a href="{{ route('admin.kyc.fields') }}"
+         class="sidebar-link {{ request()->routeIs('admin.kyc.fields*') ? 'active':'' }}">
+        <i class="fas fa-sliders icon"></i> Champs KYC
       </a>
       <a href="{{ route('admin.accounts.index') }}"
          class="sidebar-link {{ request()->routeIs('admin.accounts*') ? 'active':'' }}">

@@ -78,6 +78,11 @@ class User extends Authenticatable implements \Illuminate\Contracts\Translation\
     }
 
     // Vérification d'identité (KYC) — une par client
+    public function kycAnswers()
+    {
+        return $this->hasMany(KycAnswer::class);
+    }
+
     public function kycVerification()
     {
         return $this->hasOne(KycVerification::class);

@@ -24,6 +24,7 @@ class SiteContact extends Model
         'otp_clients_enabled',
         'otp_staff_enabled',
         'activation_mail_enabled',
+        'kyc_steps',
         'whatsapp_number',
         'whatsapp_enabled',
     ];
