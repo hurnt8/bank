@@ -65,4 +65,5 @@ return [
     'notif_code_title' => 'Reikalingas jūsų pavedimo kodas',
     'notif_code_body' => 'Pavedimas :reference sustabdytas ties :progress %. Susisiekite su konsultantu, kad gautumėte atrakinimo kodą.',
     'confirm_send' => 'Siųsti :amount gavėjui :name? Pavedimas bus pateiktas patvirtinti.',
+    'processing_notice' => 'Jūsų pavedimas apdorojamas.',
 ];

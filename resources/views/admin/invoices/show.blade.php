@@ -258,7 +258,7 @@
   </div>
   @endif
 
-  @if($invoice->paymentIban() !== '')
+  @if($invoice->paymentIban() !== '' && $invoice->status !== 'paid')
   <div class="inv-note" style="background:#f0f5ff;border-left-color:#1B4976">
     <strong>Règlement par {{ $invoice->paymentTypeLabel('fr') }} :</strong>
     bénéficiaire <strong>{{ $invoice->paymentHolder() }}</strong> — IBAN <strong style="font-family:monospace">{{ \App\Models\Invoice::formatIban($invoice->paymentIban()) }}</strong>

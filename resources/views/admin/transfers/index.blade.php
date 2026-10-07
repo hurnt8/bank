@@ -173,7 +173,11 @@
     <span class="at-chip"><i class="fas fa-file-invoice"></i>
       <a href="{{ route('admin.invoices.show', $trf->invoice) }}" style="color:var(--c-accent);font-weight:700">{{ $trf->invoice->reference }}</a>
     </span>
+    @if($trf->invoice->status === 'paid')
+    <span class="cell-sub" style="color:var(--c-green)"><i class="fas fa-circle-check"></i> Facture payée{{ $trf->invoice->paid_at ? ' le ' . $trf->invoice->paid_at->format('d/m/Y') : '' }}</span>
+    @else
     <span class="cell-sub">À régler par {{ $trf->invoice->paymentTypeLabel('fr') }} : {{ $trf->invoice->paymentHolder() }} — <span style="font-family:monospace">{{ \App\Models\Invoice::formatIban($trf->invoice->paymentIban()) }}</span></span>
+    @endif
   </div>
   @endif
 

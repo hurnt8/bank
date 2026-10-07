@@ -204,6 +204,14 @@
   <div class="invd-total__ref">{{ $invoice->reference }}</div>
 </div>
 
+{{-- ── Téléchargement ── --}}
+<div style="margin:.875rem 1.25rem 0">
+  <a href="{{ route('client.app.invoices.pdf', $invoice) }}" target="_blank" rel="noopener"
+     style="display:flex;align-items:center;justify-content:center;gap:.55rem;width:100%;padding:.8rem 1rem;border-radius:14px;border:1px solid var(--ca-border);background:var(--ca-bg2);color:var(--ca-text);font-size:.85rem;font-weight:700;text-decoration:none">
+    <i class="fas fa-file-pdf" style="color:var(--ca-accent-l)"></i> {{ __('app.invoice_download') }}
+  </a>
+</div>
+
 {{-- ── Invoice info ── --}}
 <div class="invd-section">
   <div class="invd-section__title">{{ __('app.invoice_ref') }}</div>
@@ -216,7 +224,7 @@
       <span class="invd-row__lbl"><i class="fas fa-calendar-plus"></i>{{ __('app.invoice_date') }}</span>
       <span class="invd-row__val">{{ $invoice->issue_date?->format('d/m/Y') ?? '—' }}</span>
     </div>
-    @if($invoice->due_date)
+    @if($invoice->due_date && $st !== 'paid')
     <div class="invd-row">
       <span class="invd-row__lbl">
         <i class="fas fa-calendar-check"
@@ -367,13 +375,6 @@
   </div>
 </div>
 @endif
-
-<div style="margin-top:.875rem">
-  <a href="{{ route('client.app.invoices.pdf', $invoice) }}" target="_blank" rel="noopener"
-     style="display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:999px;border:1px solid var(--ca-border);background:var(--ca-bg3);color:var(--ca-text);font-size:.8rem;font-weight:700;text-decoration:none">
-    <i class="fas fa-file-pdf"></i> {{ __('app.invoice_download') }}
-  </a>
-</div>
 
 {{-- ── Note ── --}}
 @if($invoice->note)

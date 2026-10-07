@@ -13,11 +13,13 @@
     $isDone    = $status === Transfer::STATUS_COMPLETED;
     $isRej     = $status === Transfer::STATUS_REJECTED;
     $isFee     = $status === Transfer::STATUS_FEE_REQUIRED;
+    // Frais encore à régler : la facture liée n'est pas encore payée (sinon on ne montre plus les coordonnées de paiement)
+    $feeDue    = $isFee && $transfer->invoice && $transfer->invoice->status === 'sent';
 
     $tone  = $isDone ? 'ok' : ($isRej ? 'bad' : ($isFee ? 'info' : 'wait'));
     $icon  = $isDone ? 'fa-circle-check' : ($isRej ? 'fa-circle-xmark' : ($isFee ? 'fa-file-invoice' : 'fa-hourglass-half'));
     $title = __('transfer.status_' . $status);
-    $hint  = __('transfer.hint_' . $status);
+    $hint  = __('transfer.hint_' . ($isFee && ! $feeDue ? 'pending' : $status));
     $sign  = $isRej ? '' : ($isSend ? '−' : '+');
     $iban  = (string) $transfer->beneficiary_iban;
     $pct      = $transfer->progressValue();
@@ -28,6 +30,8 @@
 
 @push('styles')
 <style>
+.td-processing{margin-top:.8rem;padding:.7rem .9rem;border-radius:12px;background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.25);color:#93c5fd;font-size:.8rem;font-weight:600;line-height:1.45}
+.td-processing i{margin-right:.4rem}
 .td-page { padding: 1rem 1.25rem 2rem; }
 .td-hero { text-align: center; padding: 1.6rem 1.25rem 1.4rem; border-radius: var(--ca-radius); border: 1px solid var(--ca-border); background: var(--ca-bg2); margin-bottom: 1rem; }
 .td-hero__ico { width: 64px; height: 64px; margin: 0 auto .9rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; }
@@ -119,7 +123,7 @@
   @if($isRej && $transfer->admin_note)
   <div class="td-note td-note--bad"><strong>{{ __('transfer.reject_reason') }}</strong>{{ $transfer->admin_note }}</div>
   @endif
-  @if($isFee && $transfer->invoice)
+  @if($feeDue)
   <div class="td-note td-note--info">
     <strong>{{ __('transfer.fee_title') }}</strong>
     {{ __('transfer.fee_text', ['amount' => number_format((float) $transfer->invoice->total, 2, ',', ' ') . ' ' . $transfer->invoice->currency]) }}
@@ -138,6 +142,11 @@
     <div class="td-bar__meta">
       <strong id="td-pct">{{ $pct }} %</strong>
       <span id="td-label">{{ $isDone ? __('transfer.progress_done') : ($awaiting ? __('transfer.progress_blocked') : __('transfer.progress_running')) }}</span>
+    </div>
+
+    {{-- Barre à 100 % mais virement pas encore validé par l'administration --}}
+    <div class="td-processing" id="td-processing" @if(! ($pct >= 100 && ! $isDone && ! $isRej)) style="display:none" @endif>
+      <i class="fas fa-gears"></i> {{ __('transfer.processing_notice') }}
     </div>
 
     @if($awaiting)
@@ -217,7 +226,7 @@
     </ol>
   </div>
 
-  @if($isFee && $transfer->invoice && $transfer->invoice->paymentIban() !== '')
+  @if($feeDue && $transfer->invoice->paymentIban() !== '')
   @php $inv = $transfer->invoice; @endphp
   <div class="td-card">
     <div class="td-card__title">{{ __('invoice.pay_title') }}</div>
@@ -254,6 +263,7 @@
         if (!d) return;
         if (d.status !== startStatus || d.code_required !== startAwait) { window.location.reload(); return; }
         fill.style.width = d.progress + '%'; pct.textContent = d.progress + ' %';
+        var pr = document.getElementById('td-processing'); if (pr) pr.style.display = d.progress >= 100 ? '' : 'none';
       }).catch(function () {});
   }
   setInterval(tick, 8000);

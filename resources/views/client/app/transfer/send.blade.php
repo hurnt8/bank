@@ -97,11 +97,6 @@ textarea.sd-input { padding-left: 1rem; min-height: 78px; resize: vertical; }
 @section('content')
 <div class="sd-page" x-data="sendTransfer({ balance: {{ $balance }}, currency: @js($currency), initial: @js(old('amount', '')) , timeoutMsg: @js(__('transfer.timeout')) })">
 
-  <div class="sd-notice">
-    <i class="fas fa-hourglass-half"></i>
-    <span>{{ __('transfer.validation_notice') }}</span>
-  </div>
-
   @if($errors->any())
   <div class="sd-errors" role="alert"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first() }}</div>
   @endif
