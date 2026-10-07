@@ -93,6 +93,19 @@
     <tr class="strong"><td>{{ __('invoice.amount_due') }}</td><td class="r">{{ $fmt($invoice->total) }}</td></tr>
   </table>
 
+  @if($invoice->linkedTransfer)
+  @php $lt = $invoice->linkedTransfer; @endphp
+  <div class="pay" style="margin-top:20px">
+    <div class="pay-title">{{ __('transfer.detail_title') }}</div>
+    <table>
+      <tr><td>{{ __('transfer.reference') }}</td><td><strong>{{ $lt->reference }}</strong></td></tr>
+      <tr><td>{{ __('transfer.type') }}</td><td>{{ $lt->typeLabel() }}</td></tr>
+      <tr><td>{{ __('transfer.beneficiary') }}</td><td>{{ $lt->beneficiary_name }}</td></tr>
+      <tr><td>{{ __('invoice.amount') }}</td><td>{{ number_format((float) $lt->amount, 2, ',', ' ') }} {{ $lt->currency }}</td></tr>
+    </table>
+  </div>
+  @endif
+
   @if($iban !== '')
   <div class="pay">
     <div class="pay-title">{{ __('invoice.pay_title') }}</div>

@@ -242,6 +242,14 @@
     </div>
   </div>
 
+  @if($invoice->linkedTransfer)
+  @php $lt = $invoice->linkedTransfer; @endphp
+  <div class="inv-note" style="background:#f5f3ff;border-left-color:#6d28d9">
+    <strong>Virement concerné :</strong> {{ $lt->reference }} — {{ $lt->typeLabel('fr') }} — {{ $lt->beneficiary_name }}
+    ({{ number_format($lt->amount, 2, ',', ' ') }} {{ $lt->currency }}) — statut : {{ $lt->statusLabel() }}
+  </div>
+  @endif
+
   @if($invoice->paymentIban() !== '')
   <div class="inv-note" style="background:#f0f5ff;border-left-color:#1B4976">
     <strong>Règlement par virement :</strong>

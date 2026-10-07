@@ -77,6 +77,10 @@ $accent = match($action) { 'approved' => 'green', 'rejected' => 'red', default =
       <span class="panel-val">{{ $ref }}</span>
     </div>
     <div class="panel-row">
+      <span class="panel-lbl">{{ __('transfer.type', [], $locale) }}</span>
+      <span class="panel-val">{{ $transfer->typeLabel($locale) }}</span>
+    </div>
+    <div class="panel-row">
       <span class="panel-lbl">{{ $t['lbl_amount'] }}</span>
       <span class="panel-val accent">{{ $amount }}</span>
     </div>

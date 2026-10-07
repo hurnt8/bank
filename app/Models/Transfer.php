@@ -75,6 +75,12 @@ class Transfer extends Model
         return str_pad((string) random_int(0, 999999), 6, '0', STR_PAD_LEFT);
     }
 
+    /** « Virement émis » / « Virement reçu » dans la langue demandée (langue courante par défaut). */
+    public function typeLabel(?string $locale = null): string
+    {
+        return __($this->type === 'send' ? 'transfer.type_send' : 'transfer.type_receive', [], $locale);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

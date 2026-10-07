@@ -45,6 +45,10 @@
   </div>
 </div>
 
+@if($errors->any())
+<div class="flash flash-err" style="margin-bottom:1rem"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first() }}</div>
+@endif
+
 {{-- Filters ── --}}
 <div class="card-pro" style="margin-bottom:1.25rem">
   <div class="card-pro-body" style="padding:.75rem 1.25rem">
@@ -266,6 +270,7 @@
     <form method="POST" action="{{ route('admin.transfers.invoice', $trf) }}"
           data-confirm="Créer la facture de frais et l'envoyer au client ?">
       @csrf
+      <input type="hidden" name="_trf" value="{{ $trf->id }}">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.875rem">
         <div>
           <label class="form-label-pro">Montant des frais *</label>
@@ -321,6 +326,14 @@
 @endif
 
 <script>
+// Après une erreur de validation, le formulaire de facture du virement concerné est rouvert
+@if(old('_trf'))
+document.addEventListener('DOMContentLoaded', function () {
+  var f = document.getElementById('invoice-{{ (int) old('_trf') }}');
+  if (f) { f.style.display = 'block'; f.scrollIntoView({ block: 'center' }); }
+});
+@endif
+
 function toggleForm(id, trfId) {
   ['approve','reject','invoice'].forEach(t => {
     const el = document.getElementById(t + '-' + trfId);

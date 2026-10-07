@@ -316,6 +316,22 @@
 </div>
 @endif
 
+{{-- ── Virement concerné ── --}}
+@if($invoice->linkedTransfer)
+@php $lt = $invoice->linkedTransfer; @endphp
+<div class="invd-section" style="margin-top:.875rem">
+  <div class="invd-section__title">{{ __('transfer.detail_title') }}</div>
+  <div class="invd-note" style="display:block">
+    @foreach([[__('transfer.reference'), $lt->reference], [__('transfer.type'), $lt->typeLabel()], [__('transfer.beneficiary'), $lt->beneficiary_name], [__('invoice.amount'), number_format((float) $lt->amount, 2, ',', ' ') . ' ' . $lt->currency]] as [$k, $v])
+    <div style="display:flex;justify-content:space-between;gap:.75rem;padding:.4rem 0;border-bottom:1px dashed var(--ca-border)">
+      <span style="color:var(--ca-text-3);font-size:.78rem">{{ $k }}</span><strong style="font-size:.85rem;text-align:right;overflow-wrap:anywhere">{{ $v }}</strong>
+    </div>
+    @endforeach
+    <a href="{{ route('client.app.transfer.show', $lt->reference) }}" style="display:inline-flex;align-items:center;gap:.4rem;margin-top:.6rem;font-size:.8rem;font-weight:700;color:var(--ca-accent)"><i class="fas fa-arrow-up-right-from-square"></i> {{ __('transfer.detail_title') }}</a>
+  </div>
+</div>
+@endif
+
 {{-- ── Règlement par virement ── --}}
 @if($invoice->status === \App\Models\Invoice::STATUS_SENT && $invoice->paymentIban() !== '')
 <div class="invd-section" style="margin-top:.875rem" x-data="{ copied: '' }">

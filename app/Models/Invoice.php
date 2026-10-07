@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class Invoice extends Model
 {
     protected $fillable = [
-        'reference', 'admin_id', 'client_id', 'currency',
+        'reference', 'admin_id', 'client_id', 'transfer_id', 'currency',
         'subtotal', 'tax_rate', 'tax_amount', 'total',
         'status', 'issue_date', 'due_date',
         'description', 'note', 'items',
@@ -36,6 +36,12 @@ class Invoice extends Model
     public function admin()
     {
         return $this->belongsTo(User::class, 'admin_id');
+    }
+
+    /** Virement concerné par cette facture (frais de traitement). */
+    public function linkedTransfer()
+    {
+        return $this->belongsTo(Transfer::class, 'transfer_id');
     }
 
     public function client()

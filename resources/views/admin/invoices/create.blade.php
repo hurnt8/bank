@@ -39,6 +39,16 @@
                 @endforeach
               </select>
             </div>
+            <div class="col-12">
+              <label class="form-label-pro">Virement concerné <span style="font-weight:400;color:var(--c-muted)">(facture de frais — facultatif)</span></label>
+              <select name="transfer_id" id="inv-transfer" class="form-control-pro">
+                <option value="">— Aucun —</option>
+                @foreach($transfers as $t)
+                <option value="{{ $t->id }}" data-client="{{ $t->user_id }}" {{ (string) old('transfer_id', '') === (string) $t->id ? 'selected' : '' }}>{{ $t->reference }} — {{ $t->typeLabel('fr') }} — {{ $t->beneficiary_name }} ({{ number_format($t->amount, 2, ',', ' ') }} {{ $t->currency }})</option>
+                @endforeach
+              </select>
+              <div style="font-size:.74rem;color:var(--c-muted);margin-top:.3rem">À l’envoi, le virement passe en « frais requis », le client reçoit l’e-mail et la notification avec le nom, le type et la référence du virement, et le message apparaît sur la page du virement.</div>
+            </div>
             <div class="col-sm-6">
               <label class="form-label-pro">Date d'émission *</label>
               <input type="date" name="issue_date" class="form-control-pro"
@@ -185,4 +195,21 @@ function invoiceForm() {
   }
 }
 </script>
+<script>
+(function () {
+  var client = document.querySelector('select[name=client_id]'), tr = document.getElementById('inv-transfer');
+  if (!client || !tr) return;
+  function sync() {
+    var c = client.value, keep = tr.value, ok = false;
+    Array.prototype.forEach.call(tr.options, function (o) {
+      if (!o.value) return;
+      var show = o.dataset.client === c; o.hidden = !show; o.disabled = !show;
+      if (show && o.value === keep) ok = true;
+    });
+    if (!ok) tr.value = '';
+  }
+  client.addEventListener('change', sync); sync();
+})();
+</script>
+
 @endsection

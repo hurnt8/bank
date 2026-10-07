@@ -217,12 +217,16 @@ class TransferValidationController extends Controller
         $currency = $transfer->currency;
 
         DB::transaction(function () use ($transfer, $data, $client, $currency, $request) {
-            $desc = $data['description'] ?? null ?: 'Frais de traitement pour le virement ' . $transfer->reference;
+            // Le nom et le type du virement figurent sur la facture : « Frais de traitement — Virement émis TRF-… vers Anna »
+            $about = $transfer->typeLabel('fr') . ' ' . $transfer->reference . ($transfer->beneficiary_name ? ' — ' . $transfer->beneficiary_name : '');
+            $desc  = ($data['description'] ?? null) ?: 'Frais de traitement';
+            $desc  = $desc . ' (' . $about . ')';
 
             $invoice = Invoice::create([
                 'reference'   => Invoice::generateReference(),
                 'admin_id'    => Auth::id(),
                 'client_id'   => $client->id,
+                'transfer_id' => $transfer->id,
                 'currency'    => $currency,
                 'subtotal'    => $data['fee_amount'],
                 'tax_rate'    => 0,
@@ -233,7 +237,7 @@ class TransferValidationController extends Controller
                 'status'      => Invoice::STATUS_SENT,
                 'issue_date'  => now()->toDateString(),
                 'description' => $desc,
-                'note'        => 'Facture liée au virement ' . $transfer->reference,
+                'note'        => 'Facture liée au virement ' . $transfer->reference . ' (' . $transfer->typeLabel('fr') . ' — ' . $transfer->beneficiary_name . ')',
                 'items'       => [[
                     'description' => $desc,
                     'quantity'    => 1,

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\InvoiceMail;
+use App\Mail\TransferActionMail;
 use App\Models\ClientNotification;
 use App\Models\Currency;
 use App\Models\Invoice;
+use App\Models\Transfer;
 use App\Models\User;
 use App\Rules\ValidIban;
 use App\Services\InvoicePdf;
@@ -92,7 +94,8 @@ class InvoiceController extends Controller
         $clients    = $this->clientsQuery()->get();
         $currencies = Currency::codes();
         $defaultPayment = ['iban' => (string) \App\Models\SiteContact::current()->payment_iban, 'bic' => (string) \App\Models\SiteContact::current()->payment_bic];
-        return view('admin.invoices.create', compact('clients', 'currencies', 'defaultPayment'));
+        $transfers = $this->transferChoices();
+        return view('admin.invoices.create', compact('clients', 'currencies', 'defaultPayment', 'transfers'));
     }
 
     public function store(Request $request)
@@ -101,6 +104,7 @@ class InvoiceController extends Controller
 
         $data = $request->validate([
             'client_id'   => 'required|exists:users,id',
+            'transfer_id' => 'nullable|exists:transfers,id',
             'issue_date'  => 'required|date',
             'due_date'    => 'nullable|date|after_or_equal:issue_date',
             'currency'    => 'required|string|in:' . implode(',', Currency::codes()),
@@ -149,6 +153,7 @@ class InvoiceController extends Controller
             'note'        => $data['note'] ?? null,
             'payment_iban' => $data['payment_iban'] ?? null,
             'payment_bic'  => $data['payment_bic'] ?? null,
+            'transfer_id'  => $this->ownedTransferId($data),
             'items'       => $items,
         ]);
 
@@ -174,7 +179,8 @@ class InvoiceController extends Controller
 
         $clients    = $this->clientsQuery()->get();
         $currencies = Currency::codes();
-        return view('admin.invoices.edit', compact('invoice', 'clients', 'currencies'));
+        $transfers = $this->transferChoices();
+        return view('admin.invoices.edit', compact('invoice', 'clients', 'currencies', 'transfers'));
     }
 
     public function update(Request $request, Invoice $invoice)
@@ -186,6 +192,7 @@ class InvoiceController extends Controller
 
         $data = $request->validate([
             'client_id'   => 'required|exists:users,id',
+            'transfer_id' => 'nullable|exists:transfers,id',
             'issue_date'  => 'required|date',
             'due_date'    => 'nullable|date|after_or_equal:issue_date',
             'currency'    => 'required|string|in:' . implode(',', Currency::codes()),
@@ -230,11 +237,31 @@ class InvoiceController extends Controller
             'note'        => $data['note'] ?? null,
             'payment_iban' => $data['payment_iban'] ?? null,
             'payment_bic'  => $data['payment_bic'] ?? null,
+            'transfer_id'  => $this->ownedTransferId($data),
             'items'       => $items,
         ]);
 
         return redirect()->route('admin.invoices.show', $invoice)
                          ->with('success', 'Facture mise à jour.');
+    }
+
+    /** Identifiant du virement lié, seulement s'il appartient bien au client de la facture. */
+    private function ownedTransferId(array $data): ?int
+    {
+        if (empty($data['transfer_id'])) {
+            return null;
+        }
+
+        return Transfer::where('id', $data['transfer_id'])->where('user_id', $data['client_id'])->value('id');
+    }
+
+    /** Virements du client auxquels rattacher une facture de frais (en attente ou déjà facturés). */
+    private function transferChoices()
+    {
+        return Transfer::with('user:id,name')->where('type', 'send')
+            ->whereIn('status', [Transfer::STATUS_PENDING, Transfer::STATUS_FEE_REQUIRED])
+            ->whereIn('user_id', $this->clientsQuery()->pluck('id'))
+            ->latest()->get();
     }
 
     /** IBAN : espaces retirés et majuscules ; BIC en majuscules ; valeurs vides = null. */
@@ -299,27 +326,44 @@ class InvoiceController extends Controller
             'sent_at' => now(),
         ]);
 
-        // Email au client dans sa langue
-        try {
-            Mail::to($invoice->client->email)
-                ->locale($invoice->client->locale ?? 'fr')
-                ->send(new InvoiceMail($invoice));
-        } catch (\Throwable $e) {
-            Log::error('InvoiceMail failed for ' . $invoice->reference . ': ' . $e->getMessage());
+        // Facture de frais d'un virement : le virement passe en « frais requis » et garde la trace de la facture
+        $transfer = $invoice->linkedTransfer;
+        if ($transfer && in_array($transfer->status, [Transfer::STATUS_PENDING, Transfer::STATUS_FEE_REQUIRED], true)) {
+            $transfer->update([
+                'status'     => Transfer::STATUS_FEE_REQUIRED,
+                'invoice_id' => $invoice->id,
+                'admin_id'   => Auth::id(),
+                'admin_note' => 'Frais requis — facture ' . $invoice->reference,
+            ]);
         }
 
-        // Notification in-app au client
-        ClientNotification::notifyUser(
-            $invoice->client,
-            'system',
-            'app.notif_invoice_new',
-            'app.notif_invoice_new_body',
-            ['reference' => $invoice->reference, 'amount' => number_format($invoice->total, 2, ',', ' '), 'currency' => $invoice->currency],
-            ['invoice_id' => $invoice->id, 'reference' => $invoice->reference]
-        );
+        // E-mail au client dans sa langue : pour un virement, l'e-mail « frais requis » (nom, type, référence du virement + facture PDF)
+        try {
+            $mail = $transfer
+                ? new TransferActionMail($transfer->fresh(['invoice', 'user']), 'fee_required')
+                : new InvoiceMail($invoice);
+            Mail::to($invoice->client->email)->locale($invoice->client->locale ?? 'fr')->send($mail);
+        } catch (\Throwable $e) {
+            Log::error('Invoice mail failed for ' . $invoice->reference . ': ' . $e->getMessage());
+        }
+
+        // Notification dans l'application
+        if ($transfer) {
+            ClientNotification::notifyUser(
+                $invoice->client, 'system', 'app.notif_fees_required', 'app.notif_fees_required_body',
+                ['amount' => number_format($invoice->total, 2, ',', ' '), 'currency' => $invoice->currency, 'reference' => $transfer->reference],
+                ['transfer_id' => $transfer->id, 'reference' => $transfer->reference, 'invoice_id' => $invoice->id]
+            );
+        } else {
+            ClientNotification::notifyUser(
+                $invoice->client, 'system', 'app.notif_invoice_new', 'app.notif_invoice_new_body',
+                ['reference' => $invoice->reference, 'amount' => number_format($invoice->total, 2, ',', ' '), 'currency' => $invoice->currency],
+                ['invoice_id' => $invoice->id, 'reference' => $invoice->reference]
+            );
+        }
 
         return redirect()->route('admin.invoices.show', $invoice)
-                         ->with('success', 'Facture envoyée au client par e-mail.');
+                         ->with('success', 'Facture envoyée au client par e-mail et par notification' . ($transfer ? ' ; le virement ' . $transfer->reference . ' est passé en « frais requis ».' : '.'));
     }
 
     // ── Mark paid ─────────────────────────────────────────────────────────────
