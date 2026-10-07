@@ -56,7 +56,7 @@ class AppController extends Controller
                 'label'     => $t->type === 'send'
                     ? __('app.mv_transfer_sent') . ' ' . $t->beneficiary_name
                     : __('app.mv_transfer_received'),
-                'sub'       => $t->reference,
+                'sub'       => $t->typeLabel() . ' · ' . $t->reference,
                 'transfer_ref' => $t->reference,
                 'status'    => $t->status,
                 'created_at'=> $t->created_at,
@@ -319,7 +319,7 @@ class AppController extends Controller
                 'label'        => $t->type === 'send'
                     ? __('app.mv_transfer_sent') . ' ' . $t->beneficiary_name
                     : __('app.mv_transfer_received'),
-                'sub'          => $t->reference . ($t->note ? ' — ' . $t->note : ''),
+                'sub'          => $t->typeLabel() . ' · ' . $t->reference . ($t->note ? ' — ' . $t->note : ''),
                 'transfer_ref' => $t->reference,
                 'balance_after' => null,
                 'has_balance'  => false,

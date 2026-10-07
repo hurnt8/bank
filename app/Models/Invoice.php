@@ -38,6 +38,49 @@ class Invoice extends Model
         return $this->belongsTo(User::class, 'admin_id');
     }
 
+    /**
+     * Ligne « Frais de traitement (Virement émis TRF-… — Nom) » rédigée dans la langue demandée, pour une facture de frais
+     * créée depuis un virement ; null pour les autres factures.
+     */
+    public function feeLine(?string $locale = null): ?string
+    {
+        $t    = $this->linkedTransfer;
+        $item = ($this->items ?? [])[0] ?? [];
+        if (! $t || ($item['kind'] ?? null) !== 'transfer_fee') {
+            return null;
+        }
+
+        $base = trim((string) ($item['text'] ?? '')) ?: __('invoice.fee_label', [], $locale);
+
+        return $base . ' (' . $t->typeLabel($locale) . ' ' . $t->reference . ($t->beneficiary_name ? ' — ' . $t->beneficiary_name : '') . ')';
+    }
+
+    /** Libellé d'une ligne : localisé pour une facture de frais de virement, tel que saisi sinon. */
+    public function itemDescription(array $item, ?string $locale = null): string
+    {
+        if (($item['kind'] ?? null) === 'transfer_fee') {
+            return $this->feeLine($locale) ?? (string) ($item['description'] ?? '—');
+        }
+
+        return (string) ($item['name'] ?? $item['description'] ?? '—');
+    }
+
+    public function displayDescription(?string $locale = null): ?string
+    {
+        return $this->feeLine($locale) ?? $this->description;
+    }
+
+    /** Note : la note automatique « facture liée au virement » est rédigée dans la langue demandée. */
+    public function displayNote(?string $locale = null): ?string
+    {
+        $t = $this->linkedTransfer;
+        if ($t && $this->note && str_starts_with($this->note, 'Facture liée au virement')) {
+            return __('invoice.linked_note', ['reference' => $t->reference, 'type' => $t->typeLabel($locale), 'name' => (string) $t->beneficiary_name], $locale);
+        }
+
+        return $this->note;
+    }
+
     /** Virement concerné par cette facture (frais de traitement). */
     public function linkedTransfer()
     {

@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Numer referencyjny do podania',
     'pay_hint' => 'Podaj numer referencyjny faktury w tytule przelewu.',
     'status'      => 'Status',
+    'fee_label'   => 'Opłaty za przetwarzanie',
+    'linked_note' => 'Faktura powiązana z przelewem :reference (:type — :name)',
 ];

@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Poziv na broj / referenca',
     'pay_hint' => 'Navedite referencu računa u opisu svog prijenosa.',
     'status'      => 'Status',
+    'fee_label'   => 'Naknade za obradu',
+    'linked_note' => 'Račun povezan s prijenosom :reference (:type — :name)',
 ];

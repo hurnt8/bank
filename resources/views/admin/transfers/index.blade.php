@@ -121,6 +121,7 @@
     <div>
       <div style="font-size:.67rem;text-transform:uppercase;letter-spacing:.06em;color:var(--c-muted);font-weight:700;margin-bottom:.2rem">Bénéficiaire</div>
       <div style="font-size:.875rem;font-weight:600;color:var(--c-navy)">{{ $trf->beneficiary_name ?? '—' }}</div>
+      <div class="cell-sub">{{ $trf->typeLabel('fr') }}</div>
       @if($trf->beneficiary_iban)
       <div class="cell-mono" style="font-size:.72rem">{{ $trf->beneficiary_iban }}</div>
       @endif
@@ -142,7 +143,7 @@
         {{ $trf->statusLabel() }}
       </span>
       @if($trf->invoice)
-      <div class="cell-sub" style="margin-top:.35rem">Facture : {{ $trf->invoice->reference }}</div>
+      <div class="cell-sub" style="margin-top:.35rem">Facture : {{ $trf->invoice->reference }} — {{ $trf->typeLabel('fr') }} · {{ $trf->beneficiary_name }}</div>
       @endif
     </div>
   </div>

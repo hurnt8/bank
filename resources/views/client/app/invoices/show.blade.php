@@ -251,7 +251,7 @@
     @foreach($invoice->items as $item)
     <div class="invd-item">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem">
-        <div class="invd-item__name">{{ $item['name'] ?? $item['description'] ?? '—' }}</div>
+        <div class="invd-item__name">{{ $invoice->itemDescription($item) }}</div>
         <div class="invd-item__price">
           {{ number_format(($item['unit_price'] ?? 0) * ($item['quantity'] ?? 1), 2, ',', ' ') }}&nbsp;{{ $currency }}
         </div>
@@ -292,7 +292,7 @@
   <div class="invd-card">
     <div class="invd-item">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem">
-        <div class="invd-item__name">{{ $invoice->description }}</div>
+        <div class="invd-item__name">{{ $invoice->displayDescription() }}</div>
         <div class="invd-item__price">{{ number_format($invoice->total, 2, ',', ' ') }}&nbsp;{{ $currency }}</div>
       </div>
     </div>
@@ -379,7 +379,7 @@
 <div class="invd-section" style="margin-top:.875rem">
   <div class="invd-section__title">{{ __('app.invoice_note') }}</div>
   <div class="invd-note">
-    <i class="fas fa-circle-info"></i>{{ $invoice->note }}
+    <i class="fas fa-circle-info"></i>{{ $invoice->displayNote() }}
   </div>
 </div>
 @endif

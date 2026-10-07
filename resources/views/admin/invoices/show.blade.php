@@ -197,7 +197,7 @@
   </div>
 
   @if($invoice->description)
-  <p style="font-size:.875rem;color:#555;margin-bottom:1.75rem;line-height:1.7">{{ $invoice->description }}</p>
+  <p style="font-size:.875rem;color:#555;margin-bottom:1.75rem;line-height:1.7">{{ $invoice->displayDescription('fr') }}</p>
   @endif
 
   {{-- Line items --}}
@@ -213,7 +213,7 @@
     <tbody>
       @foreach($invoice->items ?? [] as $item)
       <tr>
-        <td>{{ $item['description'] }}</td>
+        <td>{{ $invoice->itemDescription($item, 'fr') }}</td>
         <td style="text-align:center">{{ $item['quantity'] }}</td>
         <td>{{ number_format((float)$item['unit_price'], 2, ',', ' ') }} {{ $invoice->currency }}</td>
         <td>{{ number_format((float)$item['total'], 2, ',', ' ') }} {{ $invoice->currency }}</td>

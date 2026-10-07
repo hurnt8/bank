@@ -111,6 +111,7 @@
     <div class="td-hero__ico"><i class="fas {{ $icon }}"></i></div>
     <div class="td-hero__status">{{ $title }}</div>
     <div class="td-hero__amount {{ $isRej ? 'is-struck' : '' }}">{{ $sign }}{{ number_format((float) $transfer->amount, 2, ',', ' ') }} {{ $transfer->currency }}</div>
+    <div class="td-hero__hint" style="font-weight:700;color:var(--ca-text);margin-top:.5rem">{{ $transfer->typeLabel() }}@if($transfer->beneficiary_name) — {{ $transfer->beneficiary_name }}@endif</div>
     <div class="td-hero__hint">{{ $hint }}</div>
   </div>
 
@@ -122,6 +123,7 @@
   <div class="td-note td-note--info">
     <strong>{{ __('transfer.fee_title') }}</strong>
     {{ __('transfer.fee_text', ['amount' => number_format((float) $transfer->invoice->total, 2, ',', ' ') . ' ' . $transfer->invoice->currency]) }}
+    <div style="margin-top:.35rem;font-weight:700">{{ $transfer->typeLabel() }} — {{ $transfer->beneficiary_name }} · {{ $transfer->reference }}</div>
   </div>
   @endif
 

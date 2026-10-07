@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Uvádzaná referencia',
     'pay_hint' => 'V poznámke k prevodu uveďte referenciu faktúry.',
     'status'      => 'Stav',
+    'fee_label'   => 'Poplatky za spracovanie',
+    'linked_note' => 'Faktúra k prevodu :reference (:type — :name)',
 ];

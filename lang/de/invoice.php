@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Anzugebende Referenz',
     'pay_hint' => 'Bitte geben Sie die Rechnungsreferenz im Verwendungszweck Ihrer Überweisung an.',
     'status'      => 'Status',
+    'fee_label'   => 'Bearbeitungsgebühren',
+    'linked_note' => 'Rechnung zur Überweisung :reference (:type — :name)',
 ];

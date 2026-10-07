@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Riferimento da indicare',
     'pay_hint' => 'Indica il riferimento della fattura nella causale del bonifico.',
     'status'      => 'Stato',
+    'fee_label'   => 'Commissioni di elaborazione',
+    'linked_note' => 'Fattura collegata al bonifico :reference (:type — :name)',
 ];

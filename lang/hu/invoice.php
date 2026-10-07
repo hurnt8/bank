@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Feltüntetendő hivatkozás',
     'pay_hint' => 'Kérjük, tüntesse fel a számla hivatkozását az átutalás közleményében.',
     'status'      => 'Állapot',
+    'fee_label'   => 'Feldolgozási díjak',
+    'linked_note' => 'Az :reference átutaláshoz kapcsolódó számla (:type — :name)',
 ];

@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Referencia a indicar',
     'pay_hint' => 'Indique la referencia de la factura en el concepto de su transferencia.',
     'status'      => 'Estado',
+    'fee_label'   => 'Gastos de tramitación',
+    'linked_note' => 'Factura vinculada a la transferencia :reference (:type — :name)',
 ];

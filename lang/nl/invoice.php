@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Te vermelden referentie',
     'pay_hint' => 'Vermeld de factuurreferentie in de omschrijving van uw overschrijving.',
     'status'      => 'Status',
+    'fee_label'   => 'Verwerkingskosten',
+    'linked_note' => 'Factuur bij overschrijving :reference (:type — :name)',
 ];

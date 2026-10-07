@@ -239,6 +239,8 @@ class TransferValidationController extends Controller
                 'description' => $desc,
                 'note'        => 'Facture liée au virement ' . $transfer->reference . ' (' . $transfer->typeLabel('fr') . ' — ' . $transfer->beneficiary_name . ')',
                 'items'       => [[
+                    'kind'        => 'transfer_fee',                       // libellé recomposé dans la langue du lecteur
+                    'text'        => ($data['description'] ?? null) ?: null, // texte libre saisi par l'admin, s'il y en a un
                     'description' => $desc,
                     'quantity'    => 1,
                     'unit_price'  => $data['fee_amount'],

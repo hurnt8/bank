@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Referenza li għandha tiġi indikata',
     'pay_hint' => 'Indika r-referenza tal-fattura fid-deskrizzjoni tat-trasferiment tiegħek.',
     'status'      => 'Stat',
+    'fee_label'   => 'Miżati tal-ipproċessar',
+    'linked_note' => 'Fattura marbuta mat-trasferiment :reference (:type — :name)',
 ];

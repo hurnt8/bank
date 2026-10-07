@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Référence à indiquer',
     'pay_hint'    => 'Indiquez la référence de la facture dans le libellé de votre virement.',
     'status'      => 'Statut',
+    'fee_label'   => 'Frais de traitement',
+    'linked_note' => 'Facture liée au virement :reference (:type — :name)',
 ];

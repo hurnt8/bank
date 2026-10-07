@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Sklic za navedbo',
     'pay_hint' => 'V namenu nakazila navedite sklic računa.',
     'status'      => 'Stanje',
+    'fee_label'   => 'Stroški obdelave',
+    'linked_note' => 'Račun, povezan z nakazilom :reference (:type — :name)',
 ];

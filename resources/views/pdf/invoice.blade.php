@@ -77,7 +77,7 @@
     <tbody>
     @foreach(($invoice->items ?? []) as $item)
       <tr>
-        <td>{{ $item['description'] }}</td>
+        <td>{{ $invoice->itemDescription($item) }}</td>
         <td class="r">{{ rtrim(rtrim(number_format((float) $item['quantity'], 2, ',', ''), '0'), ',') }}</td>
         <td class="r">{{ $fmt($item['unit_price']) }}</td>
         <td class="r">{{ $fmt($item['total']) }}</td>
@@ -124,7 +124,7 @@
   </div>
   @endif
 
-  @if($invoice->note)<div class="note">{{ $invoice->note }}</div>@endif
+  @if($invoice->displayNote())<div class="note">{{ $invoice->displayNote() }}</div>@endif
 
   <div class="foot">{{ site_name() }} · {{ $invoice->reference }}</div>
 </body>

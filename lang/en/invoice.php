@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Reference to quote',
     'pay_hint'    => 'Please quote the invoice reference in your transfer description.',
     'status'      => 'Status',
+    'fee_label'   => 'Processing fees',
+    'linked_note' => 'Invoice linked to transfer :reference (:type — :name)',
 ];

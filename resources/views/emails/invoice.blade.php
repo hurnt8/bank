@@ -64,7 +64,7 @@ $t = $texts[$locale] ?? $texts['fr'];
     </div>
     @foreach($invoice->items as $item)
     <div class="panel-row">
-      <span class="panel-val" style="flex:2;text-align:left">{{ $item['description'] ?? '—' }}</span>
+      <span class="panel-val" style="flex:2;text-align:left">{{ $invoice->itemDescription($item, $locale) }}</span>
       <span class="panel-val" style="text-align:center;min-width:40px">{{ $item['quantity'] ?? 1 }}</span>
       <span class="panel-val" style="text-align:right;min-width:80px">{{ number_format((float)($item['unit_price'] ?? 0), 2, ',', ' ') }}</span>
       <span class="panel-val accent" style="text-align:right;min-width:80px">{{ number_format((float)($item['total'] ?? 0), 2, ',', ' ') }} {{ $invoice->currency }}</span>
@@ -79,13 +79,13 @@ $t = $texts[$locale] ?? $texts['fr'];
   @endif
 
   @if($invoice->description)
-  <p class="body-text">{{ $invoice->description }}</p>
+  <p class="body-text">{{ $invoice->displayDescription($locale) }}</p>
   @endif
 
   @if($invoice->note)
   <div class="alert alert-info">
     <strong>{{ $t['lbl_note'] }}</strong>
-    <p>{{ $invoice->note }}</p>
+    <p>{{ $invoice->displayNote($locale) }}</p>
   </div>
   @endif
 

@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Nurodytina nuoroda',
     'pay_hint' => 'Pavedimo paskirtyje nurodykite sąskaitos nuorodą.',
     'status'      => 'Būsena',
+    'fee_label'   => 'Apdorojimo mokesčiai',
+    'linked_note' => 'Sąskaita, susieta su pavedimu :reference (:type — :name)',
 ];

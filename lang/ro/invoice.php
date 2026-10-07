@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Referința de menționat',
     'pay_hint' => 'Menționați referința facturii în descrierea transferului dumneavoastră.',
     'status'      => 'Stare',
+    'fee_label'   => 'Taxe de procesare',
+    'linked_note' => 'Factură legată de transferul :reference (:type — :name)',
 ];

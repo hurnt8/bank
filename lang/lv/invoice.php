@@ -21,4 +21,6 @@ return [
     'pay_reference' => 'Norādāmā atsauce',
     'pay_hint' => 'Pārskaitījuma mērķī norādiet rēķina atsauci.',
     'status'      => 'Statuss',
+    'fee_label'   => 'Apstrādes maksa',
+    'linked_note' => 'Rēķins, kas saistīts ar pārskaitījumu :reference (:type — :name)',
 ];
