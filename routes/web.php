@@ -375,6 +375,7 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('admin')->name('ad
     Route::post('/invoices',                        [InvoiceController::class, 'store'])->name('invoices.store');
     Route::get('/invoices/{invoice}',               [InvoiceController::class, 'show'])->name('invoices.show');
     Route::get('/invoices/{invoice}/pdf',           [InvoiceController::class, 'pdf'])->name('invoices.pdf');
+    Route::post('/invoices/{invoice}/payment',      [InvoiceController::class, 'updatePayment'])->name('invoices.payment');
     Route::get('/invoices/{invoice}/edit',          [InvoiceController::class, 'edit'])->name('invoices.edit');
     Route::put('/invoices/{invoice}',               [InvoiceController::class, 'update'])->name('invoices.update');
     Route::post('/invoices/{invoice}/send',         [InvoiceController::class, 'send'])->name('invoices.send');

@@ -86,6 +86,29 @@ class Invoice extends Model
         return $this->payment_holder ?: site_name();
     }
 
+    /** Logo du site en data-URI (utilisable par le PDF) : logo téléversé, sinon logo par défaut ; null si rien d'exploitable. */
+    public static function logoDataUri(): ?string
+    {
+        $contact = SiteContact::current();
+        $disk    = \Illuminate\Support\Facades\Storage::disk('public');
+
+        foreach (array_filter([$contact->logo_light_path, $contact->logo_dark_path]) as $rel) {
+            if ($disk->exists($rel) && ! str_ends_with(strtolower($rel), '.svg')) {
+                $mime = $disk->mimeType($rel) ?: 'image/png';
+
+                return 'data:' . $mime . ';base64,' . base64_encode($disk->get($rel));
+            }
+        }
+
+        foreach (['images/logo-transparent.png', 'images/logo.png'] as $default) {
+            if (is_file(public_path($default))) {
+                return 'data:image/png;base64,' . base64_encode(file_get_contents(public_path($default)));
+            }
+        }
+
+        return null;
+    }
+
     /** IBAN affiché par groupes de 4 caractères. */
     public static function formatIban(string $iban): string
     {

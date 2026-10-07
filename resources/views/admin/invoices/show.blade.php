@@ -101,6 +101,7 @@
     @endif
 
     @if($invoice->isSent())
+      <a href="{{ route('admin.invoices.edit', $invoice) }}" class="btn-edit-inv"><i class="fas fa-pen"></i> Modifier</a>
       <form method="POST" action="{{ route('admin.invoices.mark-paid', $invoice) }}" style="display:inline"
             data-confirm="Confirmer le paiement de cette facture ?">
         @csrf
@@ -115,13 +116,45 @@
   </div>
 </div>
 
+{{-- IBAN de règlement : modifiable tant que la facture n'est ni payée ni annulée --}}
+@if($invoice->isDraft() || $invoice->isSent())
+<form method="POST" action="{{ route('admin.invoices.payment', $invoice) }}" class="no-print"
+      style="max-width:820px;margin:0 auto 1rem;padding:1rem 1.1rem;border:1.5px solid var(--c-border);border-radius:10px;background:var(--c-bg)">
+  @csrf
+  <div style="font-size:.8rem;font-weight:800;margin-bottom:.6rem"><i class="fas fa-building-columns"></i> IBAN de règlement de la facture</div>
+  @if($errors->has('payment_iban') || $errors->has('payment_bic'))
+  <div style="margin-bottom:.6rem;font-size:.78rem;color:#dc2626"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first('payment_iban') ?: $errors->first('payment_bic') }}</div>
+  @endif
+  <div style="display:grid;grid-template-columns:2fr 1fr 1.4fr auto;gap:.6rem;align-items:end" class="inv-pay-grid">
+    <div>
+      <label class="form-label-pro">IBAN *</label>
+      <input type="text" name="payment_iban" class="form-control-pro" maxlength="40" required style="font-family:monospace;text-transform:uppercase"
+             value="{{ old('payment_iban', \App\Models\Invoice::formatIban($invoice->paymentIban())) }}" placeholder="DE00 0000 0000 0000 0000 00">
+    </div>
+    <div>
+      <label class="form-label-pro">BIC</label>
+      <input type="text" name="payment_bic" class="form-control-pro" maxlength="11" style="font-family:monospace;text-transform:uppercase"
+             value="{{ old('payment_bic', $invoice->paymentBic()) }}" placeholder="SOLBDEFF">
+    </div>
+    <div>
+      <label class="form-label-pro">Bénéficiaire</label>
+      <input type="text" name="payment_holder" class="form-control-pro" maxlength="100"
+             value="{{ old('payment_holder', $invoice->payment_holder) }}" placeholder="{{ site_name() }}">
+    </div>
+    <button type="submit" class="btn-accent btn-sm-pro" style="height:42px"><i class="fas fa-floppy-disk"></i> Enregistrer</button>
+  </div>
+</form>
+<style>@media (max-width: 720px) { .inv-pay-grid { grid-template-columns: 1fr !important; } }</style>
+@endif
+
 {{-- Invoice sheet --}}
 <div class="inv-sheet">
 
   {{-- Top: brand + ref --}}
   <div class="inv-top">
     <div class="inv-brand">
-      <div class="inv-brand-name"> {{ site_name() }}</div>
+      <x-logo theme="light" size="md" />
+      <div class="inv-brand-name" style="margin-top:.35rem"> {{ site_name() }}</div>
       <div class="inv-brand-sub">
         Organisme de financement<br>
         {{ site_email() }}

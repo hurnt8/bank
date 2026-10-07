@@ -170,7 +170,7 @@ class InvoiceController extends Controller
     public function edit(Invoice $invoice)
     {
         $this->authorizeInvoice($invoice);
-        abort_unless($invoice->isDraft(), 403, 'Seuls les brouillons peuvent être modifiés.');
+        abort_unless($invoice->isDraft() || $invoice->isSent(), 403, 'Une facture payée ou annulée ne peut plus être modifiée.');
 
         $clients    = $this->clientsQuery()->get();
         $currencies = Currency::codes();
@@ -180,7 +180,7 @@ class InvoiceController extends Controller
     public function update(Request $request, Invoice $invoice)
     {
         $this->authorizeInvoice($invoice);
-        abort_unless($invoice->isDraft(), 403);
+        abort_unless($invoice->isDraft() || $invoice->isSent(), 403);
 
         $this->normalizePayment($request);
 
@@ -244,6 +244,29 @@ class InvoiceController extends Controller
             'payment_iban' => strtoupper(preg_replace('/[\s\x{00A0}]+/u', '', (string) $request->input('payment_iban'))) ?: null,
             'payment_bic'  => strtoupper(preg_replace('/[[:space:]-]+/', '', (string) $request->input('payment_bic'))) ?: null,
         ]);
+    }
+
+    /** Renseigne ou corrige l'IBAN de règlement directement depuis la fiche de la facture (brouillon ou envoyée). */
+    public function updatePayment(Request $request, Invoice $invoice)
+    {
+        $this->authorizeInvoice($invoice);
+        abort_unless($invoice->isDraft() || $invoice->isSent(), 403, 'Une facture payée ou annulée ne peut plus être modifiée.');
+
+        $this->normalizePayment($request);
+
+        $data = $request->validate([
+            'payment_iban'   => ['required', 'string', 'max:40', new ValidIban()],
+            'payment_bic'    => ['nullable', 'string', 'regex:/^[A-Z0-9]{8}([A-Z0-9]{3})?$/'],
+            'payment_holder' => ['nullable', 'string', 'max:100'],
+        ]);
+
+        $invoice->update([
+            'payment_iban'   => $data['payment_iban'],
+            'payment_bic'    => $data['payment_bic'] ?? null,
+            'payment_holder' => $data['payment_holder'] ?? null,
+        ]);
+
+        return back()->with('success', 'Coordonnées de règlement enregistrées.');
     }
 
     // ── PDF ───────────────────────────────────────────────────────────────────

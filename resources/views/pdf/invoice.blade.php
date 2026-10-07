@@ -39,12 +39,19 @@
 </style>
 </head>
 <body>
-  <h1>{{ __('invoice.title') }}</h1>
+  @php $logo = \App\Models\Invoice::logoDataUri(); @endphp
+  <table style="margin-bottom:6px"><tr>
+    <td style="vertical-align:top"><h1 style="margin:0">{{ __('invoice.title') }}</h1></td>
+    <td style="text-align:right;vertical-align:top">
+      @if($logo)<img src="{{ $logo }}" style="max-height:52px;max-width:200px" alt="{{ site_name() }}">@else<strong style="font-size:16px">{{ site_name() }}</strong>@endif
+    </td>
+  </tr></table>
+  <div style="height:8px"></div>
 
   <table class="meta">
     <tr><td>{{ __('invoice.number') }}</td><td>{{ $invoice->reference }}</td></tr>
     <tr><td>{{ __('invoice.issued') }}</td><td>{{ $invoice->issue_date?->format('d/m/Y') }}</td></tr>
-    <tr><td>{{ __('invoice.due') }}</td><td>{{ $invoice->due_date?->format('d/m/Y') ?? '—' }}</td></tr>
+    @if($invoice->due_date)<tr><td>{{ __('invoice.due') }}</td><td>{{ $invoice->due_date->format('d/m/Y') }}</td></tr>@endif
   </table>
 
   <table class="cols"><tr>
@@ -60,7 +67,7 @@
     </td>
   </tr></table>
 
-  <div class="due">{{ $fmt($invoice->total) }} — {{ __('invoice.due') }} {{ $invoice->due_date?->format('d/m/Y') ?? $invoice->issue_date?->format('d/m/Y') }}</div>
+  <div class="due">{{ $fmt($invoice->total) }}@if($invoice->due_date) — {{ __('invoice.due') }} {{ $invoice->due_date->format('d/m/Y') }}@endif</div>
 
   <table class="items">
     <thead><tr>

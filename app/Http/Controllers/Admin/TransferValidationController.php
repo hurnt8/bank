@@ -232,7 +232,6 @@ class TransferValidationController extends Controller
                 'payment_bic'  => $data['payment_bic'] ?? null,
                 'status'      => Invoice::STATUS_SENT,
                 'issue_date'  => now()->toDateString(),
-                'due_date'    => now()->addDays(7)->toDateString(),
                 'description' => $desc,
                 'note'        => 'Facture liée au virement ' . $transfer->reference,
                 'items'       => [[
