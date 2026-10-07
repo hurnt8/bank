@@ -16,7 +16,7 @@ class InvoicePdf
         app()->setLocale($invoice->client->locale ?: 'fr');
 
         try {
-            return Pdf::loadView('pdf.invoice', ['invoice' => $invoice])->setPaper('a4')->output();
+            return Pdf::loadView('pdf.invoice', ['invoice' => $invoice])->setOption('enable_font_subsetting', true)->setPaper('a4')->output();
         } finally {
             app()->setLocale($previous);
         }

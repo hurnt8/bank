@@ -3,8 +3,12 @@
     $logo      = \App\Models\Invoice::logoDataUri();
     $cur       = $doc['currency'];
     $fmt       = fn ($n) => number_format((float) $n, 2, ',', ' ') . ' ' . $cur;
-    $fromLines = array_filter([$contact->address_1, $contact->address_2, $contact->address_3, $contact->email]);
     $client    = $doc['client'];
+    $tone      = $doc['tone'];
+    // Couleurs : vert (crédit / validé), rouge (débit / rejeté), ambre (en attente)
+    $c         = ['ok' => ['#15803d', '#dcfce7'], 'bad' => ['#b91c1c', '#fee2e2'], 'wait' => ['#b45309', '#fef3c7']][$tone];
+    $contactLines = array_filter([$contact->address_1, $contact->address_2, $contact->address_3, $contact->phone_1, $contact->email]);
+    $amountColor  = $tone === 'wait' ? '#1B4976' : $c[0];
 @endphp
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
@@ -12,86 +16,127 @@
 <meta charset="utf-8">
 <title>{{ $doc['number'] }}</title>
 <style>
-  @page { margin: 38px 44px 54px; }
-  body { font-family: 'DejaVu Sans', sans-serif; font-size: 10.5px; color: #111; line-height: 1.5; }
-  h1 { font-size: 24px; margin: 0; }
+  @page { margin: 0; }
+  * { box-sizing: border-box; }
+  body { font-family: 'DejaVu Sans', sans-serif; font-size: 10.5px; color: #1f2937; line-height: 1.5; margin: 0; }
   table { border-collapse: collapse; width: 100%; }
-  .meta td { padding: 1px 0; vertical-align: top; }
-  .meta td:first-child { font-weight: bold; width: 125px; }
-  .cols td { vertical-align: top; width: 50%; padding-top: 22px; }
-  .lbl { font-weight: bold; margin-bottom: 4px; }
-  .due { font-size: 15px; font-weight: bold; margin: 26px 0 16px; }
-  .items th { text-align: left; font-weight: normal; font-size: 9.5px; color: #444; border-bottom: 1.5px solid #111; padding: 0 4px 5px 0; }
-  .items th.r, .items td.r { text-align: right; }
-  .items td { padding: 8px 4px 8px 0; vertical-align: top; }
-  .tot { width: 52%; margin-left: 48%; margin-top: 16px; }
-  .tot td { padding: 3px 0; border-bottom: 1px solid #ddd; }
-  .tot td.r { text-align: right; }
-  .tot tr.strong td { font-weight: bold; border-bottom: 0; }
-  .box { margin-top: 26px; border: 1.5px solid #111; padding: 12px 14px; }
-  .box td { padding: 3px 0; vertical-align: top; }
-  .box td:first-child { width: 150px; color: #444; }
-  .foot { position: fixed; bottom: -30px; left: 0; right: 0; border-top: 1px solid #ccc; padding-top: 6px; font-size: 9px; color: #444; text-align: right; }
+  td { vertical-align: top; }
+
+  .band { background: #0D2E52; color: #fff; padding: 26px 44px 24px; }
+  .band .logo-box { background: #fff; border-radius: 8px; padding: 7px 12px; display: inline-block; }
+  .band .brand { font-size: 17px; font-weight: bold; letter-spacing: .3px; }
+  .band .doc-title { font-size: 21px; font-weight: bold; text-align: right; letter-spacing: .5px; }
+  .band .doc-meta { text-align: right; font-size: 10px; color: #cbd5e1; margin-top: 4px; line-height: 1.6; }
+  .gold { height: 4px; background: #C6A15B; }
+
+  .page { padding: 26px 44px 60px; }
+
+  .hero { border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 18px 22px; background: #f8fafc; }
+  .pill { display: inline-block; font-size: 9px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; padding: 4px 11px; border-radius: 20px; }
+  .hero .amount { font-size: 30px; font-weight: bold; margin-top: 8px; }
+  .hero .kind { font-size: 12px; color: #475569; margin-top: 2px; }
+  .hero .right { text-align: right; color: #64748b; font-size: 10px; line-height: 1.8; }
+  .hero .right strong { color: #1f2937; }
+
+  .cols { margin-top: 22px; }
+  .cols td { width: 50%; padding-right: 18px; }
+  .cols td + td { padding-right: 0; padding-left: 18px; }
+  .lbl { font-size: 8.5px; font-weight: bold; letter-spacing: 1.2px; text-transform: uppercase; color: #94a3b8; margin-bottom: 5px; }
+  .party-name { font-size: 12px; font-weight: bold; color: #0f172a; }
+  .muted { color: #64748b; }
+
+  .sect { margin-top: 26px; }
+  .sect-title { font-size: 9.5px; font-weight: bold; letter-spacing: 1.2px; text-transform: uppercase; color: #0D2E52; border-bottom: 2px solid #C6A15B; padding-bottom: 5px; margin-bottom: 4px; }
+  .rows td { padding: 8px 10px; border-bottom: 1px solid #eef2f7; font-size: 10.5px; }
+  .rows tr.z td { background: #f8fafc; }
+  .rows td.k { width: 36%; color: #64748b; }
+  .rows td.v { font-weight: bold; color: #0f172a; text-align: right; }
+  .mono { letter-spacing: .6px; }
+
+  .account { margin-top: 24px; background: #0D2E52; color: #fff; border-radius: 12px; padding: 16px 22px; }
+  .account td { padding: 3px 0; }
+  .account .k { color: #cbd5e1; font-size: 9.5px; text-transform: uppercase; letter-spacing: 1px; width: 38%; }
+  .account .v { text-align: right; font-weight: bold; font-size: 12px; }
+
+  .foot { position: fixed; bottom: 0; left: 0; right: 0; background: #f1f5f9; border-top: 1px solid #e2e8f0; padding: 9px 44px; font-size: 8.5px; color: #64748b; }
+  .foot .r { text-align: right; }
 </style>
 </head>
 <body>
-  <table style="margin-bottom:6px"><tr>
-    <td style="vertical-align:top"><h1>{{ __('invoice.title') }}</h1></td>
-    <td style="text-align:right;vertical-align:top">
-      @if($logo)<img src="{{ $logo }}" style="max-height:52px;max-width:200px" alt="{{ site_name() }}">@else<strong style="font-size:16px">{{ site_name() }}</strong>@endif
-    </td>
-  </tr></table>
 
-  <table class="meta">
-    <tr><td>{{ __('invoice.number') }}</td><td>{{ $doc['number'] }}</td></tr>
-    <tr><td>{{ __('invoice.issued') }}</td><td>{{ $doc['date']->format('d/m/Y H:i') }}</td></tr>
-  </table>
+  <div class="band">
+    <table><tr>
+      <td style="width:55%">
+        @if($logo)<span class="logo-box"><img src="{{ $logo }}" style="max-height:40px;max-width:190px" alt="{{ site_name() }}"></span>
+        @else<span class="brand">{{ site_name() }}</span>@endif
+      </td>
+      <td>
+        <div class="doc-title">{{ mb_strtoupper(__('invoice.title')) }}</div>
+        <div class="doc-meta">{{ __('invoice.number') }} <strong style="color:#fff">{{ $doc['number'] }}</strong><br>{{ $doc['date']->format('d/m/Y H:i') }}</div>
+      </td>
+    </tr></table>
+  </div>
+  <div class="gold"></div>
 
-  <table class="cols"><tr>
-    <td>
-      <div class="lbl">{{ site_name() }}</div>
-      @foreach($fromLines as $line){{ $line }}<br>@endforeach
-    </td>
-    <td>
-      <div class="lbl">{{ __('invoice.bill_to') }}</div>
-      {{ $client->name }}<br>
-      @if($client->address){{ $client->address }}<br>@endif
-      {{ $client->email }}
-    </td>
-  </tr></table>
+  <div class="page">
 
-  <div class="due">{{ $doc['sign'] }}{{ $fmt($doc['total']) }}</div>
+    {{-- Montant --}}
+    <div class="hero">
+      <table><tr>
+        <td>
+          <span class="pill" style="background:{{ $c[1] }};color:{{ $c[0] }}">{{ $doc['badge'] }}</span>
+          <div class="amount" style="color:{{ $amountColor }}">{{ $doc['sign'] }}{{ $fmt($doc['total']) }}</div>
+          <div class="kind">{{ $doc['kind'] }}@if(! empty($doc['lines'][0]['description']) && str_contains($doc['lines'][0]['description'], ' — ')) — {{ trim(explode(' — ', $doc['lines'][0]['description'], 2)[1]) }}@endif</div>
+        </td>
+      </tr></table>
+    </div>
 
-  <table class="items">
-    <thead><tr>
-      <th>{{ __('invoice.description') }}</th><th class="r" style="width:42px">{{ __('invoice.qty') }}</th>
-      <th class="r" style="width:85px">{{ __('invoice.unit_price') }}</th><th class="r" style="width:90px">{{ __('invoice.amount') }}</th>
-    </tr></thead>
-    <tbody>
-    @foreach($doc['lines'] as $l)
-      <tr>
-        <td>{{ $l['description'] }}</td>
-        <td class="r">{{ $l['quantity'] }}</td>
-        <td class="r">{{ $fmt($l['unit']) }}</td>
-        <td class="r">{{ $fmt($l['total']) }}</td>
-      </tr>
-    @endforeach
-    </tbody>
-  </table>
+    {{-- Parties --}}
+    <table class="cols"><tr>
+      <td>
+        <div class="lbl">{{ site_name() }}</div>
+        @foreach($contactLines as $line)<span class="muted">{{ $line }}</span><br>@endforeach
+      </td>
+      <td>
+        <div class="lbl">{{ __('invoice.bill_to') }}</div>
+        <div class="party-name">{{ $client->name }}</div>
+        @if($client->address)<span class="muted">{{ $client->address }}</span><br>@endif
+        <span class="muted">{{ $client->email }}</span>@if($client->phone)<br><span class="muted">{{ $client->phone }}</span>@endif
+      </td>
+    </tr></table>
 
-  <table class="tot">
-    <tr><td>{{ __('invoice.subtotal') }}</td><td class="r">{{ $fmt($doc['total']) }}</td></tr>
-    <tr class="strong"><td>{{ __('invoice.total') }}</td><td class="r">{{ $doc['sign'] }}{{ $fmt($doc['total']) }}</td></tr>
-  </table>
+    {{-- Détails de l'opération --}}
+    <div class="sect">
+      <div class="sect-title">{{ __('transfer.details') }}</div>
+      <table class="rows">
+        @foreach($doc['rows'] as $i => [$label, $value])
+        <tr class="{{ $i % 2 === 0 ? 'z' : '' }}">
+          <td class="k">{{ $label }}</td>
+          <td class="v {{ in_array($label, [__('movement.label_iban')], true) ? 'mono' : '' }}">{{ $value }}</td>
+        </tr>
+        @endforeach
+      </table>
+    </div>
 
-  <div class="box">
-    <table>
-      @foreach($doc['rows'] as [$label, $value])
-      <tr><td>{{ $label }}</td><td>{{ $value }}</td></tr>
-      @endforeach
-    </table>
+    {{-- Compte du client --}}
+    @if(! empty($doc['account']))
+    <div class="account">
+      <table>
+        @foreach($doc['account'] as [$label, $value])
+        <tr><td class="k">{{ $label }}</td><td class="v {{ $label === __('invoice.pay_iban') ? 'mono' : '' }}">{{ $value }}</td></tr>
+        @endforeach
+      </table>
+    </div>
+    @endif
+
   </div>
 
-  <div class="foot">{{ site_name() }} · {{ $doc['number'] }}</div>
+  <div class="foot">
+    <table><tr>
+      <td>{{ site_name() }}@if($contact->email) · {{ $contact->email }}@endif</td>
+      <td class="r">{{ $doc['number'] }}</td>
+    </tr></table>
+  </div>
+
 </body>
 </html>
