@@ -89,7 +89,7 @@
     <div class="acs-info__sub">
       {{ $account->email }}
       @if($account->phone)<br><i class="fas fa-phone" style="font-size:.65rem;opacity:.6;margin-right:.3rem"></i>{{ $account->phone }}@endif
-      @if($account->bank_account)<br><i class="fas fa-university" style="font-size:.65rem;opacity:.6;margin-right:.3rem"></i><span style="font-family:monospace;font-size:.78rem">{{ $account->bank_account }}</span>@endif
+      @if($account->bankAccount)<br><i class="fas fa-university" style="font-size:.65rem;opacity:.6;margin-right:.3rem"></i><span style="font-family:monospace;font-size:.78rem">{{ chunk_split((string) $account->bankAccount->iban, 4, ' ') }}</span>@endif
     </div>
   </div>
   <div class="acs-balance-box">

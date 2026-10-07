@@ -14,8 +14,6 @@ use Spatie\Permission\Models\Permission;
 class ExceptionalPermissionsSeeder extends Seeder
 {
     public const PERMISSIONS = [
-        'manage-notification-templates' => 'Modèles de notification',
-        'manage-loan-settings'          => 'Paramètres de prêt',
         'manage-site-contacts'          => 'Coordonnées du site',
         'manage-social-links'           => 'Réseaux sociaux',
         'manage-languages'              => 'Langues',

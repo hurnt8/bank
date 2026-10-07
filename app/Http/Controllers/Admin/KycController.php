@@ -7,6 +7,8 @@ use App\Mail\KycStatusMail;
 use App\Models\ClientNotification;
 use App\Models\KycReview;
 use App\Models\KycVerification;
+use App\Models\User;
+use App\Services\BankingProvisioner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -79,8 +81,64 @@ class KycController extends Controller
         });
 
         $this->notifyClient($kyc, 'approved');
+        $generated = $this->provisionBanking($kyc->user);
 
-        return back()->with('success', 'Identité approuvée.');
+        return back()->with('success', 'Identité approuvée.' . $generated);
+    }
+
+    /**
+     * Valide le compte d'un client sans qu'il ait envoyé ses documents (aucune demande, demande
+     * rejetée ou en attente) : la vérification passe à « approuvée » et les coordonnées
+     * bancaires sont générées comme pour une approbation normale.
+     */
+    public function forceApprove(User $user)
+    {
+        abort_unless($user->hasRole('client'), 404);
+
+        $kyc = $user->kycVerification;
+
+        if (! $kyc || $kyc->status !== KycVerification::STATUS_APPROUVE) {
+            DB::transaction(function () use ($user, &$kyc) {
+                $kyc = $user->kycVerification()->updateOrCreate(
+                    ['user_id' => $user->id],
+                    [
+                        'status'           => KycVerification::STATUS_APPROUVE,
+                        'submitted_at'     => $user->kycVerification?->submitted_at ?? now(),
+                        'reviewed_at'      => now(),
+                        'reviewed_by'      => Auth::id(),
+                        'rejection_reason' => null,
+                    ]
+                );
+
+                KycReview::create([
+                    'kyc_verification_id' => $kyc->id,
+                    'reviewed_by'         => Auth::id(),
+                    'action'              => KycReview::ACTION_APPROVED,
+                    'reason'              => 'Validé par un administrateur sans documents.',
+                ]);
+            });
+
+            $this->notifyClient($kyc->fresh(['user']), 'approved');
+        }
+
+        $generated = $this->provisionBanking($user);
+
+        return back()->with('success', 'Compte validé.' . $generated);
+    }
+
+    /** Génère IBAN + carte manquants et prévient le client ; renvoie un court texte de résumé. */
+    private function provisionBanking(User $client): string
+    {
+        $provisioner = app(BankingProvisioner::class);
+        $created     = $provisioner->provision($client, Auth::id());
+
+        if (! $created['bank'] && ! $created['card']) {
+            return '';
+        }
+
+        $provisioner->notifyAssigned($client);
+
+        return ' IBAN et carte générés automatiquement.';
     }
 
     public function reject(Request $request, KycVerification $kyc)

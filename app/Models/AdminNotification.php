@@ -45,7 +45,7 @@ class AdminNotification extends Model
 
     /**
      * IDs des admins à notifier pour ce client : uniquement l'admin responsable
-     * (created_by, ou à défaut l'admin du dossier de prêt) + systématiquement
+     * (created_by) + systématiquement
      * tous les super-admins — jamais l'ensemble des admins.
      */
     public static function recipientAdminIds(User $client): \Illuminate\Support\Collection
@@ -54,11 +54,6 @@ class AdminNotification extends Model
 
         if ($client->created_by) {
             $ids->push($client->created_by);
-        } else {
-            $loanAdminId = $client->clientLoans()->whereNotNull('admin_id')->value('admin_id');
-            if ($loanAdminId) {
-                $ids->push($loanAdminId);
-            }
         }
 
         $ids = $ids->merge(User::role('super-admin')->pluck('id'));

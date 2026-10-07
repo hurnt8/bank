@@ -13,10 +13,10 @@ return [
     'placeholder_message' => 'Votre Message',
     'button' => 'Envoyer',
     'sending' => 'Envoi en cours…',
-    'subject' => 'Sélectionner un prêt',
+    'subject' => 'Sélectionner un sujet',
 
     'detail_title' => 'Gardez le contact avec nous ',
-    'detail_desc' => 'Nous sommes ici pour vous aider. Contactez-nous pour toute question ou assistance concernant  nos services de prêt.',
+    'detail_desc' => 'Nous sommes ici pour vous aider. Contactez-nous pour toute question ou assistance concernant votre compte, votre carte ou vos virements.',
 
     'address_title' => 'Adresse',
     'address_desc' => 'Rua de Santo António 33, 7200-175, Portugal',

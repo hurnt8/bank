@@ -156,9 +156,21 @@
              value="{{ old('birth_date', optional($user->birth_date)->toDateString()) }}" required>
       @error('birth_date')<span class="form-error">{{ $message }}</span>@enderror
     </div>
-    <div class="kyc-form-group">
+    <div class="kyc-form-group" x-data="kycCountry(@js(old('country', $user->country)))">
       <label for="country">{{ __('onboarding.f_country') }} *</label>
-      <input type="text" id="country" name="country" value="{{ old('country', $user->country) }}" autocomplete="country-name" required>
+      <select id="country" name="country" x-model="country" autocomplete="country-name" required>
+        <option value="">— {{ __('onboarding.f_country') }} —</option>
+        {{-- Valeur déjà enregistrée : conservée même avant le chargement de la liste --}}
+        @if(old('country', $user->country))
+        <option value="{{ old('country', $user->country) }}" selected>{{ old('country', $user->country) }}</option>
+        @endif
+        <template x-for="c in countries" :key="c.code">
+          <option :value="c.name" x-text="c.name" :selected="c.name === country"></option>
+        </template>
+      </select>
+      <div class="kyc-hint" x-show="detected" style="display:none;color:var(--ca-positive)">
+        <i class="fas fa-location-dot"></i> {{ __('onboarding.country_detected') }}
+      </div>
       @error('country')<span class="form-error">{{ $message }}</span>@enderror
     </div>
     <div class="kyc-form-group span-2">
@@ -307,6 +319,82 @@
 
 @push('scripts')
 <script>
+/* Sélecteur de pays : liste localisée (Intl) et détection automatique du pays de l'utilisateur */
+var KYC_COUNTRY_CODES = [
+    'AD','AE','AF','AG','AI','AL','AM','AO','AR','AS','AT','AU','AW','AX','AZ',
+    'BA','BB','BD','BE','BF','BG','BH','BI','BJ','BL','BM','BN','BO','BQ','BR','BS','BT','BW','BY','BZ',
+    'CA','CC','CD','CF','CG','CH','CI','CK','CL','CM','CN','CO','CR','CU','CV','CW','CX','CY','CZ',
+    'DE','DJ','DK','DM','DO','DZ',
+    'EC','EE','EG','EH','ER','ES','ET',
+    'FI','FJ','FK','FM','FO','FR',
+    'GA','GB','GD','GE','GF','GG','GH','GI','GL','GM','GN','GP','GQ','GR','GT','GU','GW','GY',
+    'HK','HN','HR','HT','HU',
+    'ID','IE','IL','IM','IN','IO','IQ','IR','IS','IT',
+    'JE','JM','JO','JP',
+    'KE','KG','KH','KI','KM','KN','KP','KR','KW','KY','KZ',
+    'LA','LB','LC','LI','LK','LR','LS','LT','LU','LV','LY',
+    'MA','MC','MD','ME','MF','MG','MH','MK','ML','MM','MN','MO','MP','MQ','MR','MS','MT','MU','MV','MW','MX','MY','MZ',
+    'NA','NC','NE','NF','NG','NI','NL','NO','NP','NR','NU','NZ',
+    'OM',
+    'PA','PE','PF','PG','PH','PK','PL','PM','PN','PR','PS','PT','PW','PY',
+    'QA',
+    'RE','RO','RS','RU','RW',
+    'SA','SB','SC','SD','SE','SG','SH','SI','SK','SL','SM','SN','SO','SR','SS','ST','SV','SX','SY','SZ',
+    'TC','TD','TG','TH','TJ','TK','TL','TM','TN','TO','TR','TT','TV','TW','TZ',
+    'UA','UG','US','UY','UZ',
+    'VA','VC','VE','VG','VI','VN','VU',
+    'WF','WS',
+    'YE','YT',
+    'ZA','ZM','ZW',
+];
+window.kycCountry = function (initial) {
+  return {
+    country: initial || '',
+    countries: [],
+    detected: false,
+    locale: "{{ str_replace('_', '-', app()->getLocale()) }}",
+
+    init() { this.build(); this.detect(); },
+
+    build() {
+      var names = null;
+      try { names = new Intl.DisplayNames([this.locale, 'fr', 'en'], { type: 'region' }); } catch (e) {}
+      this.countries = KYC_COUNTRY_CODES
+        .map(function (code) {
+          var name = code;
+          if (names) { try { name = names.of(code) || code; } catch (e) {} }
+          return { code: code, name: name };
+        })
+        .sort(function (a, b) { return a.name.localeCompare(b.name, this.locale); }.bind(this));
+    },
+
+    async detect() {
+      if (this.country) return; // déjà renseigné (enregistrement précédent ou retour de validation)
+
+      // 1) Détection par IP (service gratuit, sans clé) ; repli silencieux en cas d'échec.
+      try {
+        var ctrl = new AbortController(), timer = setTimeout(function () { ctrl.abort(); }, 3000);
+        var res = await fetch('https://get.geojs.io/v1/ip/country.json', { signal: ctrl.signal });
+        clearTimeout(timer);
+        if (res.ok) {
+          var json = await res.json();
+          var found = this.countries.find(function (c) { return c.code === (json.country || '').toUpperCase(); });
+          if (found && !this.country) { this.country = found.name; this.detected = true; return; }
+        }
+      } catch (e) { /* pas de réseau : repli sur la langue du navigateur */ }
+
+      // 2) Repli : région de la langue du navigateur (ex. « pt-PT » → PT).
+      if (!this.country) {
+        var nav = navigator.language || (navigator.languages && navigator.languages[0]) || '';
+        var region = nav.split('-')[1];
+        if (region) {
+          var f = this.countries.find(function (c) { return c.code === region.toUpperCase(); });
+          if (f) { this.country = f.name; this.detected = true; }
+        }
+      }
+    },
+  };
+};
 document.querySelectorAll('.kyc-file input[type=file]').forEach(function (input) {
   input.addEventListener('change', function () {
     var txt = input.closest('.kyc-file').querySelector('.kyc-file__txt');

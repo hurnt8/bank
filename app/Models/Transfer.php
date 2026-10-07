@@ -17,12 +17,47 @@ class Transfer extends Model
         'beneficiary_name', 'beneficiary_iban',
         'note', 'admin_note', 'invoice_id',
         'status', 'processed_at',
+        'progress', 'code_required', 'unlock_code', 'code_generated_at', 'code_verified_at', 'code_attempts', 'code_locked_until',
     ];
 
     protected $casts = [
         'amount'       => 'decimal:2',
         'processed_at' => 'datetime',
+        'progress'          => 'integer',
+        'code_required'     => 'boolean',
+        'unlock_code'       => \App\Casts\SafeEncrypted::class,
+        'code_generated_at' => 'datetime',
+        'code_verified_at'  => 'datetime',
+        'code_locked_until' => 'datetime',
     ];
+
+    /** Nombre d'essais de code avant blocage temporaire. */
+    public const CODE_MAX_ATTEMPTS = 5;
+    /** Durée du blocage après trop d'essais (minutes). */
+    public const CODE_LOCK_MINUTES = 15;
+
+    /** Progression effective affichée au client : 100 % si validé, sinon le palier fixé par le conseiller. */
+    public function progressValue(): int
+    {
+        return $this->status === self::STATUS_COMPLETED ? 100 : max(0, min(100, (int) $this->progress));
+    }
+
+    /** Vrai tant que le client doit saisir le code de son conseiller pour que le virement avance. */
+    public function isAwaitingCode(): bool
+    {
+        return $this->status === self::STATUS_PENDING && $this->code_required;
+    }
+
+    public function isCodeLocked(): bool
+    {
+        return $this->code_locked_until && $this->code_locked_until->isFuture();
+    }
+
+    /** Code à 6 chiffres, généré côté serveur (CSPRNG). */
+    public static function newUnlockCode(): string
+    {
+        return str_pad((string) random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+    }
 
     public function user()
     {

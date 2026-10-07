@@ -22,17 +22,12 @@
             $links = [
                 ['route' => 'home',     'label' => 'menu.home'],
                 ['route' => 'about',    'label' => 'menu.about'],
-                ['route' => 'services', 'label' => 'menu.services'],
-                ['route' => 'faq',      'label' => 'menu.faq'],
                 ['route' => 'contact',  'label' => 'menu.contact'],
             ];
-            $serviceRoutes = ['services','services.auto','services.personal','services.home','services.study','services.business','services.bike'];
             @endphp
             @foreach ($links as $link)
             @php
-            $active = $link['route'] === 'services'
-                ? in_array($route, $serviceRoutes)
-                : $route === $link['route'];
+            $active = $route === $link['route'];
             @endphp
             <a href="{{ route($link['route'], ['locale' => $locale]) }}"
                class="nav-link px-4 py-2 text-sm font-semibold rounded-lg transition-colors duration-200 {{ $active ? 'nav-link--active' : '' }}">
@@ -106,9 +101,7 @@
         <div class="max-w-screen-xl mx-auto px-3 py-4 space-y-1">
             @foreach ($links as $link)
             @php
-            $active = $link['route'] === 'services'
-                ? in_array($route, $serviceRoutes)
-                : $route === $link['route'];
+            $active = $route === $link['route'];
             @endphp
             <a href="{{ route($link['route'], ['locale' => $locale]) }}"
                class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-colors duration-150 {{ $active ? 'bg-navy text-white' : 'text-gray-700 hover:bg-gray-50' }}">

@@ -54,7 +54,7 @@ class SetLocale
             }
         }
 
-        // 5. Défaut
-        return 'fr';
+        // 5. Défaut : l'anglais quand la langue de l'utilisateur n'est pas disponible
+        return 'en';
     }
 }

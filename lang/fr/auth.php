@@ -18,7 +18,7 @@ return [
     'throttle' => 'Trop de tentatives. Réessayez dans :seconds secondes.',
 
     'client_login_title'  => 'Espace Client',
-    'client_login_sub'    => 'Connectez-vous pour accéder à vos dossiers',
+    'client_login_sub'    => 'Connectez-vous pour accéder à votre compte',
     'client_brand_title'  => 'Votre espace<br>client ' . site_name(),
     'client_brand_sub'    => 'Suivez vos demandes, gérez votre profil et accédez à tous vos documents en toute sécurité.',
 

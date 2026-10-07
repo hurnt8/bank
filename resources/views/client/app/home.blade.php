@@ -37,6 +37,7 @@
       <span class="h-notif-dot" id="notif-dot" style="{{ ($unreadCount ?? 0) > 0 ? '' : 'display:none' }}"></span>
     </a>
   </div>
+  @include('partials.client-chip')
 </header>
 @endsection
 
@@ -82,7 +83,8 @@
 .h-card{
   margin:.625rem 1.25rem 0;
   border-radius:24px;
-  background:linear-gradient(145deg,var(--ca-navy-3) 0%,var(--ca-navy-2) 40%,var(--ca-navy) 100%);
+  background:linear-gradient(145deg,#1B4976 0%,#0D2E52 45%,#0A1E38 100%);
+  --ca-accent-l:#F5EDDD;
   padding:1.375rem 1.5rem 1.25rem;
   position:relative;overflow:hidden;
   box-shadow:0 20px 56px rgba(14,59,46,.4),0 0 0 1px rgba(255,255,255,.07);
@@ -168,8 +170,10 @@
 }
 .h-card__num{
   font-family:monospace;font-size:.7rem;
-  color:rgba(255,255,255,.38);letter-spacing:.15em;
+  color:rgba(255,255,255,.62);letter-spacing:.08em;
+  overflow-wrap:anywhere;line-height:1.5;
 }
+.h-card__num--sub{ font-size:.64rem;color:rgba(255,255,255,.42);letter-spacing:.06em }
 .h-card__badge{
   background:rgba(220,190,135,.18);
   border:1px solid rgba(220,190,135,.38);
@@ -179,23 +183,22 @@
   color:var(--ca-accent-l);letter-spacing:.05em;
   display:flex;align-items:center;gap:.3rem;
 }
-/* Circles decoration (Visa-like) */
-.h-card__circles{
-  position:absolute;bottom:1.125rem;right:4.5rem;
-  display:flex;pointer-events:none;
+/* Logo du réseau (Visa / Mastercard) selon la carte attribuée */
+.h-card__right{ display:flex;flex-direction:column;align-items:flex-end;gap:.4rem;flex-shrink:0 }
+.h-card__net{
+  font-size:2.3rem;line-height:1;color:rgba(255,255,255,.92);
+  pointer-events:none;
 }
-.h-card__circ{
-  width:34px;height:34px;border-radius:50%;opacity:.35;
-}
-.h-card__circ:first-child{ background:var(--ca-accent);margin-right:-14px }
-.h-card__circ:last-child { background:var(--ca-accent-l) }
 
 /* ── Quick actions ── */
 .h-actions{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:.5rem;
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1rem;
   padding:1.25rem 1.25rem .25rem;
+  max-width:420px;
 }
+.h-action__ico{ width:64px !important;height:64px !important;font-size:1.3rem !important }
+.h-action__lbl{ font-size:.8rem !important }
 .h-action{
   display:flex;flex-direction:column;align-items:center;
   gap:.5rem;text-decoration:none;cursor:pointer;
@@ -338,17 +341,18 @@
 </style>
 @endpush
 
+@section('main_class', 'ca-main--home')
 @section('content')
-<div style="padding-bottom:1.5rem">
+<div class="h-page" style="padding-bottom:1.5rem">
 
 {{-- ── Balance card ─────────────────────────────────────────────── --}}
+@php
+  $bankAccount = $user->bankAccount;
+  $card        = $user->card;
+  $ibanClear   = $bankAccount ? chunk_split((string) $bankAccount->iban, 4, ' ') : null;
+@endphp
 <div class="h-card" x-data="{ shown: true }">
 
-  {{-- Circles decoration --}}
-  <div class="h-card__circles" aria-hidden="true">
-    <div class="h-card__circ"></div>
-    <div class="h-card__circ"></div>
-  </div>
 
   {{-- Top row: brand + chip --}}
   <div class="h-card__top">
@@ -378,12 +382,29 @@
   {{-- Bottom row: name + card number | currency badge --}}
   <div class="h-card__bottom">
     <div>
-      <div class="h-card__name">{{ Str::upper(Str::words($user->name, 2, '')) }}</div>
-      <div class="h-card__num">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; {{ str_pad(substr($user->id, -4), 4, '0', STR_PAD_LEFT) }}</div>
+      <div class="h-card__name">{{ Str::upper($user->name) }}</div>
+      @if($bankAccount)
+      <div class="h-card__num" x-show="shown">{{ trim($ibanClear) }}</div>
+      <div class="h-card__num" x-show="!shown" style="display:none">{{ $bankAccount->maskedIban() }}</div>
+      <div class="h-card__num h-card__num--sub">
+        @if($bankAccount->bic)BIC {{ $bankAccount->bic }}@endif
+        @if($card) &nbsp;·&nbsp; {{ strtoupper($card->network) }} &bull;&bull;&bull;&bull; {{ $card->last_four }}@endif
+      </div>
+      @else
+      <div class="h-card__num">{{ __('app.not_configured') }}</div>
+      @endif
     </div>
+    <div class="h-card__right">
+      {{-- Logo du réseau de la carte réellement attribuée au client (aucun logo sans carte) --}}
+      @if($card)
+      <div class="h-card__net" aria-label="{{ ucfirst($card->network) }}">
+        <i class="fa-brands {{ strtolower($card->network) === 'visa' ? 'fa-cc-visa' : 'fa-cc-mastercard' }}"></i>
+      </div>
+      @endif
     <div class="h-card__badge">
       <i class="fas fa-shield-halved" style="font-size:.6rem"></i>
       {{ $user->currency ?? \App\Models\Currency::default() }}
+    </div>
     </div>
   </div>
 </div>
@@ -396,48 +417,13 @@
     </div>
     <span class="h-action__lbl">{{ __('app.action_send') }}</span>
   </a>
- <a href="{{ route('client.app.transfer.receive') }}" class="h-action">
+  <a href="{{ route('client.app.transfer.receive') }}" class="h-action">
     <div class="h-action__ico h-action__ico--green">
-      <i class="fas fa-download"></i>
+      <i class="fas fa-building-columns"></i>
     </div>
-    <span class="h-action__lbl">{{ __('app.action_receive') }}</span>
-  </a>
-  <a href="{{ route('client.app.loans') }}" class="h-action">
-    <div class="h-action__ico h-action__ico--blue">
-      <i class="fas fa-folder-open"></i>
-    </div>
-    <span class="h-action__lbl">{{ __('app.action_loans') }}</span>
-  </a>
-  <a href="{{ route('client.app.analytics') }}" class="h-action">
-    <div class="h-action__ico h-action__ico--purple">
-      <i class="fas fa-chart-pie"></i>
-    </div>
-    <span class="h-action__lbl">{{ __('app.action_analytics') }}</span>
-  </a>
-  <a href="{{ route('client.app.movements') }}" class="h-action">
-    <div class="h-action__ico" style="background:rgba(220,190,135,.15);border:1px solid rgba(220,190,135,.3);color:var(--ca-accent-l)">
-      <i class="fas fa-list-ul"></i>
-    </div>
-    <span class="h-action__lbl">{{ __('app.movements_title') }}</span>
-  </a>
-  <a href="{{ route('client.app.invoices') }}" class="h-action">
-    <div class="h-action__ico" style="background:rgba(96,165,250,.15);border:1px solid rgba(96,165,250,.3);color:#60a5fa">
-      <i class="fas fa-file-invoice"></i>
-    </div>
-    <span class="h-action__lbl">{{ __('app.action_invoices') }}</span>
+    <span class="h-action__lbl">IBAN / RIB</span>
   </a>
 </div>
-
-{{-- ── Pending alert ─────────────────────────────────────────────── --}}
-@if($pendingLoans->isNotEmpty())
-<div class="h-alert">
-  <i class="fas fa-hourglass-half"></i>
-  <div class="h-alert__text">
-    <strong>{{ $pendingLoans->count() }} {{ __('app.stat_pending') }}</strong>
-    — {{ __('app.pending_loans') }}
-  </div>
-</div>
-@endif
 
 {{-- ── Recent activity ───────────────────────────────────────────── --}}
 <div class="h-section">
@@ -480,7 +466,7 @@
         $prefix   = '-';
     }
   @endphp
-  <a href="{{ route('client.app.movements') }}" class="h-txn">
+  <a href="{{ ! empty($mv->transfer_ref) ? route('client.app.transfer.show', $mv->transfer_ref) : route('client.app.movements') }}" class="h-txn">
     <div class="h-txn__ico" style="{{ $icoStyle }}">
       <i class="fas {{ $icoIcon }}" style="{{ $icoColor }}"></i>
     </div>
@@ -511,32 +497,5 @@
   </div>
   @endforelse
 </div>
-
-{{-- ── Pending loans ─────────────────────────────────────────────── --}}
-@if($pendingLoans->isNotEmpty())
-<div class="h-section" style="animation-delay:.3s">
-  <span class="h-section__title">{{ __('app.pending_loans') }}</span>
-</div>
-<div class="h-txn-list">
-  @foreach($pendingLoans->take(2) as $loan)
-  <a href="{{ route('client.app.loans.show', $loan) }}" class="h-txn">
-    <div class="h-txn__ico" style="background:rgba(245,158,11,.1)">
-      <i class="fas fa-hourglass-half" style="color:var(--ca-amber)"></i>
-    </div>
-    <div class="h-txn__info">
-      <div class="h-txn__title">{{ $loan->reference }}</div>
-      <div class="h-txn__sub">
-        <x-status-badge domain="loan" :status="$loan->status" :label="$loan->statusLabel()" />
-      </div>
-    </div>
-    <div class="h-txn__right">
-      <div class="h-txn__amount h-txn__amount--neu">{{ number_format($loan->amount, 0, ',', ' ') }}</div>
-      <div class="h-txn__date">{{ $loan->currency }}</div>
-    </div>
-  </a>
-  @endforeach
-</div>
-@endif
-
 </div>
 @endsection

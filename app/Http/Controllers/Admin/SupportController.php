@@ -114,8 +114,7 @@ class SupportController extends Controller
         $authUser = Auth::user();
         if ($authUser->hasRole('super-admin')) return;
 
-        $hasAccess = $client->created_by === $authUser->id
-            || $client->clientLoans()->where('admin_id', $authUser->id)->exists();
+        $hasAccess = $client->created_by === $authUser->id;
         abort_unless($hasAccess, 403, 'Accès non autorisé.');
     }
 
@@ -128,7 +127,6 @@ class SupportController extends Controller
             ->whereHas('supportMessages')
             ->when(! $isSuperAdmin, fn ($q) => $q->where(fn ($q2) => $q2
                 ->where('created_by', $authUser->id)
-                ->orWhereHas('clientLoans', fn ($q3) => $q3->where('admin_id', $authUser->id))
             ))
             ->with(['supportMessages' => fn ($q) => $q->latest()->limit(1)])
             ->get()

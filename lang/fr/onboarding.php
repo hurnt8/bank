@@ -90,6 +90,12 @@ return [
     'doc_replace'         => 'Fichier sélectionné :',
     'complete_step1_first'=> 'Complétez d\'abord vos informations personnelles.',
 
+    // Bandeau permanent « identité à vérifier » (espace client)
+    'kyc_banner_cta'      => 'Vérifier mon identité',
+    'kyc_banner_pending'  => 'Votre vérification d’identité est en cours de traitement.',
+    'kyc_banner_view'     => 'Voir le statut',
+    'country_detected'    => 'Pays détecté automatiquement — modifiez-le si besoin.',
+
     // OTP / mot de passe oublié / réinitialisation
     'otp_aside_title'     => 'Une connexion protégée',
     'otp_aside_1'         => 'Un code à usage unique est envoyé à votre adresse e-mail',

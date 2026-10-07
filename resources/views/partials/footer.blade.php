@@ -33,9 +33,7 @@
                     <ul class="footer-links">
                         <li><a href="{{ route('home',     ['locale' => $locale]) }}">@lang('menu.home')</a></li>
                         <li><a href="{{ route('about',    ['locale' => $locale]) }}">@lang('menu.about')</a></li>
-                        <li><a href="{{ route('services', ['locale' => $locale]) }}">@lang('menu.services')</a></li>
                         <li><a href="{{ route('signup',   ['locale' => $locale]) }}">@lang('menu.open_account')</a></li>
-                        <li><a href="{{ route('faq',      ['locale' => $locale]) }}">@lang('menu.faq')</a></li>
                         <li><a href="{{ route('contact',  ['locale' => $locale]) }}">@lang('menu.contact')</a></li>
                     </ul>
                 </div>
@@ -51,10 +49,7 @@
                     <ul class="footer-links">
                         <li><a href="{{ route('signup',             ['locale' => $locale]) }}">@lang('menu.banking_account')</a></li>
                         <li><a href="{{ route('signup',             ['locale' => $locale]) }}">@lang('menu.banking_card')</a></li>
-                        <li><a href="{{ route('services.personal', ['locale' => $locale]) }}">@lang('menu.personal')</a></li>
-                        <li><a href="{{ route('services.home',     ['locale' => $locale]) }}">@lang('menu.home_loan')</a></li>
-                        <li><a href="{{ route('services.auto',     ['locale' => $locale]) }}">@lang('menu.auto')</a></li>
-                        <li><a href="{{ route('services.business', ['locale' => $locale]) }}">@lang('menu.business')</a></li>
+                        <li><a href="{{ route('signup',             ['locale' => $locale]) }}">@lang('menu.banking_transfer')</a></li>
                     </ul>
                 </div>
             </div>

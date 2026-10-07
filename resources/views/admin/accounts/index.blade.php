@@ -95,7 +95,6 @@
           <th>Client</th>
           <th>Solde actuel</th>
           <th>IBAN</th>
-          <th>Dossiers</th>
           <th style="text-align:right">Action</th>
         </tr>
       </thead>
@@ -109,7 +108,7 @@
         <tr data-name="{{ strtolower($client->name) }}"
             data-email="{{ strtolower($client->email) }}"
             data-balance="{{ $bal }}"
-            data-iban="{{ strtolower($client->bank_account ?? '') }}">
+            data-iban="{{ strtolower((string) $client->bankAccount?->iban) }}">
           <td data-label="">
             <div style="width:38px;height:38px;border-radius:50%;flex-shrink:0;
               background:linear-gradient(135deg,var(--c-navy),var(--c-navy-3));
@@ -131,12 +130,7 @@
             </span>
             <span style="font-size:.75rem;color:var(--c-muted);margin-left:.25rem">{{ $cur }}</span>
           </td>
-          <td data-label="IBAN" class="cell-mono">{{ $client->bank_account ? \Str::limit($client->bank_account, 22) : '—' }}</td>
-          <td data-label="Dossiers">
-            <span class="badge-status bs-gray">
-              {{ $client->client_loans_count }} dossier{{ $client->client_loans_count > 1 ? 's' : '' }}
-            </span>
-          </td>
+          <td data-label="IBAN" class="cell-mono">{{ $client->bankAccount ? \Str::limit((string) $client->bankAccount->iban, 22) : '—' }}</td>
           <td data-label="Action" style="text-align:right">
             <a href="{{ route('admin.accounts.show', $client) }}" class="btn-accent btn-sm-pro">
               <i class="fas fa-arrow-right"></i> Gérer

@@ -85,6 +85,11 @@ return [
     'doc_replace'         => 'Selected file:',
     'complete_step1_first'=> 'Please complete your personal information first.',
 
+    'kyc_banner_cta'      => 'Verify my identity',
+    'kyc_banner_pending'  => 'Your identity verification is being processed.',
+    'kyc_banner_view'     => 'View status',
+    'country_detected'    => 'Country detected automatically — change it if needed.',
+
     'otp_aside_title'     => 'Protected sign-in',
     'otp_aside_1'         => 'A one-time code is sent to your email address',
     'otp_aside_2'         => 'It is only valid for a few minutes',

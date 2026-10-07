@@ -749,10 +749,6 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
          class="sidebar-link {{ request()->routeIs('client.dashboard') ? 'active':'' }}">
         <i class="fas fa-th-large icon"></i> Tableau de bord
       </a>
-      <a href="{{ route('client.loans') }}"
-         class="sidebar-link {{ request()->routeIs('client.loans*') ? 'active':'' }}">
-        <i class="fas fa-file-invoice-dollar icon"></i> Mes demandes
-      </a>
       <span class="sidebar-label">Compte</span>
       <a href="{{ route('home',['locale'=>app()->getLocale()]) }}" class="sidebar-link">
         <i class="fas fa-globe icon"></i> Retour au site
@@ -767,19 +763,7 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
         <i class="fas fa-chart-pie icon"></i> Vue d'ensemble
       </a>
 
-      <span class="sidebar-label">Prêts &amp; Contrats</span>
-      <a href="{{ route('super-admin.loans.index') }}"
-         class="sidebar-link {{ request()->routeIs('super-admin.loans*') ? 'active':'' }}">
-        <i class="fas fa-file-invoice-dollar icon"></i> Toutes les demandes
-      </a>
-      <a href="{{ route('admin.contract-templates.index') }}"
-         class="sidebar-link {{ request()->routeIs('admin.contract-templates*') ? 'active':'' }}">
-        <i class="fas fa-file-signature icon"></i> Modèles de contrats
-      </a>
-      <a href="{{ route('admin.notification-templates.index') }}"
-         class="sidebar-link {{ request()->routeIs('admin.notification-templates*') ? 'active':'' }}">
-        <i class="fas fa-bell icon"></i> Modèles de notification
-      </a>
+      <span class="sidebar-label">Site</span>
       <a href="{{ route('admin.site-contacts.edit') }}"
          class="sidebar-link {{ request()->routeIs('admin.site-contacts*') ? 'active':'' }}">
         <i class="fas fa-map-marker-alt icon"></i> Coordonnées
@@ -795,10 +779,6 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
       <a href="{{ route('admin.currencies.index') }}"
          class="sidebar-link {{ request()->routeIs('admin.currencies*') ? 'active':'' }}">
         <i class="fas fa-money-bill-wave icon"></i> Devises
-      </a>
-      <a href="{{ route('admin.loan-settings.edit') }}"
-         class="sidebar-link {{ request()->routeIs('admin.loan-settings*') ? 'active':'' }}">
-        <i class="fas fa-percentage icon"></i> Paramètres de prêt
       </a>
 
       @hasanyrole(['super-admin'])
@@ -868,22 +848,6 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
         <i class="fas fa-chart-pie icon"></i> Vue d'ensemble
       </a>
 
-      <span class="sidebar-label">Prêts &amp; Contrats</span>
-      <a href="{{ route('admin.loans.index') }}"
-         class="sidebar-link {{ request()->routeIs('admin.loans*') ? 'active':'' }}">
-        <i class="fas fa-file-invoice-dollar icon"></i> Demandes de prêt
-      </a>
-      <a href="{{ route('admin.contract-templates.index') }}"
-         class="sidebar-link {{ request()->routeIs('admin.contract-templates*') ? 'active':'' }}">
-        <i class="fas fa-file-signature icon"></i> Modèles de contrats
-      </a>
-      @can('manage-notification-templates')
-      <a href="{{ route('admin.notification-templates.index') }}"
-         class="sidebar-link {{ request()->routeIs('admin.notification-templates*') ? 'active':'' }}">
-        <i class="fas fa-bell icon"></i> Modèles de notification
-      </a>
-      @endcan
-
       <span class="sidebar-label">Gestion</span>
       @hasanyrole(['admin', 'super-admin'])
       <a href="{{ route('admin.users') }}"
@@ -933,12 +897,6 @@ a.pg-pro__link:hover { background:var(--c-bg); border-color:#94A3B8; color:var(-
       <a href="{{ route('admin.currencies.index') }}"
          class="sidebar-link {{ request()->routeIs('admin.currencies*') ? 'active':'' }}">
         <i class="fas fa-money-bill-wave icon"></i> Devises
-      </a>
-      @endcan
-      @can('manage-loan-settings')
-      <a href="{{ route('admin.loan-settings.edit') }}"
-         class="sidebar-link {{ request()->routeIs('admin.loan-settings*') ? 'active':'' }}">
-        <i class="fas fa-percentage icon"></i> Paramètres de prêt
       </a>
       @endcan
       @hasanyrole(['admin', 'super-admin'])

@@ -18,13 +18,12 @@ class AccountController extends Controller
         $auth    = Auth::user();
         $isSuperAdmin = $auth->hasRole('super-admin');
 
-        $query = User::where('type', 'client')->withCount('clientLoans');
+        $query = User::where('type', 'client')->with('bankAccount');
 
         if (! $isSuperAdmin) {
             $adminId = $auth->id;
             $query->where(function ($q) use ($adminId) {
-                $q->where('created_by', $adminId)
-                  ->orWhereHas('clientLoans', fn ($q2) => $q2->where('admin_id', $adminId));
+                $q->where('created_by', $adminId);
             });
         }
 
@@ -36,8 +35,7 @@ class AccountController extends Controller
             $query->where(function ($q) use ($search) {
                 $like = '%' . $search . '%';
                 $q->where('name', 'like', $like)
-                  ->orWhere('email', 'like', $like)
-                  ->orWhere('bank_account', 'like', $like);
+                  ->orWhere('email', 'like', $like);
             });
         }
 
@@ -162,8 +160,7 @@ class AccountController extends Controller
         if ($auth->hasRole('super-admin')) return;
 
         $adminId   = $auth->id;
-        $isManaged = $client->created_by === $adminId
-            || $client->clientLoans()->where('admin_id', $adminId)->exists();
+        $isManaged = $client->created_by === $adminId;
 
         abort_unless($isManaged, 403, 'Accès non autorisé à ce compte.');
     }

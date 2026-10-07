@@ -74,6 +74,7 @@
 </style>
 @endpush
 
+@section('main_class', 'ca-main--narrow')
 @section('content')
 <div class="cp-body">
 

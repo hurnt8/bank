@@ -37,15 +37,6 @@ return [
     | pour les usages hors-CSS comme les barres de progression).
     */
     'status_badges' => [
-        'loan' => [
-            'draft'           => ['badge' => 'draft',    'icon' => 'fa-file-pen',     'color' => '#7A90AA'],
-            'pending'         => ['badge' => 'pending',   'icon' => 'fa-clock',        'color' => '#F59E0B'],
-            'validated'       => ['badge' => 'valid',     'icon' => 'fa-check',        'color' => '#4A9EFF'],
-            'contract_sent'   => ['badge' => 'sent',      'icon' => 'fa-paper-plane',  'color' => '#8B5CF6'],
-            'contract_signed' => ['badge' => 'signed',    'icon' => 'fa-signature',    'color' => '#00C896'],
-            'finalized'       => ['badge' => 'final',     'icon' => 'fa-circle-check', 'color' => '#C8A951'],
-            'rejected'        => ['badge' => 'rejected',  'icon' => 'fa-circle-xmark', 'color' => '#FF5A5A'],
-        ],
         'invoice' => [
             'sent'      => ['badge' => 'sent',      'icon' => 'fa-paper-plane',   'color' => '#8B5CF6'],
             'paid'      => ['badge' => 'paid',      'icon' => 'fa-circle-check',  'color' => '#00C896'],

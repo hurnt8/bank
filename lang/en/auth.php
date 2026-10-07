@@ -18,7 +18,7 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
     'client_login_title'  => 'Client Portal',
-    'client_login_sub'    => 'Sign in to access your loan applications',
+    'client_login_sub'    => 'Sign in to access your account',
     'client_brand_title'  => 'Your ' . site_name() . '<br>client space',
     'client_brand_sub'    => 'Track your applications, manage your profile and access all your documents securely.',
 

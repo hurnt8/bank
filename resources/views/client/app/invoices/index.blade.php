@@ -2,7 +2,7 @@
 @section('title', __('app.invoices_title') . ' — ' . site_name())
 @section('page_title', __('app.invoices_title'))
 @section('back_btn', true)
-@section('back_url', route('client.app.home'))
+@section('back_url', route('client.app.profile'))
 
 @section('topbar_action')
 <span style="font-size:.8rem;font-weight:800;color:var(--ca-accent-l);min-width:28px;text-align:center">

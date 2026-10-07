@@ -73,21 +73,11 @@ class UserManagementController extends Controller
 
         $user->load(['kycVerification', 'bankAccount', 'card']);
 
-        $loans = $user->clientLoans()->with('admin')->latest()->get();
-
-        $loanStats = [
-            'total'     => $loans->count(),
-            'pending'   => $loans->whereIn('status', ['draft', 'pending'])->count(),
-            'active'    => $loans->whereIn('status', ['validated', 'contract_sent', 'contract_signed'])->count(),
-            'finalized' => $loans->where('status', 'finalized')->count(),
-            'rejected'  => $loans->where('status', 'rejected')->count(),
-        ];
-
         $roles = $isSuperAdmin
             ? \Spatie\Permission\Models\Role::all()
             : \Spatie\Permission\Models\Role::whereIn('name', self::ADMIN_ALLOWED_ROLES)->get();
 
-        return view('admin.users.show', compact('user', 'loans', 'loanStats', 'roles', 'isSuperAdmin'));
+        return view('admin.users.show', compact('user', 'roles', 'isSuperAdmin'));
     }
 
     public function store(Request $request)
@@ -203,14 +193,6 @@ class UserManagementController extends Controller
 
         $user->syncRoles([$data['role']]);
 
-        // Synchroniser email et nom sur tous les dossiers de ce client
-        if ($user->hasRole('client') && ($data['email'] !== $oldEmail || $data['name'] !== $oldName)) {
-            \App\Models\LoanRequest::where('client_id', $user->id)->update([
-                'email' => $data['email'],
-                'name'  => $data['name'],
-            ]);
-        }
-
         return back()->with('success', "Utilisateur {$user->name} mis à jour.");
     }
 
@@ -238,8 +220,7 @@ class UserManagementController extends Controller
         abort_unless($user->hasRole('client'), 422, 'Seuls les clients peuvent être réaffectés à un admin.');
 
         $data = $request->validate([
-            'admin_id'       => 'required|exists:users,id',
-            'reassign_loans' => 'nullable|boolean',
+            'admin_id' => 'required|exists:users,id',
         ]);
 
         $admin = User::findOrFail($data['admin_id']);
@@ -250,10 +231,6 @@ class UserManagementController extends Controller
         );
 
         $user->update(['created_by' => $admin->id]);
-
-        if ($request->boolean('reassign_loans')) {
-            $user->clientLoans()->update(['admin_id' => $admin->id]);
-        }
 
         return back()->with('success', "Client {$user->name} réaffecté à {$admin->name} avec succès.");
     }
@@ -270,8 +247,8 @@ class UserManagementController extends Controller
     }
 
     /**
-     * Vérifie qu'un admin classique gère bien cet utilisateur (créateur direct
-     * ou admin responsable d'un de ses prêts) avant de le consulter/modifier.
+     * Vérifie qu'un admin classique gère bien cet utilisateur (créateur
+     * du compte) avant de le consulter/modifier.
      * Bypass pour le super-admin.
      */
     private function authorizeUser(User $user): void
@@ -279,8 +256,7 @@ class UserManagementController extends Controller
         $authUser = Auth::user();
         if ($authUser->hasRole('super-admin')) return;
 
-        $hasAccess = $user->created_by === $authUser->id
-            || $user->clientLoans()->where('admin_id', $authUser->id)->exists();
+        $hasAccess = $user->created_by === $authUser->id;
         abort_unless($hasAccess, 403, 'Accès non autorisé.');
     }
 }

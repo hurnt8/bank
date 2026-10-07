@@ -34,6 +34,6 @@ class SetClientLocale
             }
         }
 
-        return 'fr';
+        return 'en';
     }
 }

@@ -1,9 +1,18 @@
 @extends('layouts.auth-flow')
 @section('title', __('onboarding.check_title'))
 
+@section('aside')
+  <h2 class="aside__title" style="margin-top:0">{{ __('onboarding.aside_title') }}</h2>
+  <ul class="aside__list">
+    <li><i class="fas fa-user-plus"></i>{{ __('onboarding.aside_s1') }}</li>
+    <li><i class="fas fa-envelope-circle-check"></i>{{ __('onboarding.aside_s2') }}</li>
+    <li><i class="fas fa-id-card"></i>{{ __('onboarding.aside_s3') }}</li>
+  </ul>
+@endsection
+
 @section('content')
   <div class="card-head">
-    <div style="width:64px;height:64px;margin:0 auto 1rem;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(220,190,135,.12);color:var(--accent);font-size:1.6rem">
+    <div class="otp-icon" style="width:64px;height:64px;margin:0 auto 1rem;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(220,190,135,.12);color:var(--accent);font-size:1.6rem">
       <i class="fas fa-envelope-open-text"></i>
     </div>
     <h1 class="card-title">{{ __('onboarding.check_title') }}</h1>

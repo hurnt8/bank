@@ -46,7 +46,7 @@
   /* Surfaces claires : on repasse a laccent fonce. Le bleu clair du theme sombre
      ne donne que 2.14:1 sur blanc, donc illisible. */
   --ca-accent:   #C6A15B;
-  --ca-accent-l: #DCBE87;
+  --ca-accent-l: #8A6A2B;
   --ca-navy:     #0E3B2E;
   --ca-bg:       #F2F5FB;
   --ca-bg2:      #E8EDF7;
@@ -146,7 +146,7 @@ button { font-family: inherit; }
 /* ── Page entrance animation (from login) ────────────────────────── */
 @keyframes ca-enter {
   from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: none; }
 }
 
 /* ── App Shell ──────────────────────────────────────────────────── */
@@ -1486,18 +1486,6 @@ button { font-family: inherit; }
   overflow: visible;
 }
 
-/* Desktop : aligner sur la largeur du shell (430px) */
-@media (min-width: 480px) {
-  .ca-nav {
-    left: 50%;
-    right: auto;
-    width: min(430px, 100vw);
-    transform: translateX(-50%);
-    border-left:  1px solid rgba(255,255,255,.04);
-    border-right: 1px solid rgba(255,255,255,.04);
-  }
-}
-
 /* ── Onglet standard ─────────────────────────────────────────────── */
 .ca-nav-item {
   flex: 1;
@@ -1673,45 +1661,340 @@ button { font-family: inherit; }
 .ca-flex-between { display: flex; align-items: center; justify-content: space-between; }
 .ca-text-center { text-align: center; }
 
-/* ── Responsive: Tablet & Desktop ───────────────────────────────── */
-@media (min-width: 480px) {
+/* ══════════════════════════════════════════════════════════════════
+   RESPONSIVE — mobile / tablette / PC
+   · < 768 px  : application mobile (barre de navigation en bas)
+   · ≥ 768 px  : barre latérale à gauche + contenu centré pleine largeur
+   · ≥ 1200 px : barre latérale étendue (icône + libellé)
+   Remplace l'ancien « cadre de téléphone » de 430 px sur grand écran.
+   ══════════════════════════════════════════════════════════════════ */
+:root {
+  --ca-side-w:   0px;
+  --ca-wrap-max: 1120px;
+  --ca-fab-bottom: calc(var(--ca-nav-h) + var(--ca-safe-bottom) + 1.25rem);
+}
+
+/* Éléments de la barre latérale, invisibles sur mobile */
+.ca-nav__brand { display: none; }
+
+@media (min-width: 768px) {
+  :root { --ca-side-w: 96px; --ca-fab-bottom: 1.5rem; }
+
+  html, body { background: var(--ca-bg); }
+  body { display: block; }
+
+  /* ── Coque : décalée de la largeur de la barre latérale ── */
   .ca-shell {
-    max-width: 430px;
+    margin-left: var(--ca-side-w);
+    max-width: none;
+    width: auto;
+    min-height: 100vh;
+    box-shadow: none;
+    border: 0;
+    overflow-x: visible;
+  }
+
+  /* ── Barre de navigation → barre latérale fixe ── */
+  .ca-nav {
+    top: 0; bottom: 0; left: 0; right: auto;
+    width: var(--ca-side-w);
+    height: 100vh;
+    transform: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: .35rem;
+    padding: 1rem .6rem calc(1rem + var(--ca-safe-bottom));
+    background: var(--ca-bg2);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-top: 0;
+    border-right: 1px solid var(--ca-border);
+    box-shadow: none;
+    overflow-y: auto;
+    z-index: 600;
+  }
+  .ca-nav__brand {
+    display: flex; align-items: center; justify-content: center; gap: .65rem;
+    padding: .25rem 0 1rem; margin-bottom: .5rem;
+    border-bottom: 1px solid var(--ca-border);
+    color: var(--ca-text); font-weight: 800; font-size: .95rem;
+  }
+  .ca-nav__brand-name { display: none; }
+
+  .ca-nav-item {
+    flex: 0 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    min-height: 64px;
+    padding: .65rem .25rem;
+    border-radius: 14px;
+    font-size: 11px;
+    text-align: center;
+    transition: background .18s ease, color .18s ease;
+  }
+  .ca-nav-item:hover { background: rgba(255,255,255,.05); color: var(--ca-text); }
+  .ca-nav-item.active { background: rgba(220,190,135,.13); }
+  .ca-nav-item.active::after { display: none; }
+  .ca-nav-item i { font-size: 19px; }
+
+  /* Le bouton central (virements) devient un onglet comme les autres, mis en valeur */
+  .ca-nav-item--center {
+    position: static;
+    flex: 0 0 auto;
+    justify-content: center;
+    padding: .65rem .25rem;
+    min-height: 64px;
+  }
+  .ca-nav-item--center > span { margin-top: 5px; }
+  .ca-nav-center-btn {
+    position: static;
+    transform: none !important;
+    width: 40px; height: 40px;
+    box-shadow: 0 4px 14px rgba(30,180,160,.35);
+  }
+  .ca-nav-item--center:active .ca-nav-center-btn,
+  .ca-nav-item--center.active .ca-nav-center-btn { transform: none; box-shadow: 0 4px 16px rgba(39,196,168,.5); }
+  .ca-nav-center-btn i { font-size: 17px; }
+
+  /* ── Contenu : colonne centrée, largeur confortable ── */
+  .ca-main {
+    width: 100%;
+    max-width: var(--ca-wrap-max);
     margin: 0 auto;
-    overflow-x: hidden;
+    padding-bottom: 3rem;
+    overflow-y: visible;
+  }
+  .ca-topbar {
+    padding-left:  max(1.5rem, calc((100% - var(--ca-wrap-max)) / 2 + 1.25rem));
+    padding-right: max(1.5rem, calc((100% - var(--ca-wrap-max)) / 2 + 1.25rem));
+    background: rgba(3,25,47,.9);
+  }
+  .ca-topbar__title { font-size: 1.15rem; text-align: left; }
+  .ca-flash { max-width: var(--ca-wrap-max); margin-left: auto; margin-right: auto; }
+
+  /* Éléments fixés au bas de l'écran : à droite, hors de la barre latérale */
+  .ca-install-banner {
+    left: auto; right: 1.5rem; bottom: 1.5rem; width: min(420px, calc(100vw - var(--ca-side-w) - 3rem));
+  }
+  #cxa-push-banner {
+    left: auto !important; right: 1.5rem !important; bottom: 1.5rem !important;
+    width: min(440px, calc(100vw - var(--ca-side-w) - 3rem));
+  }
+
+  .ca-table-wrap { max-height: 480px !important; }
+  .ca-keypad { max-width: 360px; margin: .75rem auto; }
+}
+
+@media (min-width: 1200px) {
+  :root { --ca-side-w: 252px; }
+
+  .ca-nav { padding: 1.25rem 1rem calc(1.25rem + var(--ca-safe-bottom)); gap: .3rem; }
+  .ca-nav__brand { justify-content: flex-start; padding: .25rem .5rem 1.25rem; }
+  .ca-nav__brand-name { display: inline; letter-spacing: .01em; }
+
+  .ca-nav-item,
+  .ca-nav-item--center {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: .9rem;
+    min-height: 50px;
+    padding: .7rem 1rem;
+    font-size: 14px;
+    letter-spacing: .01em;
+  }
+  .ca-nav-item i { width: 24px; text-align: center; font-size: 17px; }
+  .ca-nav-item--center > span { margin-top: 0; font-size: 14px; letter-spacing: .01em; }
+  .ca-nav-center-btn { width: 34px; height: 34px; border-radius: 10px; }
+  .ca-nav-center-btn i { font-size: 15px; width: auto; }
+}
+
+/* ── Accueil : deux colonnes sur PC ── */
+@media (min-width: 1024px) {
+  .h-page {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    column-gap: 1.5rem;
+    align-items: start;
+    padding-top: .5rem;
+  }
+  /* Colonne droite : l'activité récente, sur toute la hauteur */
+  .h-page > .h-section  { grid-column: 2; grid-row: 1; }
+  .h-page > .h-txn-list { grid-column: 2; grid-row: 2 / span 6; }
+  /* Bandeau d'information : pleine largeur au-dessus */
+  .h-page > .h-alert    { grid-column: 1 / -1; order: -1; }
+}
+
+/* ── Pages « formulaire / profil » : colonne de lecture confortable ── */
+@media (min-width: 768px) {
+  .ca-main--narrow { max-width: 760px; }
+
+  /* Espaceurs vides de la barre du haut (équilibrent le titre centré sur mobile) */
+  .ca-topbar > div[style*="width:38px"] { display: none; }
+
+  /* Bannière de notifications : en bas, à gauche du contenu (la bulle d'installation reste à droite) */
+  #cxa-push-banner {
+    left: calc(var(--ca-side-w) + 1.5rem) !important;
+    right: auto !important;
   }
 }
 
-/* Desktop — cadre "phone-in-browser" */
+/* La navigation n'est masquée (plein écran) que sur mobile : sur tablette / PC elle reste visible */
+@media (max-width: 767.98px) {
+  .ca-nav--mobile-hidden { display: none; }
+}
 @media (min-width: 768px) {
-  html, body {
-    background: var(--ca-outer-bg, #01101F);
+  /* Messagerie support : cadre fixe, décalé de la barre latérale */
+  body .sc-topbar, body .sc-wrap { left: var(--ca-side-w); }
+  /* Sélecteur de langue (profil) : fenêtre ancrée au contenu */
+  .ca-lang-pop {
+    left: calc(var(--ca-side-w) + 1.5rem) !important;
+    right: auto !important;
+    bottom: 1.5rem !important;
+    width: min(360px, calc(100vw - var(--ca-side-w) - 3rem));
   }
-  body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 0;
+}
+
+/* L'animation d'entrée de la coque laisse un `transform`, qui devient le repère des éléments
+   `position: fixed` qu'elle contient (messagerie, fenêtres). On la retire dès la tablette. */
+@media (min-width: 768px) {
+  .ca-shell { animation: none; }
+}
+
+/* ── Bandeau « identité à vérifier » (permanent tant que le KYC n'est pas approuvé) ── */
+.ca-kyc-banner {
+  display: flex; align-items: center; gap: .85rem;
+  margin: .75rem 1.25rem 0;
+  padding: .85rem 1rem;
+  border-radius: var(--ca-radius-md);
+  background: rgba(245,158,11,.11);
+  border: 1px solid rgba(245,158,11,.32);
+  border-left: 3px solid var(--ca-amber);
+  color: var(--ca-text);
+}
+.ca-kyc-banner > i { color: var(--ca-amber); font-size: 1.15rem; flex-shrink: 0; }
+.ca-kyc-banner__txt { flex: 1; min-width: 0; font-size: .82rem; line-height: 1.5; font-weight: 600; }
+.ca-kyc-banner__btn {
+  flex-shrink: 0; white-space: nowrap;
+  padding: .5rem .95rem; border-radius: 999px;
+  background: linear-gradient(135deg, #DCBE87, #C6A15B); color: #fff;
+  font-size: .76rem; font-weight: 700;
+}
+.ca-kyc-banner.is-pending { background: rgba(74,158,255,.1); border-color: rgba(74,158,255,.3); border-left-color: var(--ca-blue); }
+.ca-kyc-banner.is-pending > i { color: var(--ca-blue); }
+@media (max-width: 520px) {
+  .ca-kyc-banner { flex-wrap: wrap; }
+  .ca-kyc-banner__txt { flex-basis: calc(100% - 2.5rem); }
+  .ca-kyc-banner__btn { width: 100%; text-align: center; padding: .65rem 1rem; }
+}
+@media (min-width: 768px) {
+  .ca-kyc-banner {
+    width: calc(100% - 2.5rem);
+    max-width: calc(var(--ca-wrap-max) - 2.5rem);
+    margin: 1rem auto 0;
   }
-  .ca-shell {
-    min-height: 100vh;
-    box-shadow: 0 0 100px rgba(0,0,0,.7), 0 0 0 1px rgba(220,190,135,.07);
-    border-left:  1px solid rgba(220,190,135,.06);
-    border-right: 1px solid rgba(220,190,135,.06);
-    position: relative;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   MENUS — présentation façon Wise
+   · mobile  : barre flottante arrondie, pastille derrière l'icône active
+   · tablette / PC : barre latérale claire, entrée active en pastille,
+     compte (avatar + nom) en haut à droite
+   ══════════════════════════════════════════════════════════════════ */
+.ca-nav::after, .ca-nav-item::after, .ca-nav-item.active::after { display: none !important; }
+.ca-nav-item {
+  gap: 4px; padding: 6px 2px 4px;
+  color: var(--ca-text-3);
+  font-size: 11px; font-weight: 600; letter-spacing: 0;
+}
+.ca-nav-item i {
+  width: 52px; height: 28px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; transform: none !important;
+  transition: background .2s ease, color .2s ease;
+}
+.ca-nav-item.active { color: var(--ca-text); background: transparent; }
+.ca-nav-item.active i { background: rgba(220,190,135,.22); color: var(--ca-accent-l); }
+
+/* Puce « compte » : visible à partir de la tablette */
+.ca-chip { display: none; }
+
+/* ── Mobile : barre flottante ── */
+@media (max-width: 767.98px) {
+  :root { --ca-nav-h: 78px; }
+  .ca-nav {
+    left: 12px; right: 12px; width: auto; transform: none;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    height: 64px; padding: 0 6px;
+    border: 1px solid var(--ca-border); border-radius: 28px;
+    background: rgba(7,25,48,.96);
+    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    box-shadow: 0 12px 32px rgba(0,0,0,.5);
   }
-  /* Topbar epingle reste dans la coque */
-  .ca-topbar {
-    position: sticky;
-    top: 0;
+}
+
+/* ── Tablette / PC : barre latérale claire ── */
+@media (min-width: 768px) {
+  .ca-nav {
+    background: #FFFFFF;
+    border-right: 1px solid #E6E9EE; border-top: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none; backdrop-filter: none;
   }
-  /* Table amortissement plus haute sur desktop */
-  .ca-table-wrap {
-    max-height: 380px !important;
+  .ca-nav__brand { border-bottom: 1px solid #EDF0F4; color: #0E3B2E; }
+  .ca-nav-item, .ca-nav-item--center {
+    min-height: 68px; padding: 8px 2px; border-radius: 16px;
+    color: #5B6B7A; background: transparent;
   }
-  /* Keypad centré sur grand ecran */
-  .ca-keypad {
-    max-width: 330px;
-    margin: .75rem auto;
+  .ca-nav-item:hover { background: #F3F5F8; color: #0E3B2E; }
+  .ca-nav-item.active { color: #0E3B2E; background: transparent; }
+  .ca-nav-item.active i { background: #F5EDDD; color: #0E3B2E; }
+  .ca-nav-item.active span { font-weight: 700; }
+
+  /* Compte en haut à droite (avatar + nom) */
+  .ca-chip {
+    display: inline-flex; align-items: center; gap: .6rem; flex-shrink: 0;
+    margin-left: auto; padding: .3rem .85rem .3rem .3rem;
+    border-radius: 999px; background: var(--ca-bg3); border: 1px solid var(--ca-border);
+    color: var(--ca-text); font-size: .85rem; font-weight: 600;
   }
+  .ca-chip:hover { background: var(--ca-bg4); }
+  .ca-chip__avatar {
+    width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #DCBE87, #C6A15B); color: #fff; font-weight: 800; font-size: .85rem;
+  }
+  .ca-chip__name { max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ca-chip i { font-size: .6rem; color: var(--ca-text-3); }
+}
+
+@media (min-width: 1200px) {
+  .ca-nav-item, .ca-nav-item--center {
+    flex-direction: row; justify-content: flex-start;
+    gap: .9rem; min-height: 52px; padding: .75rem 1.1rem;
+    border-radius: 999px; font-size: 15px; font-weight: 600;
+  }
+  .ca-nav-item i, .ca-nav-item--center i {
+    width: 24px; height: 24px; border-radius: 0; background: transparent !important; font-size: 18px;
+  }
+  .ca-nav-item.active { background: #F5EDDD; }
+  .ca-nav-item.active i { color: #0E3B2E; }
+}
+
+/* Accueil : l'avatar + salutation à gauche, langue / cloche / compte regroupés à droite */
+@media (min-width: 768px) {
+  .ca-topbar--home .h-header__left { margin-right: auto; }
+  .ca-topbar--home .ca-chip { margin-left: .75rem; }
+}
+
+/* ── Thème clair : barre de navigation mobile et entrée active ── */
+[data-theme="light"] .ca-nav-item.active i { background: #F5EDDD; color: #0E3B2E; }
+@media (max-width: 767.98px) {
+  [data-theme="light"] .ca-nav {
+    background: rgba(255,255,255,.97);
+    border-color: rgba(14,59,46,.1);
+    box-shadow: 0 12px 32px rgba(14,59,46,.18);
+  }
+  [data-theme="light"] .ca-nav-item { color: #5B6B7A; }
+  [data-theme="light"] .ca-nav-item.active { color: #0E3B2E; }
 }

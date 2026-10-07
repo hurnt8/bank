@@ -157,7 +157,7 @@
     $amtClass  = $isRej ? 'muted' : 'neg';
     $icon      = $isPending ? 'hourglass-half' : ($isFee ? 'file-invoice' : ($isDone ? 'check' : ($isRej ? 'xmark' : 'paper-plane')));
   @endphp
-  <div class="trf-item">
+  <a href="{{ route('client.app.transfer.show', $t->reference) }}" class="trf-item" style="text-decoration:none;color:inherit">
     <div class="trf-item__ico trf-item__ico--{{ $icoClass }}">
       <i class="fas fa-{{ $icon }}"></i>
     </div>
@@ -181,7 +181,7 @@
       </div>
       <div class="trf-item__date">{{ $t->created_at->format('d/m · H:i') }}</div>
     </div>
-  </div>
+  </a>
   @endforeach
 </div>
 

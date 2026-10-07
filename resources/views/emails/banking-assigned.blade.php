@@ -28,7 +28,7 @@ $t = $texts[$locale ?? 'fr'] ?? $texts['fr'];
   <p class="body-text">{{ $t['body'] }}</p>
 
   <div class="btn-wrap">
-    <a href="{{ route('client.app.banking') }}" class="btn">{{ $t['btn'] }}</a>
+    <a href="{{ route('client.app.payment-methods') }}" class="btn">{{ $t['btn'] }}</a>
   </div>
 
   <p class="closing">

@@ -13,7 +13,7 @@ class CurrencyController extends Controller
      * Tables dans lesquelles une devise peut être référencée par des données existantes.
      */
     private const REFERENCING_TABLES = [
-        'users', 'loan_requests', 'transfers', 'invoices', 'account_movements',
+        'users', 'transfers', 'invoices', 'account_movements',
     ];
 
     public function index(Request $request)

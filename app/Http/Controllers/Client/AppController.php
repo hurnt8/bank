@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Mail\OtpMail;
 use App\Models\AccountMovement;
+use App\Models\Card;
 use App\Models\ClientNotification;
 use App\Models\Invoice;
-use App\Models\LoanRequest;
 use App\Models\Transfer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,22 +20,7 @@ class AppController extends Controller
 {
     public function index()
     {
-        $user  = Auth::user();
-        // Brouillons non visibles dans le compte client
-        $loans = LoanRequest::where('client_id', $user->id)
-            ->where('status', '!=', LoanRequest::STATUS_DRAFT)
-            ->latest()->get();
-
-        $activeLoans  = $loans->whereIn('status', [
-            LoanRequest::STATUS_CONTRACT_SENT,
-            LoanRequest::STATUS_CONTRACT_SIGNED,
-            LoanRequest::STATUS_FINALIZED,
-        ])->values();
-
-        $pendingLoans = $loans->whereIn('status', [
-            LoanRequest::STATUS_PENDING,
-            LoanRequest::STATUS_VALIDATED,
-        ])->values();
+        $user = Auth::user();
 
         $unreadCount = ClientNotification::where('user_id', $user->id)
             ->whereNull('read_at')
@@ -72,29 +57,28 @@ class AppController extends Controller
                     ? __('app.mv_transfer_sent') . ' ' . $t->beneficiary_name
                     : __('app.mv_transfer_received'),
                 'sub'       => $t->reference,
+                'transfer_ref' => $t->reference,
                 'status'    => $t->status,
                 'created_at'=> $t->created_at,
             ]);
 
-        $recentActivity = $adminMvts->merge($recentTransfers)
+        $recentActivity = $adminMvts->toBase()->merge($recentTransfers->toBase())
             ->sortByDesc('created_at')
             ->take(5)
             ->values();
 
         return view('client.app.home', compact(
-            'user', 'loans', 'activeLoans', 'pendingLoans', 'recentActivity', 'unreadCount'
+            'user', 'recentActivity', 'unreadCount'
         ));
     }
 
-    public function loans()
+    /** Cartes bancaires associées au compte du client. */
+    public function cards()
     {
         $user  = Auth::user();
-        // Les brouillons ne sont pas visibles dans l'espace client
-        $loans = LoanRequest::where('client_id', $user->id)
-            ->where('status', '!=', LoanRequest::STATUS_DRAFT)
-            ->latest()->get();
+        $cards = Card::where('user_id', $user->id)->latest()->get();
 
-        return view('client.app.loans.index', compact('user', 'loans'));
+        return view('client.app.cards', compact('user', 'cards'));
     }
 
     public function invoices()
@@ -114,64 +98,6 @@ class AppController extends Controller
         abort_if($invoice->client_id !== $user->id, 403);
 
         return view('client.app.invoices.show', compact('user', 'invoice'));
-    }
-
-    public function loanShow(LoanRequest $loan)
-    {
-        $user = Auth::user();
-        abort_unless($loan->client_id === $user->id, 403);
-
-        $loan->load(['admin']);
-
-        $principal = (float) $loan->amount;
-        $total     = (float) $loan->total_with_interest;
-        $interest  = max(0, $total - $principal);
-
-        return view('client.app.loans.show', compact('user', 'loan', 'principal', 'interest', 'total'));
-    }
-
-    public function analytics()
-    {
-        $user  = Auth::user();
-        // Les dossiers rejetés ne sont pas comptabilisés dans les analytiques
-        $loans = LoanRequest::where('client_id', $user->id)
-            ->where('status', '!=', LoanRequest::STATUS_REJECTED)
-            ->whereNotNull('amortization_schedule')
-            ->get();
-
-        $monthlyData = [];
-        foreach ($loans as $loan) {
-            $schedule = $loan->amortization_schedule ?? [];
-            foreach ($schedule as $row) {
-                $key = 'M' . $row['month'];
-                $monthlyData[$key] = ($monthlyData[$key] ?? 0) + (float) ($row['payment'] ?? 0);
-            }
-        }
-
-        // Virements envoyés validés
-        $totalPaid = Transfer::where('user_id', $user->id)
-            ->where('type', 'send')
-            ->where('status', Transfer::STATUS_COMPLETED)
-            ->sum('amount');
-
-        // Virements en attente de validation
-        $pendingTransfers = Transfer::where('user_id', $user->id)
-            ->where('type', 'send')
-            ->whereIn('status', [Transfer::STATUS_PENDING, Transfer::STATUS_FEE_REQUIRED])
-            ->get();
-
-        $pendingAmount = $pendingTransfers->sum('amount');
-
-        // Total crédits reçus sur le compte (admin + prêts finalisés)
-        $totalReceived = AccountMovement::where('user_id', $user->id)
-            ->where('type', 'credit')
-            ->sum('amount');
-
-        return view('client.app.analytics', compact(
-            'user', 'loans', 'monthlyData',
-            'totalPaid', 'totalReceived',
-            'pendingTransfers', 'pendingAmount'
-        ));
     }
 
     public function profile()
@@ -309,11 +235,6 @@ class AppController extends Controller
 
         $user->update(['email' => $pending['email']]);
 
-        // Synchroniser l'email sur tous les dossiers de ce client
-        LoanRequest::where('client_id', $user->id)->update([
-            'email' => $pending['email'],
-        ]);
-
         Cache::forget('profile_otp_' . $user->id);
         session()->forget('profile_pending');
 
@@ -386,13 +307,14 @@ class AppController extends Controller
                     ? __('app.mv_transfer_sent') . ' ' . $t->beneficiary_name
                     : __('app.mv_transfer_received'),
                 'sub'          => $t->reference . ($t->note ? ' — ' . $t->note : ''),
+                'transfer_ref' => $t->reference,
                 'balance_after' => null,
                 'has_balance'  => false,
                 'status'       => $t->status,
                 'created_at'   => $t->created_at,
             ]);
 
-        $merged = $adminMvts->merge($transfers)
+        $merged = $adminMvts->toBase()->merge($transfers->toBase())
             ->sortByDesc('created_at')
             ->values();
 
@@ -570,7 +492,7 @@ class AppController extends Controller
         $data = [
             'name'             => config('app.company_name', site_name()) . ' — Espace Client',
             'short_name'       => site_name(),
-            'description'      => 'Gérez vos prêts, virements et documents en toute sécurité.',
+            'description'      => 'Gérez votre compte, vos cartes et vos virements en toute sécurité.',
             'start_url'        => '/app',
             'scope'            => '/app',
             'display'          => 'standalone',
@@ -588,10 +510,10 @@ class AppController extends Controller
             ],
             'shortcuts' => [
                 [
-                    'name'       => 'Mes dossiers',
-                    'short_name' => 'Dossiers',
-                    'url'        => '/app/loans',
-                    'description'=> 'Consulter mes demandes de prêt',
+                    'name'       => 'Mes cartes',
+                    'short_name' => 'Cartes',
+                    'url'        => '/app/cards',
+                    'description'=> 'Consulter mes cartes',
                     'icons'      => [['src' => '/site-icon-192.png', 'sizes' => '192x192']],
                 ],
                 [
@@ -622,7 +544,7 @@ class AppController extends Controller
         $data = [
             'name'             => config('app.company_name', site_name()) . ' — Administration',
             'short_name'       => site_name() . ' Admin',
-            'description'      => 'Gérez les prêts, clients et opérations ' . site_name() . '.',
+            'description'      => 'Gérez les clients et les opérations ' . site_name() . '.',
             'start_url'        => '/admin',
             'scope'            => '/',
             'display'          => 'standalone',
@@ -647,10 +569,10 @@ class AppController extends Controller
                     'icons'       => [['src' => '/site-icon-192.png', 'sizes' => '192x192']],
                 ],
                 [
-                    'name'        => 'Demandes de prêt',
-                    'short_name'  => 'Prêts',
-                    'url'         => '/admin/loans',
-                    'description' => 'Gérer les demandes de prêt',
+                    'name'        => 'Clients',
+                    'short_name'  => 'Clients',
+                    'url'         => '/admin/users',
+                    'description' => 'Gérer les clients',
                     'icons'       => [['src' => '/site-icon-192.png', 'sizes' => '192x192']],
                 ],
             ],

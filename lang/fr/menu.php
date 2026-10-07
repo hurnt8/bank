@@ -38,5 +38,5 @@ return [
     'newsletter_title' => 'Restez informé de nos offres',
     'subscribe'        => "S'abonner",
     'read_more'        => 'En savoir plus',
-    'footer_desc'      => site_name() . " est une banque 100 % en ligne : ouvrez un compte, obtenez votre carte et votre IBAN en quelques minutes, et profitez aussi de nos solutions de financement partout en Europe.",
+    'footer_desc'      => site_name() . " est une banque 100 % en ligne : ouvrez un compte, obtenez votre carte et votre IBAN en quelques minutes, et effectuez vos virements partout en Europe.",
 ];

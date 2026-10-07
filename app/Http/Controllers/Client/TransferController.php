@@ -119,6 +119,82 @@ class TransferController extends Controller
         }
     }
 
+    /** Détail d'un virement du client connecté (jamais celui d'un autre client : 404). */
+    public function show(string $reference)
+    {
+        $user     = Auth::user();
+        $transfer = Transfer::with('invoice')
+            ->where('user_id', $user->id)
+            ->where('reference', $reference)
+            ->firstOrFail();
+
+        return view('client.app.transfer.show', compact('user', 'transfer'));
+    }
+
+    /** État courant (pour le rafraîchissement automatique de la barre de progression). */
+    public function state(string $reference)
+    {
+        $transfer = Transfer::where('user_id', Auth::id())->where('reference', $reference)->firstOrFail();
+
+        return response()->json([
+            'status'        => $transfer->status,
+            'progress'      => $transfer->progressValue(),
+            'code_required' => $transfer->isAwaitingCode(),
+            'locked'        => $transfer->isCodeLocked(),
+        ]);
+    }
+
+    /** Le client saisit le code communiqué par son conseiller pour débloquer le virement. */
+    public function unlock(Request $request, string $reference)
+    {
+        $user     = Auth::user();
+        $transfer = Transfer::where('user_id', $user->id)->where('reference', $reference)->firstOrFail();
+
+        $back = redirect()->route('client.app.transfer.show', $reference);
+
+        if (! $transfer->isAwaitingCode()) {
+            return $back;
+        }
+        if ($transfer->isCodeLocked()) {
+            return $back->withErrors(['code' => __('transfer.code_locked', ['minutes' => max(1, now()->diffInMinutes($transfer->code_locked_until))])]);
+        }
+
+        $request->validate(['code' => 'required|digits:6']);
+
+        if (! hash_equals((string) $transfer->unlock_code, (string) $request->input('code'))) {
+            $attempts = $transfer->code_attempts + 1;
+            $update   = ['code_attempts' => $attempts];
+            if ($attempts >= Transfer::CODE_MAX_ATTEMPTS) {
+                $update['code_attempts']     = 0;
+                $update['code_locked_until'] = now()->addMinutes(Transfer::CODE_LOCK_MINUTES);
+            }
+            $transfer->update($update);
+
+            $left = max(0, Transfer::CODE_MAX_ATTEMPTS - $attempts);
+
+            return $back->withErrors(['code' => $attempts >= Transfer::CODE_MAX_ATTEMPTS
+                ? __('transfer.code_locked', ['minutes' => Transfer::CODE_LOCK_MINUTES])
+                : __('transfer.code_wrong', ['left' => $left])]);
+        }
+
+        $transfer->update([
+            'code_required'     => false,
+            'unlock_code'       => null,
+            'code_verified_at'  => now(),
+            'code_attempts'     => 0,
+            'code_locked_until' => null,
+        ]);
+
+        // Le conseiller est prévenu : le virement peut reprendre
+        foreach (AdminNotification::recipientAdminIds($user) as $adminId) {
+            AdminNotification::forAdmin($adminId, 'transfer', 'Code saisi — ' . $transfer->reference,
+                $user->name . ' a saisi le code de déblocage du virement ' . $transfer->reference . ' (' . $transfer->progress . ' %).',
+                ['transfer_id' => $transfer->id, 'client_id' => $user->id]);
+        }
+
+        return $back->with('success', __('transfer.code_ok'));
+    }
+
     public function confirmation()
     {
         $user     = Auth::user();

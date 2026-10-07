@@ -58,12 +58,12 @@ class ClientLoginController extends Controller
             return back()->withErrors(['identifier' => __('auth.portal_clients_only')]);
         }
 
-        // Compte non activé : l'adresse e-mail doit d'abord être confirmée.
+        // Compte non activé : l'adresse e-mail doit d'abord être confirmée. On envoie l'utilisateur
+        // sur la page « vérifiez votre boîte mail » (renvoi possible) ; une fois activé, il passe à l'OTP.
         if (! $user->email_verified_at) {
-            return back()
-                ->withErrors(['identifier' => __('onboarding.email_not_verified')])
-                ->with('unverified_email', $user->email)
-                ->onlyInput('identifier');
+            return redirect()->route('verification.notice')
+                ->with('verify_email', $user->email)
+                ->with('error', __('onboarding.email_not_verified'));
         }
 
         if ($user->is_blocked) {

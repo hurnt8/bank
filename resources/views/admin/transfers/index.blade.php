@@ -163,6 +163,31 @@
   </div>
   @endif
 
+  {{-- Progression + code de déblocage (virements en attente) ── --}}
+  @if($isPending && $trf->status === \App\Models\Transfer::STATUS_PENDING)
+  <div style="padding:.875rem 1.25rem;border-top:1px solid var(--c-border)">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.45rem">
+      <span style="font-size:.67rem;text-transform:uppercase;letter-spacing:.06em;color:var(--c-muted);font-weight:700">Avancement du virement</span>
+      <strong style="font-size:.85rem">{{ $trf->progressValue() }} %</strong>
+    </div>
+    <div style="height:8px;border-radius:999px;background:var(--c-border);overflow:hidden">
+      <div style="height:100%;width:{{ $trf->progressValue() }}%;border-radius:999px;background:{{ $trf->code_required ? '#D97706' : 'var(--c-accent, #C6A15B)' }};transition:width .3s"></div>
+    </div>
+    @if($trf->code_required)
+    <div style="margin-top:.75rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:.65rem .9rem;border-radius:10px;background:#FEF3C7;border:1px solid #FDE68A">
+      <i class="fas fa-lock" style="color:#D97706"></i>
+      <div style="flex:1;min-width:180px;font-size:.78rem;color:#92400E;line-height:1.45">
+        <strong>Bloqué à {{ $trf->progress }} %</strong> — le client doit saisir ce code, à lui communiquer vous-même :
+      </div>
+      <code style="font-size:1.25rem;font-weight:800;letter-spacing:.25em;color:#92400E;background:#fff;padding:.25rem .7rem;border-radius:8px;border:1px dashed #D97706">{{ $trf->unlock_code }}</code>
+      <button type="button" class="btn-ghost btn-sm-pro" onclick="navigator.clipboard&&navigator.clipboard.writeText('{{ $trf->unlock_code }}');this.textContent='Copié'">Copier</button>
+    </div>
+    @elseif($trf->code_verified_at)
+    <div style="margin-top:.6rem;font-size:.75rem;color:var(--c-green)"><i class="fas fa-circle-check"></i> Code saisi par le client le {{ $trf->code_verified_at->format('d/m/Y à H:i') }} — vous pouvez faire avancer le virement.</div>
+    @endif
+  </div>
+  @endif
+
   {{-- Actions ── --}}
   @if($isPending)
   <div style="padding:.75rem 1.25rem;background:var(--c-bg);border-top:1px solid var(--c-border);display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
@@ -176,6 +201,10 @@
     </button>
     @if($trf->status === \App\Models\Transfer::STATUS_PENDING)
     <button type="button" class="btn-ghost btn-sm-pro"
+      onclick="toggleForm('progress-{{ $trf->id }}',{{ $trf->id }})">
+      <i class="fas fa-bars-progress"></i> Progression
+    </button>
+    <button type="button" class="btn-ghost btn-sm-pro"
       onclick="toggleForm('invoice-{{ $trf->id }}',{{ $trf->id }})">
       <i class="fas fa-file-invoice"></i> Facturer les frais
     </button>
@@ -184,6 +213,36 @@
       <i class="fas fa-clock" style="margin-right:.3rem"></i>Soumis {{ $trf->created_at->diffForHumans() }}
     </span>
   </div>
+
+  {{-- Progress form ── --}}
+  @if($trf->status === \App\Models\Transfer::STATUS_PENDING)
+  <div class="trf-form" id="progress-{{ $trf->id }}" style="display:none;padding:1rem 1.25rem;border-top:1px solid var(--c-border);background:rgba(198,161,91,.05)">
+    <form method="POST" action="{{ route('admin.transfers.progress', $trf) }}">
+      @csrf
+      <label class="form-label-pro" style="display:flex;justify-content:space-between">
+        <span>Pourcentage d'avancement</span>
+        <strong id="pval-{{ $trf->id }}">{{ $trf->progress }} %</strong>
+      </label>
+      <input type="range" name="progress" min="0" max="99" step="1" value="{{ $trf->progress }}" style="width:100%;margin-bottom:.9rem"
+             oninput="document.getElementById('pval-{{ $trf->id }}').textContent=this.value+' %'">
+
+      <label style="display:flex;align-items:flex-start;gap:.55rem;font-size:.82rem;margin-bottom:.6rem;cursor:pointer">
+        <input type="checkbox" name="require_code" value="1" {{ $trf->code_required ? 'checked' : '' }} style="margin-top:.2rem">
+        <span><strong>Bloquer à ce niveau (code requis)</strong><br>
+          <span style="color:var(--c-muted);font-size:.75rem">Un code à 6 chiffres est généré. Le client ne peut poursuivre qu'en le saisissant : communiquez-le-lui vous-même.</span></span>
+      </label>
+      @if($trf->unlock_code || $trf->code_verified_at)
+      <label style="display:flex;align-items:center;gap:.55rem;font-size:.8rem;margin-bottom:.9rem;cursor:pointer">
+        <input type="checkbox" name="regenerate" value="1"> Générer un nouveau code
+      </label>
+      @endif
+      <div style="display:flex;gap:.5rem">
+        <button type="submit" class="btn-accent btn-sm-pro"><i class="fas fa-floppy-disk"></i> Enregistrer la progression</button>
+        <button type="button" class="btn-ghost btn-sm-pro" onclick="toggleForm('progress-{{ $trf->id }}',{{ $trf->id }})">Annuler</button>
+      </div>
+    </form>
+  </div>
+  @endif
 
   {{-- Approve form ── --}}
   <div class="trf-form" id="approve-{{ $trf->id }}" style="display:none;padding:1rem 1.25rem;border-top:1px solid var(--c-border);background:rgba(5,150,105,.03)">
@@ -273,7 +332,7 @@
 
 <script>
 function toggleForm(id, trfId) {
-  ['approve','reject','invoice'].forEach(t => {
+  ['approve','reject','invoice','progress'].forEach(t => {
     const el = document.getElementById(t + '-' + trfId);
     if (el && el.id !== id) el.style.display = 'none';
   });

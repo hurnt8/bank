@@ -71,12 +71,6 @@
                                         <option value="Ouverture de compte" {{ old('subject')=='Ouverture de compte' ?'selected':'' }}>@lang('menu.banking_account')</option>
                                         <option value="Carte bancaire"      {{ old('subject')=='Carte bancaire'      ?'selected':'' }}>@lang('menu.banking_card')</option>
                                         <option value="Virements"           {{ old('subject')=='Virements'           ?'selected':'' }}>@lang('menu.banking_transfer')</option>
-                                        <option value="Prêt personnel"  {{ old('subject')=='Prêt personnel'  ?'selected':'' }}>@lang('menu.personal')</option>
-                                        <option value="Prêt immobilier" {{ old('subject')=='Prêt immobilier' ?'selected':'' }}>@lang('menu.home_loan')</option>
-                                        <option value="Prêt commercial" {{ old('subject')=='Prêt commercial' ?'selected':'' }}>@lang('menu.business')</option>
-                                        <option value="Prêt étudiant"   {{ old('subject')=='Prêt étudiant'   ?'selected':'' }}>@lang('menu.study')</option>
-                                        <option value="Prêt auto"       {{ old('subject')=='Prêt auto'       ?'selected':'' }}>@lang('menu.auto')</option>
-                                        <option value="Prêt moto"       {{ old('subject')=='Prêt moto'       ?'selected':'' }}>@lang('menu.bike')</option>
                                         <option value="Autre"           {{ old('subject')=='Autre'           ?'selected':'' }}>Autre</option>
                                     </select>
                                     @error('subject')<span class="form-error">{{ $message }}</span>@enderror

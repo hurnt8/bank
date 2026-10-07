@@ -7,7 +7,7 @@
 <div class="d-flex align-items-start justify-content-between flex-wrap gap-3 page-hdr">
   <div>
     <h4>Devises</h4>
-    <p>Devises disponibles dans le projet (formulaires de prêt, factures, transferts). Une devise désactivée disparaît des listes déroulantes mais reste affichée sur les enregistrements existants.</p>
+    <p>Devises disponibles dans le projet (factures, transferts). Une devise désactivée disparaît des listes déroulantes mais reste affichée sur les enregistrements existants.</p>
   </div>
 </div>
 

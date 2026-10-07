@@ -106,7 +106,29 @@
     @else
     <div style="width:38px"></div>
     @endif
+    @include('partials.client-chip')
   </header>
+  @endif
+
+  {{-- Bandeau permanent : identité non vérifiée (l'accès aux virements l'exige) --}}
+  @php
+    $kycUser   = auth()->user();
+    $kycRecord = $kycUser?->kycVerification;
+    $kycStatus = $kycRecord->status ?? \App\Models\KycVerification::STATUS_NON_SOUMIS;
+    $kycBanner = $kycUser && $kycStatus !== \App\Models\KycVerification::STATUS_APPROUVE
+                 && ! request()->routeIs('client.app.kyc.*');
+    $kycPending = $kycStatus === \App\Models\KycVerification::STATUS_EN_ATTENTE;
+  @endphp
+  @if($kycBanner)
+  <div class="ca-kyc-banner {{ $kycPending ? 'is-pending' : '' }}" role="status">
+    <i class="fas {{ $kycPending ? 'fa-hourglass-half' : 'fa-id-card' }}"></i>
+    <div class="ca-kyc-banner__txt">
+      {{ $kycPending ? __('onboarding.kyc_banner_pending') : __('kyc.required_notice') }}
+    </div>
+    <a href="{{ route('client.app.kyc.show') }}" class="ca-kyc-banner__btn">
+      {{ $kycPending ? __('onboarding.kyc_banner_view') : __('onboarding.kyc_banner_cta') }}
+    </a>
+  </div>
   @endif
 
   {{-- Flash messages --}}
@@ -115,14 +137,14 @@
     <i class="fas fa-check-circle"></i> {{ session('success') }}
   </div>
   @endif
-  @if(session('error'))
+  @if(session('error') && ! ($kycBanner && session('error') === __('kyc.required_notice')))
   <div class="ca-flash ca-flash--err" role="alert">
     <i class="fas fa-exclamation-triangle"></i> {{ session('error') }}
   </div>
   @endif
 
   {{-- ── CONTENU PRINCIPAL ── --}}
-  <main class="ca-main" id="ca-main-content">
+  <main class="ca-main @yield('main_class')" id="ca-main-content">
     @yield('content')
   </main>
 
@@ -131,8 +153,14 @@
 {{-- ══════════════════════════════════════════════════════════════════
      BOTTOM NAVIGATION — hors du shell pour eviter le clip iOS Safari
      ══════════════════════════════════════════════════════════════════ --}}
-@if (!View::hasSection('no_bottom_nav'))
-<nav class="ca-nav" role="navigation" aria-label="{{ __('app.nav_label', [], app()->getLocale()) ?? 'Navigation' }}">
+@if (true)
+<nav class="ca-nav {{ View::hasSection('no_bottom_nav') ? 'ca-nav--mobile-hidden' : '' }}" role="navigation" aria-label="{{ __('app.nav_label', [], app()->getLocale()) ?? 'Navigation' }}">
+
+  {{-- Marque : visible uniquement dans la barre latérale (tablette / PC) --}}
+  <a href="{{ route('client.app.home') }}" class="ca-nav__brand" aria-label="{{ site_name() }}">
+    <x-logo variant="icon" theme="light" size="sm" />
+    <span class="ca-nav__brand-name">{{ site_name() }}</span>
+  </a>
 
   {{-- Accueil --}}
   <a href="{{ route('client.app.home') }}"
@@ -142,30 +170,20 @@
     <span>{{ __('app.nav_home') }}</span>
   </a>
 
-  {{-- Dossiers --}}
-  <a href="{{ route('client.app.dossiers') }}"
-     class="ca-nav-item {{ request()->routeIs('client.app.dossiers', 'client.app.loans*') ? 'active' : '' }}"
-     aria-label="{{ __('app.nav_loans') }}">
-    <i class="fas fa-folder-open"></i>
-    <span>{{ __('app.nav_loans') }}</span>
+  {{-- Cartes --}}
+  <a href="{{ route('client.app.cards') }}"
+     class="ca-nav-item {{ request()->routeIs('client.app.cards') ? 'active' : '' }}"
+     aria-label="{{ __('cards.nav') }}">
+    <i class="fas fa-credit-card"></i>
+    <span>{{ __('cards.nav') }}</span>
   </a>
 
-  {{-- Transfert — bouton FAB central --}}
-  <a href="{{ route('client.app.transfers') }}"
-     class="ca-nav-item ca-nav-item--center {{ request()->routeIs('client.app.transfer*', 'client.app.transfers') ? 'active' : '' }}"
-     aria-label="{{ __('app.nav_transfer') }}">
-    <div class="ca-nav-center-btn" aria-hidden="true">
-      <i class="fas fa-right-left"></i>
-    </div>
-    <span>{{ __('app.nav_transfer') }}</span>
-  </a>
-
-  {{-- Factures --}}
-  <a href="{{ route('client.app.invoices') }}"
-     class="ca-nav-item {{ request()->routeIs('client.app.invoices*') ? 'active' : '' }}"
-     aria-label="{{ __('app.nav_invoices') }}">
-    <i class="fas fa-file-invoice"></i>
-    <span>{{ __('app.nav_invoices') }}</span>
+  {{-- RIB --}}
+  <a href="{{ route('client.app.payment-methods') }}"
+     class="ca-nav-item {{ request()->routeIs('client.app.payment-methods', 'client.app.transfer.receive') ? 'active' : '' }}"
+     aria-label="RIB">
+    <i class="fas fa-building-columns"></i>
+    <span>RIB</span>
   </a>
 
   {{-- Profil --}}
@@ -179,34 +197,10 @@
 </nav>
 @endif
 
-{{-- ══ BANNIERE PWA ══ --}}
-<div class="ca-install-banner" id="ca-install-banner" role="complementary">
-  <div style="width:42px;height:42px;border-radius:14px;background:rgba(220,190,135,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-    <i class="fas fa-mobile-screen" style="color:var(--ca-accent-l);font-size:1.25rem"></i>
-  </div>
-  <div style="flex:1;min-width:0">
-    <div style="font-size:.875rem;font-weight:700;color:var(--ca-text);margin-bottom:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-      {{ __('app.install') }}
-    </div>
-    <div style="font-size:.72rem;color:var(--ca-text-3)">{{ __('app.install_hint') }}</div>
-  </div>
-  <div style="display:flex;gap:.5rem;flex-shrink:0">
-    <button id="ca-install-btn"
-            style="background:linear-gradient(135deg,var(--ca-teal-l),var(--ca-teal));color:var(--ca-navy);border:none;padding:.45rem .9rem;border-radius:var(--ca-radius-sm);font-size:.8rem;font-weight:700;cursor:pointer;white-space:nowrap">
-      {{ __('app.install_btn') }}
-    </button>
-    <button onclick="document.getElementById('ca-install-banner').style.display='none'"
-            aria-label="Fermer"
-            style="background:none;border:1px solid var(--ca-border);color:var(--ca-text-3);width:32px;height:32px;border-radius:50%;font-size:.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-      <i class="fas fa-xmark"></i>
-    </button>
-  </div>
-</div>
-
 @stack('scripts')
 
 {{-- ══ Push Notifications ══ --}}
-<div id="cxa-push-banner" style="display:none;position:fixed;bottom:calc(62px + env(safe-area-inset-bottom,0px) + .75rem);left:.875rem;right:.875rem;z-index:9000;background:#0E3B2E;border:1px solid rgba(220,190,135,.35);border-radius:16px;padding:.875rem 1rem;box-shadow:0 8px 32px rgba(14,59,46,.5);display:none;align-items:center;gap:.875rem">
+<div id="cxa-push-banner" style="display:none;position:fixed;bottom:calc(var(--ca-nav-h) + env(safe-area-inset-bottom,0px) + .5rem);left:.875rem;right:.875rem;z-index:9000;background:#0E3B2E;border:1px solid rgba(220,190,135,.35);border-radius:16px;padding:.875rem 1rem;box-shadow:0 8px 32px rgba(14,59,46,.5);display:none;align-items:center;gap:.875rem">
   <div style="width:42px;height:42px;border-radius:13px;background:rgba(220,190,135,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0">
     <i class="fas fa-bell" style="color:#F5EDDD;font-size:1.1rem"></i>
   </div>
@@ -388,6 +382,8 @@ window.SolbergSound = (function () {
   });
 })();
 </script>
-@include('partials.pwa-install', ['bottom' => 'calc(62px + 1.25rem)', 'z' => 8000])
+@unless (View::hasSection('no_bottom_nav'))
+@include('partials.pwa-install', ['bottom' => 'var(--ca-fab-bottom)', 'z' => 8000])
+@endunless
 </body>
 </html>

@@ -32,6 +32,12 @@ class EmailVerificationController extends Controller
      */
     public function verify(Request $request, string $uuid, string $hash)
     {
+        // Lien copié depuis du HTML brut (fichier log, source du mail) : « &amp; » au lieu de « & »
+        // casse la signature. On corrige l'URL et on la relance.
+        if (str_contains($request->getRequestUri(), '&amp;')) {
+            return redirect()->to(str_replace('&amp;', '&', $request->getRequestUri()));
+        }
+
         $user = User::where('uuid', $uuid)->first();
 
         if (! $user || ! hash_equals(sha1($user->email), $hash)) {
@@ -43,8 +49,11 @@ class EmailVerificationController extends Controller
             return redirect()->route('login')->with('verified_status', __('onboarding.already_verified'));
         }
 
-        if (! $request->hasValidSignature()) {
-            return redirect()->route('login')->withErrors(['identifier' => __('onboarding.link_invalid')]);
+        // Lien expiré ou altéré, compte pas encore activé : on propose directement le renvoi.
+        if (! $request->hasValidSignature(absolute: false)) {
+            return redirect()->route('verification.notice')
+                ->with('verify_email', $user->email)
+                ->with('error', __('onboarding.link_invalid'));
         }
 
         $user->forceFill(['email_verified_at' => now()])->save();
@@ -70,19 +79,34 @@ class EmailVerificationController extends Controller
         return back()->with('verify_email', $request->input('email'))->with('resent', __('onboarding.resent'));
     }
 
+    /**
+     * URL signée sans le domaine dans la signature : le lien reste valide quelle que soit
+     * l'adresse d'accès au site (localhost, 127.0.0.1:8000, sous-dossier, domaine final),
+     * alors qu'une signature « absolue » dépend de l'hôte exact utilisé à l'envoi.
+     */
     public static function activationUrl(User $user): string
     {
-        return URL::temporarySignedRoute(
+        $path = URL::temporarySignedRoute(
             'verification.verify',
             now()->addDays(7),
-            ['uuid' => $user->uuid, 'hash' => sha1($user->email)]
+            ['uuid' => $user->uuid, 'hash' => sha1($user->email)],
+            absolute: false
         );
+
+        return url($path);
     }
 
     public static function sendActivationMail(User $user): bool
     {
         try {
-            Mail::to($user->email)->send(new VerifyAccountMail($user, self::activationUrl($user)));
+            $url = self::activationUrl($user);
+            Mail::to($user->email)->send(new VerifyAccountMail($user, $url));
+
+            // Mode test (mailer log) : lien en clair, copiable tel quel depuis le log
+            // (dans le HTML du mail il apparaît avec « &amp; », qui casse la signature).
+            if (in_array(config('mail.default'), ['log', 'array'], true)) {
+                Log::info("[MODE TEST] Lien d'activation pour {$user->email} : {$url}");
+            }
 
             return true;
         } catch (\Throwable $e) {

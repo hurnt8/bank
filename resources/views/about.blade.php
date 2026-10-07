@@ -111,9 +111,6 @@
                         ['fas fa-wallet',              'menu.banking_account'],
                         ['fas fa-credit-card',         'menu.banking_card'],
                         ['fas fa-money-bill-transfer', 'menu.banking_transfer'],
-                        ['fas fa-user-tie',            'home.personal_loan'],
-                        ['fas fa-home',                'home.mortgage_loan'],
-                        ['fas fa-car',                 'home.auto_loan'],
                     ] as $t)
                     <span style="display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .75rem;border-radius:999px;background:var(--cream);border:1px solid #e2ddd0;font-size:.75rem;font-weight:700;color:var(--navy);">
                         <i class="{{ $t[0] }}" style="color:var(--accent-dark);font-size:.7rem;"></i> @lang($t[1])

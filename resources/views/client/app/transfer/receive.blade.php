@@ -4,6 +4,7 @@
 @section('back_btn', true)
 @section('back_url', route('client.app.transfers'))
 
+@section('main_class', 'ca-main--narrow')
 @section('content')
 
 @push('styles')
@@ -87,8 +88,8 @@
 @endpush
 
 @php
-  $iban = $user->bank_account ?? 'Non renseigné';
-  $bic  = $user->bic ?? 'SOLBERGFR';
+  $iban = $user->bankAccount?->iban ?: 'Non renseigné';
+  $bic  = $user->bankAccount?->bic ?: '—';
   $currency = $user->currency ?? \App\Models\Currency::default();
   $shareText = "IBAN : {$iban}\nBIC : {$bic}\nTitulaire : {$user->name}\nBanque : " . site_name() . " Financial";
 @endphp
@@ -103,7 +104,7 @@
 {{-- IBAN ── --}}
 <div class="rcv-iban-block">
   <div class="rcv-iban-label">{{ __('app.receive_iban') }}</div>
-  <div class="rcv-iban-value">{{ $iban }}</div>
+  <div class="rcv-iban-value">{{ $user->bankAccount ? trim(chunk_split($iban, 4, " ")) : $iban }}</div>
   <button class="rcv-copy-btn" id="copyBtn" onclick="copyIban(this, '{{ addslashes($iban) }}')">
     <i class="fas fa-copy" id="copyIcon"></i>
     <span id="copyTxt">{{ __('app.copy_iban') }}</span>

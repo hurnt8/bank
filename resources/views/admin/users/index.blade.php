@@ -403,19 +403,6 @@
                     </select>
                   </div>
 
-                  <div style="display:flex;align-items:flex-start;gap:.625rem;
-                              background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;
-                              padding:.75rem 1rem">
-                    <input type="checkbox" name="reassign_loans" value="1" id="reassignLoans{{ $user->id }}"
-                           style="margin-top:.2rem;flex-shrink:0">
-                    <label for="reassignLoans{{ $user->id }}" style="font-size:.8125rem;color:#92400e;cursor:pointer;line-height:1.5">
-                      <strong>Réaffecter aussi tous les dossiers de prêt</strong> de ce client au nouvel admin
-                      <span style="display:block;font-size:.73rem;font-weight:400;margin-top:.15rem">
-                        Si non coché, seule la propriété du compte client sera transférée.
-                      </span>
-                    </label>
-                  </div>
-
                 </div>
 
                 <div class="modal-footer" style="border-top:1px solid var(--c-border);padding:.875rem 1.5rem;gap:.5rem">

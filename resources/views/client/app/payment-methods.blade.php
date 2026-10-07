@@ -1,8 +1,8 @@
 @extends('layouts.client-app')
 @section('title', __('app.payment_methods') . ' — ' . site_name())
-@section('page_title', __('app.payment_methods'))
+@section('page_title', 'RIB')
 @section('back_btn', true)
-@section('back_url', route('client.app.profile'))
+@section('back_url', route('client.app.home'))
 
 @push('styles')
 <style>
@@ -144,6 +144,7 @@
 </style>
 @endpush
 
+@section('main_class', 'ca-main--narrow')
 @section('content')
 <div class="pm-body">
 
@@ -277,7 +278,7 @@
   <div class="pm-empty__ico"><i class="fas fa-credit-card"></i></div>
   <div class="pm-empty__title">{{ __('app.not_configured') }}</div>
   <div class="pm-empty__sub">
-    Votre conseiller {{ site_name() }} configurera vos coordonnees bancaires<br>lors de la finalisation de votre dossier.
+    Votre conseiller {{ site_name() }} configurera vos coordonnees bancaires<br>lors de la validation de votre compte.
   </div>
 </div>
 

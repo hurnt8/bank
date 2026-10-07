@@ -87,15 +87,7 @@
 @php
   $palette = ['#2563EB','#059669','#D97706','#7C3AED','#DC2626','#0D9488','#C6A15B'];
   $avatarBg = $palette[crc32($user->email) % count($palette)];
-  $stMap = [
-    'draft'           => ['lbl' => 'Brouillon',      'cls' => 'bs-gray'],
-    'pending'         => ['lbl' => 'En attente',     'cls' => 'bs-amber'],
-    'validated'       => ['lbl' => 'Validé',         'cls' => 'bs-blue'],
-    'contract_sent'   => ['lbl' => 'Contrat envoyé', 'cls' => 'bs-violet'],
-    'contract_signed' => ['lbl' => 'Contrat signé',  'cls' => 'bs-emerald'],
-    'finalized'       => ['lbl' => 'Finalisé',       'cls' => 'bs-green'],
-    'rejected'        => ['lbl' => 'Refusé',         'cls' => 'bs-red'],
-  ];
+  
 @endphp
 
 @if ($errors->any())
@@ -116,7 +108,7 @@
 <div class="page-hdr-row" style="margin-bottom:1.25rem">
   <div class="page-hdr">
     <h1>Fiche client</h1>
-    <p>Profil complet et historique des dossiers de <strong>{{ $user->name }}</strong></p>
+    <p>Profil complet de <strong>{{ $user->name }}</strong></p>
   </div>
   <div class="page-hdr-actions">
     <a href="{{ route('admin.users') }}" class="btn-navy" style="background:var(--c-bg);color:var(--c-muted);border:1px solid var(--c-border)">
@@ -160,6 +152,16 @@
     </form>
     @endif
     @if($user->hasRole('client'))
+      @php $kycStatus = $user->kycVerification?->status; @endphp
+      @if($kycStatus !== \App\Models\KycVerification::STATUS_APPROUVE)
+      <form action="{{ route('admin.users.kyc.validate', $user) }}" method="POST"
+            onsubmit="return confirm('Valider ce compte sans documents ? L\'IBAN et la carte seront générés automatiquement.')">
+        @csrf
+        <button type="submit" class="btn-navy" style="background:rgba(5,150,105,.1);color:#059669;border:1px solid rgba(5,150,105,.25)">
+          <i class="fas fa-user-check"></i> Valider le compte
+        </button>
+      </form>
+      @endif
       <a href="{{ route('admin.users.banking.edit', $user) }}" class="btn-navy" style="background:rgba(198,161,91,.1);color:var(--c-accent, #C6A15B);border:1px solid rgba(198,161,91,.25)">
         <i class="fas fa-university"></i> {{ $user->bankAccount ? 'Coordonnées bancaires' : 'Attribuer IBAN / Carte' }}
       </a>
@@ -222,104 +224,6 @@
   <div class="cu-meta">
     <div class="cu-meta-lbl">Membre depuis</div>
     <div class="cu-meta-val">{{ $user->created_at->format('d/m/Y') }}</div>
-  </div>
-</div>
-
-{{-- ── KPIs prêts ── --}}
-<div class="metrics-grid mb-4" style="grid-template-columns:repeat(4,1fr)">
-  <div class="metric-card">
-    <div class="metric-card__icon mi-navy"><i class="fas fa-folder-open"></i></div>
-    <div class="metric-card__val">{{ $loanStats['total'] }}</div>
-    <div class="metric-card__lbl">Total dossiers</div>
-  </div>
-  <div class="metric-card">
-    <div class="metric-card__icon mi-amber"><i class="fas fa-clock"></i></div>
-    <div class="metric-card__val">{{ $loanStats['pending'] }}</div>
-    <div class="metric-card__lbl">En cours</div>
-  </div>
-  <div class="metric-card">
-    <div class="metric-card__icon mi-blue"><i class="fas fa-file-signature"></i></div>
-    <div class="metric-card__val">{{ $loanStats['active'] }}</div>
-    <div class="metric-card__lbl">Actifs</div>
-  </div>
-  <div class="metric-card">
-    <div class="metric-card__icon mi-green"><i class="fas fa-check-circle"></i></div>
-    <div class="metric-card__val">{{ $loanStats['finalized'] }}</div>
-    <div class="metric-card__lbl">Finalisés</div>
-  </div>
-</div>
-
-{{-- ── Tableau des dossiers ── --}}
-<div class="cu-table-card">
-  <div class="cu-table-hdr">
-    <div class="cu-table-title">
-      <div class="cu-table-dot"></div>
-      Dossiers de prêt ({{ $loanStats['total'] }})
-    </div>
-    <a href="{{ route('admin.loans.index') }}?search={{ urlencode($user->email) }}" class="cu-link-all">
-      Voir dans les prêts <i class="fas fa-arrow-right" style="font-size:.55rem"></i>
-    </a>
-  </div>
-
-  <div class="table-responsive-pro">
-    <table class="pro-table">
-      <thead>
-        <tr>
-          <th>Référence</th>
-          <th>Montant</th>
-          <th>Objet</th>
-          <th>Statut</th>
-          <th>Admin</th>
-          <th>Date</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        @forelse($loans as $loan)
-        @php $stInfo = $stMap[$loan->status] ?? ['lbl' => ucfirst($loan->status ?? '—'), 'cls' => 'bs-gray']; @endphp
-        <tr>
-          <td data-label="Référence" class="cell-mono" style="font-size:.75rem">
-            {{ $loan->reference ?? '#'.$loan->id }}
-          </td>
-          <td data-label="Montant" style="font-weight:800;color:var(--c-navy);white-space:nowrap">
-            {{ number_format($loan->amount ?? 0, 0, ',', ' ') }}&nbsp;{{ $loan->currency ?? '€' }}
-          </td>
-          <td data-label="Objet" style="font-size:.77rem;color:var(--c-muted);max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-            {{ Str::limit($loan->objet ?? '—', 22) }}
-          </td>
-          <td data-label="Statut">
-            <span class="badge-status {{ $stInfo['cls'] }}">{{ $stInfo['lbl'] }}</span>
-          </td>
-          <td data-label="Admin" style="font-size:.77rem;color:var(--c-muted)">
-            {{ $loan->admin?->name ?? '—' }}
-          </td>
-          <td data-label="Date" style="font-size:.72rem;color:var(--c-muted);white-space:nowrap">
-            {{ $loan->created_at->format('d/m/Y') }}
-          </td>
-          <td data-label="" style="display:flex;gap:.35rem">
-            <a href="{{ route('admin.loans.show', $loan) }}" class="btn-icon btn-icon-primary" title="Voir le dossier">
-              <i class="fas fa-eye"></i>
-            </a>
-            <form action="{{ route('admin.loans.destroy', $loan) }}" method="POST"
-                  data-confirm="Ce dossier de pret sera definitivement supprime. Cette action est irreversible."
-            data-confirm-title="Supprimer ce dossier ?" data-confirm-ok="Supprimer" data-confirm-danger="1">
-              @csrf @method('DELETE')
-              <button type="submit" class="btn-icon btn-icon-danger" title="Supprimer le dossier">
-                <i class="fas fa-trash"></i>
-              </button>
-            </form>
-          </td>
-        </tr>
-        @empty
-        <tr>
-          <td colspan="7" style="padding:2.5rem;text-align:center">
-            <i class="fas fa-folder-open" style="font-size:2rem;color:var(--c-muted);opacity:.25;display:block;margin-bottom:.75rem"></i>
-            <p style="font-size:.8rem;color:var(--c-muted)">Aucun dossier pour ce client</p>
-          </td>
-        </tr>
-        @endforelse
-      </tbody>
-    </table>
   </div>
 </div>
 

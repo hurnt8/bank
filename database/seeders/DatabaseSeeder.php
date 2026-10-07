@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SiteContactSeeder::class);
         $this->call(RolesAndPermissionsSeeder::class);
         $this->call(ExceptionalPermissionsSeeder::class);
-        $this->call(ContractTemplateSeeder::class);
+        
         $this->call(CurrencySeeder::class);
     }
 }

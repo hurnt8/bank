@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'general_title' => site_name() . ' - Banque en ligne : compte, carte et financement en Europe.',
+    'general_title' => site_name() . ' - Banque en ligne : compte, carte et virements en Europe.',
     'banner_title' => 'Votre banque 100 % en ligne, ouverte en quelques minutes.',
     'banner_text' => 'Des millions de personnes utilisent ' . site_name() . ' pour gérer leur argent au quotidien.',
     'get_loan_now' => 'Simulez votre prêt',
@@ -74,7 +74,7 @@ return [
         'months_ago' => 1,
     ],
     'testimonial_2' => [
-        'quote' => '« Après deux refus en banque traditionnelle, ' . site_name() . ' m\'a accordé un prêt personnel en 48 h. L\'équipe a su étudier mon dossier avec sérieux et bienveillance. Merci infiniment ! »',
+        'quote' => '« Après avoir été refusé ailleurs, ' . site_name() . ' m\'a ouvert un compte en quelques minutes. L\'équipe a vérifié mon dossier avec sérieux et bienveillance. Merci infiniment ! »',
         'name'  => 'Isabelle Dupont',
         'location' => 'Lyon, France',
         'months_ago' => 2,
@@ -92,7 +92,7 @@ return [
         'months_ago' => 3,
     ],
     'testimonial_5' => [
-        'quote' => '« Simulateur clair, dossier simple, virement reçu en trois jours ouvrés. J\'avais besoin de financer des travaux urgents et ' . site_name() . ' a répondu présent au bon moment. »',
+        'quote' => '« Vérification d\'identité simple, virement reçu en trois jours ouvrés. J\'avais besoin d\'un compte rapidement et ' . site_name() . ' a répondu présent au bon moment. »',
         'name'  => 'Aurélien Leclerc',
         'location' => 'Nantes, France',
         'months_ago' => 4,
@@ -113,7 +113,7 @@ return [
     ],
 
     'about_title' => 'Votre argent, simplifié',
-    'about_description' => site_name() . ' est votre banque de confiance pour gérer votre compte, votre carte et vos virements au quotidien, avec une expérience client exceptionnelle. Nous proposons aussi des solutions de financement simples, sécurisées et rapides.',
+    'about_description' => site_name() . ' est votre banque de confiance pour gérer votre compte, votre carte et vos virements au quotidien, avec une expérience client exceptionnelle.',
     'rating' => '4.9/5',
     'rating_description' => 'Les clients évaluent les professionnels',
     'projects_completed' => '+12M',
@@ -125,7 +125,7 @@ return [
     ],
 
     'cta_title' => 'Ouvrez votre compte en quelques minutes.',
-    'cta_text' => 'Rejoignez ' . site_name() . ' dès aujourd\'hui : compte, carte, IBAN et virements, et des solutions de financement rapides et sûres si vous en avez besoin.',
+    'cta_text' => 'Rejoignez ' . site_name() . ' dès aujourd\'hui : compte, carte, IBAN et virements en quelques minutes.',
     'cta_button' => 'Ouvrir un compte',
 
     'terms' => 'Conditions générales',
@@ -163,7 +163,7 @@ return [
     'sl' => 'Slovène',
 
     // Hero subtitle
-    'hero_subtitle' => 'Ouvrez un compte en quelques minutes, recevez votre IBAN et votre carte, et gérez votre argent au quotidien. Besoin d\'un financement ? Nos prêts restent disponibles en quelques clics.',
+    'hero_subtitle' => 'Ouvrez un compte en quelques minutes, recevez votre IBAN et votre carte, et gérez votre argent au quotidien.',
 
     // Slide
     'slide_1' => [
@@ -201,7 +201,7 @@ return [
         'sectagline' => 'bienvenue chez ' . site_name(),
         'sectitle' => 'Une banque pensée pour votre quotidien',
         'text1' => 'Nous sommes dans ce domaine depuis 15 ans et offrons les meilleurs services.',
-        'text2' => site_name() . ' est une banque 100 % en ligne : compte, carte, IBAN et virements en quelques minutes, avec une expérience client exceptionnelle. Besoin de financer un projet ? Nos solutions de prêt restent disponibles, simples et rapides.',
+        'text2' => site_name() . ' est une banque 100 % en ligne : compte, carte, IBAN et virements en quelques minutes, avec une expérience client exceptionnelle.',
         'check1' => 'ouverture de compte en ligne',
         'check2' => 'carte bancaire incluse',
         'check3' => 'virements instantanés',
@@ -226,7 +226,7 @@ return [
         'sectagline' => 'ce que nous offrons',
         'sectitle' => 'Les services de votre banque au quotidien',
         'cta_title' => 'Prêt à ouvrir votre compte ?',
-        'cta_text' => 'Notre équipe est disponible pour vous accompagner dans l\'ouverture de votre compte ou votre demande de financement.',
+        'cta_text' => 'Notre équipe est disponible pour vous accompagner dans l\'ouverture de votre compte.',
     ],
 
     // FAQ page CTA
@@ -286,7 +286,7 @@ return [
             'title2' => 'Rapidité',
             'desc2'  => 'Compte ouvert en quelques minutes, virements traités rapidement, sans paperasse ni déplacement.',
             'title3' => 'Un accompagnement humain',
-            'desc3'  => 'Notre équipe est disponible pour répondre à vos questions, sur votre compte comme sur vos projets de financement.',
+            'desc3'  => 'Notre équipe est disponible pour répondre à vos questions sur votre compte, votre carte et vos virements.',
         ],
     ],
 
@@ -322,7 +322,7 @@ return [
     'total_loan_amount_granted' => 'Prêt max. / dossier',
     'average_approval_time'     => 'Réponse garantie',
     'account_opening_time'      => 'Ouverture de compte',
-    'member'                    => 'Clients financés',
+    'member'                    => 'Clients actifs',
     'years_experience'          => 'Années d\'expérience',
     'day' => 'Jours',
 

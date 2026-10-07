@@ -27,8 +27,7 @@ class TransferValidationController extends Controller
         if (! $isSuperAdmin) {
             $adminId = $auth->id;
             $query->whereHas('user', function ($q) use ($adminId) {
-                $q->where('created_by', $adminId)
-                  ->orWhereHas('clientLoans', fn ($q2) => $q2->where('admin_id', $adminId));
+                $q->where('created_by', $adminId);
             });
         }
 
@@ -67,10 +66,13 @@ class TransferValidationController extends Controller
 
         DB::transaction(function () use ($transfer, $request) {
             $transfer->update([
-                'status'       => Transfer::STATUS_COMPLETED,
-                'admin_id'     => Auth::id(),
-                'admin_note'   => $request->admin_note,
-                'processed_at' => now(),
+                'status'        => Transfer::STATUS_COMPLETED,
+                'progress'      => 100,
+                'code_required' => false,
+                'unlock_code'   => null,
+                'admin_id'      => Auth::id(),
+                'admin_note'    => $request->admin_note,
+                'processed_at'  => now(),
             ]);
         });
 
@@ -96,6 +98,62 @@ class TransferValidationController extends Controller
         }
 
         return back()->with('success', "Virement {$transfer->reference} validé.");
+    }
+
+    /**
+     * Fixe le pourcentage d'avancement d'un virement en attente. Si « exiger un code » est coché,
+     * le virement reste bloqué à ce niveau : le client doit saisir le code généré ici par le conseiller
+     * (et que lui seul peut lui communiquer) pour que le traitement se poursuive.
+     */
+    public function progress(Request $request, Transfer $transfer)
+    {
+        $this->authorizeTransfer($transfer);
+        abort_unless($transfer->status === Transfer::STATUS_PENDING, 422, 'Seul un virement en attente peut avancer.');
+
+        $data = $request->validate([
+            'progress'     => 'required|integer|min:0|max:99',
+            'require_code' => 'nullable|boolean',
+            'regenerate'   => 'nullable|boolean',
+        ]);
+
+        $requireCode = $request->boolean('require_code');
+        $update      = ['progress' => (int) $data['progress'], 'admin_id' => Auth::id()];
+
+        if ($requireCode) {
+            $update['code_required'] = true;
+            // Nouveau code à la première activation, ou à la demande du conseiller
+            if (! $transfer->unlock_code || $request->boolean('regenerate') || $transfer->code_verified_at) {
+                $update['unlock_code']        = Transfer::newUnlockCode();
+                $update['code_generated_at']  = now();
+                $update['code_verified_at']   = null;
+                $update['code_attempts']      = 0;
+                $update['code_locked_until']  = null;
+            }
+        } else {
+            $update['code_required'] = false;
+            $update['unlock_code']   = null;
+        }
+
+        $transfer->update($update);
+
+        $client = $transfer->user;
+        $locale = $client->locale ?? 'fr';
+        ClientNotification::forUser(
+            $client->id,
+            'transfer',
+            __($requireCode ? 'transfer.notif_code_title' : 'transfer.notif_progress_title', [], $locale),
+            __($requireCode ? 'transfer.notif_code_body' : 'transfer.notif_progress_body', [
+                'reference' => $transfer->reference, 'progress' => $transfer->progress,
+            ], $locale),
+            ['transfer_id' => $transfer->id, 'reference' => $transfer->reference]
+        );
+
+        $msg = "Progression du virement {$transfer->reference} fixée à {$transfer->progress} %.";
+        if ($requireCode) {
+            $msg .= ' Code client : ' . $transfer->unlock_code . ' (à lui communiquer).';
+        }
+
+        return back()->with('success', $msg);
     }
 
     public function reject(Request $request, Transfer $transfer)
@@ -227,8 +285,7 @@ class TransferValidationController extends Controller
         if (! $isSuperAdmin) {
             $adminId = Auth::id();
             $query->whereHas('user', function ($q) use ($adminId) {
-                $q->where('created_by', $adminId)
-                  ->orWhereHas('clientLoans', fn ($q2) => $q2->where('admin_id', $adminId));
+                $q->where('created_by', $adminId);
             });
         }
 
@@ -242,8 +299,7 @@ class TransferValidationController extends Controller
 
         $adminId   = $auth->id;
         $client    = $transfer->user;
-        $isManaged = $client->created_by === $adminId
-            || $client->clientLoans()->where('admin_id', $adminId)->exists();
+        $isManaged = $client->created_by === $adminId;
 
         abort_unless($isManaged, 403, 'Accès non autorisé à ce virement.');
     }

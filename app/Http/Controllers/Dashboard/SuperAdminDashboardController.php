@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\LoanRequest;
 use App\Models\User;
 use Database\Seeders\ExceptionalPermissionsSeeder;
 use Illuminate\Http\Request;
@@ -17,20 +16,15 @@ class SuperAdminDashboardController extends Controller
             'total_users'    => User::count(),
             'total_clients'  => User::where('type', 'client')->count(),
             'total_staff'    => User::where('type', 'staff')->count(),
-            'total_loans'    => LoanRequest::count(),
-            'pending_loans'  => LoanRequest::whereIn('status', [null, 'pending'])->count(),
-            'approved_loans' => LoanRequest::where('status', 'approved')->count(),
-            'rejected_loans' => LoanRequest::where('status', 'rejected')->count(),
-            'review_loans'   => LoanRequest::where('status', 'review')->count(),
-            'total_amount'   => LoanRequest::sum('amount'),
-            'month_loans'    => LoanRequest::whereMonth('created_at', now()->month)
-                                           ->whereYear('created_at', now()->year)->count(),
+            'kyc_pending'    => \App\Models\KycVerification::where('status', 'en_attente')->count(),
+            'kyc_approved'   => \App\Models\KycVerification::where('status', 'approuve')->count(),
+            'new_this_month' => User::where('type', 'client')->whereMonth('created_at', now()->month)
+                                    ->whereYear('created_at', now()->year)->count(),
         ];
 
         $recentUsers = User::latest()->take(8)->get();
-        $recentLoans = LoanRequest::latest()->take(8)->get();
 
-        return view('dashboard.super-admin.index', compact('stats', 'recentUsers', 'recentLoans'));
+        return view('dashboard.super-admin.index', compact('stats', 'recentUsers'));
     }
 
     public function roles()

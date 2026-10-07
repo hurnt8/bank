@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'general_title' => site_name() . ' - Online bank: account, card and financing across Europe.',
+    'general_title' => site_name() . ' - Online bank: account, card and transfers across Europe.',
     'banner_title' => 'Your 100% online bank, opened in minutes.',
     'banner_text' => 'Millions of people use ' . site_name() . ' to manage their money every day.',
     'get_loan_now' => 'Simulate your loan',
@@ -73,7 +73,7 @@ return [
         'months_ago' => 1,
     ],
     'testimonial_2' => [
-        'quote'    => '"' . site_name() . ' helped me consolidate my debts into one manageable monthly payment. The adviser walked me through every option without any pressure. I finally feel in control of my finances."',
+        'quote'    => '"' . site_name() . ' opened my account in minutes. The adviser walked me through every step without any pressure. I finally feel in control of my money."',
         'name'     => 'Emily Watson',
         'location' => 'Manchester, United Kingdom',
         'months_ago' => 2,
@@ -91,7 +91,7 @@ return [
         'months_ago' => 3,
     ],
     'testimonial_5' => [
-        'quote'    => '"I needed a car loan quickly after my old vehicle broke down. ' . site_name() . ' processed everything in 48 hours. The team were friendly, professional, and kept me informed at every step."',
+        'quote'    => '"I needed an account quickly after moving abroad. ' . site_name() . ' set everything up in 48 hours. The team were friendly, professional, and kept me informed at every step."',
         'name'     => 'Harry Thompson',
         'location' => 'Dublin, Ireland',
         'months_ago' => 4,
@@ -112,7 +112,7 @@ return [
     ],
 
     'about_title' => 'Your money, simplified',
-    'about_description' => site_name() . ' is your trusted bank for managing your account, card and transfers every day, with an exceptional customer experience. We also offer simple, secure and fast financing solutions.',
+    'about_description' => site_name() . ' is your trusted bank for managing your account, card and transfers every day, with an exceptional customer experience.',
     'rating' => '4.9/5',
     'rating_description' => 'Customers rate professionals',
     'projects_completed' => '+12M',
@@ -124,7 +124,7 @@ return [
     ],
 
     'cta_title' => 'Open your account in minutes.',
-    'cta_text' => 'Join ' . site_name() . ' today: account, card, IBAN and transfers, plus fast and secure financing solutions if you need them.',
+    'cta_text' => 'Join ' . site_name() . ' today: account, card, IBAN and transfers in minutes.',
     'cta_button' => 'Open an account',
 
     'terms' => 'General conditions',
@@ -162,7 +162,7 @@ return [
     'sl' => 'Slovenian',
 
     // Hero subtitle
-    'hero_subtitle' => 'Open an account in minutes, get your IBAN and your card, and manage your money every day. Need financing? Our loans remain available in just a few clicks.',
+    'hero_subtitle' => 'Open an account in minutes, get your IBAN and your card, and manage your money every day.',
 
     // Slide
     'slide_1' => [
@@ -198,7 +198,7 @@ return [
         'sectagline' => 'welcome to ' . site_name(),
         'sectitle' => 'A bank built for your everyday life',
         'text1' => 'We’ve been in this business for 15 years and we provide the best services.',
-        'text2' => site_name() . ' is a 100% online bank: account, card, IBAN and transfers in minutes, with an exceptional customer experience. Need to finance a project? Our loan solutions remain available, simple and fast.',
+        'text2' => site_name() . ' is a 100% online bank: account, card, IBAN and transfers in minutes, with an exceptional customer experience.',
         'check1' => 'online account opening',
         'check2' => 'bank card included',
         'check3' => 'instant transfers',
@@ -222,7 +222,7 @@ return [
         'sectagline' => 'what we”re offering',
         'sectitle' => 'Your everyday banking services',
         'cta_title' => 'Ready to open your account?',
-        'cta_text' => 'Our team is available to support you with opening your account or your financing application.',
+        'cta_text' => 'Our team is available to support you with opening your account.',
     ],
 
     // FAQ page CTA
@@ -302,7 +302,7 @@ return [
             'title2' => 'Speed',
             'desc2'  => 'Account opened in minutes, transfers processed quickly, with no paperwork or travel.',
             'title3' => 'Human support',
-            'desc3'  => 'Our team is available to answer your questions, on your account as well as your financing projects.',
+            'desc3'  => 'Our team is available to answer your questions about your account, your card and your transfers.',
         ],
     ],
 
@@ -337,7 +337,7 @@ return [
     'total_loan_amount_granted' => 'Max. loan / file',
     'average_approval_time'     => 'Guaranteed response',
     'account_opening_time'      => 'Account opening',
-    'member'                    => 'Financed clients',
+    'member'                    => 'Active clients',
     'years_experience'          => 'Years of experience',
     'day' => 'Days',
 

@@ -14,7 +14,6 @@ class EncryptSensitiveColumns extends Command
 
     private array $targets = [
         'users'         => ['bank_account', 'bic', 'id_number', 'tax_number'],
-        'loan_requests' => ['bank_account', 'npi'],
     ];
 
     public function handle(): int

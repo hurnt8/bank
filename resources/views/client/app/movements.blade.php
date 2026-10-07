@@ -17,6 +17,9 @@
 .mv-date-sep{font-size:.65rem;color:var(--ca-text-3);text-transform:uppercase;letter-spacing:.08em;padding:.875rem 0 .35rem;font-weight:700}
 .mv-item{display:flex;align-items:center;gap:.875rem;padding:.875rem;background:var(--ca-bg2);border-radius:var(--ca-radius-sm);margin-bottom:.5rem;border:1px solid var(--ca-border);transition:.15s}
 .mv-item:hover{border-color:var(--ca-border-2)}
+.mv-item--link{cursor:pointer;text-decoration:none;color:inherit}
+.mv-item--link:hover{border-color:var(--ca-accent);background:var(--ca-bg3)}
+.mv-chev{color:var(--ca-text-3);font-size:.7rem;margin-left:.25rem;flex-shrink:0}
 .mv-ico{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem}
 .mv-ico--credit{background:rgba(74,222,128,.15);color:#4ade80}
 .mv-ico--debit{background:rgba(248,113,113,.15);color:#f87171}
@@ -92,7 +95,8 @@
   @php $lastDate = $dateLabel; @endphp
 @endif
 
-<div class="mv-item">
+@php $mvUrl = ($mvt->source === 'transfer' && ! empty($mvt->transfer_ref)) ? route('client.app.transfer.show', $mvt->transfer_ref) : null; @endphp
+@if($mvUrl)<a href="{{ $mvUrl }}" class="mv-item mv-item--link">@else<div class="mv-item">@endif
   <div class="mv-ico mv-ico--{{ $iconClass }}">
     @if($mvt->source === 'transfer')
       <i class="fas fa-{{ $mvt->type === 'debit' ? 'arrow-up' : 'arrow-down' }}"></i>
@@ -124,7 +128,8 @@
       <div class="mv-bal">{{ __('app.mv_balance_after') }} {{ number_format($mvt->balance_after, 2, ',', ' ') }}</div>
     @endif
   </div>
-</div>
+  @if($mvUrl)<i class="fas fa-chevron-right mv-chev" aria-hidden="true"></i>@endif
+@if($mvUrl)</a>@else</div>@endif
 
 @endforeach
 

@@ -36,5 +36,5 @@ return [
     'newsletter_title' => 'Stay informed about our offers',
     'subscribe'        => 'Subscribe',
     'read_more'        => 'Learn more',
-    'footer_desc'      => site_name() . ' is a 100% online bank: open an account, get your card and IBAN in minutes, and also enjoy our financing solutions across Europe.',
+    'footer_desc'      => site_name() . ' is a 100% online bank: open an account, get your card and IBAN in minutes, and make transfers across Europe.',
 ];

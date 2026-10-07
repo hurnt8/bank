@@ -29,11 +29,7 @@ class Language extends Model
         static $codes = null;
 
         if ($codes === null) {
-            $codes = static::query()
-                ->where('is_visible', true)
-                ->orderBy('sort_order')
-                ->pluck('code')
-                ->all();
+            $codes = static::enabledList()->pluck('code')->all();
         }
 
         return $codes;
@@ -47,10 +43,15 @@ class Language extends Model
         static $list = null;
 
         if ($list === null) {
+            // Seules les langues réellement disponibles dans le système sont proposées :
+            // visibles ET dotées d'un dossier de traduction (lang/<code>). Les autres
+            // retombent sur l'anglais.
             $list = static::query()
                 ->where('is_visible', true)
                 ->orderBy('sort_order')
-                ->get();
+                ->get()
+                ->filter(fn (self $lang) => is_dir(lang_path($lang->code)))
+                ->values();
         }
 
         return $list;

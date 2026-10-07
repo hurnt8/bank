@@ -5,87 +5,124 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
+/**
+ * Rôles, permissions et comptes staff par défaut.
+ *
+ * Idempotent : peut être rejoué sans risque.
+ *  - les permissions et les rôles sont créés s'ils manquent, puis resynchronisés ;
+ *  - les comptes par défaut ne sont créés QUE si aucun utilisateur ne porte déjà le rôle
+ *    (jamais de second super-admin sur une installation en service) ;
+ *  - aucun mot de passe n'est écrit dans le code : il vient de l'environnement
+ *    (SEED_SUPERADMIN_PASSWORD / SEED_ADMIN_PASSWORD) ou est généré aléatoirement et
+ *    affiché une seule fois.
+ */
 class RolesAndPermissionsSeeder extends Seeder
 {
+    /** Permissions métier de base. */
+    public const BASE_PERMISSIONS = [
+        'view users',
+        'manage users',
+        'manage roles',
+    ];
+
+    /** Permissions supprimées avec la fonctionnalité de prêt : retirées de la base si elles existent. */
+    public const OBSOLETE_PERMISSIONS = [
+        'view loans', 'manage loans', 'manage-loan-settings', 'manage-notification-templates',
+    ];
+
+    /** Permissions par rôle (le super-admin reçoit toutes les permissions). */
+    public const ROLE_PERMISSIONS = [
+        'client'      => [],
+        'admin'       => ['view users'],
+        'super-admin' => '*',
+    ];
+
     public function run(): void
     {
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        $registrar = app(PermissionRegistrar::class);
+        $registrar->forgetCachedPermissions();
 
-        // Permissions
-        $permissions = [
-            'view loans',
-            'manage loans',
-            'view users',
-            'manage users',
-            'manage roles',
-        ];
-        foreach ($permissions as $perm) {
-            Permission::firstOrCreate(['name' => $perm]);
+        // ── Permissions : base + permissions « exceptionnelles » accordables à un admin ──
+        $all = array_merge(self::BASE_PERMISSIONS, array_keys(ExceptionalPermissionsSeeder::PERMISSIONS));
+        foreach ($all as $name) {
+            Permission::firstOrCreate(['name' => $name, 'guard_name' => 'web']);
         }
 
-        // Roles
-        $clientRole = Role::firstOrCreate(['name' => 'client']);
-        $clientRole->syncPermissions(['view loans']);
+        Permission::whereIn('name', self::OBSOLETE_PERMISSIONS)->delete();
 
-        $adminRole = Role::firstOrCreate(['name' => 'admin']);
-        $adminRole->syncPermissions(['view loans', 'manage loans', 'view users']);
-
-        $superAdminRole = Role::firstOrCreate(['name' => 'super-admin']);
-        $superAdminRole->syncPermissions($permissions);
-
-        // Les comptes par defaut ont change de domaine lors du passage a Mellenthin
-        // Financial. Sans ce renommage, le firstOrCreate ci-dessous ne retrouverait pas
-        // le compte existant et creerait un SECOND super-admin sur les installations
-        // deja en service. Le mot de passe, lui, reste inchange.
-        $legacyAccounts = [
-            'support@aurenzafinancial.online' => 'contact@bank.expediva.online',
-            'noreply@aurenzafinancial.online' => 'noreply@mellenthinfinancial.online',
-        ];
-
-        foreach ($legacyAccounts as $oldEmail => $newEmail) {
-            if (User::where('email', $newEmail)->exists()) {
-                continue;
-            }
-
-            $renamed = User::where('email', $oldEmail)->update(['email' => $newEmail]);
-
-            if ($renamed) {
-                $this->command?->warn("Compte renomme : {$oldEmail} -> {$newEmail} (mot de passe inchange)");
-            }
+        // ── Rôles ──
+        foreach (self::ROLE_PERMISSIONS as $roleName => $permissions) {
+            $role = Role::firstOrCreate(['name' => $roleName, 'guard_name' => 'web']);
+            $role->syncPermissions($permissions === '*' ? $all : $permissions);
         }
 
-        // Default super-admin account
-        $superAdmin = User::firstOrCreate(
-            ['email' => 'contact@bank.expediva.online'],
-            [
-                'name'     => 'Super Admin',
-                'password' => Hash::make('ChangeMe@2025!'),
-                'type'     => 'staff',
-            ]
-        );
-        $superAdmin->syncRoles(['super-admin']);
+        $registrar->forgetCachedPermissions();
 
-        // Default admin account
-        $admin = User::firstOrCreate(
-            ['email' => 'noreply@mellenthinfinancial.online'],
-            [
-                'name'     => 'Admin Mellenthin Financial',
-                'password' => Hash::make('Admin@2025!'),
-                'type'     => 'staff',
-            ]
-        );
-        $admin->syncRoles(['admin']);
+        // ── Comptes staff par défaut (uniquement si le rôle n'a encore aucun titulaire) ──
+        $domain  = $this->domain();
+        $created = [];
 
-        $this->command->info('Roles, permissions and default accounts created.');
-        $this->command->table(
-            ['Role', 'Email', 'Password (change immediately)'],
-            [
-                ['super-admin', 'contact@bank.expediva.online', 'ChangeMe@2025!'],
-                ['admin',       'noreply@mellenthinfinancial.online',      'Admin@2025!'],
-            ]
+        $created[] = $this->seedStaff(
+            role:     'super-admin',
+            name:     'Super Admin',
+            email:    env('SEED_SUPERADMIN_EMAIL', 'superadmin@' . $domain),
+            password: env('SEED_SUPERADMIN_PASSWORD'),
         );
+
+        $created[] = $this->seedStaff(
+            role:     'admin',
+            name:     'Admin',
+            email:    env('SEED_ADMIN_EMAIL', 'admin@' . $domain),
+            password: env('SEED_ADMIN_PASSWORD'),
+        );
+
+        $created = array_values(array_filter($created));
+
+        $this->command?->info('Rôles et permissions synchronisés (' . count($all) . ' permissions).');
+
+        if ($created) {
+            $this->command?->warn('Comptes créés — notez les identifiants, le mot de passe n\'est affiché qu\'une fois :');
+            $this->command?->table(['Rôle', 'E-mail', 'Mot de passe'], $created);
+        } else {
+            $this->command?->info('Comptes staff déjà présents : aucun compte créé.');
+        }
+    }
+
+    /**
+     * Crée le compte du rôle s'il n'existe aucun titulaire ; renvoie la ligne à afficher, ou null.
+     */
+    private function seedStaff(string $role, string $name, string $email, ?string $password): ?array
+    {
+        if (User::role($role)->exists()) {
+            return null;
+        }
+
+        $generated = $password === null || $password === '';
+        $plain     = $generated ? Str::password(16) : $password;
+
+        $user = User::firstOrCreate(
+            ['email' => $email],
+            ['name' => $name, 'password' => Hash::make($plain), 'type' => 'staff']
+        );
+
+        // Un compte existant avec cet e-mail garde son mot de passe : on ne l'affiche pas.
+        $isNew = $user->wasRecentlyCreated;
+
+        $user->syncRoles([$role]);
+
+        return [$role, $email, $isNew ? ($generated ? $plain : '(défini via .env)') : '(compte existant, inchangé)'];
+    }
+
+    /** Domaine des adresses par défaut, déduit de l'e-mail expéditeur configuré. */
+    private function domain(): string
+    {
+        $from = (string) config('mail.from.address', '');
+
+        return str_contains($from, '@') ? Str::after($from, '@') : 'example.com';
     }
 }

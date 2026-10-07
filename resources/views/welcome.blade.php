@@ -48,35 +48,11 @@
 
             <div class="hero-split__media wow fadeIn" data-wow-duration="1100ms">
                 <img src="{{ asset('assets/images/refonte/hero-siege.jpg') }}"
-                     alt="@lang('menu.loan')">
+                     alt="{{ site_name() }}">
             </div>
 
     </div>
 </section>
-
-{{-- ============================================================
-     SERVICE NAV STRIP
-============================================================ --}}
-@php
-$serviceNav = [
-    ['route' => 'services.personal', 'icon' => 'fas fa-user-tie',      'label' => 'menu.personal'],
-    ['route' => 'services.home',     'icon' => 'fas fa-home',           'label' => 'menu.home_loan'],
-    ['route' => 'services.auto',     'icon' => 'fas fa-car',            'label' => 'menu.auto'],
-    ['route' => 'services.business', 'icon' => 'fas fa-briefcase',      'label' => 'menu.business'],
-    ['route' => 'services.study',    'icon' => 'fas fa-graduation-cap', 'label' => 'menu.study'],
-    ['route' => 'services.bike',     'icon' => 'fas fa-bicycle',        'label' => 'menu.bike'],
-];
-@endphp
-<div class="service-nav-strip" id="services-strip">
-    <div class="service-nav-strip__inner">
-        @foreach ($serviceNav as $nav)
-        <a href="{{ route($nav['route'], ['locale' => $locale]) }}" class="service-nav-strip__item">
-            <div class="service-nav-strip__icon"><i class="{{ $nav['icon'] }}"></i></div>
-            <span class="service-nav-strip__label">@lang($nav['label'])</span>
-        </a>
-        @endforeach
-    </div>
-</div>
 
 {{-- ============================================================
      ABOUT
@@ -171,9 +147,6 @@ $serviceNav = [
                     <div class="about-loan-item"><i class="fas fa-wallet"></i> @lang('menu.banking_account')</div>
                     <div class="about-loan-item"><i class="fas fa-credit-card"></i> @lang('menu.banking_card')</div>
                     <div class="about-loan-item"><i class="fas fa-money-bill-transfer"></i> @lang('menu.banking_transfer')</div>
-                    <div class="about-loan-item"><i class="fas fa-user-tie"></i> @lang('home.personal_loan')</div>
-                    <div class="about-loan-item"><i class="fas fa-home"></i> @lang('home.mortgage_loan')</div>
-                    <div class="about-loan-item"><i class="fas fa-car"></i> @lang('home.auto_loan')</div>
                 </div>
 
                 <div class="d-flex flex-wrap gap-3">
@@ -187,49 +160,6 @@ $serviceNav = [
 
             </div>
 
-        </div>
-    </div>
-</section>
-
-{{-- ============================================================
-     SERVICES GRID
-============================================================ --}}
-<section class="py-24" style="background:var(--cream);" id="services">
-    <div class="container">
-        <div class="row align-items-end mb-12">
-            <div class="col-lg-8">
-                <div class="rule-label">{{ __('home.services.sectagline') }}</div>
-                <h2 class="section-title mb-0">{{ __('home.services.sectitle') }}</h2>
-            </div>
-            <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-                <a href="{{ route('services', ['locale' => $locale]) }}" class="btn-outline">
-                    @lang('menu.services') <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-
-        {{-- Grille de cellules separees par des filets : le modele a abandonne
-             les cartes a image au profit d'un registre editorial. --}}
-        <div class="offer-grid">
-            @php
-            $services = [
-                ['route' => 'services.personal', 'key' => 'personal_loan', 'label' => 'menu.personal',  'icon' => 'fas fa-user-tie'],
-                ['route' => 'services.study',    'key' => 'study_loan',    'label' => 'menu.study',     'icon' => 'fas fa-graduation-cap'],
-                ['route' => 'services.home',     'key' => 'home_loan',     'label' => 'menu.home_loan', 'icon' => 'fas fa-home'],
-                ['route' => 'services.business', 'key' => 'business_loan', 'label' => 'menu.business',  'icon' => 'fas fa-briefcase'],
-                ['route' => 'services.auto',     'key' => 'auto_loan',     'label' => 'menu.auto',      'icon' => 'fas fa-car'],
-                ['route' => 'services.bike',     'key' => 'bike_loan',     'label' => 'menu.bike',      'icon' => 'fas fa-bicycle'],
-            ];
-            @endphp
-            @foreach ($services as $i => $svc)
-            <a href="{{ route($svc['route'], ['locale' => $locale]) }}" class="offer-cell wow fadeInUp"
-               data-wow-duration="700ms" data-wow-delay="{{ $i * 60 }}ms">
-                <i class="{{ $svc['icon'] }} offer-cell__icon"></i>
-                <h3 class="offer-cell__title">@lang($svc['label'])</h3>
-                <p class="offer-cell__desc">{{ Str::limit(__('loan.' . $svc['key'] . '.description'), 110) }}</p>
-                <span class="offer-cell__more">@lang('menu.read_more') <i class="fas fa-arrow-right"></i></span>
-            </a>
-            @endforeach
         </div>
     </div>
 </section>

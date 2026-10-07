@@ -13,10 +13,10 @@ return [
     'placeholder_message' => 'Your Message',
     'button' => 'Send',
     'sending' => 'Sending…',
-    'subject' => 'Select Loan',
+    'subject' => 'Select a subject',
 
     'detail_title' => 'Keep in touch with us',
-    'detail_desc' => 'We are here to help you. Contact us for any questions or assistance regarding our loan services.',
+    'detail_desc' => 'We are here to help you. Contact us for any questions or assistance regarding your account, your card or your transfers.',
 
     'address_title' => 'Address',
     'address_desc' => 'Rua de Santo António 33, 7200-175, Portugal',

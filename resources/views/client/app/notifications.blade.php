@@ -148,7 +148,6 @@
   $unreadCount = $notifications->whereNull('read_at')->count();
   $iconMap = [
     'transfer'    => ['cls' => 'nx-ico--transfer', 'fa' => 'fas fa-paper-plane',   'pill' => 'nx-type--transfer', 'lbl' => 'Virement'],
-    'loan_update' => ['cls' => 'nx-ico--loan',     'fa' => 'fas fa-file-contract', 'pill' => 'nx-type--loan',     'lbl' => 'Dossier'],
     'credit'      => ['cls' => 'nx-ico--credit',   'fa' => 'fas fa-circle-plus',   'pill' => 'nx-type--credit',   'lbl' => 'Crédit'],
     'debit'       => ['cls' => 'nx-ico--debit',    'fa' => 'fas fa-circle-minus',  'pill' => 'nx-type--debit',    'lbl' => 'Débit'],
     'system'      => ['cls' => 'nx-ico--system',   'fa' => 'fas fa-bell',          'pill' => 'nx-type--system',   'lbl' => 'Système'],
@@ -176,7 +175,7 @@
     <span class="nx-unread-count">{{ $unreadCount }}</span>
   </button>
   @endif
-  @foreach(['credit' => 'Crédits', 'debit' => 'Débits', 'transfer' => 'Virements', 'loan_update' => 'Dossiers'] as $type => $label)
+  @foreach(['credit' => 'Crédits', 'debit' => 'Débits', 'transfer' => 'Virements'] as $type => $label)
     @if($notifications->where('type', $type)->isNotEmpty())
     <button class="nx-filter" :class="active==='{{ $type }}'?'active':''" @click="active='{{ $type }}';filterNotifs('{{ $type }}')">
       {{ $label }}

@@ -4,6 +4,7 @@
 @section('back_btn', true)
 @section('back_url', route('client.app.home'))
 
+@section('main_class', 'ca-main--narrow')
 @section('content')
 
 {{-- Header profil --}}
@@ -53,8 +54,17 @@
         <i class="fas fa-credit-card"></i>
       </div>
       <div class="ca-settings-item__text">
-        <div class="ca-settings-item__label">{{ __('app.payment_methods') }}</div>
-        <div class="ca-settings-item__sub">{{ $user->bank_account ? Str::limit($user->bank_account, 22) : __('app.not_configured') }}</div>
+        <div class="ca-settings-item__label">RIB</div>
+        <div class="ca-settings-item__sub">{{ $user->bankAccount ? $user->bankAccount->maskedIban() : __('app.not_configured') }}</div>
+      </div>
+      <div class="ca-settings-item__right"><i class="fas fa-chevron-right"></i></div>
+    </a>
+    <a href="{{ route('client.app.invoices') }}" class="ca-settings-item" style="text-decoration:none">
+      <div class="ca-settings-item__icon" style="background:rgba(96,165,250,.15);color:#60a5fa">
+        <i class="fas fa-file-invoice"></i>
+      </div>
+      <div class="ca-settings-item__text">
+        <div class="ca-settings-item__label">{{ __('app.invoices_title') }}</div>
       </div>
       <div class="ca-settings-item__right"><i class="fas fa-chevron-right"></i></div>
     </a>
@@ -168,7 +178,7 @@
       <div class="ca-settings-item__right" @click="toggle()">
         <i class="fas fa-chevron-right"></i>
       </div>
-      <div x-show="open" @click.outside="close()" x-transition
+      <div class="ca-lang-pop" x-show="open" @click.outside="close()" x-transition
            style="position:fixed;bottom:calc(var(--ca-nav-h) + 1rem);left:1.25rem;right:1.25rem;background:var(--ca-bg4);border:1px solid var(--ca-border);border-radius:var(--ca-radius-md);overflow:hidden;z-index:600;box-shadow:0 -8px 32px rgba(0,0,0,.4)">
         @foreach(\App\Models\Language::enabledList() as $lang)
         @php [$lc, $label] = [$lang->code, $lang->native_name]; @endphp

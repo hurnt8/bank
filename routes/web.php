@@ -2,12 +2,9 @@
 
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\AdminNotificationController;
-use App\Http\Controllers\Admin\ContractTemplateController;
 use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\LanguageController;
-use App\Http\Controllers\Admin\LoanRequestController as AdminLoanRequestController;
-use App\Http\Controllers\Admin\NotificationTemplateController;
 use App\Http\Controllers\Admin\SupportController as AdminSupportController;
 use App\Http\Controllers\Admin\TransferValidationController;
 use App\Http\Controllers\Admin\UserManagementController;
@@ -20,16 +17,11 @@ use App\Http\Controllers\Auth\StaffForgotPasswordController;
 use App\Http\Controllers\Auth\StaffLoginController;
 use App\Http\Controllers\Auth\StaffResetPasswordController;
 use App\Http\Controllers\Client\AppController as ClientAppController;
-use App\Http\Controllers\Client\LoanRequestController as ClientLoanRequestController;
 use App\Http\Controllers\Client\SupportController as ClientSupportController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Dashboard\AdminDashboardController;
-use App\Http\Controllers\Dashboard\ClientDashboardController;
 use App\Http\Controllers\Dashboard\SuperAdminDashboardController;
-use App\Http\Controllers\LoanController;
-use App\Http\Controllers\LoanOutcomeController;
 use App\Http\Controllers\SignupController;
-use App\Http\Controllers\SuperAdmin\LoanRequestController as SuperAdminLoanRequestController;
 use App\Models\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -85,13 +77,6 @@ Route::group([
     })->name('home');
 
 
-    Route::get('/simulate', function () {
-        // return view('simulate');
-        // return view('/#simulate');
-        return Redirect::to('/#simulate');
-
-    })->name('simulate');
-
     Route::get('/about', function () {
         return view('about');
     })->name('about');
@@ -100,7 +85,6 @@ Route::group([
         return view('contact');
     })->name('contact');
 
-    Route::get('/loan/complete', [LoanController::class, 'showDocuments'])->name('loan.complete');
 
     Route::get('/signup', [SignupController::class, 'create'])->name('signup');
 
@@ -112,51 +96,13 @@ Route::group([
         return view('privacy');
     })->name('privacy');
 
-    Route::get('/faq', function () {
-        return view('faq');
-    })->name('faq');
-
-    Route::get('/services', function () {
-        return view('services');
-    })->name('services');
-
-    Route::get('/services/auto-loan', function () {
-        return view('service-d-auto-loan');
-    })->name('services.auto');
-
-    Route::get('/services/personal-loan', function () {
-        return view('service-d-personal-loan');
-    })->name('services.personal');
-
-    Route::get('/services/home-loan', function () {
-        return view('service-d-home-loan');
-    })->name('services.home');
-
-    Route::get('/services/study-loan', function () {
-        return view('service-d-study-loan');
-    })->name('services.study');
-
-    Route::get('/services/business-loan', function () {
-        return view('service-d-business-loan');
-    })->name('services.business');
-
-    Route::get('/services/bike-loan', function () {
-        return view('service-d-bike-loan');
-    })->name('services.bike');
 
 });
-Route::post('/loan/simulate', [LoanController::class, 'simulate'])->name('loan.simulate');
 Route::post('/contact/send', [ContactController::class, 'sendMail'])->name('contact.send');
 Route::post('/subscribe/send', [ContactController::class, 'subscribeMail'])->name('subscribe.send');
-Route::post('/loan/request', [LoanController::class, 'sendMail'])->name('loan.request');
-Route::post('/loan/documents', [LoanController::class, 'sendDocuments'])->name('loan.documents');
 Route::post('/signup', [SignupController::class, 'store'])->name('signup.store');
 
 // ── Page "prochaines étapes" (lien signé envoyé par email, sans connexion) ──
-Route::get('/loan-outcome/{loan}/approved', [LoanOutcomeController::class, 'approved'])
-    ->name('loan.outcome.approved')->middleware('signed');
-Route::get('/loan-outcome/{loan}/rejected', [LoanOutcomeController::class, 'rejected'])
-    ->name('loan.outcome.rejected')->middleware('signed');
 
 // ── Locale switcher (for auth pages without {locale} prefix) ────────────────
 Route::get('/lang/{lang}', function (Request $request, $lang) {
@@ -218,21 +164,15 @@ Route::post('/staff/reset-password',         [StaffResetPasswordController::clas
 
 // ── Client dashboard ────────────────────────────────────────────────────────
 Route::middleware(['auth', 'role:client'])->prefix('dashboard')->name('client.')->group(function () {
-    Route::get('/', [ClientDashboardController::class, 'index'])->name('dashboard');
-    Route::get('/loans',       [ClientLoanRequestController::class, 'index'])->name('loans');
-    Route::get('/loans/{loan}',[ClientLoanRequestController::class, 'show'])->name('loans.show');
+    Route::get('/', fn () => redirect()->route('client.app.home'))->name('dashboard');
 });
 
 // ── Application mobile client (PWA) ─────────────────────────────────────────
 Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name('client.app.')->group(function () {
     Route::get('/',                    [ClientAppController::class, 'index'])->name('home');
 
-    // Dossiers (alias "dossiers" pour la navigation + route loans conservee)
-    Route::get('/dossiers',            [ClientAppController::class, 'loans'])->name('dossiers');
-    Route::get('/loans',               [ClientAppController::class, 'loans'])->name('loans');
-    Route::get('/loans/{loan}',        [ClientAppController::class, 'loanShow'])->name('loans.show');
+    Route::get('/cards',               [ClientAppController::class, 'cards'])->name('cards');
 
-    Route::get('/analytics',           [ClientAppController::class, 'analytics'])->name('analytics');
     Route::get('/profile',             [ClientAppController::class, 'profile'])->name('profile');
     Route::post('/profile',            [ClientAppController::class, 'updateProfile'])->name('profile.update');
     Route::get('/payment-methods',     [ClientAppController::class, 'paymentMethods'])->name('payment-methods');
@@ -264,6 +204,11 @@ Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name
     // Support client (page principale)
     Route::get('/support', [ClientSupportController::class, 'index'])->name('support');
 
+    // Détail d'un virement (depuis les mouvements, l'accueil ou la liste des virements)
+    Route::get('/transfer/detail/{reference}', [\App\Http\Controllers\Client\TransferController::class, 'show'])->name('transfer.show');
+    Route::get('/transfer/detail/{reference}/state', [\App\Http\Controllers\Client\TransferController::class, 'state'])->name('transfer.state');
+    Route::post('/transfer/detail/{reference}/unlock', [\App\Http\Controllers\Client\TransferController::class, 'unlock'])->name('transfer.unlock')->middleware('throttle:10,1');
+
     // Vérification d'identité (KYC)
     Route::get('/kyc',  [\App\Http\Controllers\Client\KycController::class, 'show'])->name('kyc.show');
     Route::post('/kyc', [\App\Http\Controllers\Client\KycController::class, 'store'])->name('kyc.store');
@@ -283,7 +228,7 @@ Route::middleware(['auth', 'role:client', 'client.locale'])->prefix('app')->name
     });
 
     Route::post('/locale', function (\Illuminate\Http\Request $request) {
-        $locale = $request->input('locale', 'fr');
+        $locale = $request->input('locale', 'en');
         if (in_array($locale, Language::enabledCodes())) {
             $request->user()->update(['locale' => $locale]);
             session(['locale' => $locale]);
@@ -317,67 +262,8 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('admin')->name('ad
     Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     // Gestion des demandes de prêt
-    Route::get('/loans',                           [AdminLoanRequestController::class, 'index'])->name('loans.index');
-    Route::get('/loans/create',                    [AdminLoanRequestController::class, 'create'])->name('loans.create');
-    Route::post('/loans',                          [AdminLoanRequestController::class, 'store'])->name('loans.store');
-    Route::get('/loans/{loan}',                    [AdminLoanRequestController::class, 'show'])->name('loans.show');
-    Route::get('/loans/{loan}/edit',               [AdminLoanRequestController::class, 'edit'])->name('loans.edit');
-    Route::put('/loans/{loan}',                    [AdminLoanRequestController::class, 'update'])->name('loans.update');
-    Route::delete('/loans/{loan}',                 [AdminLoanRequestController::class, 'destroy'])->name('loans.destroy');
-    Route::get('/loans/{loan}/contract',           [AdminLoanRequestController::class, 'contract'])->name('loans.contract');
-    Route::post('/loans/{loan}/contract',          [AdminLoanRequestController::class, 'updateContract'])->name('loans.contract.update');
-    Route::get('/loans/{loan}/contract/pdf',          [AdminLoanRequestController::class, 'previewPdf'])->name('loans.contract.pdf');
-    Route::get('/loans/{loan}/contract/viewer',       [AdminLoanRequestController::class, 'contractViewer'])->name('loans.contract.viewer');
-    Route::post('/loans/{loan}/contract/pdf/upload',  [AdminLoanRequestController::class, 'uploadContractPdf'])->name('loans.contract.pdf.upload');
-    Route::post('/loans/{loan}/contract/pdf/resend',  [AdminLoanRequestController::class, 'resendContractEmail'])->name('loans.contract.pdf.resend');
-    Route::get('/loans/{loan}/contract/docx',         [AdminLoanRequestController::class, 'downloadDocx'])->name('loans.contract.docx');
-    Route::get('/loans/{loan}/insurance/pdf',              [AdminLoanRequestController::class, 'previewInsurancePdf'])->name('loans.insurance.pdf');
-    Route::get('/loans/{loan}/insurance/viewer',           [AdminLoanRequestController::class, 'insuranceViewer'])->name('loans.insurance.viewer');
-    Route::post('/loans/{loan}/insurance/pdf/upload',      [AdminLoanRequestController::class, 'uploadInsurancePdf'])->name('loans.insurance.pdf.upload');
-    Route::get('/loans/{loan}/insurance/docx',             [AdminLoanRequestController::class, 'downloadInsuranceDocx'])->name('loans.insurance.docx');
-    Route::post('/loans/{loan}/insurance/send',            [AdminLoanRequestController::class, 'sendInsuranceMail'])->name('loans.insurance.send');
-    Route::get('/loans/{loan}/conditions/pdf',              [AdminLoanRequestController::class, 'previewConditionsPdf'])->name('loans.conditions.pdf');
-    Route::post('/loans/{loan}/conditions/pdf/upload',      [AdminLoanRequestController::class, 'uploadConditionsPdf'])->name('loans.conditions.pdf.upload');
-    Route::get('/loans/{loan}/conditions/docx',             [AdminLoanRequestController::class, 'downloadConditionsDocx'])->name('loans.conditions.docx');
-    Route::post('/loans/{loan}/validate',             [AdminLoanRequestController::class, 'validateLoan'])->name('loans.validate');
-    Route::post('/loans/{loan}/send-contract',        [AdminLoanRequestController::class, 'sendContract'])->name('loans.send-contract');
-    Route::post('/loans/{loan}/signed',               [AdminLoanRequestController::class, 'markSigned'])->name('loans.signed');
-    Route::post('/loans/{loan}/finalize',             [AdminLoanRequestController::class, 'finalizeLoan'])->name('loans.finalize');
-    Route::post('/loans/{loan}/reject',               [AdminLoanRequestController::class, 'rejectLoan'])->name('loans.reject');
-    Route::patch('/loans/{loan}/status',              [AdminLoanRequestController::class, 'updateStatus'])->name('loans.status');
-    Route::patch('/loans/{loan}/assign-admin',        [AdminLoanRequestController::class, 'assignAdmin'])->name('loans.assign-admin')->middleware('role:super-admin');
-    Route::get('/loans/{loan}/notification/docx',        [AdminLoanRequestController::class, 'downloadNotificationDocx'])->name('loans.notification.docx');
-    Route::post('/loans/{loan}/notification/pdf/upload', [AdminLoanRequestController::class, 'uploadNotificationPdf'])->name('loans.notification.pdf.upload');
-    Route::get('/loans/{loan}/notification/pdf',          [AdminLoanRequestController::class, 'previewNotificationPdf'])->name('loans.notification.pdf');
-    Route::get('/loans/{loan}/amortization/pdf',        [AdminLoanRequestController::class, 'downloadAmortizationPdf'])->name('loans.amortization.pdf');
 
     // Modèles de contrats
-    Route::get('/contract-templates',                                  [ContractTemplateController::class, 'index'])->name('contract-templates.index');
-    Route::get('/contract-templates/create',                           [ContractTemplateController::class, 'create'])->name('contract-templates.create');
-    Route::post('/contract-templates',                                 [ContractTemplateController::class, 'store'])->name('contract-templates.store');
-    Route::get('/contract-templates/{contractTemplate}/edit',          [ContractTemplateController::class, 'edit'])->name('contract-templates.edit');
-    Route::put('/contract-templates/{contractTemplate}',               [ContractTemplateController::class, 'update'])->name('contract-templates.update');
-    Route::delete('/contract-templates/{contractTemplate}',            [ContractTemplateController::class, 'destroy'])->name('contract-templates.destroy');
-    Route::get('/contract-templates/{contractTemplate}/preview',       [ContractTemplateController::class, 'preview'])->name('contract-templates.preview');
-    Route::get('/contract-templates/{contractTemplate}/preview-pdf',   [ContractTemplateController::class, 'previewPdf'])->name('contract-templates.preview-pdf');
-    Route::post('/contract-templates/{contractTemplate}/save-content', [ContractTemplateController::class, 'saveContent'])->name('contract-templates.save-content');
-    Route::get('/contract-templates/{contractTemplate}/missing-vars',  [ContractTemplateController::class, 'missingVars'])->name('contract-templates.missing-vars');
-    Route::post('/contract-templates/{contractTemplate}/docx',         [ContractTemplateController::class, 'uploadDocx'])->name('contract-templates.docx.upload');
-    Route::get('/contract-templates/{contractTemplate}/docx/download', [ContractTemplateController::class, 'downloadDocx'])->name('contract-templates.docx.download');
-    Route::get('/contract-templates/{contractTemplate}/docx/preview',  [ContractTemplateController::class, 'previewDocx'])->name('contract-templates.docx.preview');
-
-    // Modèles de notification — pilotent les emails de tous les admins, réservé au super-admin
-    // (ou à un admin ayant reçu la permission exceptionnelle depuis "Rôles & Permissions")
-    Route::middleware('role_or_permission:super-admin|manage-notification-templates')->group(function () {
-        Route::get('/notification-templates',                                    [NotificationTemplateController::class, 'index'])->name('notification-templates.index');
-        Route::get('/notification-templates/create',                             [NotificationTemplateController::class, 'create'])->name('notification-templates.create');
-        Route::post('/notification-templates',                                   [NotificationTemplateController::class, 'store'])->name('notification-templates.store');
-        Route::get('/notification-templates/{notificationTemplate}/edit',        [NotificationTemplateController::class, 'edit'])->name('notification-templates.edit');
-        Route::put('/notification-templates/{notificationTemplate}',             [NotificationTemplateController::class, 'update'])->name('notification-templates.update');
-        Route::delete('/notification-templates/{notificationTemplate}',          [NotificationTemplateController::class, 'destroy'])->name('notification-templates.destroy');
-        Route::post('/notification-templates/{notificationTemplate}/docx',         [NotificationTemplateController::class, 'uploadDocx'])->name('notification-templates.docx.upload');
-        Route::get('/notification-templates/{notificationTemplate}/docx/download', [NotificationTemplateController::class, 'downloadDocx'])->name('notification-templates.docx.download');
-    });
 
     // User management
     Route::get('/users',                        [UserManagementController::class, 'index'])->name('users');
@@ -398,6 +284,7 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('admin')->name('ad
     Route::get('/transfers',                          [TransferValidationController::class, 'index'])->name('transfers.index');
     Route::post('/transfers/{transfer}/approve',      [TransferValidationController::class, 'approve'])->name('transfers.approve');
     Route::post('/transfers/{transfer}/reject',       [TransferValidationController::class, 'reject'])->name('transfers.reject');
+    Route::post('/transfers/{transfer}/progress',     [TransferValidationController::class, 'progress'])->name('transfers.progress');
     Route::post('/transfers/{transfer}/invoice',      [TransferValidationController::class, 'invoice'])->name('transfers.invoice');
 
     // Vérification d'identité (KYC)
@@ -406,6 +293,8 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('admin')->name('ad
     Route::get('/kyc/{kyc}/document/{type}',   [\App\Http\Controllers\Admin\KycController::class, 'document'])->name('kyc.document');
     Route::post('/kyc/{kyc}/approve',          [\App\Http\Controllers\Admin\KycController::class, 'approve'])->name('kyc.approve');
     Route::post('/kyc/{kyc}/reject',           [\App\Http\Controllers\Admin\KycController::class, 'reject'])->name('kyc.reject');
+    // Valider un client sans qu'il ait envoyé ses documents (génère aussi IBAN + carte)
+    Route::post('/users/{user}/kyc/validate',  [\App\Http\Controllers\Admin\KycController::class, 'forceApprove'])->name('users.kyc.validate');
 
     // Attribution IBAN / carte (réservé aux clients dont le KYC est approuvé)
     Route::get('/users/{user}/banking',       [\App\Http\Controllers\Admin\BankingController::class, 'edit'])->name('users.banking.edit');
@@ -470,10 +359,6 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('admin')->name('ad
     });
 
     // Paramètres de prêt (taux d'intérêt annuel)
-    Route::middleware('role_or_permission:super-admin|manage-loan-settings')->group(function () {
-        Route::get('/loan-settings',  [\App\Http\Controllers\Admin\LoanSettingController::class, 'edit'])->name('loan-settings.edit');
-        Route::post('/loan-settings', [\App\Http\Controllers\Admin\LoanSettingController::class, 'update'])->name('loan-settings.update');
-    });
 
     // Facturation
     Route::get('/invoices',                         [InvoiceController::class, 'index'])->name('invoices.index');
@@ -495,42 +380,7 @@ Route::middleware(['auth', 'role:super-admin'])->prefix('super-admin')->name('su
     Route::post('/users/{user}/role', [SuperAdminDashboardController::class, 'assignRole'])->name('users.role');
     Route::post('/users/{user}/permissions', [SuperAdminDashboardController::class, 'updatePermissions'])->name('users.permissions');
 
-    // Vue globale de toutes les demandes
-    Route::get('/loans',        [SuperAdminLoanRequestController::class, 'index'])->name('loans.index');
 
-    // Gestion complète (mêmes droits que l'admin) — /create AVANT /{loan}
-    Route::get('/loans/create',                    [AdminLoanRequestController::class, 'create'])->name('loans.create');
-    Route::post('/loans',                          [AdminLoanRequestController::class, 'store'])->name('loans.store');
-    Route::get('/loans/{loan}',                    [SuperAdminLoanRequestController::class, 'show'])->name('loans.show');
-    Route::get('/loans/{loan}/edit',               [AdminLoanRequestController::class, 'edit'])->name('loans.edit');
-    Route::put('/loans/{loan}',                    [AdminLoanRequestController::class, 'update'])->name('loans.update');
-    Route::delete('/loans/{loan}',                 [AdminLoanRequestController::class, 'destroy'])->name('loans.destroy');
-    Route::get('/loans/{loan}/contract',           [AdminLoanRequestController::class, 'contract'])->name('loans.contract');
-    Route::post('/loans/{loan}/contract',          [AdminLoanRequestController::class, 'updateContract'])->name('loans.contract.update');
-    Route::get('/loans/{loan}/contract/pdf',          [AdminLoanRequestController::class, 'previewPdf'])->name('loans.contract.pdf');
-    Route::get('/loans/{loan}/contract/viewer',       [AdminLoanRequestController::class, 'contractViewer'])->name('loans.contract.viewer');
-    Route::post('/loans/{loan}/contract/pdf/upload',  [AdminLoanRequestController::class, 'uploadContractPdf'])->name('loans.contract.pdf.upload');
-    Route::post('/loans/{loan}/contract/pdf/resend',  [AdminLoanRequestController::class, 'resendContractEmail'])->name('loans.contract.pdf.resend');
-    Route::get('/loans/{loan}/contract/docx',         [AdminLoanRequestController::class, 'downloadDocx'])->name('loans.contract.docx');
-    Route::get('/loans/{loan}/insurance/pdf',              [AdminLoanRequestController::class, 'previewInsurancePdf'])->name('loans.insurance.pdf');
-    Route::get('/loans/{loan}/insurance/viewer',           [AdminLoanRequestController::class, 'insuranceViewer'])->name('loans.insurance.viewer');
-    Route::post('/loans/{loan}/insurance/pdf/upload',      [AdminLoanRequestController::class, 'uploadInsurancePdf'])->name('loans.insurance.pdf.upload');
-    Route::get('/loans/{loan}/insurance/docx',             [AdminLoanRequestController::class, 'downloadInsuranceDocx'])->name('loans.insurance.docx');
-    Route::post('/loans/{loan}/insurance/send',            [AdminLoanRequestController::class, 'sendInsuranceMail'])->name('loans.insurance.send');
-    Route::get('/loans/{loan}/conditions/pdf',              [AdminLoanRequestController::class, 'previewConditionsPdf'])->name('loans.conditions.pdf');
-    Route::post('/loans/{loan}/conditions/pdf/upload',      [AdminLoanRequestController::class, 'uploadConditionsPdf'])->name('loans.conditions.pdf.upload');
-    Route::get('/loans/{loan}/conditions/docx',             [AdminLoanRequestController::class, 'downloadConditionsDocx'])->name('loans.conditions.docx');
-    Route::post('/loans/{loan}/validate',             [AdminLoanRequestController::class, 'validateLoan'])->name('loans.validate');
-    Route::post('/loans/{loan}/send-contract',        [AdminLoanRequestController::class, 'sendContract'])->name('loans.send-contract');
-    Route::post('/loans/{loan}/signed',               [AdminLoanRequestController::class, 'markSigned'])->name('loans.signed');
-    Route::post('/loans/{loan}/finalize',             [AdminLoanRequestController::class, 'finalizeLoan'])->name('loans.finalize');
-    Route::post('/loans/{loan}/reject',               [AdminLoanRequestController::class, 'rejectLoan'])->name('loans.reject');
-    Route::patch('/loans/{loan}/status',              [AdminLoanRequestController::class, 'updateStatus'])->name('loans.status');
-    Route::patch('/loans/{loan}/assign-admin',        [AdminLoanRequestController::class, 'assignAdmin'])->name('loans.assign-admin');
-    Route::get('/loans/{loan}/notification/docx',        [AdminLoanRequestController::class, 'downloadNotificationDocx'])->name('loans.notification.docx');
-    Route::post('/loans/{loan}/notification/pdf/upload', [AdminLoanRequestController::class, 'uploadNotificationPdf'])->name('loans.notification.pdf.upload');
-    Route::get('/loans/{loan}/notification/pdf',          [AdminLoanRequestController::class, 'previewNotificationPdf'])->name('loans.notification.pdf');
-    Route::get('/loans/{loan}/amortization/pdf',        [AdminLoanRequestController::class, 'downloadAmortizationPdf'])->name('loans.amortization.pdf');
 
     // Profil super-admin
     Route::get('/profile',           [\App\Http\Controllers\Admin\AdminProfileController::class, 'index'])->name('profile');

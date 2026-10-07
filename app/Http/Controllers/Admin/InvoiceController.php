@@ -29,8 +29,7 @@ class InvoiceController extends Controller
         if (! $this->isSuperAdmin()) {
             $adminId = Auth::id();
             $query->where(function ($q) use ($adminId) {
-                $q->where('created_by', $adminId)
-                  ->orWhereHas('clientLoans', fn ($q2) => $q2->where('admin_id', $adminId));
+                $q->where('created_by', $adminId);
             });
         }
 

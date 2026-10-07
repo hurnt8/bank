@@ -8,6 +8,7 @@
 </a>
 @endsection
 
+@section('main_class', 'ca-main--narrow')
 @section('content')
 
 @push('styles')
