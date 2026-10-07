@@ -10,7 +10,6 @@
   </div>
 </div>
 
-@if(session('success'))<div class="alert alert-success" style="margin-bottom:1rem">{{ session('success') }}</div>@endif
 
 <div class="card-pro">
   @forelse($requests as $r)

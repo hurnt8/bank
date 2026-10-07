@@ -21,9 +21,6 @@
   <a href="{{ route('admin.kyc.index') }}" class="btn-ghost btn-sm-pro"><i class="fas fa-arrow-left"></i> Retour</a>
 </div>
 
-@if(session('success'))
-<div class="alert alert-success" style="margin-bottom:1rem">{{ session('success') }}</div>
-@endif
 
 <div class="kyc-doc-grid">
   @if($kyc->id_document_front_path)

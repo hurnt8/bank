@@ -53,9 +53,6 @@
   </div>
 </div>
 
-@if(session('success'))
-<div class="flash flash-ok mb-4"><i class="fas fa-circle-check"></i> {{ session('success') }}</div>
-@endif
 @if($errors->any())
 <div class="flash flash-err mb-4"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first() }}</div>
 @endif

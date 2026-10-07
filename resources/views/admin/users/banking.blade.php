@@ -12,9 +12,6 @@
   <a href="{{ route('admin.users.show', $user) }}" class="btn-ghost btn-sm-pro"><i class="fas fa-arrow-left"></i> Retour</a>
 </div>
 
-@if(session('success'))
-<div class="alert alert-success" style="margin-bottom:1rem">{{ session('success') }}</div>
-@endif
 @if($errors->any())
 <div class="alert alert-danger" style="margin-bottom:1rem">
   <ul style="margin:0;padding-left:1.1rem">

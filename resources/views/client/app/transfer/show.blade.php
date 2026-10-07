@@ -125,7 +125,6 @@
   </div>
   @endif
 
-  @if(session('success'))<div class="td-ok" role="status"><i class="fas fa-circle-check"></i> {{ session('success') }}</div>@endif
 
   {{-- Progression du virement ("loading state") + déblocage par code --}}
   @if($showBar)

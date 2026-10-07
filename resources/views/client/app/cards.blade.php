@@ -76,7 +76,6 @@ button.cd-empty__btn { border: 0; cursor: pointer; font-family: inherit; }
 
 @section('content')
 <div class="cd-page">
-  @if(session('success'))<div class="cd-ok" role="status"><i class="fas fa-circle-check"></i> {{ session('success') }}</div>@endif
   @if($cards->isNotEmpty())
   <p class="cd-sub">{{ __('cards.subtitle') }}</p>
 

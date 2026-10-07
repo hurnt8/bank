@@ -132,9 +132,6 @@
 @if(session('error'))
 <div class="alert alert-danger" style="margin-bottom:1rem">{{ session('error') }}</div>
 @endif
-@if(session('success'))
-<div class="alert alert-success" style="margin-bottom:1rem">{{ session('success') }}</div>
-@endif
 
 @if($step === 1)
 {{-- ───────────── Étape 1 : informations personnelles ───────────── --}}
