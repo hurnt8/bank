@@ -30,7 +30,6 @@
     };
 
     $name = function_exists('site_name') ? site_name() : config('app.name');
-    $initials = collect(preg_split('/\s+/', trim($name)))->filter()->take(2)->map(fn ($w) => mb_strtoupper(mb_substr($w, 0, 1)))->implode('');
     $home = url('/');
     $retry = in_array($code, [419, 429, 500, 503, 502, 504], true);
 @endphp
@@ -43,13 +42,12 @@
 <title>{{ $code }} — {{ __('errors.t' . $key) }} — {{ $name }}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=Fraunces:wght@700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{background:radial-gradient(1200px 600px at 50% -10%,#123a5e 0%,#071a2e 55%,#04111f 100%);color:#e9eef5;font-family:'Outfit',system-ui,-apple-system,'Segoe UI',sans-serif;display:flex;flex-direction:column;min-height:100vh}
-.brand{display:flex;align-items:center;gap:.65rem;padding:1.25rem 1.5rem;text-decoration:none;color:#fff;font-weight:600}
-.brand__mark{width:38px;height:38px;border-radius:11px;background:#fff;color:#C6A15B;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem}
+.brand{display:inline-flex;align-items:center;padding:1.25rem 1.5rem;text-decoration:none;align-self:flex-start}
 .wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:1.5rem}
 .card{width:100%;max-width:520px;text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:2.5rem 2rem 2.1rem;box-shadow:0 30px 80px rgba(0,0,0,.35);backdrop-filter:blur(6px)}
 .code{font-family:'Space Grotesk',sans-serif;font-size:clamp(4.5rem,18vw,7rem);font-weight:700;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,#F5EDDD,#DCBE87 55%,#C6A15B);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -65,7 +63,7 @@ p{font-size:.95rem;line-height:1.65;color:rgba(233,238,245,.72);max-width:400px;
 </style>
 </head>
 <body>
-<a href="{{ $home }}" class="brand"><span class="brand__mark">{{ $initials }}</span><span>{{ $name }}</span></a>
+<a href="{{ $home }}" class="brand" aria-label="{{ $name }}"><x-logo variant="full" theme="dark" size="md" /></a>
 
 <main class="wrap">
   <div class="card" role="alert">
