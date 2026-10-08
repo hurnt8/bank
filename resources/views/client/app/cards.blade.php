@@ -81,7 +81,7 @@ button.cd-empty__btn { border: 0; cursor: pointer; font-family: inherit; }
 .cd-mono{font-family:monospace;font-size:.78rem}
 .cd-pay__hint{font-size:.74rem;color:var(--ca-text-3);padding:.6rem 0 .2rem;line-height:1.5}
 .cd-pay__btns{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
-.cd-modal{position:fixed;inset:0;z-index:900;display:flex;align-items:flex-end;justify-content:center;padding:1rem}
+.cd-modal{position:fixed;inset:0;z-index:20000;display:flex;align-items:flex-end;justify-content:center;padding:1rem}
 .cd-modal__bg{position:absolute;inset:0;background:rgba(2,10,20,.66);backdrop-filter:blur(3px)}
 .cd-modal__box{position:relative;width:100%;max-width:440px;background:var(--ca-bg2);color:var(--ca-text);border:1px solid var(--ca-border);border-radius:22px;padding:1.4rem;box-shadow:0 24px 60px rgba(0,0,0,.5);max-height:90vh;overflow-y:auto}
 @media (min-width:768px){.cd-modal{align-items:center}}

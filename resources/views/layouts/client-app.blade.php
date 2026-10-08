@@ -225,7 +225,7 @@
   </div>
 </div>
 <style>
-#cxa-confirm { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: flex-end; justify-content: center; padding: 1rem; }
+#cxa-confirm { position: fixed; inset: 0; z-index: 30000; display: flex; align-items: flex-end; justify-content: center; padding: 1rem; }
 #cxa-confirm[hidden] { display: none; }
 @media (min-width: 640px) { #cxa-confirm { align-items: center; } }
 .cxa-confirm__backdrop { position: absolute; inset: 0; background: rgba(3, 12, 10, .62); backdrop-filter: blur(3px); }

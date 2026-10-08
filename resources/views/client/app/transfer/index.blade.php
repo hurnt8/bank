@@ -61,7 +61,7 @@
 .tx-none i{display:block;font-size:2rem;opacity:.25;margin-bottom:.6rem}
 
 /* Modales */
-.tx-modal{position:fixed;inset:0;z-index:900;display:flex;align-items:flex-end;justify-content:center;padding:1rem}
+.tx-modal{position:fixed;inset:0;z-index:20000;display:flex;align-items:flex-end;justify-content:center;padding:1rem}
 .tx-modal__bg{position:absolute;inset:0;background:rgba(2,10,20,.66);backdrop-filter:blur(3px)}
 .tx-modal__box{position:relative;width:100%;max-width:420px;background:var(--ca-bg2);color:var(--ca-text);border:1px solid var(--ca-border);border-radius:22px;padding:1.4rem 1.4rem 1.25rem;box-shadow:0 24px 60px rgba(0,0,0,.5);max-height:88vh;overflow-y:auto}
 @media (min-width:768px){.tx-modal{align-items:center}}
