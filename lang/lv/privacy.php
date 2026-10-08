@@ -45,7 +45,7 @@ return [
     'contact_text' => 'Ja jums ir jautājumi, bažas vai pieprasījumi saistībā ar šo konfidencialitātes politiku vai to, kā mēs apstrādājam jūsu personas datus, lūdzu, sazinieties ar mums:',
     'contact_details' => [
         site_name(),
-        'Adrese: Rua de Santo António 33, 7200-175, Portugāle',
+        'Adrese: ' . site_address(),
         'E-pasts: ' . site_email(),
         'Tālrunis: ' . site_phone() . ' ',
     ],

@@ -45,7 +45,7 @@ return [
     'contact_text' => 'Če imate kakršna koli vprašanja, pomisleke ali zahteve glede te politike zasebnosti ali načina, kako ravnamo z vašimi osebnimi podatki, nas kontaktirajte na:',
     'contact_details' => [
         site_name(),
-        'Naslov: Rua de Santo António 33, 7200-175, Portugal',
+        'Naslov: ' . site_address(),
         'E-pošta: ' . site_email(),
         'Telefon: ' . site_phone() . ' ',
     ],

@@ -19,7 +19,7 @@ return [
 'detail_desc' => 'Siamo qui per aiutarti. Contattaci per qualsiasi domanda o assistenza relativa ai nostri servizi di prestito.',
 
 'address_title' => 'Indirizzo',
-'address_desc' => 'Rua de Santo António 33, 7200-175, Portogallo',
+'address_desc' => site_address(),
 'phone_title' => 'Contatto rapido',
 'phone_desc' => site_phone(),
 'mail_title' => 'Email di supporto',

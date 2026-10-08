@@ -37,7 +37,7 @@ return [
         ],
         [
             'title' => '9. Contato',
-            'content' => 'Se você tiver alguma dúvida ou preocupação em relação a estes termos e condições, entre em contato conosco em:<br><br>' . site_name() . '<br>Endereço: Calcea Victoriei 118 Setor 1 010093 Bucareste<br>E-mail: ' . site_email() . '<br>Telefone: ' . site_phone() . ' '
+            'content' => 'Se você tiver alguma dúvida ou preocupação em relação a estes termos e condições, entre em contato conosco em:<br><br>' . site_name() . '<br>Endereço: ' . site_address() . '<br>E-mail: ' . site_email() . '<br>Telefone: ' . site_phone() . ' '
         ],
     ],
 

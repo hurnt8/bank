@@ -45,7 +45,7 @@ return [
     'contact_text' => 'Jei turite klausimų, rūpesčių ar prašymų dėl šios privatumo politikos arba kaip elgiamės su jūsų asmenine informacija, susisiekite su mumis adresu:',
     'contact_details' => [
         site_name(),
-        'Adresas: Rua de Santo António 33, 7200-175, Portugal',
+        'Adresas: ' . site_address(),
         'El. paštas: ' . site_email(),
         'Telefonas: ' . site_phone() . ' ',
     ],

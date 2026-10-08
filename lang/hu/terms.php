@@ -37,7 +37,7 @@ return [
         ],
         [
             'title' => '9. Kapcsolatba lépni',
-            'content' => 'Ha bármilyen kérdése vagy aggálya van ezekkel a feltételekkel kapcsolatban, kérjük, lépjen velünk kapcsolatba a következő címen:<br><br>' . site_name() . '<br>Cím: Rua de Santo António 33, 7200-175, Portugal<br>E-mail: ' . site_email() . '<br>Telefon: ' . site_phone() . ' ',
+            'content' => 'Ha bármilyen kérdése vagy aggálya van ezekkel a feltételekkel kapcsolatban, kérjük, lépjen velünk kapcsolatba a következő címen:<br><br>' . site_name() . '<br>Cím: ' . site_address() . '<br>E-mail: ' . site_email() . '<br>Telefon: ' . site_phone() . ' ',
         ],
     ],
 ];

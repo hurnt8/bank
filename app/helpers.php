@@ -84,6 +84,18 @@ if (! function_exists('site_phone')) {
     }
 }
 
+if (! function_exists('site_address')) {
+    /**
+     * Adresse(s) de l'entreprise configurée(s) par l'admin (SiteContact::address_1..3), séparées par « / ».
+     */
+    function site_address(): string
+    {
+        $c = site_identity();
+
+        return $c ? implode(' / ', array_filter([$c->address_1, $c->address_2, $c->address_3])) : '';
+    }
+}
+
 if (! function_exists('site_phone_href')) {
     /**
      * Numero de telephone nettoye pour un lien tel: (chiffres et + uniquement).

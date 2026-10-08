@@ -20,7 +20,7 @@ return [
     'detail_desc' => 'Sme tu, aby sme vám pomohli. Kontaktujte nás s akýmikoľvek otázkami alebo pomocou týkajúcou sa vášho účtu, karty alebo prevodov.',
 
     'address_title' => 'Adresa',
-    'address_desc' => 'Rua de Santo António 33, 7200-175, Portugal',
+    'address_desc' => site_address(),
     'phone_title' => 'Rýchly kontakt',
     'phone_desc' => site_phone() . ' ',
     'mail_title' => 'E-mail podpory',

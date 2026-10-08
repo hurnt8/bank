@@ -20,7 +20,7 @@ return [
     'detail_desc' => 'Aħna hawn biex ngħinuk. Ikkuntattjana għal kwalunkwe mistoqsija jew għajnuna rigward il-kont, il-karta jew it-trasferimenti tiegħek.',
 
     'address_title' => 'Indirizz',
-    'address_desc' => 'Rua de Santo António 33, 7200-175, Portugal',
+    'address_desc' => site_address(),
     'phone_title' => 'Kuntatt rapidu',
     'phone_desc' => site_phone() . ' ',
     'mail_title' => 'Email tal-appoġġ',

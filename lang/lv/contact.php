@@ -19,7 +19,7 @@ return [
     'detail_desc' => 'Mēs esam šeit, lai jums palīdzētu. Sazinieties ar mums par jebkuru jautājumu vai palīdzību saistībā ar mūsu aizdevumu pakalpojumiem.',
 
     'address_title' => 'Adrese',
-    'address_desc' => 'Rua de Santo António 33, 7200-175, Portugāle',
+    'address_desc' => site_address(),
     'phone_title' => 'Tālrunis',
     'phone_desc' => site_phone() . ' ',
     'mail_title' => 'E-pasts',

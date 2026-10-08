@@ -19,7 +19,7 @@ return [
     'detail_desc' => 'Jesteśmy tu, aby Ci pomóc. Skontaktuj się z nami w przypadku jakichkolwiek pytań lub potrzeby pomocy dotyczącej naszych usług kredytowych.',
 
     'address_title' => 'Adres',
-    'address_desc' => 'Rua de Santo António 33, 7200-175, Portugal',
+    'address_desc' => site_address(),
     'phone_title' => 'Szybki kontakt',
     'phone_desc' => site_phone(),
     'mail_title' => 'Email wsparcia',

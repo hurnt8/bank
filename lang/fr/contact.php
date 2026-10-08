@@ -19,7 +19,7 @@ return [
     'detail_desc' => 'Nous sommes ici pour vous aider. Contactez-nous pour toute question ou assistance concernant votre compte, votre carte ou vos virements.',
 
     'address_title' => 'Adresse',
-    'address_desc' => 'Rua de Santo António 33, 7200-175, Portugal',
+    'address_desc' => site_address(),
     'phone_title' => 'Téléphone',
     'phone_desc' => site_phone() . ' ',
     'mail_title' => 'Email',

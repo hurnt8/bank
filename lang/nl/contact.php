@@ -19,7 +19,7 @@ return [
     'detail_desc' => 'Wij staan voor u klaar. Neem contact met ons op voor vragen of hulp met betrekking tot onze leendiensten.',
 
     'address_title' => 'Adres',
-    'address_desc' => 'Rua de Santo António 33, 7200-175, Portugal',
+    'address_desc' => site_address(),
     'phone_title' => 'Telefoon',
     'phone_desc' => site_phone() . ' ',
     'mail_title' => 'E-mail',

@@ -37,7 +37,7 @@ return [
         ],
         [
             'title' => '9. Kontakt',
-            'content' => 'Če imate kakršna koli vprašanja ali pomisleke glede teh pogojev, nas kontaktirajte na:<br><br>' . site_name() . '<br>Naslov: Rua de Santo António 33, 7200-175, Portugal<br>E-pošta: ' . site_email() . '<br>Telefon: ' . site_phone() . ' '
+            'content' => 'Če imate kakršna koli vprašanja ali pomisleke glede teh pogojev, nas kontaktirajte na:<br><br>' . site_name() . '<br>Naslov: ' . site_address() . '<br>E-pošta: ' . site_email() . '<br>Telefon: ' . site_phone() . ' '
         ],
     ],
 ];

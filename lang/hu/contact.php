@@ -19,7 +19,7 @@ return [
     'detail_desc' => 'Azért vagyunk itt, hogy segítsünk. Ha bármilyen kérdése van, vagy segítségre van szüksége hitelszolgáltatásainkkal kapcsolatban, forduljon hozzánk.',
 
     'address_title' => 'Cím',
-    'address_desc' => 'Rua de Santo António 33, 7200-175, Portugal',
+    'address_desc' => site_address(),
     'phone_title' => 'Telefon',
     'phone_desc' => site_phone() . ' ',
     'mail_title' => 'E-mail',

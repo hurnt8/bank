@@ -19,7 +19,7 @@ return [
     'detail_desc' => 'Тук сме, за да ви помогнем. Свържете се с нас за въпроси или помощ относно нашите кредитни услуги.',
 
     'address_title' => 'Адрес',
-    'address_desc' => 'Rua de Santo António 33, 7200-175, Португалия',
+    'address_desc' => site_address(),
     'phone_title' => 'Бърз контакт',
     'phone_desc' => site_phone() . ' ',
     'mail_title' => 'Имейл за поддръжка',

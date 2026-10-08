@@ -37,7 +37,7 @@ return [
         ],
         [
             'title' => '9. Kontakt',
-            'content' => 'Wenn Sie Fragen oder Bedenken zu diesen Allgemeinen Geschäftsbedingungen haben, kontaktieren Sie uns bitte unter:<br><br>' . site_name() . '<br>Adresse: Rua de Santo António 33, 7200-175, Portugal<br>E-Mail: ' . site_email() . '<br>Telefon: ' . site_phone() . ' '
+            'content' => 'Wenn Sie Fragen oder Bedenken zu diesen Allgemeinen Geschäftsbedingungen haben, kontaktieren Sie uns bitte unter:<br><br>' . site_name() . '<br>Adresse: ' . site_address() . '<br>E-Mail: ' . site_email() . '<br>Telefon: ' . site_phone() . ' '
         ],
     ],
 ];

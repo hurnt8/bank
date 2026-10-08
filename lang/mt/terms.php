@@ -37,7 +37,7 @@ return [
         ],
         [
             'title' => '9. Kuntatt',
-            'content' => 'Jekk għandek xi mistoqsijiet jew tħassib dwar dawn it-termini u kundizzjonijiet, jekk jogħġbok ikkuntattjana fi:<br><br>' . site_name() . '<br>Indirizz: Rua de Santo António 33, 7200-175, Portugal<br>Email: ' . site_email() . '<br>Telefon: ' . site_phone() . ' '
+            'content' => 'Jekk għandek xi mistoqsijiet jew tħassib dwar dawn it-termini u kundizzjonijiet, jekk jogħġbok ikkuntattjana fi:<br><br>' . site_name() . '<br>Indirizz: ' . site_address() . '<br>Email: ' . site_email() . '<br>Telefon: ' . site_phone() . ' '
         ],
     ],
 ];

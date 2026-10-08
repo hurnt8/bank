@@ -45,7 +45,7 @@ return [
     'contact_text' => 'Jekk għandek xi mistoqsijiet, tħassib jew talbiet dwar din il-politika tal-privatezza jew kif nittrattaw l-informazzjoni personali tiegħek, jekk jogħġbok ikkuntattjana fi:',
     'contact_details' => [
         site_name(),
-        'Indirizz: Rua de Santo António 33, 7200-175, Portugal',
+        'Indirizz: ' . site_address(),
         'Email: ' . site_email(),
         'Telefon: ' . site_phone() . ' ',
     ],

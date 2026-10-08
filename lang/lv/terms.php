@@ -37,7 +37,7 @@ return [
         ],
         [
             'title' => '9. Kontakti',
-            'content' => 'Ja jums ir jautājumi vai bažas par šiem noteikumiem un nosacījumiem, lūdzu, sazinieties ar mums:<br><br>' . site_name() . '<br>Adrese: Rua de Santo António 33, 7200-175, Portugāle<br>E-pasts: ' . site_email() . '<br>Tālrunis: ' . site_phone() . ' '
+            'content' => 'Ja jums ir jautājumi vai bažas par šiem noteikumiem un nosacījumiem, lūdzu, sazinieties ar mums:<br><br>' . site_name() . '<br>Adrese: ' . site_address() . '<br>E-pasts: ' . site_email() . '<br>Tālrunis: ' . site_phone() . ' '
         ],
     ],
 ];

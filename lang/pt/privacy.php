@@ -45,7 +45,7 @@ return [
     'contact_text' => 'Se você tiver alguma dúvida, preocupação ou solicitação relacionada a esta política de privacidade ou como tratamos suas informações pessoais, entre em contato conosco em:',
     'contact_details' => [
         site_name(),
-        'Endereço: Calcea Victoriei 118 Sector 1 010093 Bucareste',
+        'Endereço: ' . site_address(),
         'E-mail: ' . site_email(),
         'Telefone: ' . site_phone() . ' ',
     ],

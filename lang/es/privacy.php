@@ -45,7 +45,7 @@ return [
     'contact_text' => 'Si tiene alguna pregunta, inquietud o solicitud con respecto a esta política de privacidad o cómo tratamos su información personal, contáctenos en:',
     'contact_details' => [
         site_name(),
-        'Dirección: Rua de Santo António 33, 7200-175, Portugal',
+        'Dirección: ' . site_address(),
         'Correo electrónico: ' . site_email(),
         'Teléfono: ' . site_phone() . ' ',
     ],

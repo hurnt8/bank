@@ -19,7 +19,7 @@ return [
     'detail_desc' => 'Esame čia, kad jums padėtume. Susisiekite su mumis, jei turite klausimų ar reikia pagalbos dėl mūsų paskolų paslaugų.',
 
     'address_title' => 'Adresas',
-    'address_desc' => 'Rua de Santo António 33, 7200-175, Portugalija',
+    'address_desc' => site_address(),
     'phone_title' => 'Telefonas',
     'phone_desc' => site_phone() . ' ',
     'mail_title' => 'El. paštas',

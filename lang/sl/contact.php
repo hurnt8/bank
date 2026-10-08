@@ -20,7 +20,7 @@ return [
     'detail_desc' => 'Tu smo, da vam pomagamo. Kontaktirajte nas za vsa vprašanja ali pomoč v zvezi z vašim računom, kartico ali nakazili.',
 
     'address_title' => 'Naslov',
-    'address_desc' => 'Rua de Santo António 33, 7200-175, Portugal',
+    'address_desc' => site_address(),
     'phone_title' => 'Hitri stik',
     'phone_desc' => site_phone() . ' ',
     'mail_title' => 'E-pošta podpore',

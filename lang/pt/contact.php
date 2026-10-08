@@ -19,7 +19,7 @@ return [
     'detail_desc' => 'Estamos aqui para ajudá-lo. Entre em contato conosco para qualquer dúvida ou assistência sobre nossos serviços de empréstimo.',
 
     'address_title' => 'Endereço',
-    'address_desc' => 'Calcea Victoriei 118 Setor 1 010093 Bucareste',
+    'address_desc' => site_address(),
     'phone_title' => 'Telefone',
     'phone_desc' => site_phone() . ' ',
     'mail_title' => 'Email',

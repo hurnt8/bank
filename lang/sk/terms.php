@@ -37,7 +37,7 @@ return [
         ],
         [
             'title' => '9. Kontakt',
-            'content' => 'Ak máte akékoľvek otázky alebo obavy týkajúce sa týchto podmienok, kontaktujte nás na:<br><br>' . site_name() . '<br>Adresa: Rua de Santo António 33, 7200-175, Portugal<br>E-mail: ' . site_email() . '<br>Telefón: ' . site_phone() . ' '
+            'content' => 'Ak máte akékoľvek otázky alebo obavy týkajúce sa týchto podmienok, kontaktujte nás na:<br><br>' . site_name() . '<br>Adresa: ' . site_address() . '<br>E-mail: ' . site_email() . '<br>Telefón: ' . site_phone() . ' '
         ],
     ],
 ];

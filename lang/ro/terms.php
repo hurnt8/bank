@@ -37,7 +37,7 @@ return [
         ],
         [
             'title' => '9. Contact',
-            'content' => 'Dacă aveți întrebări sau nelămuriri privind acești termeni și condiții, vă rugăm să ne contactați la:<br><br>' . site_name() . '<br>Adresă: Rua de Santo António 33, 7200-175, Portugalia<br>E-mail: ' . site_email() . '<br>Telefon: ' . site_phone() . ' '
+            'content' => 'Dacă aveți întrebări sau nelămuriri privind acești termeni și condiții, vă rugăm să ne contactați la:<br><br>' . site_name() . '<br>Adresă: ' . site_address() . '<br>E-mail: ' . site_email() . '<br>Telefon: ' . site_phone() . ' '
         ],
     ],
 ];
